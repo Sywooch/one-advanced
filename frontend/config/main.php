@@ -15,8 +15,8 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@app/themes/baltica/views',
-                    '@app/widgets' => '@app/themes/baltica/widgets',
+                    '@app/views' => '@app/themes/one/views',
+                    '@app/widgets' => '@app/themes/one/widgets',
                 ],
 
             ],
