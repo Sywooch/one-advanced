@@ -13,9 +13,21 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+//        'request' => [
+//            'baseUrl' => '/admin',
+//        ],
+//        'urlManager' => [
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'rules' => [
+//                'login' => 'site/login',
+//            ],
+//        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+//            'authTimeout' => 1000,
+//            'absoluteAuthTimeout' =>1000
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

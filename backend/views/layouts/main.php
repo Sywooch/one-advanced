@@ -36,6 +36,8 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'News', 'url' => ['/news/index']],
+        ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
