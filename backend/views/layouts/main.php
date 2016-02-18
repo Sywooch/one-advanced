@@ -35,8 +35,9 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'News', 'url' => ['/news/index']],
+        ['label' => 'Главная', 'url' => ['/site/index']],
+        ['label' => 'Новости', 'url' => ['/news/index']],
+        ['label' => 'Категории', 'url' => ['/category/index']],
         ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
     ];
     if (Yii::$app->user->isGuest) {
