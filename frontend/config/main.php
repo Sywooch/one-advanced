@@ -7,23 +7,24 @@ $params = array_merge(
 );
 
 return [
-//    'homeUrl' => '/',
+    'homeUrl' => '/',
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-//        'request' => [
-//            'baseUrl' => '',
-//            'enableCsrfValidation'=>false,
-//        ],
-//        'urlManager' => [
-//            'enablePrettyUrl' => true,
+        'request' => [
+            'baseUrl' => '',
+            'enableCsrfValidation'=>false,
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+
 //            'rules' => [
 ////                'services/artwork' => '/qtp-category/services',
 //            ],
-//            'showScriptName' => false,
-//        ],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

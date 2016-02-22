@@ -42,9 +42,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Category',
             'slug' => 'Slug',
-            'status_id' => 'Status ID',
+            'status_id' => 'Status',
         ];
     }
 }

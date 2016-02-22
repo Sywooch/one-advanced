@@ -102,6 +102,7 @@ $this->registerJsFile('js/remove_image.js');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'category' => $category,
     ]) ?>
 
 </div>

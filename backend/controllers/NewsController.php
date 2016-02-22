@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\News;
 use common\models\NewsSearch;
+use common\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -82,8 +83,11 @@ class NewsController extends Controller
             }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+//            $model-> category = Category::find()->all();
+//            var_dump($model);die;
             return $this->render('create', [
                 'model' => $model,
+                'category' => Category::find()->all()
             ]);
         }
     }
@@ -118,6 +122,7 @@ class NewsController extends Controller
             }
             return $this->render('update', [
                 'model' => $model,
+                'category' => Category::find()->all()
             ]);
         }
     }

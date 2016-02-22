@@ -5,6 +5,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\UploadForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -22,7 +23,13 @@ if($model->errors) {
 
     <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+<!--    --><?php //echo $form->field($model, 'category_id')->textInput() ?>
+
+    <?php
+//    var_dump($model);
+    echo $form->field($model, 'category_id')->dropDownList(
+        ArrayHelper::map($category, 'id', 'name')
+    ) ?>
 
     <?= $form->field($model, 'snippet')->textarea(['rows' => 6]) ?>
 

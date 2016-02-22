@@ -9,8 +9,8 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-$model -> date = date('d.m.y',$model -> date);
+//var_dump($model->category);
+//$model -> date = date('d.m.y',$model -> date);
 ?>
 <div class="news-view  well">
 
@@ -55,13 +55,20 @@ $model -> date = date('d.m.y',$model -> date);
 //            'id',
             'title',
             'alias',
-            'category_id',
+            'category.name',
+//            [
+//                'attribute' => 'category_id',
+//                'value' => function ($model, $key, $index, $widget) {
+//                    return $model->categoty->name;
+//                },
+//                'format' => 'raw',
+//            ],
             'snippet:ntext',
             'content:ntext',
             'views',
             'comments',
             'status_id',
-            'date',
+            'date:datetime',
         ],
     ]) ?>
 

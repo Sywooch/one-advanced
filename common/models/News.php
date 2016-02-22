@@ -76,6 +76,11 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
