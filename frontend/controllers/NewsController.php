@@ -41,7 +41,7 @@ class NewsController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC'),
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
         ]);
 

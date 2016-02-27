@@ -22,7 +22,7 @@ return [
             'showScriptName' => false,
 
 //            'rules' => [
-////                'services/artwork' => '/qtp-category/services',
+//                '/site/index' => '/',
 //            ],
         ],
         'user' => [
