@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -39,26 +38,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
-<!--    --><?php //echo GridView::widget([
-//        'dataProvider' => $dataProvider,
-////        'filterModel' => $searchModel,
-//        'columns' => [
-////            ['class' => 'yii\grid\SerialColumn'],
-//
-//            'id',
-//            'title',
-//            'alias',
-//            'category.name',
-//            'snippet:ntext',
-//            // 'content:ntext',
-//            // 'image_url:url',
-//            // 'views',
-//            // 'comments',
-//            // 'status_id',
-//            // 'date',
-//
-//            ['class' => 'yii\grid\ActionColumn'],
-//        ],
-//    ]); ?>
 
 </div>

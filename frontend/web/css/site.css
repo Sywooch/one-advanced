@@ -103,3 +103,13 @@ a.desc:after {
 .news-index a:hover .well {
     border-color: #23527c;
 }
+.news {
+    color: inherit;
+}
+    .news:hover {
+        text-decoration: none;
+    }
+    .news-block {
+        height: 300px;
+        overflow: hidden;
+    }

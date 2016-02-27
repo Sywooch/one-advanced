@@ -52,15 +52,15 @@ class NewsController extends Controller
         $model = $this->findModel($id);
 //        var_dump($model->getImage());
 //        $images = $model->getImage();
-        if(isset($_GET['newmainimg'])) {
-            foreach ($model->getImages() as $img) {
-                if ($img->id == $_GET['newmainimg']) {
-                    $model->setMainImage($img);//will set current image main
-                }
-            }
-        }
+//        if(isset($_GET['newmainimg'])) {
+//            foreach ($model->getImages() as $img) {
+//                if ($img->id == $_GET['newmainimg']) {
+//                    $model->setMainImage($img);//will set current image main
+//                }
+//            }
+//        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -113,13 +113,13 @@ class NewsController extends Controller
             }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            if(isset($_GET['newmainimg'])) {
-                foreach ($model->getImages() as $img) {
-                    if ($img->id == $_GET['newmainimg']) {
-                        $model->setMainImage($img);//will set current image main
-                    }
-                }
-            }
+//            if(isset($_GET['newmainimg'])) {
+//                foreach ($model->getImages() as $img) {
+//                    if ($img->id == $_GET['newmainimg']) {
+//                        $model->setMainImage($img);//will set current image main
+//                    }
+//                }
+//            }
             return $this->render('update', [
                 'model' => $model,
                 'category' => Category::find()->all()

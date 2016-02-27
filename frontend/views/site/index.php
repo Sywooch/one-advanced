@@ -1,23 +1,42 @@
 <?php
 
 use frontend\widgets\NewsWidget;
+use yii\widgets\ListView;
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="font-size: 20px">НОВОСТИ</div>
+    </div>
 
-    <?php echo NewsWidget::widget(['template'=>'news-index']); ?>
+    <!--        <div class="panel-body">-->
+            <div class="row news-index">
+                <?php
+                echo ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'itemView' => '_list',
+                    'layout' => "{items}",
+                ]);
+                ?>
+            </div>
+<!--        </div>-->
 
-    <div class="jumbotron">
+
+    <?php // echo NewsWidget::widget(['template'=>'news-index']); ?>
+
+    <!--<div class="jumbotron">
         <h1>Congratulations!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    </div>-->
 
-    <div class="body-content">
+    <!--<div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
@@ -52,5 +71,5 @@ $this->title = 'My Yii Application';
             </div>
         </div>
 
-    </div>
+    </div>-->
 </div>
