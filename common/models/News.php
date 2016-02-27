@@ -76,6 +76,14 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
+//    function getPublishedPosts()
+//    {
+//        return new ActiveDataProvider([
+//            'query' => Post::find()
+//                ->where(['publish_status' => self::STATUS_PUBLISH])
+//        ]);
+//    }
+
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
