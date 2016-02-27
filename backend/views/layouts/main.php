@@ -39,6 +39,7 @@ AppAsset::register($this);
         ['label' => 'Новости', 'url' => ['/news']],
         ['label' => 'Категории', 'url' => ['/category']],
         ['label' => 'Команды', 'url' => ['/teams']],
+        ['label' => 'Сезоны', 'url' => ['/seasons']],
         ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
     ];
     if (Yii::$app->user->isGuest) {

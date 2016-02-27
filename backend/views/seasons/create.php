@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Teams */
+/* @var $model common\models\Seasons */
 
-$this->title = 'Создание Команды';
-$this->params['breadcrumbs'][] = ['label' => 'Teams', 'url' => ['index']];
+$this->title = 'Create Seasons';
+$this->params['breadcrumbs'][] = ['label' => 'Seasons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="teams-create">
+<div class="seasons-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
