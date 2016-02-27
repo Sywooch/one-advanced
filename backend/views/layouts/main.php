@@ -28,16 +28,17 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Backend',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Главная', 'url' => ['/site/index']],
-        ['label' => 'Новости', 'url' => ['/news/index']],
-        ['label' => 'Категории', 'url' => ['/category/index']],
+        ['label' => 'Главная', 'url' => ['/site']],
+        ['label' => 'Новости', 'url' => ['/news']],
+        ['label' => 'Категории', 'url' => ['/category']],
+        ['label' => 'Команды', 'url' => ['/teams']],
         ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
     ];
     if (Yii::$app->user->isGuest) {
@@ -67,9 +68,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+<!--        <p class="pull-left"></p>-->
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Жуков & Кузьмич &copy;  <?= date('Y') ?></p>
     </div>
 </footer>
 

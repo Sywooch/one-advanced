@@ -20,11 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     $images = $model->getImages();
 //var_dump($images->isMain);die;
     if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
-//        echo '<h5>Images</h5>';
-//        var_dump($images);
         $image = $model->getImage();
         $sizes = $image->getSizesWhen('x300');
-//        echo '<img width="'.$sizes['width'].'" height="'.$sizes['height'].'" src="'.$image->getUrl('x300').'" />';
         echo Html::tag(
             'p',
             Html::img($image->getUrl('x300'),['class' => 'center-block img-responsive','width'=>$sizes['width'], 'height'=>$sizes['height']]),

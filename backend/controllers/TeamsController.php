@@ -3,17 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\News;
-use common\models\NewsSearch;
-use common\models\Category;
+use common\models\Teams;
+use common\models\TeamsSearchSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * NewsController implements the CRUD actions for News model.
+ * TeamsController implements the CRUD actions for Teams model.
  */
-class NewsController extends Controller
+class TeamsController extends Controller
 {
     public function behaviors()
     {
@@ -28,12 +27,12 @@ class NewsController extends Controller
     }
 
     /**
-     * Lists all News models.
+     * Lists all Teams models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
+        $searchModel = new TeamsSearchSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,35 +42,25 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single News model.
+     * Displays a single Teams model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-//        var_dump($model->getImage());
-//        $images = $model->getImage();
-//        if(isset($_GET['newmainimg'])) {
-//            foreach ($model->getImages() as $img) {
-//                if ($img->id == $_GET['newmainimg']) {
-//                    $model->setMainImage($img);//will set current image main
-//                }
-//            }
-//        }
         return $this->render('view', [
-            'model' => $model,
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new News model.
+     * Creates a new Teams model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new News();
+        $model = new Teams();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
@@ -83,17 +72,14 @@ class NewsController extends Controller
             }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-//            $model-> category = Category::find()->all();
-//            var_dump($model);die;
             return $this->render('create', [
                 'model' => $model,
-                'category' => Category::find()->all()
             ]);
         }
     }
 
     /**
-     * Updates an existing News model.
+     * Updates an existing Teams model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,6 +90,7 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+
                 $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
                 if($model->errors) {
                     var_dump($model->errors);
@@ -112,24 +99,14 @@ class NewsController extends Controller
             }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-//            if(isset($_GET['newmainimg'])) {
-//                foreach ($model->getImages() as $img) {
-//                    if ($img->id == $_GET['newmainimg']) {
-//                        $model->setMainImage($img);//will set current image main
-//                    }
-//                }
-//            }
             return $this->render('update', [
                 'model' => $model,
-                'category' => Category::find()->all()
             ]);
         }
     }
 
-
-
     /**
-     * Deletes an existing News model.
+     * Deletes an existing Teams model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -163,15 +140,15 @@ class NewsController extends Controller
     }
 
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the Teams model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return News the loaded model
+     * @return Teams the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = Teams::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
