@@ -36,11 +36,23 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/site']],
-        ['label' => 'Новости', 'url' => ['/news']],
-        ['label' => 'Категории', 'url' => ['/category']],
-        ['label' => 'Команды', 'url' => ['/teams']],
-        ['label' => 'Сезоны', 'url' => ['/seasons']],
         ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
+        [
+            'label' => 'Новости',
+            'items' => [
+                ['label' => 'Новости', 'url' => ['/news']],
+//                '<li class="divider"></li>',
+//                '<li class="dropdown-header"></li>',
+                ['label' => 'Категории', 'url' => ['/category']],
+            ],
+        ],
+        [
+            'label' => 'Турнирная Таблица',
+            'items' => [
+                ['label' => 'Команды', 'url' => ['/teams']],
+                ['label' => 'Сезоны', 'url' => ['/seasons']],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
