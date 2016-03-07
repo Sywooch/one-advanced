@@ -11,7 +11,7 @@ $this->title = 'Сайт Футбольного Клуба';
 <div class="site-index">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <div style="font-size: 20px">НОВОСТИ</div>
+            <div style="font-size: 20px; display: inline-block;">НОВОСТИ</div>
             <div class="pull-right">
                 <?php echo Html::a('Все Новости',['/news'],['style'=> 'color:inherit;font-size:12px; vertical-align: middle;'])?>
             </div>
