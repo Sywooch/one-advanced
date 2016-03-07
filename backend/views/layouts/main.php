@@ -28,14 +28,31 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Backend',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Главная', 'url' => ['/site']],
+        ['label' => 'Frontend', 'url' => Yii::$app->urlManager->hostInfo],
+        [
+            'label' => 'Новости',
+            'items' => [
+                ['label' => 'Новости', 'url' => ['/news']],
+//                '<li class="divider"></li>',
+//                '<li class="dropdown-header"></li>',
+                ['label' => 'Категории', 'url' => ['/category']],
+            ],
+        ],
+        [
+            'label' => 'Турнирная Таблица',
+            'items' => [
+                ['label' => 'Команды', 'url' => ['/teams']],
+                ['label' => 'Сезоны', 'url' => ['/seasons']],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -64,9 +81,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+<!--        <p class="pull-left"></p>-->
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Жуков & Кузьмич &copy;  <?= date('Y') ?></p>
     </div>
 </footer>
 

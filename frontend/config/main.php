@@ -7,11 +7,24 @@ $params = array_merge(
 );
 
 return [
+    'homeUrl' => '/',
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'request' => [
+            'baseUrl' => '',
+            'enableCsrfValidation'=>false,
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+
+//            'rules' => [
+//                '/site/index' => '/',
+//            ],
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [
@@ -24,6 +37,8 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+//            'authTimeout' => 36000,
+//            'absoluteAuthTimeout' =>36000
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -37,6 +52,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+//        'assetManager' => [
+//            'appendTimestamp' => true,
+//        ],
     ],
     'params' => $params,
 ];

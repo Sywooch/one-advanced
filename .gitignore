@@ -1,3 +1,7 @@
+#yii2 costa rico images
+/frontend/web/images/store/*
+/frontend/web/images/cache/*
+
 # yii console command
 /yii
 

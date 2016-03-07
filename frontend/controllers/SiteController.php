@@ -12,6 +12,8 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
+use common\models\News;
 
 /**
  * Site controller
@@ -72,7 +74,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => News::find()->where(['status_id'=>'on'])->limit(6)/*->orderBy('date DESC')*/,
+            'pagination' => [
+                'pageSize' => 6,
+            ],
+        ]);
+
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**

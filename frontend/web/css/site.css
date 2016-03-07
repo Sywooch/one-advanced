@@ -89,3 +89,27 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+.news-index .img-thumbnail {
+    /*width: 100%;*/
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 970px !important;
+    }
+}
+
+.news-index a:hover .well {
+    border-color: #23527c;
+}
+.news {
+    color: inherit;
+}
+    .news:hover {
+        text-decoration: none;
+    }
+    .news-block {
+        height: 300px;
+        overflow: hidden;
+    }

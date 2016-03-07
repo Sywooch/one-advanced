@@ -21,6 +21,19 @@ class SiteController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
+//                    [   'actions' => ['login'],
+//                        'allow' => true,
+//                        'roles' => ['?'],
+//                    ],
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['admin'],
+//                    ],
+//                    [
+//                        'allow' => false,
+//                        'roles' => ['client','@'],
+//                        'denyCallback' => function() { $this->redirect('/'); }
+//                    ],
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
@@ -60,6 +73,8 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+//        $this->layout = 'login';
+
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
