@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\bootstrap\Carousel;
 
 AppAsset::register($this);
 ?>
@@ -34,37 +35,37 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-top',//navbar-fixed-top
         ],
     ]);
-    $menuItems = [
-//        ['label' => 'Главная', 'url' => ['/site/index']],
-//        ['label' => 'About', 'url' => ['/site/about']],
-//        ['label' => 'Contact', 'url' => ['/site/contact']],
-//        ['label' => 'Новости', 'url' => ['/news']],
-        ['label' => 'Сотрудничество', 'url' => ['#']],
-        ['label' => 'Скидки', 'url' => ['#']],
-        ['label' => 'Купить билет', 'url' => ['#']],
-        ['label' => 'Интернет-магазин', 'url' => ['#']],
-    ];
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => $menuItems,
-    ]);
-
-    if (Yii::$app->user->isGuest) {
         $menuItems = [
-            ['label' => 'Вход', 'url' => ['/site/login']],
-            ['label' => 'Регистрация', 'url' => ['/site/signup']],
+    //        ['label' => 'Главная', 'url' => ['/site/index']],
+    //        ['label' => 'About', 'url' => ['/site/about']],
+    //        ['label' => 'Contact', 'url' => ['/site/contact']],
+    //        ['label' => 'Новости', 'url' => ['/news']],
+            ['label' => 'Сотрудничество', 'url' => ['#']],
+            ['label' => 'Скидки', 'url' => ['#']],
+            ['label' => 'Купить билет', 'url' => ['#']],
+            ['label' => 'Интернет-магазин', 'url' => ['#']],
         ];
-    } else {
-        $menuItems = [[
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
-        ]];
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-left'],
+            'items' => $menuItems,
+        ]);
+
+        if (Yii::$app->user->isGuest) {
+            $menuItems = [
+                ['label' => 'Вход', 'url' => ['/site/login']],
+                ['label' => 'Регистрация', 'url' => ['/site/signup']],
+            ];
+        } else {
+            $menuItems = [[
+                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ]];
+        }
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right navbar-login-signup'],
+            'items' => $menuItems,
+        ]);
     NavBar::end();
     ?>
 
@@ -77,34 +78,70 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-bottom',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Новости', 'url' => ['/news']],
-        ['label' => 'Команда', 'url' => ['#']],
-        ['label' => 'Клуб', 'url' => ['#']],
-        ['label' => 'Сезон', 'url' => ['#']],
-        ['label' => 'Болельщикам', 'url' => ['#']],
-        ['label' => 'Медиа', 'url' => ['#']],
-        ['label' => 'Архив', 'url' => ['#']],
-        ['label' => 'Гостевая', 'url' => ['#']],
-    ];
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
+        $menuItems = [
+            ['label' => 'Новости', 'url' => ['/news']],
+            ['label' => 'Команда', 'url' => ['#']],
+            ['label' => 'Клуб', 'url' => ['#']],
+            ['label' => 'Сезон', 'url' => ['#']],
+            ['label' => 'Болельщикам', 'url' => ['#']],
+            ['label' => 'Медиа', 'url' => ['#']],
+            ['label' => 'Архив', 'url' => ['#']],
+            ['label' => 'Гостевая', 'url' => ['#']],
+        ];
+        echo Html::beginTag('div',['class'=>'row']);
+            echo Html::beginTag('div',['class'=>'col-xs-9 pull-right']);//col-xs-offset-1
+                echo Html::tag('h3','Футбольный клуб');
+                echo Html::tag('h2','Балтика "Калининград"');
+                echo Nav::widget([
+                    'options' => ['class' => 'navbar-nav navbar-left'],
+                    'items' => $menuItems,
+                ]);
+            echo Html::endTag('div');
+        echo Html::endTag('div');
+
 
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+        <?php
+
+        $carousel_items = [
+            Html::img('@web/themes/one/src/slider/slide-1.jpg'),
+            Html::img('@web/themes/one/src/slider/slide-2.jpg'),
+            //Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name])
+        ];
+
+
+        echo Carousel::widget([
+            'items' => $carousel_items,
+            'controls' => [
+                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+            ],
+            'options' => [
+                'class' => 'carousel carousel-home'
+            ],
+            'clientOptions' => [
+                'interval' => '10000',
+            ],
+//        'cl'
+        ]);
+        ?>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
 <!--        <div class="row">-->
 <!--            <div class="col-sm-3"></div>-->
 <!--            <div class="col-sm-9">-->
 
                 <?= $content ?>
+            </div>
+        </div>
 <!--            </div>-->
 <!--        </div>-->
     </div>
