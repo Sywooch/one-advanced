@@ -16,16 +16,19 @@ $this->title = 'Сайт Футбольного Клуба';
                 <?php echo Html::a('Все Новости',['/news'],['style'=> 'color:inherit;font-size:12px; vertical-align: middle;'])?>
             </div>
         </div>
+        <div class="panel-body">
+            <div class="row news-index">
+                <?php
+                echo ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'itemView' => '_list',
+                    'layout' => "{items}",
+                ]);
+                ?>
+            </div>
+        </div>
     </div>
-    <div class="row news-index">
-        <?php
-        echo ListView::widget([
-            'dataProvider' => $dataProvider,
-            'itemView' => '_list',
-            'layout' => "{items}",
-        ]);
-        ?>
-    </div>
+
 
 
     <?php // echo NewsWidget::widget(['template'=>'news-index']); ?>

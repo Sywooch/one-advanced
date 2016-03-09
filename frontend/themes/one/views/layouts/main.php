@@ -129,7 +129,11 @@ AppAsset::register($this);
         ]);
         ?>
         <div class="row">
-            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <div class="index-video">
+                    <iframe width="100%" height="inherit" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
             <div class="col-sm-9">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
