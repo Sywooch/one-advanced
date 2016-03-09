@@ -107,8 +107,15 @@ AppAsset::register($this);
         <?php
 
         $carousel_items = [
-            Html::img('@web/themes/one/src/slider/slide-1.jpg'),
-            Html::img('@web/themes/one/src/slider/slide-2.jpg'),
+            [
+                'content' => Html::img('@web/themes/one/src/slider/slide-1.jpg'),
+                'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
+            ],
+            [
+                'content' => Html::img('@web/themes/one/src/slider/slide-2.jpg'),
+                'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
+
+            ],
             //Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name])
         ];
 
@@ -123,7 +130,7 @@ AppAsset::register($this);
                 'class' => 'carousel carousel-home'
             ],
             'clientOptions' => [
-                'interval' => '10000',
+                'interval' => '1000000000',
             ],
 //        'cl'
         ]);
