@@ -6,6 +6,7 @@ use yii\helpers\Url;
 
 <?php
 $img = $model->getImage();
+//echo Html::beginTag('div',['class'=>'col-xs-4 ']);
 echo Html::beginTag('a',['class'=>'col-xs-4 news','href'=>Url::toRoute(['/news/view','id'=>$model->id])]);
     echo Html::beginTag('div',['class'=>'well']);
         echo Html::beginTag('div',['class'=>'news-block']);
@@ -16,6 +17,7 @@ echo Html::beginTag('a',['class'=>'col-xs-4 news','href'=>Url::toRoute(['/news/v
         echo Html::endTag('div');
     echo Html::endTag('div');
 echo Html::endTag('a');
+//echo Html::endTag('a');
 
 //echo Html::beginTag('a',['class'=>'', 'href'=>Url::toRoute(['view','id'=>$model->id])]);
 //    echo Html::beginTag('div',['class'=>'well']);

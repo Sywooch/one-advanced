@@ -108,13 +108,17 @@ AppAsset::register($this);
 
         $carousel_items = [
             [
-                'content' => Html::img('@web/themes/one/src/slider/slide-1.jpg'),
-                'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
+                'content' => Html::img('@web/themes/one/src/slider/slide-1.png'),
+                'caption' => '<h2 style="margin-top: 0">ЕСТЬ<br> ПЕРВАЯ<br> ПОБЕДА!</h2>
+                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
+                              <p><div style="font-size: 16px"><b>БАЛТИКА - САХАЛИН 1:0</b></div><div style="font-size: 12px"><i>28.06.2015 г.Минск</i></div></p>
+                              <p style="font-size: 11px">На учебно-тренировочном сборе в Минске, «Балтика» провела одну из двух запланированных встреч с «Сахалином». На эту игру тренерский штаб калининградской команды выпустил... </p>',
             ],
             [
-                'content' => Html::img('@web/themes/one/src/slider/slide-2.jpg'),
-                'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
-
+                'content' => Html::img('@web/themes/one/src/slider/slide-2.png'),
+                'caption' => '<h2 style="margin-top: 0">ПЕРВАЯ<br> ИГРА<br> ГОДА!</h2>
+                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
+                              <p><div style="font-size: 16px"><b>БАЛТИКА - СОКОЛ 0:0</b></div><div style="font-size: 12px"><i>13.03.2016 г.Калининград</i></div></p>',
             ],
             //Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name])
         ];
