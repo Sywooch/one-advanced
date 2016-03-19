@@ -47,4 +47,9 @@ class Category extends \yii\db\ActiveRecord
             'status_id' => 'Status',
         ];
     }
+
+    public function getNews()
+    {
+        return $this->hasMany(News::className(), ['category_id' => 'id']);
+    }
 }

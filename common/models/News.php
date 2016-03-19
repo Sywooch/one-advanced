@@ -92,15 +92,10 @@ class News extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-
             $this->date = time();
-//            var_dump($this->date);die;
-//            $this->category_id = 0;
-
             return true;
         }
         return false;
     }
 
-//date("d.m.Y H:i");
 }

@@ -5,9 +5,11 @@ namespace backend\controllers;
 use Yii;
 use common\models\Category;
 use common\models\CategorySearch;
+use common\models\News;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -48,8 +50,13 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => News::find()->where(['category_id'=>$model->id]),
+        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 
