@@ -3,18 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Teams;
-use common\models\TeamsSearchSearch;
 use common\models\Players;
-use yii\data\ActiveDataProvider;
+use common\models\PlayersSearch;
+use common\models\Teams;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TeamsController implements the CRUD actions for Teams model.
+ * PlayersController implements the CRUD actions for Players model.
  */
-class TeamsController extends Controller
+class PlayersController extends Controller
 {
     public function behaviors()
     {
@@ -29,12 +28,12 @@ class TeamsController extends Controller
     }
 
     /**
-     * Lists all Teams models.
+     * Lists all Players models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TeamsSearchSearch();
+        $searchModel = new PlayersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -44,30 +43,25 @@ class TeamsController extends Controller
     }
 
     /**
-     * Displays a single Teams model.
+     * Displays a single Players model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-        $dataProvider = new ActiveDataProvider([
-            'query' => Players::find()->where(['teams_id'=>$model->id]),
-        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Teams model.
+     * Creates a new Players model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Teams();
+        $model = new Players();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
@@ -81,12 +75,13 @@ class TeamsController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'teams' => Teams::find()->all()
             ]);
         }
     }
 
     /**
-     * Updates an existing Teams model.
+     * Updates an existing Players model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +92,6 @@ class TeamsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
-
                 $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
                 if($model->errors) {
                     var_dump($model->errors);
@@ -108,12 +102,13 @@ class TeamsController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'teams' => Teams::find()->all()
             ]);
         }
     }
 
     /**
-     * Deletes an existing Teams model.
+     * Deletes an existing Players model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -124,6 +119,7 @@ class TeamsController extends Controller
 
         return $this->redirect(['index']);
     }
+
 
     public function actionRemoveImage($id)
     {
@@ -147,15 +143,15 @@ class TeamsController extends Controller
     }
 
     /**
-     * Finds the Teams model based on its primary key value.
+     * Finds the Players model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Teams the loaded model
+     * @return Players the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Teams::findOne($id)) !== null) {
+        if (($model = Players::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

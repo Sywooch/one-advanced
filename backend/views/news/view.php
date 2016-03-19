@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $sizes = $image->getSizesWhen('x300');
         echo Html::tag(
             'p',
-            Html::img($image->getUrl('x300'),['class' => 'center-block img-responsive','width'=>$sizes['width'], 'height'=>$sizes['height']]),
+            Html::img($image->getUrl('x300'),['class' => 'img-responsive  thumbnail','width'=>$sizes['width'], 'height'=>$sizes['height']]),
             ['class'=>'']
         );
 

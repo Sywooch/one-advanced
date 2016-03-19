@@ -28,12 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+//            'name',
             'slug',
             'status_id',
         ],
     ]) ?>
-
+    <h2>Новости Категории</h2>
     <?php
     echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'snippet',
             'date:datetime',
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
 
     ]);
