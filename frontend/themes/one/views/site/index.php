@@ -12,19 +12,24 @@ $this->title = 'Сайт Футбольного Клуба';
     <div class="panel panel-primary">
         <div class="panel-heading">
             <div style="font-size: 20px; display: inline-block;">НОВОСТИ</div>
-            <div class="pull-right">
-                <?php echo Html::a('Все Новости',['/news'],['style'=> 'color:inherit;font-size:12px; vertical-align: middle;'])?>
-            </div>
+
         </div>
         <div class="panel-body">
             <div class="row news-index">
                 <?php
+//                yii\widgets\Pjax::begin(['options' => ['id'=>123, 'timeout'=>3000]]);
+//                \yii\widgets\Pjax::begin();
                 echo ListView::widget([
                     'dataProvider' => $dataProvider,
                     'itemView' => '_list',
                     'layout' => "{items}",
                 ]);
+//                \yii\widgets\Pjax::end();
+//                yii\widgets\Pjax::end();
                 ?>
+            </div>
+            <div class="text-center all-news-link">
+                <?php echo Html::a('Показать все новости',['/news'])?>
             </div>
         </div>
     </div>
