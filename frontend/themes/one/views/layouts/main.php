@@ -352,17 +352,16 @@ AppAsset::register($this);
                                 </div>
                                 <div class="col-xs-8 vote-block">
                                     <?php
+                                    $i=0;
                                     foreach($players as $player) {
+                                        $i++;
                                         echo Html::beginTag('div',['class'=>'vote-players']);
+                                            echo Html::input('radio','optionsBestPlayers',$player['id'],['class'=>'vote-players-radio','checked'=>(($i==1)?true:false)]);
                                             echo Html::label(
-                                                Html::input('radio','optionsBestPlayers',$player['id'],['class'=>'vote-players-radio']).
-                                                Html::tag(
-                                                    'div',
-                                                    Html::tag('span','#'.$player['number'],['class'=>'vote-players-number']).
-                                                    Html::tag('span',$player['name'].' '.$player['surname'],['class'=>'vote-players-name']),
-                                                    ['class'=> 'vote-players-text']
-                                                ),
-                                                ['class'=>'radio']
+                                                Html::tag('span','#'.$player['number'],['class'=>'vote-players-number']).
+                                                Html::tag('span',$player['name'].' '.$player['surname'],['class'=>'vote-players-name']),
+                                                false,
+                                                ['class'=>'input-helper input-helper--radio']
                                             );
                                         echo Html::endTag('div');
                                     }
