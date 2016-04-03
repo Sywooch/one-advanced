@@ -11,7 +11,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\bootstrap\Carousel;
 use common\models\Players;
-use rmrevin\yii\fontawesome\FA;
+//use rmrevin\yii\fontawesome\FA;
 
 AppAsset::register($this);
 ?>
@@ -463,10 +463,10 @@ AppAsset::register($this);
                 <div class="footer-social">
                     <div class="pull-right">
                         <?php
-                        echo Html::a(FA::icon('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(FA::icon('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(FA::icon('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(FA::icon('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
+//                        echo Html::a(FA::icon('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
+//                        echo Html::a(FA::icon('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
+//                        echo Html::a(FA::icon('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
+//                        echo Html::a(FA::icon('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
                         ?>
                     </div>
                 </div>
