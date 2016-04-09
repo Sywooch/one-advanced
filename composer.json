@@ -18,7 +18,11 @@
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "costa-rico/yii2-images": "dev-master"
+        "costa-rico/yii2-images": "dev-master",
+        "kartik-v/yii2-icons": "@dev",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-builder": "@dev",
+        "kartik-v/yii2-detail-view": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
