@@ -1,3 +1,6 @@
+body {
+    font-family: 'Exo 2', sans-serif;
+}
 .container {
     width: 970px  !important;
 }
@@ -62,7 +65,7 @@
         .navbar-bottom .container {
             background: #0c3d7f;
             /*border-color: #0c3d7f;*/
-            box-shadow: 0 0 20px 0px #555;
+            /*box-shadow: 0 0 20px 0px #555;*/
 
         }
 
@@ -479,13 +482,20 @@
                 color: #00316b;
             }
 
+            .standings img {
+                width: 15px;
+                margin-right: 10px;
+            }
+
     .statistics-season {
-        background: #011936;
+        /*background-color: ;*/
+        background: url(../themes/one/src/layout/bg_statistika.png) 100% 100% #011936;
         color: #ffffff;
         padding: 20px 10px;
         margin-bottom: 40px;
         text-transform: uppercase;
         font-size: 12px;
+        /*background-size: 100% 100%;*/
     }
 
         .statistics-season h5 {
@@ -510,6 +520,7 @@
 
         .best-players-header {
             margin-top: 15px;
+            text-align: center;
         }
 
             .best-players-goals {
@@ -529,6 +540,7 @@
                 border-radius: 70px;
                 margin-left: auto;
                 margin-right: auto;
+                border: 1px solid #0c3e7e;
             }
 
         .best-players-number-name {
@@ -637,7 +649,7 @@
 
         .footer-info {
             /*padding: 40px 25px;*/
-            padding: 40px;
+            /*padding: 40px;*/
         }
 
             .footer-info-link {
@@ -738,84 +750,105 @@
 
             .footer-social a:hover {
                 color: #ffffff;
+                text-decoration: none;
             }
 
-/*input[type="radio"]{*/
-    /*display:none;*/
-/*}*/
+    /*input[type="radio"]{*/
+        /*display:none;*/
+    /*}*/
 
-/*input[type="radio"] + label*/
-/*{*/
-    /*background: #999;*/
-    /*height: 16px;*/
-    /*width: 16px;*/
-    /*display:inline-block;*/
-    /*padding: 0 0 0 0px;*/
-/*}*/
+    /*input[type="radio"] + label*/
+    /*{*/
+        /*background: #999;*/
+        /*height: 16px;*/
+        /*width: 16px;*/
+        /*display:inline-block;*/
+        /*padding: 0 0 0 0px;*/
+    /*}*/
 
-/*input[type="radio"]:checked + label*/
-/*{*/
-    /*background: #0080FF;*/
-    /*height: 16px;*/
-    /*width: 16px;*/
-    /*display:inline-block;*/
-    /*padding: 0 0 0 0px;*/
-/*}*/
+    /*input[type="radio"]:checked + label*/
+    /*{*/
+        /*background: #0080FF;*/
+        /*height: 16px;*/
+        /*width: 16px;*/
+        /*display:inline-block;*/
+        /*padding: 0 0 0 0px;*/
+    /*}*/
 
-/*.input-row {*/
-    /*margin-bottom: 20px;*/
-/*}*/
+    /*.input-row {*/
+        /*margin-bottom: 20px;*/
+    /*}*/
 
-.vote-block .input-helper {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 5px;
-}
+    .vote-block .input-helper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
 
-.vote-block .input-helper:before {
-    content: '';
-    display: block;
-    position: absolute;
-}
+    .vote-block .input-helper:before {
+        content: '';
+        display: block;
+        position: absolute;
+    }
 
-.vote-block .input-helper--radio {
-    padding-left: 25px;
+    .vote-block .input-helper--radio {
+        padding-left: 25px;
 
-}
-.vote-block .input-helper--radio:before {
-    top: 6px;
-    left: 0;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    /*border: 1px solid #222;*/
-    background: #011b39;
-}
-/*.input-helper--checkbox {*/
-    /*padding-left: 20px;*/
+    }
+    .vote-block .input-helper--radio:before {
+        top: 6px;
+        left: 0;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        /*border: 1px solid #222;*/
+        background: #011b39;
+    }
+    /*.input-helper--checkbox {*/
+        /*padding-left: 20px;*/
 
-/*}*/
-/*.input-helper--checkbox:before {*/
-    /*top: 2px;*/
-    /*left: 0;*/
-    /*width: 13px;*/
-    /*height: 13px;*/
-    /*border: 1px solid #222;*/
-/*}*/
-.vote-block input[type="radio"] {
-    display: none;
+    /*}*/
+    /*.input-helper--checkbox:before {*/
+        /*top: 2px;*/
+        /*left: 0;*/
+        /*width: 13px;*/
+        /*height: 13px;*/
+        /*border: 1px solid #222;*/
+    /*}*/
+    .vote-block input[type="radio"] {
+        display: none;
 
-}
-.vote-block input[type="radio"]:checked + label:before {
-    /*background: #222;*/
-    background: #ffffff;
-    /*border-width: 3px;*/
-    border: 3px solid #011b39;
+    }
+    .vote-block input[type="radio"]:checked + label:before {
+        /*background: #222;*/
+        background: #ffffff;
+        /*border-width: 3px;*/
+        border: 3px solid #011b39;
 
-}
-/*input[type="checkbox"] {*/
-    /*display: none;*/
-/*}*/
-/*input[type="checkbox"]:checked + label:before {*/
-    /*background: #222;*/
-/*}*/
+    }
+    /*input[type="checkbox"] {*/
+        /*display: none;*/
+    /*}*/
+    /*input[type="checkbox"]:checked + label:before {*/
+        /*background: #222;*/
+    /*}*/
+    .footer-top {
+        padding: 40px;
+    }
+        .footer-promotions {
+            /*padding: 40px;*/
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #949eaa;
+        }
+
+            .footer-promotions-top, .footer-promotions-bottom {
+                /*text-align: center;*/
+            }
+            .footer-promotions-top {
+                margin-bottom: 40px;
+            }
+                .footer-promotions img {
+                    margin-left: auto;
+                    margin-right: auto;
+                }

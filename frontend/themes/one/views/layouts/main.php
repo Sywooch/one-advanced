@@ -12,6 +12,8 @@ use common\widgets\Alert;
 use yii\bootstrap\Carousel;
 use common\models\Players;
 //use rmrevin\yii\fontawesome\FA;
+use kartik\icons\Icon;
+Icon::map($this, Icon::FA);
 
 AppAsset::register($this);
 ?>
@@ -111,7 +113,7 @@ AppAsset::register($this);
         if ($controller_action == 'site/index') {
             $carousel_items = [
                 [
-                    'content' => Html::img('@web/themes/one/src/slider/slide-1.jpg'),
+                    'content' => Html::img('@web/themes/one/src/slider/slide.png'),
                     'caption' => '<h2 style="margin-top: 0">ЕСТЬ<br> ПЕРВАЯ<br> ПОБЕДА!</h2>
                               <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
                               <p><div style="font-size: 16px"><b>БАЛТИКА - САХАЛИН 1:0</b></div><div style="font-size: 12px"><i>28.06.2015 г.Минск</i></div></p>
@@ -210,26 +212,26 @@ AppAsset::register($this);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>1</td><td>Газовик</td><td>24</td><td>59</td></tr>
-                            <tr><td>2</td><td>Томь</td><td>24</td><td>52</td></tr>
-                            <tr><td>3</td><td>Арсенал Т</td><td>24</td><td>46</td></tr>
-                            <tr><td>4</td><td>Волгарь</td><td>24</td><td>44</td></tr>
-                            <tr><td>5</td><td>Факел</td><td>24</td><td>41</td></tr>
-                            <tr><td>6</td><td>Сибирь</td><td>24</td><td>40</td></tr>
-                            <tr><td>7</td><td>Спартак-2</td><td>24</td><td>38</td></tr>
-                            <tr><td>8</td><td>Тюмень</td><td>23</td><td>35</td></tr>
-                            <tr><td>9</td><td>Сокол</td><td>24</td><td>34</td></tr>
-                            <tr><td>10</td><td>Енисей</td><td>24</td><td>34</td></tr>
-                            <tr><td>11</td><td>Шинник</td><td>24</td><td>33</td></tr>
-                            <tr><td><b>12</b></td><td><b>Балтика</b></td><td><b>23</b></td><td><b>31</b></td></tr>
-                            <tr><td>13</td><td>Волга НН</td><td>24</td><td>29</td></tr>
-                            <tr><td>14</td><td>Тосно</td><td>24</td><td>27</td></tr>
-                            <tr><td>15</td><td>Луч-Энергия</td><td>24</td><td>25</td></tr>
-                            <tr><td>16</td><td>Зенит-2</td><td>24</td><td>25</td></tr>
-                            <tr><td>17</td><td>СКА-Энергия</td><td>24</td><td>24</td></tr>
-                            <tr><td>18</td><td>Байкал</td><td>24</td><td>22</td></tr>
-                            <tr><td>19</td><td>КАМАЗ</td><td>24</td><td>16</td></tr>
-                            <tr><td>20</td><td>Торпедо Ар</td><td>24</td><td>16</td></tr>
+                            <tr><td>1</td><td><?php echo Html::img('@web/themes/one/src/teams/gazovik.png') ?>Газовик</td><td>24</td><td>59</td></tr>
+                            <tr><td>2</td><td><?php echo Html::img('@web/themes/one/src/teams/tom.png') ?>Томь</td><td>24</td><td>52</td></tr>
+                            <tr><td>3</td><td><?php echo Html::img('@web/themes/one/src/teams/arsenal-tula.png') ?>Арсенал Т</td><td>24</td><td>46</td></tr>
+                            <tr><td>4</td><td><?php echo Html::img('@web/themes/one/src/teams/volgar.png') ?>Волгарь</td><td>24</td><td>44</td></tr>
+                            <tr><td>5</td><td><?php echo Html::img('@web/themes/one/src/teams/fakel.png') ?>Факел</td><td>24</td><td>41</td></tr>
+                            <tr><td>6</td><td><?php echo Html::img('@web/themes/one/src/teams/sibir.png') ?>Сибирь</td><td>24</td><td>40</td></tr>
+                            <tr><td>7</td><td><?php echo Html::img('@web/themes/one/src/teams/spartak-2.png') ?>Спартак-2</td><td>24</td><td>38</td></tr>
+                            <tr><td>8</td><td><?php echo Html::img('@web/themes/one/src/teams/tyumen.png') ?>Тюмень</td><td>23</td><td>35</td></tr>
+                            <tr><td>9</td><td><?php echo Html::img('@web/themes/one/src/teams/sokol-saratov.png') ?>Сокол</td><td>24</td><td>34</td></tr>
+                            <tr><td>10</td><td><?php echo Html::img('@web/themes/one/src/teams/enisei.png') ?>Енисей</td><td>24</td><td>34</td></tr>
+                            <tr><td>11</td><td><?php echo Html::img('@web/themes/one/src/teams/shinnik.png') ?>Шинник</td><td>24</td><td>33</td></tr>
+                            <tr><td><b>12</b></td><td><?php echo Html::img('@web/themes/one/src/teams/baltika.png') ?><b>Балтика</b></td><td><b>23</b></td><td><b>31</b></td></tr>
+                            <tr><td>13</td><td><?php echo Html::img('@web/themes/one/src/teams/volga.png') ?>Волга НН</td><td>24</td><td>29</td></tr>
+                            <tr><td>14</td><td><?php echo Html::img('@web/themes/one/src/teams/tosno.png') ?>Тосно</td><td>24</td><td>27</td></tr>
+                            <tr><td>15</td><td><?php echo Html::img('@web/themes/one/src/teams/luch.png') ?>Луч-Энергия</td><td>24</td><td>25</td></tr>
+                            <tr><td>16</td><td><?php echo Html::img('@web/themes/one/src/teams/zenit-2.jpg') ?>Зенит-2</td><td>24</td><td>25</td></tr>
+                            <tr><td>17</td><td><?php echo Html::img('@web/themes/one/src/teams/ska-energiya.png') ?>СКА-Энергия</td><td>24</td><td>24</td></tr>
+                            <tr><td>18</td><td><?php echo Html::img('@web/themes/one/src/teams/baikal.png') ?>Байкал</td><td>24</td><td>22</td></tr>
+                            <tr><td>19</td><td><?php echo Html::img('@web/themes/one/src/teams/kamaz.png') ?>КАМАЗ</td><td>24</td><td>16</td></tr>
+                            <tr><td>20</td><td><?php echo Html::img('@web/themes/one/src/teams/torpedo-armavir.png') ?>Торпедо Ар</td><td>24</td><td>16</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -387,7 +389,37 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <div class="footer-top">
-            <div class="footer-promotions"></div>
+            <div class="footer-promotions">
+                <div class="footer-promotions-top">
+                    <div class="row">
+                        <?php
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-1']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        ?>
+                    </div>
+                    <?php
+//                    echo Html::img('@web/themes/one/src/promotions/RFS.png');
+//                    echo Html::img('@web/themes/one/src/promotions/KO.png');
+//                    echo Html::img('@web/themes/one/src/promotions/KGD.png');
+//                    echo Html::img('@web/themes/one/src/promotions/FNL.png');
+//                    echo Html::img('@web/themes/one/src/promotions/FNL_fonbet.png');
+                    ?>
+                </div>
+                <div class="footer-promotions-bottom">
+                    <div class="row">
+                        <?php
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sport.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/polytan.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        ?>
+                    </div>
+                </div>
+            </div>
             <div class="footer-info">
                 <div class="row">
                     <div class="col-xs-4">
@@ -463,10 +495,10 @@ AppAsset::register($this);
                 <div class="footer-social">
                     <div class="pull-right">
                         <?php
-//                        echo Html::a(FA::icon('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
-//                        echo Html::a(FA::icon('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
-//                        echo Html::a(FA::icon('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
-//                        echo Html::a(FA::icon('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
+                        echo Html::a(Icon::show('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
+                        echo Html::a(Icon::show('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
+                        echo Html::a(Icon::show('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
+                        echo Html::a(Icon::show('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
                         ?>
                     </div>
                 </div>

@@ -20,6 +20,8 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/main.css',
+        '//fonts.googleapis.com/css?family=Exo+2:400,700,400italic'
+//        <link href='https://fonts.googleapis.com/css?family=Exo:400,700,400italic' rel='stylesheet' type='text/css'>
     ];
     public $js = [
     ];

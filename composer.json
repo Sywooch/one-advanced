@@ -19,7 +19,10 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "costa-rico/yii2-images": "dev-master",
-        "rmrevin/yii2-fontawesome": "~2.12"
+        "kartik-v/yii2-icons": "@dev",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-builder": "@dev",
+        "kartik-v/yii2-detail-view": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
