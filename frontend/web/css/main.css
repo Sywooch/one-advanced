@@ -2,7 +2,7 @@ body {
     font-family: 'Exo 2', sans-serif;
 }
 .container {
-    width: 970px  !important;
+    /*width: 970px  !important;*/
 }
 
     .navbar {
@@ -852,3 +852,24 @@ body {
                     margin-left: auto;
                     margin-right: auto;
                 }
+
+    .social-widgets {
+        margin: 25px 0;
+        border-top: 1px solid #99adc7;
+        padding-top: 25px;
+    }
+
+    .block-center {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+    }
+
+/*.instagram, .twitter, .vk {*/
+    /*text-align: center;*/
+/*}*/
+
+/*.timeline-Widget {*/
+    /*background: transparent !important;*/
+    /*color: #ffffff;*/
+/*}*/

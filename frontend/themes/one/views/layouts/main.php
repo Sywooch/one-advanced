@@ -383,6 +383,67 @@ AppAsset::register($this);
         </div>
 <!--            </div>-->
 <!--        </div>-->
+<!--        <div class="social-widgets">-->
+<!--            <div class="row">-->
+<!--                <div class="col-xs-4 instagram text-center">-->
+<!--                    <iframe src="http://snapwidget.com/in/?u=ZmNiYWx0aWthfGlufDEyNXwyfDJ8fG5vfDE1fG5vbmV8b25TdGFydHxub3xubw==&ve=140416" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:280px; height:280px"></iframe>-->
+<!--                    <iframe src="http://www.intagme.com/in/?u=ZmNiYWx0aWthfGlufDEwMHwyfDJ8fG5vfDI1fHVuZGVmaW5lZHxubw==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:250px; height: 250px" ></iframe>-->
+<!--                    <script src="http://snapwidget.com/js/snapwidget.js"></script>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 twitter">-->
+<!--                    <style type="text/css" id="twitterStyle">-->
+<!--                        #twitterStyled .tweet {-->
+<!--                            padding: 10px 10px 5px 10px;-->
+<!--                            margin:10px;-->
+<!--                            border-radius: 10px;-->
+<!--                            background-color: #9bcfe2;-->
+<!--                        }-->
+<!--                        #twitterStyled .tweet:nth-child(odd) {-->
+<!--                            margin-right:50px;-->
+<!--                        }-->
+<!--                        #twitterStyled .tweet:nth-child(even) {-->
+<!--                            margin-left:50px;-->
+<!--                        }-->
+<!--                        #twitterStyled .profile > img {-->
+<!--                            display: none;-->
+<!--                        }-->
+<!--                        #twitterStyled .tweet .tweet-actions {-->
+<!--                            visibility: hidden;-->
+<!--                        }-->
+<!--                        #twitterStyled .tweet:hover .tweet-actions {-->
+<!--                            visibility: visible;-->
+<!--                        }-->
+<!--                        #twitterStyled .stream {-->
+<!--                            background-color: #7AC0DA;-->
+<!--                            color:#fff;-->
+<!--                        }-->
+<!--                        #twitterStyled .header {-->
+<!--                            border-bottom: 1px dashed #fff;-->
+<!--                            margin-bottom:10px;-->
+<!--                            padding-bottom:5px;-->
+<!--                        }-->
+<!--                        #twitterStyled .p-name {-->
+<!--                            color: #207290;-->
+<!--                        }-->
+<!--                        #twitterStyled .p-nickname, #twitterStyled .dt-updated {-->
+<!--                            color: #2b8fb4;-->
+<!--                        }-->
+<!---->
+<!--                    </style>-->
+<!--                    <a class="twitter-timeline" href="https://twitter.com/fcbaltika" data-widget-id="719619106937434113">Твиты от @fcbaltika</a>-->
+<!--                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+<!--                </div>-->
+<!--                <div class="col-xs-4 vk">-->
+<!--                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>-->
+
+                    <!-- VK Widget -->
+<!--                    <div id="vk_groups" class="block-center"></div>-->
+<!--                    <script type="text/javascript">-->
+<!--                        VK.Widgets.Group("vk_groups", {mode: 0, width: "220", height: "270", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);-->
+<!--                    </script>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 

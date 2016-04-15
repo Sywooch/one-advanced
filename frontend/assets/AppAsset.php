@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
 //        <link href='https://fonts.googleapis.com/css?family=Exo:400,700,400italic' rel='stylesheet' type='text/css'>
     ];
     public $js = [
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
