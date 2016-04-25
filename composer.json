@@ -22,7 +22,9 @@
         "kartik-v/yii2-icons": "@dev",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-builder": "@dev",
-        "kartik-v/yii2-detail-view": "*"
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-widgets": "*",
+        "kartik-v/yii2-nav-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -9,6 +9,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use kartik\nav\NavX;
+use frontend\widgets\MenuWidget;
 
 AppAsset::register($this);
 ?>
@@ -38,7 +40,7 @@ AppAsset::register($this);
         ['label' => 'Главная', 'url' => ['/site/index']],
 //        ['label' => 'About', 'url' => ['/site/about']],
 //        ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Новости', 'url' => ['/news']],
+        ['label' => 'Новости', 'url' => ['/news/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -58,6 +60,21 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+        <?php
+//        $item = ;
+//        var_dump($item);
+        echo MenuWidget::widget(['position' => 'headerBottom']);
+//        $navBarOptions=[];
+//        NavBar::begin($navBarOptions);
+//        echo NavX::widget([
+//            'options' => ['class' => 'navbar-nav'],
+//            'items' => $items,
+//            'activateParents' => true,
+//            'encodeLabels' => false
+//        ]);
+//        NavBar::end();
+        ?>
+        <p></p>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

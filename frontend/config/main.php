@@ -21,9 +21,14 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
 
-//            'rules' => [
+            'rules' => [
+                [
+                    'pattern' => 'page/<slug:\S+>',
+                    'route' => '/pages/show-page',
+                    'defaults' => ['slug' => 'error']
+                ],
 //                '/site/index' => '/',
-//            ],
+            ],
         ],
         'user' => [
             'identityClass' => 'common\models\User',

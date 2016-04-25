@@ -23,7 +23,7 @@ $this->registerJsFile('js/remove_image.js');
         echo Html::beginTag('div',['class' => 'well']);
             echo Html::beginTag('div',['class' => 'row']);
                 foreach($images as $img){
-                    echo Html::beginTag('div',['class' => 'col-xs-6']);
+                    echo Html::beginTag('div',['class' => 'col-xs-4']);
                         echo Html::a(Html::img($img->getUrl('x100'),['alt' => $model->title]),false,['class' => 'thumbnail']);
                         if(!$img->isMain) {
                             $columns = 4;

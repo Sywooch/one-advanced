@@ -64,15 +64,15 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'alias' => 'Alias',
-            'category_id' => 'Category',
-            'snippet' => 'Snippet',
-            'content' => 'Content',
-            'views' => 'Views',
-            'comments' => 'Comments',
-            'status_id' => 'Status',
-            'date' => 'Date',
+            'title' => 'Название',
+            'alias' => 'Псевдоним',
+            'category_id' => 'Категория',
+            'snippet' => 'Отрывок',
+            'content' => 'Контент',
+            'views' => 'Просмотры',
+            'comments' => 'Коментарии',
+            'status_id' => 'Статус',
+            'date' => 'Дата',
         ];
     }
 
@@ -87,6 +87,11 @@ class News extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function getAllCategory()
+    {
+        return Category::find()->all();
     }
 
     public function beforeSave($insert)

@@ -119,6 +119,7 @@ class NewsController extends Controller
 //                    }
 //                }
 //            }
+
             return $this->render('update', [
                 'model' => $model,
                 'category' => Category::find()->all()
