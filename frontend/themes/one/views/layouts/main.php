@@ -99,10 +99,11 @@ AppAsset::register($this);
             echo Html::beginTag('div',['class'=>'col-xs-8 pull-right name-menu']);//col-xs-offset-1
                 echo Html::tag('h3','Футбольный клуб');
                 echo Html::tag('h2','Балтика "Калининград"');
-                echo Nav::widget([
-                    'options' => ['class' => 'navbar-nav navbar-left'],
-                    'items' => $menuItems,
-                ]);
+                echo MenuWidget::widget(['position' => 'headerBottom']);
+//                echo Nav::widget([
+//                    'options' => ['class' => 'navbar-nav navbar-left'],
+//                    'items' => $menuItems,
+//                ]);
             echo Html::endTag('div');
         echo Html::endTag('div');
 
