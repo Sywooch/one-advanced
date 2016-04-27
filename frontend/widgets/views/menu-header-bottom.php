@@ -3,7 +3,7 @@
 use kartik\nav\NavX;
 
 echo NavX::widget([
-    'options'=>['class'=>'nav nav-pills menu-header-bottom'],
+    'options'=>['class'=>'nav navbar-nav navbar-left menu-header-bottom'],
     'items' => $items,
     'activateParents' => true,
 ]);
