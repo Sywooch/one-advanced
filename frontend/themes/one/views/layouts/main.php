@@ -40,20 +40,6 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-top',//navbar-fixed-top
         ],
     ]);
-        $menuItems = [
-    //        ['label' => 'Главная', 'url' => ['/site/index']],
-    //        ['label' => 'About', 'url' => ['/site/about']],
-    //        ['label' => 'Contact', 'url' => ['/site/contact']],
-    //        ['label' => 'Новости', 'url' => ['/news']],
-            ['label' => 'Сотрудничество', 'url' => ['#']],
-            ['label' => 'Скидки', 'url' => ['#']],
-            ['label' => 'Купить билет', 'url' => ['#']],
-            ['label' => 'Интернет-магазин', 'url' => ['#']],
-        ];
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-left'],
-            'items' => $menuItems,
-        ]);
         echo MenuWidget::widget(['position' => 'headerTop']);
 
         if (Yii::$app->user->isGuest) {
@@ -197,10 +183,10 @@ AppAsset::register($this);
             echo Html::endTag('div');
         }
         ?>
-        <div class="row">
+        <div class="row main-row">
             <div class="col-xs-4">
                 <div class="index-video">
-                    <iframe width="100%" height="inherit" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="standings">
                     <h5>Турнирная таблица</h5>

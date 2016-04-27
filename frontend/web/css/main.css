@@ -42,10 +42,10 @@ body {
                 background: transparent;
             }
 
-            .navbar .navbar-nav > li > a:hover,
-            .navbar .navbar-nav > li > a:focus,
-            .navbar .navbar-nav > .active > a:hover,
-            .navbar .navbar-nav > .active > a:focus {
+            .navbar.navbar-top .navbar-nav > li > a:hover,
+            .navbar.navbar-top .navbar-nav > li > a:focus,
+            .navbar.navbar-top .navbar-nav > .active > a:hover,
+            .navbar.navbar-top .navbar-nav > .active > a:focus {
                 text-decoration: underline;
                 /*background: #011023;*/
             }
@@ -157,10 +157,34 @@ body {
                 .navbar-bottom .navbar-nav li:first-child a {margin-left: 0}
                 .navbar-bottom .navbar-nav li:last-child a {margin-right: 0}
 
-                .navbar-bottom .navbar-nav li a:hover {
+                .navbar-bottom .navbar-nav li a:hover,
+                .navbar-bottom .navbar-nav > .open > a,
+                .navbar-bottom .navbar-nav > .open > a:hover,
+                .navbar-bottom .navbar-nav > .open > a:focus {
                     text-decoration: none;
                     border-bottom-color: #ffffff;
+                    background: transparent;
                 }
+        .navbar-nav .dropdown > ul {
+            padding: 0;
+            /*border: 1px solid #557aa7;*/
+            border: none;
+            border-radius: 0;
+        }
+            .navbar-nav .dropdown > ul > li a {
+                margin: 0;
+                padding: 10px;
+            }
+            .navbar-bottom .navbar-nav .dropdown ul a{
+                border-bottom: 1px solid #557aa7;
+            }
+            .navbar-bottom .navbar-nav .dropdown ul a:hover{
+                background: #f5f5f5;
+            }
+            .navbar-bottom .navbar-nav .dropdown > ul > li:last-child a {
+                border-bottom: 0;
+            }
+
 
         .carousel-home {
             height: 540px;
@@ -201,9 +225,14 @@ body {
                     margin: 1px;
                 }
 
+    .site-index {
+        padding: 0 !important;
+    }
+
     .site-index .panel {
         border-radius: 0;
         border: none;
+        margin-bottom: 0;
     }
 
         .site-index .panel-heading {
@@ -218,7 +247,7 @@ body {
 
         }
 
-        .site-index .news-index .well {
+        .news-index .well {
             -webkit-box-shadow: 0 0 5px #eee;
             -moz-box-shadow: 0 0 5px #eee;
             -o-box-shadow: 0 0 5px #eee;
@@ -243,10 +272,20 @@ body {
             left: 0;
             opacity: 0;
             border: 3px solid ;
-            border-color: #0B4B9C;
+            /*border-color: #0B4B9C;*/
+            border-color: #23527c;
+
         }
+
+    .news-index-descr {
+        color:#555555;
+    }
+
+    .news-index a:hover .news-index-descr {
+        color: #0b4c9c;
+    }
             .site-index .news-index a .well:before {
-                border-color: #23527c;
+                /*border-color: #23527c;*/
             }
 
             .news-index a:hover .well:before {
@@ -290,9 +329,9 @@ body {
         text-align: left;
     }
 
-    .news-index h1, .news-index .summary {
-        color: #FFFFFF;
-    }
+    /*.news-index h1, .news-index .summary {*/
+        /*color: #FFFFFF;*/
+    /*}*/
 
     .carousel-home {
         position: relative;
@@ -555,6 +594,15 @@ body {
     .main-block {
         padding-left: 0;
     }
+
+    .main-block > div {
+        background: #ffffff;
+        padding: 15px;
+    }
+
+        .main-block h1 {
+            margin-top: 0;
+        }
 
         .game-statistics table {
             width: 100%;
@@ -870,6 +918,24 @@ body {
         padding-left: 0;
         margin-top: 15px;
         margin-bottom: 15px;
+    }
+
+    .news-index-date {
+        font-size: 12px;
+    }
+
+    .news-view-img {
+        float: left;
+        margin: 0 15px 15px 0;
+    }
+
+    .breadcrumb {
+        border-radius: 0;
+        background: #ffffff;
+    }
+
+    .main-row {
+        margin-bottom: 40px;
     }
 
 /*.instagram, .twitter, .vk {*/
