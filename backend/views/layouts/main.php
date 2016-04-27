@@ -54,6 +54,13 @@ AppAsset::register($this);
                 ['label' => 'Сезоны', 'url' => ['/seasons']],
             ],
         ],
+        [
+            'label' => 'Настройка сайта',
+            'items' => [
+                ['label' => 'Страницы', 'url' => ['/pages']],
+                ['label' => 'Меню', 'url' => ['/menu']],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

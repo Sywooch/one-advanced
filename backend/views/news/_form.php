@@ -1,11 +1,12 @@
-<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-
+<!--<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>-->
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
 use common\models\UploadForm;
 use yii\helpers\ArrayHelper;
+use kartik\builder\Form;
+use kartik\form\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -15,48 +16,80 @@ if($model->errors) {
 }
 ?>
 
-<div class="news-form">
-
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
-
-<!--    --><?php //echo $form->field($model, 'category_id')->textInput() ?>
+<div class="news-form well">
 
     <?php
-//    var_dump($model);
-    echo $form->field($model, 'category_id')->dropDownList(
-        ArrayHelper::map($category, 'id', 'name')
-    ) ?>
 
-    <?= $form->field($model, 'snippet')->textarea(['rows' => 6]) ?>
+    $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 2,
+//        'autoGenerateColumns' => true,
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+        'attributes' => [
+            'title' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите title...']],
+            'alias' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите alias...']],
+        ]
+    ]);
 
-    <?php // echo $form->field($model, 'image_url')->textInput(['maxlength' => true]) ?>
+    echo Form::widget([
+        'model'=>$model,
+        'form'=>$form,
+        'columns'=>1,
+        'attributes'=>[
+            'snippet' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите короткое описание...']],
+            'content'=>['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите контент...']],
+        ]
+    ]);
+    $image=new UploadForm();
+    echo Form::widget([
+        'model'=>$image,
+        'form'=>$form,
+        'columns'=>1,
+        'attributes'=>[
+            'file' => ['type'=>Form::INPUT_FILE,'label'=>'Загрузить картинку'],
+        ]
+    ]);
 
-    <?php $image=new UploadForm(); ?>
+    if ($model->isNewRecord) {
+        $model->status_id = 'on';
+    }
+    echo Form::widget([
+        'model'=>$model,
+        'form'=>$form,
+        'columns'=>3,
+        'attributes'=>[
 
-    <?= $form->field($image, 'file')->fileInput()->label('Upload image') ?>
-
-    <?php // echo $form->field($model, 'views')->textInput() ?>
-
-    <?php // echo $form->field($model, 'comments')->textInput() ?>
-
-    <?= $form->field($model, 'status_id')->dropDownList([ 'on' => 'On', 'off' => 'Off', ]) ?>
-
-    <?php // echo $form->field($model, 'date')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
+            'category_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\Select2',
+                'options'=>['data'=>ArrayHelper::map($model->getAllCategory(), 'id', 'name')],
+                'hint'=>'Нажмите и выберите категорию'
+            ],
+            'status_id'=>[
+                'type'=>Form::INPUT_RADIO_LIST,
+                'items'=>[ 'on' => 'On', 'off' => 'Off'],
+                'options'=>['inline'=>true]
+            ],
+            'actions'=>[
+                'type'=>Form::INPUT_RAW,
+                'value'=>'<div style="text-align: right; margin-top: 20px">' .
+                    Html::resetButton('Reset', ['class'=>'btn btn-default']) . ' ' .
+                    Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                    '</div>'
+            ],
+        ]
+    ]);
+    ActiveForm::end();
+    ?>
 </div>
-
-<script>
-    CKEDITOR.replace( 'news-content');
-</script>
+<?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
+<?php $this->registerJs('
+CKEDITOR.replace("news-content");
+ CKEDITOR.filter.allowedContentRules = true;
+ CKEDITOR.config.allowedContent=true;
+'); ?>
+<!--<script>-->
+<!--    CKEDITOR.replace( 'news-content');-->
+<!--</script>-->
