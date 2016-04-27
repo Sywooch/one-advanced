@@ -11,6 +11,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\bootstrap\Carousel;
 use common\models\Players;
+use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
 use kartik\icons\Icon;
 Icon::map($this, Icon::FA);
@@ -53,6 +54,7 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-left'],
             'items' => $menuItems,
         ]);
+        echo MenuWidget::widget(['position' => 'headerTop']);
 
         if (Yii::$app->user->isGuest) {
             $menuItems = [
@@ -78,6 +80,7 @@ AppAsset::register($this);
 //        'brandLabel' => 'Frontend',
         'brandLabel' => Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name]),
         'brandUrl' => Yii::$app->homeUrl,
+//        'brandOptions' => ['class' => 'col-xs-4 brand'],
         'options' => [
             'class' => 'navbar-inverse navbar-bottom',
         ],
@@ -93,7 +96,7 @@ AppAsset::register($this);
             ['label' => 'Гостевая', 'url' => ['#']],
         ];
         echo Html::beginTag('div',['class'=>'row']);
-            echo Html::beginTag('div',['class'=>'col-xs-9 pull-right']);//col-xs-offset-1
+            echo Html::beginTag('div',['class'=>'col-xs-8 pull-right name-menu']);//col-xs-offset-1
                 echo Html::tag('h3','Футбольный клуб');
                 echo Html::tag('h2','Балтика "Калининград"');
                 echo Nav::widget([

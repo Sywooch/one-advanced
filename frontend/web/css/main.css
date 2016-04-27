@@ -88,10 +88,11 @@ body {
         }
 
         .navbar-bottom h2 {
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             border-bottom: 1px solid #557aa7;
             margin-top: 0;
             font-size: 26px;
+            margin-bottom: 15px;
         }
 
         .navbar-bottom h3, .navbar-bottom h2 {
@@ -120,13 +121,13 @@ body {
 
     .navbar-bottom .navbar-brand {
         position: relative;
-        padding: 25px 50px;
+        padding: 25px 125px;
     }
 
         .navbar-bottom .navbar-brand img {
             z-index: 200;
             position: relative;
-            height: 120px;
+            height: 150px;
         }
 
         .navbar-bottom .navbar-brand:before {
@@ -863,6 +864,12 @@ body {
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
+    }
+
+    .name-menu {
+        padding-left: 0;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 
 /*.instagram, .twitter, .vk {*/
