@@ -17,6 +17,10 @@ use Yii;
  * @property integer $comments
  * @property string $status_id
  * @property integer $date
+ * @property integer $gallery_id
+ *
+ * @property Gallery $gallery
+ * @property Category $category
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -51,7 +55,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'alias', 'snippet', 'content'], 'required'],
-            [['category_id', 'views', 'comments', 'date'], 'integer'],
+            [['category_id', 'views', 'comments', 'date', 'gallery_id'], 'integer'],
             [['snippet', 'content', 'status_id'], 'string'],
             [['title', 'alias'], 'string', 'max' => 100],
         ];
@@ -92,6 +96,14 @@ class News extends \yii\db\ActiveRecord
     public function getAllCategory()
     {
         return Category::find()->all();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGallery()
+    {
+        return $this->hasOne(Gallery::className(), ['id' => 'gallery_id']);
     }
 
     public function beforeSave($insert)

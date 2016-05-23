@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\PagesSearch */
+/* @var $searchModel common\models\GallerySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Страницы';
+$this->title = 'Галерея';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-index">
+<div class="gallery-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать Страницу', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать папку', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,19 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
+            'id',
             'name',
-//            'meta_title',
-//            'meta_keywords',
-//            'meta_descr',
-//             'content:ntext',
-             'slug',
-             'status',
+            'description',
+            'status',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}'
-            ],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

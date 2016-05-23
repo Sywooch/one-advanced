@@ -60,21 +60,12 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?php
-//        $item = ;
-//        var_dump($item);
-        echo MenuWidget::widget(['position' => 'headerBottom']);
-//        $navBarOptions=[];
-//        NavBar::begin($navBarOptions);
-//        echo NavX::widget([
-//            'options' => ['class' => 'navbar-nav'],
-//            'items' => $items,
-//            'activateParents' => true,
-//            'encodeLabels' => false
-//        ]);
-//        NavBar::end();
-        ?>
-        <p></p>
+        <div class="row">
+            <div class="col-xs-12">
+                <?php echo MenuWidget::widget(['position' => 'headerBottom']); ?>
+            </div>
+        </div>
+<!--        <p></p>-->
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Menu */
+/* @var $model common\models\Gallery */
 
-$this->title = 'Создать Меню';
-$this->params['breadcrumbs'][] = ['label' => 'Меню', 'url' => ['index']];
+$this->title = 'Create Gallery';
+$this->params['breadcrumbs'][] = ['label' => 'Galleries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="menu-create">
+<div class="gallery-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

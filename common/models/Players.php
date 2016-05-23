@@ -21,6 +21,9 @@ use Yii;
  * @property integer $transfers
  * @property integer $yellow_cards
  * @property integer $red_cards
+ *
+ * @property GamesPlayers[] $gamesPlayers
+ * @property Teams $teams
  */
 class Players extends \yii\db\ActiveRecord
 {
@@ -49,7 +52,8 @@ class Players extends \yii\db\ActiveRecord
         return [
             [['name', 'surname', 'nationality', 'date', 'teams_id'], 'required'],
             [['number', 'height', 'weight', 'date', 'role', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards'], 'integer'],
-            [['name', 'surname', 'nationality'], 'string', 'max' => 100]
+            [['name', 'surname', 'nationality'], 'string', 'max' => 100],
+            [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
     }
 
@@ -60,22 +64,33 @@ class Players extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'number' => 'Number',
-            'nationality' => 'Nationality',
-            'height' => 'Height',
-            'weight' => 'Weight',
-            'date' => 'Date',
-            'role' => 'Role',
-            'teams_id' => 'Teams ID',
-            'goals' => 'Goals',
-            'transfers' => 'Transfers',
-            'yellow_cards' => 'Yellow Cards',
-            'red_cards' => 'Red Cards',
+            'name' => 'Имя',
+            'surname' => 'Фамилия',
+            'number' => 'Номер',
+            'nationality' => 'Национальность',
+            'height' => 'Рост',
+            'weight' => 'Вес',
+            'date' => 'Дата рождения',
+            'role' => 'Позиция',
+            'teams_id' => 'Команда',
+            'goals' => 'Голы',
+            'transfers' => 'Передачи',
+            'yellow_cards' => 'Желтые Карточки',
+            'red_cards' => 'Красные Карточки',
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesPlayers()
+    {
+        return $this->hasMany(GamesPlayers::className(), ['player_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getTeams()
     {
         return $this->hasOne(Teams::className(), ['id' => 'teams_id']);

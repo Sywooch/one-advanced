@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Menu */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Menus', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Меню', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить пункт меню?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,10 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'parent_id',
+//            'id',
+//            'parent_id',
+            [
+                'attribute' => 'parent.name',
+                'label' => 'Родитель',
+            ],
             'name',
-            'url:url',
+//            'url:url',
+            'url',
+//            [
+//                'attribute' => 'url',
+//                'label' => 'Ссылка',
+//                'value' => function($model) {
+//                    return Html::a($model->name, [$model->url]);
+//                }
+//            ],
             'position',
             'sort',
             'status',

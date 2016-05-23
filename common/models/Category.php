@@ -11,6 +11,8 @@ use Yii;
  * @property string $name
  * @property string $slug
  * @property string $status_id
+ *
+ * @property News[] $news
  */
 class Category extends \yii\db\ActiveRecord
 {
