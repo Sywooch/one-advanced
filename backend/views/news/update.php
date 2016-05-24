@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 
-$this->registerJsFile('js/remove_image.js');
+$this->registerJsFile('@web/js/remove_image.js');
 
 ?>
 <div class="news-update">

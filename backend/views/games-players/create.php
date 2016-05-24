@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Menu */
+/* @var $model common\models\GamesPlayers */
 
-$this->title = 'Создать Меню';
-$this->params['breadcrumbs'][] = ['label' => 'Меню', 'url' => ['index']];
+$this->title = 'Create Games Players';
+$this->params['breadcrumbs'][] = ['label' => 'Games Players', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="menu-create">
+<div class="games-players-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Pages */
+/* @var $model common\models\Gallery */
 
-$this->title = 'Обновление страницы: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->title = 'Обновить Галерею: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Galleries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Обновление';
 ?>
-<div class="pages-update">
+<div class="gallery-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

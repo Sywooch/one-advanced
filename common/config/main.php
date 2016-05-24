@@ -24,5 +24,9 @@ return [
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
             'placeHolderPath' => '@webroot/images/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
         ],
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ]
+
     ],
 ];

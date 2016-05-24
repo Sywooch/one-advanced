@@ -14,6 +14,9 @@ use Yii;
  * @property string $position
  * @property integer $sort
  * @property string $status
+ *
+ * @property Menu $parent
+ * @property Menu[] $menus
  */
 class Menu extends \yii\db\ActiveRecord
 {
@@ -52,6 +55,22 @@ class Menu extends \yii\db\ActiveRecord
             'sort' => 'Сортировочный номер',
             'status' => 'Статус',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParent()
+    {
+        return $this->hasOne(Menu::className(), ['id' => 'parent_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMenus()
+    {
+        return $this->hasMany(Menu::className(), ['parent_id' => 'id']);
     }
 
     public function getAllMenu()

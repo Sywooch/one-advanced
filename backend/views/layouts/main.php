@@ -52,6 +52,7 @@ AppAsset::register($this);
                 ['label' => 'Команды', 'url' => ['/teams']],
                 ['label' => 'Игроки', 'url' => ['/players']],
                 ['label' => 'Сезоны', 'url' => ['/seasons']],
+                ['label' => 'Игры', 'url' => ['/games']],
             ],
         ],
         [
@@ -59,6 +60,7 @@ AppAsset::register($this);
             'items' => [
                 ['label' => 'Страницы', 'url' => ['/pages']],
                 ['label' => 'Меню', 'url' => ['/menu']],
+                ['label' => 'Галерея', 'url' => ['/gallery']],
             ],
         ],
     ];

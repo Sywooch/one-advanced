@@ -5,18 +5,16 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "teams".
+ * This is the model class for table "gallery".
  *
  * @property integer $id
  * @property string $name
- * @property string $slug
- * @property string $year
- * @property string $web_site
  * @property string $description
  *
- * @property Players[] $players
+ * @property Games[] $games
+ * @property News[] $news
  */
-class Teams extends \yii\db\ActiveRecord
+class Gallery extends \yii\db\ActiveRecord
 {
     public function behaviors()
     {
@@ -26,12 +24,13 @@ class Teams extends \yii\db\ActiveRecord
             ]
         ];
     }
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'teams';
+        return 'gallery';
     }
 
     /**
@@ -40,10 +39,9 @@ class Teams extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'slug'], 'required'],
-            [['description'], 'string'],
-            [['name'], 'string', 'max' => 200],
-            [['slug', 'year', 'web_site'], 'string', 'max' => 250]
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 255],
+            [['description'], 'string', 'max' => 5000],
         ];
     }
 
@@ -54,19 +52,24 @@ class Teams extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'slug' => 'Slug',
-            'year' => 'Year',
-            'web_site' => 'Web Site',
-            'description' => 'Description',
+            'name' => 'Имя',
+            'description' => 'Описание',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPlayers()
+    public function getGames()
     {
-        return $this->hasMany(Players::className(), ['teams_id' => 'id']);
+        return $this->hasMany(Games::className(), ['gallery_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNews()
+    {
+        return $this->hasMany(News::className(), ['gallery_id' => 'id']);
     }
 }
