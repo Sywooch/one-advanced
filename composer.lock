@@ -107,16 +107,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.2.3",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198"
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/af22a351b2ea5801ffb1695abb3bb34d5bed9198",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/c0185ab7c75aab88762c5aae780b9d83b80eda72",
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -331,16 +331,16 @@
         },
         {
             "name": "components/flag-icon-css",
-            "version": "2.1.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lipis/flag-icon-css.git",
-                "reference": "c79bf8fc99026160ac3cd89e61107328545f869d"
+                "reference": "836eca11ecf437ae3d0f0c93dd245ab00d94cee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/c79bf8fc99026160ac3cd89e61107328545f869d",
-                "reference": "c79bf8fc99026160ac3cd89e61107328545f869d",
+                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/836eca11ecf437ae3d0f0c93dd245ab00d94cee1",
+                "reference": "836eca11ecf437ae3d0f0c93dd245ab00d94cee1",
                 "shasum": ""
             },
             "type": "component",
@@ -365,7 +365,7 @@
                 }
             ],
             "description": "CSS for vector based country flags",
-            "time": "2016-04-26 20:41:44"
+            "time": "2016-05-18 13:50:30"
         },
         {
             "name": "costa-rico/yii2-images",
@@ -467,16 +467,16 @@
         },
         {
             "name": "fortawesome/font-awesome",
-            "version": "v4.6.1",
+            "version": "v4.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "6535013c330e801ecf0b23c437865a7fb344486d"
+                "reference": "8e241f209faa1dd2182c9fdc9c352d8806504a4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/6535013c330e801ecf0b23c437865a7fb344486d",
-                "reference": "6535013c330e801ecf0b23c437865a7fb344486d",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/8e241f209faa1dd2182c9fdc9c352d8806504a4e",
+                "reference": "8e241f209faa1dd2182c9fdc9c352d8806504a4e",
                 "shasum": ""
             },
             "require-dev": {
@@ -486,7 +486,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "4.6.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -511,7 +511,7 @@
                 "font",
                 "icon"
             ],
-            "time": "2016-04-12 14:51:54"
+            "time": "2016-05-13 15:42:25"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -658,12 +658,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-builder.git",
-                "reference": "22abcfb747df9261445da509cb6471111727f6d6"
+                "reference": "9fb987e693a5a6eb53bf5da704177bc75cfbff59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/22abcfb747df9261445da509cb6471111727f6d6",
-                "reference": "22abcfb747df9261445da509cb6471111727f6d6",
+                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/9fb987e693a5a6eb53bf5da704177bc75cfbff59",
+                "reference": "9fb987e693a5a6eb53bf5da704177bc75cfbff59",
                 "shasum": ""
             },
             "require": {
@@ -698,7 +698,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-10-22 12:05:25"
+            "time": "2016-05-12 18:09:35"
         },
         {
             "name": "kartik-v/yii2-detail-view",
@@ -801,12 +801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "0473f04f1af0f8c93c3270c658db9602e97f5f9e"
+                "reference": "2f39c05ec05b39452e818c2c49d1d1cee5f51771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/0473f04f1af0f8c93c3270c658db9602e97f5f9e",
-                "reference": "0473f04f1af0f8c93c3270c658db9602e97f5f9e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/2f39c05ec05b39452e818c2c49d1d1cee5f51771",
+                "reference": "2f39c05ec05b39452e818c2c49d1d1cee5f51771",
                 "shasum": ""
             },
             "require": {
@@ -842,7 +842,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-01 18:38:26"
+            "time": "2016-05-15 18:54:47"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -940,16 +940,16 @@
         },
         {
             "name": "kartik-v/yii2-krajee-base",
-            "version": "v1.8.4",
+            "version": "1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "3115b09aeb15a5e06f38dc16860baf153d9bf70e"
+                "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/3115b09aeb15a5e06f38dc16860baf153d9bf70e",
-                "reference": "3115b09aeb15a5e06f38dc16860baf153d9bf70e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/7f7a45ffe193fe673f72b9effc01b08499f2a454",
+                "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454",
                 "shasum": ""
             },
             "require": {
@@ -987,7 +987,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-11 09:07:40"
+            "time": "2016-05-07 19:45:52"
         },
         {
             "name": "kartik-v/yii2-mpdf",

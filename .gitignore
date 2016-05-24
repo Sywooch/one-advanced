@@ -1,6 +1,8 @@
 #yii2 costa rico images
 /frontend/web/images/store/*
+!/frontend/web/images/store/.gitignore
 /frontend/web/images/cache/*
+!/frontend/web/images/cache/.gitignore
 
 # yii console command
 /yii

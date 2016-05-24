@@ -53,3 +53,6 @@ tests                    contains various tests for the advanced application
     codeception/         contains tests developed with Codeception PHP Testing Framework
 ```
 =======
+
+php yii migrate/up --migrationPath=@vendor/costa-rico/yii2-images/migrations
+php yii migrate
