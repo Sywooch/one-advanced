@@ -946,3 +946,7 @@ body {
     /*background: transparent !important;*/
     /*color: #ffffff;*/
 /*}*/
+
+    .news-view {
+        overflow: hidden;
+    }
