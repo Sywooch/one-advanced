@@ -3,43 +3,41 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\News;
+use common\models\Gallery;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
-
 
 /**
- * NewsController implements the CRUD actions for News model.
+ * GalleryController implements the CRUD actions for Gallery model.
  */
-class NewsController extends Controller
+class GalleryController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all News models.
+     * Lists all Gallery models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC'),
-            'pagination' => [
-                'pageSize' => 10,
-            ],
+            'query' => Gallery::find(),
         ]);
-
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -47,29 +45,27 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single News model.
+     * Displays a single Gallery model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $model,
+            'model' => $this->findModel($id),
         ]);
     }
 
-
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the Gallery model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return News the loaded model
+     * @return Gallery the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = Gallery::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

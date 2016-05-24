@@ -9,10 +9,10 @@ return [
 //        'urlManager' => [
 //            'enablePrettyUrl' => true,
 //        ],
-//        'authManager' => [
-//            'class' => 'yii\rbac\DbManager',
-//            'defaultRoles' => ['admin','client'],
-//        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['admin','client'],
+        ],
     ],
     'modules' => [
         'yii2images' => [

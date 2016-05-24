@@ -5,9 +5,11 @@ namespace backend\controllers;
 use Yii;
 use common\models\Menu;
 use common\models\MenuSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\User;
 
 /**
  * MenuController implements the CRUD actions for Menu model.
@@ -26,6 +28,18 @@ class MenuController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                        }
+                    ],
+                ],
+            ]
         ];
     }
 

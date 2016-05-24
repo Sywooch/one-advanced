@@ -5,5 +5,7 @@ if(isset($model->meta_descr) and !empty($model->meta_descr)) { $this->registerMe
 
 $this->params['breadcrumbs'][] = $model->name;
 ?>
-<h1><?php echo $model->name ?></h1>
-<div><?php echo $model->content ?></div>
+<div class="page-<?php echo $model->slug?>">
+    <h1><?php echo $model->name ?></h1>
+    <?php echo $model->content ?>
+</div>
