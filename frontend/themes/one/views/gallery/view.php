@@ -8,7 +8,7 @@ use kartik\widgets\FileInput;
 /* @var $model common\models\Gallery */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Галерея', 'url' => ['/gallery']];
+$this->params['breadcrumbs'][] = ['label' => 'Медиа', 'url' => ['/gallery']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="gallery-view">
