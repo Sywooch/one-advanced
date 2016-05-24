@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
-$this->title = 'Update News: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
+$this->title = 'Обновление новости: ' . ' ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Обновление';
 
 $this->registerJsFile('@web/js/remove_image.js');
 
@@ -34,10 +34,10 @@ $this->registerJsFile('@web/js/remove_image.js');
                             $columns = 6;
                         }
                         echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                            echo Html::a('View', $img->getUrl(), ['class' => 'btn  btn-primary','target' => '_blank']);
+                            echo Html::a('Просмотр', $img->getUrl(), ['class' => 'btn  btn-primary','target' => '_blank']);
                         echo Html::endTag('div');
                         echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                            echo Html::a('Remove', ['remove-image', 'id'=> $model->id], ['class' => 'btn  btn-danger']);
+                            echo Html::a('Удалить', ['remove-image', 'id'=> $model->id], ['class' => 'btn  btn-danger']);
                         echo Html::endTag('div');
                     echo Html::endTag('div');
                 }

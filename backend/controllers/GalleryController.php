@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+use common\models\User;
 use rico\yii2images\models\Image;
 use Yii;
 use common\models\Gallery;
 use common\models\GallerySearch;
+use yii\filters\AccessControl;
 use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -28,6 +30,18 @@ class GalleryController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                        }
+                    ],
+                ],
+            ]
         ];
     }
 

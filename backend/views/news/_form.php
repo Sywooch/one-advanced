@@ -75,8 +75,8 @@ if($model->errors) {
             'actions'=>[
                 'type'=>Form::INPUT_RAW,
                 'value'=>'<div style="text-align: right; margin-top: 20px">' .
-                    Html::resetButton('Reset', ['class'=>'btn btn-default']) . ' ' .
-                    Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                    Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
+                    Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
                     '</div>'
             ],
         ]
