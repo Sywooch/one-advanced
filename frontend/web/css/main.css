@@ -3,7 +3,20 @@ body {
 }
 .container {
     /*width: 970px  !important;*/
+    /*width: 1200px  !important;*/
 }
+
+@media (max-width: 1200px) {
+    .container {
+        width: 95% !important;
+    }
+}
+
+/*@media (max-width: 1200px) {*/
+    /*.container {*/
+        /*width: 1200px !important;*/
+    /*}*/
+/*}*/
 
     .navbar {
         border-radius: 0;
@@ -121,13 +134,20 @@ body {
 
     .navbar-bottom .navbar-brand {
         position: relative;
-        padding: 25px 125px;
+        /*padding: 25px 125px;*/
+        display: block;
+        float: none;
+    }
+
+    .navbar-bottom .navbar-header {
+        width: 33%;
     }
 
         .navbar-bottom .navbar-brand img {
             z-index: 200;
             position: relative;
             height: 150px;
+            margin: 10px auto;
         }
 
         .navbar-bottom .navbar-brand:before {

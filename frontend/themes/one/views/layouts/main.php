@@ -71,25 +71,11 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-bottom',
         ],
     ]);
-        $menuItems = [
-            ['label' => 'Новости', 'url' => ['/news']],
-            ['label' => 'Команда', 'url' => ['#']],
-            ['label' => 'Клуб', 'url' => ['#']],
-            ['label' => 'Сезон', 'url' => ['#']],
-            ['label' => 'Болельщикам', 'url' => ['#']],
-            ['label' => 'Медиа', 'url' => ['#']],
-            ['label' => 'Архив', 'url' => ['#']],
-            ['label' => 'Гостевая', 'url' => ['#']],
-        ];
         echo Html::beginTag('div',['class'=>'row']);
             echo Html::beginTag('div',['class'=>'col-xs-8 pull-right name-menu']);//col-xs-offset-1
                 echo Html::tag('h3','Футбольный клуб');
                 echo Html::tag('h2','Балтика "Калининград"');
                 echo MenuWidget::widget(['position' => 'headerBottom']);
-//                echo Nav::widget([
-//                    'options' => ['class' => 'navbar-nav navbar-left'],
-//                    'items' => $menuItems,
-//                ]);
             echo Html::endTag('div');
         echo Html::endTag('div');
 
@@ -145,13 +131,13 @@ AppAsset::register($this);
                                 echo Html::endTag('div');
                                 echo Html::beginTag('div',['class'=>'row promo-game-row']);
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-                                        echo Html::img('@web/themes/one/src/logo.png').Html::tag('span',Html::tag('b','Балтика'));
+                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
                                         echo Html::tag('div','1:0');
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Сахалин').Html::img('@web/themes/one/src/slider/sahalin-logo.jpg');
+                                        echo Html::tag('span','Сахалин').Html::img('@web/themes/one/src/slider/sahalin-logo.jpg', ['class' => 'hidden-sm']);
                                     echo Html::endTag('div');
                                 echo Html::endTag('div');
                             echo Html::endTag('div');
@@ -167,13 +153,13 @@ AppAsset::register($this);
                                 echo Html::endTag('div');
                                 echo Html::beginTag('div',['class'=>'row promo-game-row']);
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-                                        echo Html::img('@web/themes/one/src/logo.png').Html::tag('span',Html::tag('b','Балтика'));
+                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
                                         echo Html::tag('div','-:-');
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Ислочь').Html::img('@web/themes/one/src/slider/isloch-logo.png',['style'=>'height: 41px;width: auto;']);
+                                        echo Html::tag('span','Ислочь').Html::img('@web/themes/one/src/slider/isloch-logo.png',['style'=>'height: 41px;width: auto;', 'class' => 'hidden-sm']);
                                     echo Html::endTag('div');
                                 echo Html::endTag('div');
                             echo Html::endTag('div');
