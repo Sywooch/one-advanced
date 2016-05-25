@@ -51,7 +51,8 @@ body {
             padding-right: 0;
         }
 
-            .navbar .navbar-nav > .active > a {
+            .navbar .navbar-nav > .active > a,
+            .navbar .navbar-nav > .active > a:hover{
                 background: transparent;
             }
 
@@ -67,7 +68,13 @@ body {
                 color: #ffffff;
 
             }
-
+    .dropdown-menu > .active > a {
+        background: transparent;
+        color: #333;
+    }
+    .dropdown-menu > .active > a:hover {
+        color: #333;
+    }
     .navbar-bottom {
         background: transparent;
         border: none;
