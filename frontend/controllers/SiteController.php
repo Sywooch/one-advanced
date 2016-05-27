@@ -74,6 +74,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'main-index';
+
         $dataProvider = new ActiveDataProvider([
             'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC')->limit(6),
             'pagination' => [
