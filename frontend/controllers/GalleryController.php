@@ -36,7 +36,8 @@ class GalleryController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Gallery::find(),
+            'query' => Gallery::find()
+            ->where(['status' => 'on']),
         ]);
 
         return $this->render('index', [
