@@ -1024,6 +1024,7 @@ body {
         /*margin-top: 20px;*/
         color: #555555;
         /*border-color: #0C3D7F;*/
+        transition: 0.3s;
     }
 
     .news-index .list-view .news-item:nth-last-child(2) a {
@@ -1079,3 +1080,7 @@ body {
     /*text-decoration: none;*/
     /*color: #1a2f4f;*/
 /*}*/
+
+    .news:focus {
+        text-decoration: none;
+    }
