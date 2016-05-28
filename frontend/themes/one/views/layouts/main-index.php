@@ -73,7 +73,7 @@ AppAsset::register($this);
     ]);
         echo Html::beginTag('div',['class'=>'row']);
             echo Html::beginTag('div',['class'=>'col-xs-8 pull-right name-menu']);//col-xs-offset-1
-                echo Html::img('@web/themes/one/src/layout/GK_sodruzestvo_white_2.png', ['class' => 'sponsor-header']);
+                echo Html::a(Html::img('@web/themes/one/src/layout/GK_sodruzestvo_white_2.png', ['class' => 'sponsor-header']), 'http://www.sodrugestvo.ru/', ['target' => '_blank']);
                 echo Html::tag('h3','Футбольный клуб');
                 echo Html::tag('h2','Балтика "Калининград"');
                 echo MenuWidget::widget(['position' => 'headerBottom']);
