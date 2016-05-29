@@ -210,7 +210,13 @@ body {
             opacity: 0;
             transition: 0.3s;
             display: block;
+            z-index: -1;
         }
+
+            .navbar-bottom .navbar-nav li:hover ul,
+            .navbar-bottom .navbar-nav li.open ul {
+                z-index: 100;
+            }
             .navbar-nav .dropdown > ul > li a {
                 margin: 0;
                 padding: 10px;
