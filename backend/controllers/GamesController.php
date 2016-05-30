@@ -75,8 +75,17 @@ class GamesController extends Controller
 //        $dataProvider = new ActiveDataProvider([
 //            'query' => $query,
 //        ]);
+        $model = $this->findModel($id);
+        $gameData['home'] = GamesPlayers::find()
+            ->where(['game_id' => $model->id, 'team_id' => $model->home_id])
+            ->all();
+        $gameData['guest'] = GamesPlayers::find()
+            ->where(['game_id' => $model->id, 'team_id' => $model->guest_id])
+            ->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'gameData' => $gameData,
         ]);
     }
 
@@ -107,25 +116,33 @@ class GamesController extends Controller
     {
         $model = $this->findModel($id);
 
-        $dataProvider['playersHome'] = new ActiveDataProvider([
-            'query' => Players::find()
-                ->where(['teams_id' => $model->home_id]),
-        ]);
-
-        $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
-            'query' => GamesPlayers::find()
-                ->where(['game_id' => $model->id, 'team_id' => $model->home_id]),
-        ]);
-
-        $searchModel['gamesPlayers'] = new GamesPlayersSearch();
-        $dataProvider['gamesPlayers'] = $searchModel['gamesPlayers']->search(Yii::$app->request->queryParams);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+
+            $dataProvider['playersHome'] = new ActiveDataProvider([
+                'query' => Players::find()
+                    ->where(['teams_id' => $model->home_id]),
+            ]);
+
+            $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
+                'query' => GamesPlayers::find()
+                    ->where(['game_id' => $model->id, 'team_id' => $model->home_id]),
+            ]);
+
+            $dataProvider['playersGuest'] = new ActiveDataProvider([
+                'query' => Players::find()
+                    ->where(['teams_id' => $model->guest_id]),
+            ]);
+
+            $dataProvider['gamePlayersGuest'] = new ActiveDataProvider([
+                'query' => GamesPlayers::find()
+                    ->where(['game_id' => $model->id, 'team_id' => $model->guest_id]),
+            ]);
+
             return $this->render('update', [
                 'model' => $model,
-                'searchModel' => $searchModel,
+//                'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider
             ]);
         }

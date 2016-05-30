@@ -12,6 +12,7 @@ use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * GalleryController implements the CRUD actions for Gallery model.
@@ -139,12 +140,37 @@ class GalleryController extends Controller
     public function actionUploadFiles($id)
     {
         $model = $this->findModel($id);
-        if(!empty($_FILES['gallery']['tmp_name'])) {
-            $model->attachImage($_FILES['gallery']['tmp_name']);
-            if($model->errors) {
-                var_dump($model->errors);
+        if (!empty($_FILES['gallery']['tmp_name'])) {
+            if ($_FILES['gallery']['type'] == 'image/jpeg' || $_FILES['gallery']['type'] == 'image/png') {
+                $model->attachImage($_FILES['gallery']['tmp_name']);
+                if($model->errors) {
+                    var_dump($model->errors);
+                }
+                return Json::encode(true);
+            } else {
+                return Json::encode(true);
+
+//                $fileName = 'gallery';
+//                $uploadPath = '../../frontend/web/images/store/Galleries/Gallery'.$id;
+//                $file = UploadedFile::getInstanceByName($fileName);
+//                var_dump($file);
+//                if (file_exists($uploadPath)) {
+//                    $newfilename = $model->name . '_' . substr(md5(time().$id), 24, 32).$file->name;
+//
+//                }
+
+//                $filename = \Yii::$app->request->get('filename', '');
+//                $filename = trim($filename, '/');
+//                $objId = \Yii::$app->request->get('objId', '');
+//                $objModelId = \Yii::$app->request->get('objModelId', '');
+//                if (empty($filename) === false) {
+//                    $image = new Image;
+//                    $image->loadDefaultValues();
+//                    $image->setAttributes(['filename' => $filename, 'object_id' => $objId, 'object_model_id' => $objModelId]);
+//                    $image->save();
+//                }
             }
-            return Json::encode(true);
+
         }
     }
 

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\GamesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Games';
+$this->title = 'Матчи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="games-index">
@@ -16,26 +16,33 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Games', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать матч', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+//            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             [
-                'attribute' => 'home.name',
-                'label' => 'Команда дома',
+                'label' => 'Матч',
+                'value' => function ($model) {
+                    return $model->home->name.'&nbsp;:&nbsp;'.$model->guest->name;
+                },
+                'format' => 'raw',
             ],
-            [
-                'attribute' => 'guest.name',
-                'label' => 'Команда в гостях',
-            ],
+//            [
+//                'attribute' => 'home.name',
+//                'label' => 'Команда дома',
+//            ],
+//            [
+//                'attribute' => 'guest.name',
+//                'label' => 'Команда в гостях',
+//            ],
 //            'season_id',
+            'score',
             'tour',
-             'score',
             // 'city',
             // 'stadium',
             // 'referee',
