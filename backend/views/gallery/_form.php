@@ -19,6 +19,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'status')->dropDownList([ 'on' => 'On', 'off' => 'Off', ]) ?>
     <?php
 //    $image=new UploadForm();
 
