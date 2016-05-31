@@ -86,9 +86,7 @@ AppAsset::register($this);
 
     <div class="container">
         <div class="row main-row">
-<!--            <div class="col-xs-4">-->
-<!--            </div>-->
-            <div class="col-xs-12 main-block">
+            <div class="col-xs-9 main-block">
                 <?php
                 /*echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -100,6 +98,45 @@ AppAsset::register($this);
 <!--            <div class="col-sm-9">-->
 
                 <?= $content ?>
+            </div>
+            <div class="col-xs-3 main-block">
+                <div class="standings">
+                    <h4>Турнирная таблица</h4>
+                    <p>ФОНБЕТ-Первенства России по футболу среди команд ФНЛ 2015/16</p>
+                    <table>
+                        <!--                                <caption>...</caption>-->
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Команда</th>
+                            <th>Игры</th>
+                            <th>Очки</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>1</td><td><?php echo Html::img('@web/themes/one/src/teams/gazovik.png') ?>Газовик</td><td>24</td><td>59</td></tr>
+                        <tr><td>2</td><td><?php echo Html::img('@web/themes/one/src/teams/tom.png') ?>Томь</td><td>24</td><td>52</td></tr>
+                        <tr><td>3</td><td><?php echo Html::img('@web/themes/one/src/teams/arsenal-tula.png') ?>Арсенал Т</td><td>24</td><td>46</td></tr>
+                        <tr><td>4</td><td><?php echo Html::img('@web/themes/one/src/teams/volgar.png') ?>Волгарь</td><td>24</td><td>44</td></tr>
+                        <tr><td>5</td><td><?php echo Html::img('@web/themes/one/src/teams/fakel.png') ?>Факел</td><td>24</td><td>41</td></tr>
+                        <tr><td>6</td><td><?php echo Html::img('@web/themes/one/src/teams/sibir.png') ?>Сибирь</td><td>24</td><td>40</td></tr>
+                        <tr><td>7</td><td><?php echo Html::img('@web/themes/one/src/teams/spartak-2.png') ?>Спартак-2</td><td>24</td><td>38</td></tr>
+                        <tr><td>8</td><td><?php echo Html::img('@web/themes/one/src/teams/tyumen.png') ?>Тюмень</td><td>23</td><td>35</td></tr>
+                        <tr><td>9</td><td><?php echo Html::img('@web/themes/one/src/teams/sokol-saratov.png') ?>Сокол</td><td>24</td><td>34</td></tr>
+                        <tr><td>10</td><td><?php echo Html::img('@web/themes/one/src/teams/enisei.png') ?>Енисей</td><td>24</td><td>34</td></tr>
+                        <tr><td>11</td><td><?php echo Html::img('@web/themes/one/src/teams/shinnik.png') ?>Шинник</td><td>24</td><td>33</td></tr>
+                        <tr><td><b>12</b></td><td><?php echo Html::img('@web/themes/one/src/teams/baltika.png') ?><b>Балтика</b></td><td><b>23</b></td><td><b>31</b></td></tr>
+                        <tr><td>13</td><td><?php echo Html::img('@web/themes/one/src/teams/volga.png') ?>Волга НН</td><td>24</td><td>29</td></tr>
+                        <tr><td>14</td><td><?php echo Html::img('@web/themes/one/src/teams/tosno.png') ?>Тосно</td><td>24</td><td>27</td></tr>
+                        <tr><td>15</td><td><?php echo Html::img('@web/themes/one/src/teams/luch.png') ?>Луч-Энергия</td><td>24</td><td>25</td></tr>
+                        <tr><td>16</td><td><?php echo Html::img('@web/themes/one/src/teams/zenit-2.jpg') ?>Зенит-2</td><td>24</td><td>25</td></tr>
+                        <tr><td>17</td><td><?php echo Html::img('@web/themes/one/src/teams/ska-energiya.png') ?>СКА-Энергия</td><td>24</td><td>24</td></tr>
+                        <tr><td>18</td><td><?php echo Html::img('@web/themes/one/src/teams/baikal.png') ?>Байкал</td><td>24</td><td>22</td></tr>
+                        <tr><td>19</td><td><?php echo Html::img('@web/themes/one/src/teams/kamaz.png') ?>КАМАЗ</td><td>24</td><td>16</td></tr>
+                        <tr><td>20</td><td><?php echo Html::img('@web/themes/one/src/teams/torpedo-armavir.png') ?>Торпедо Ар</td><td>24</td><td>16</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <?php

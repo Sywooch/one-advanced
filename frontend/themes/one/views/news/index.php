@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <div class="row">
+<!--    <div class="row">-->
 <!--        <div class="col-xs-12">-->
             <?php
             echo ListView::widget([
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'layout' => "{summary}\n{items}\n<div class=\"text-center\">{pager}</div>",
                 'summary' => '<div class="summary">Показаны записи <b>{begin}-{end}</b> из <b>{totalCount}</b>.</div>',
         //        'summaryOptions' => ['tag' => 'div','class' => 'my-summary summary'],
-        //        'itemOptions' => ['tag' => 'div','class' => 'news-item'],
+                'itemOptions' => ['tag' => 'div','class' => 'news-item'],
 
                 'pager' => [
                     'firstPageLabel' => '<<',
@@ -40,5 +40,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ]);
             ?>
 <!--        </div>-->
-    </div>
+<!--    </div>-->
 </div>

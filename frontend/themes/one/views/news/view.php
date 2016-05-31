@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     $images = $model->getImages();
     if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
         $image = $model->getImage();
-        $sizes = $image->getSizesWhen('400x');
+//        $sizes = $image->getSizesWhen('400x');
         //            echo Html::img($image->getUrl('x300'),['class' => 'center-block img-responsive','width'=>$sizes['width'], 'height'=>$sizes['height']]);
-        echo Html::img($image->getUrl('x200'),['class' => 'news-view-img thumbnail img-responsive','width'=>$sizes['width']]);
+        echo Html::img($image->getUrl(''),['class' => 'news-view-img thumbnail img-responsive','width'=>'100%']);
     }
 
     echo Html::tag('div',$model->content,['class'=>'news-view-content']); ?>
