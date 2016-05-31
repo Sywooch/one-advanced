@@ -72,7 +72,7 @@ AppAsset::register($this);
         ],
     ]);
         echo Html::beginTag('div',['class'=>'row']);
-            echo Html::beginTag('div',['class'=>'col-xs-8 pull-right name-menu']);//col-xs-offset-1
+            echo Html::beginTag('div',['class'=>'col-xs-9 pull-right name-menu']);//col-xs-offset-1
                 echo Html::img('@web/themes/one/src/layout/GK_sodruzestvo_white_2.png', ['class' => 'sponsor-header']);
                 echo Html::tag('h3','Футбольный клуб');
                 echo Html::tag('h2','Балтика "Калининград"');
@@ -172,9 +172,9 @@ AppAsset::register($this);
         ?>
         <div class="row main-row">
             <div class="col-xs-4">
-                <div class="index-video">
-                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>
-                </div>
+<!--                <div class="index-video">-->
+<!--                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>-->
+<!--                </div>-->
                 <div class="standings">
                     <h4>Турнирная таблица</h4>
                     <p>ФОНБЕТ-Первенства России по футболу среди команд ФНЛ 2015/16</p>
@@ -232,7 +232,7 @@ AppAsset::register($this);
 <!--        <div class="statistics-season">-->
             <div class="row statistics-season">
                 <div class="col-xs-12">
-                    <h4>Сатитстика сезона</h4>
+                    <h4>Статистика сезона</h4>
                     <div class="row">
                         <div class="col-xs-7 best-players">
                             <div class="col-xs-6 best-players-block">
