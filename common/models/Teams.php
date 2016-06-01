@@ -14,7 +14,10 @@ use Yii;
  * @property string $web_site
  * @property string $description
  *
+ * @property Games[] $games
+ * @property Games[] $gamesGuest
  * @property Players[] $players
+ * @property SeasonDetails[] $seasonDetails
  */
 class Teams extends \yii\db\ActiveRecord
 {
@@ -65,8 +68,32 @@ class Teams extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getGames()
+    {
+        return $this->hasMany(Games::className(), ['home_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesGuest()
+    {
+        return $this->hasMany(Games::className(), ['guest_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getPlayers()
     {
         return $this->hasMany(Players::className(), ['teams_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSeasonDetails()
+    {
+        return $this->hasMany(SeasonDetails::className(), ['team_id' => 'id']);
     }
 }
