@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
             'dataProvider' => $dataProvider['playersHome'],
             'gridOptions' => [
                 'id' => $gridId,
-                'team' => $model->home->name,
+//                'team' => $model->home->name,
                 'panel' => [
                     'heading' => '<h4>Все игроки команды '.$model->home->name.'</h4>',
                     'after' => Html::button(Html::icon('plus').' Добавить Игроков к Матчу', [
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
                     ]),
 
                 ],
-                'team_id' => $model->home_id,
+//                'team_id' => $model->home_id,
                 'columns' => [
                     ['class' => 'kartik\grid\CheckboxColumn'],
                     'surname',
@@ -57,19 +57,19 @@ $this->params['breadcrumbs'][] = 'Обновление';
                 ]
             ],
         ]);
-        $gridId = 'game-players-home';
+        $gridId = 'sub-players-home';
         echo $this->render('_grid', [
             'model' => $model,
             'dataProvider' => $dataProvider['gamePlayersHome'],
             'gridOptions' => [
                 'id' => $gridId,
-                'team' => $model->home->name,
+//                'team' => $model->home->name,
                 'panel' => [
                     'heading' => '<h4>Состав матча команды '.$model->home->name.'</h4>',
                     'after' => false,
 
                 ],
-                'team_id' => $model->home_id,
+//                'team_id' => $model->home_id,
                 'columns' => [
                     [
                         'attribute' => 'players.name',
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
                         'buttons' => [
                             'delete-pjax' => function ($url, $model) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', false, [
-                                    'onclick' => 'deletePlayer('.$model->id.')',
+                                    'onclick' => 'deletePlayer('.$model->id.',\'/admin/games-players/delete-pjax\')',
                                     'style' => 'cursor:pointer',
                                     'title' =>'Удалить',
 //                                'data-confirm'=>"Хотите удалить?",
@@ -116,7 +116,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
                 'dataProvider' => $dataProvider['playersGuest'],
                 'gridOptions' => [
                     'id' => $gridId,
-                    'team' => $model->guest->name,
+//                    'team' => $model->guest->name,
                     'panel' => [
                         'heading' => '<h4>Все игроки команды '.$model->guest->name.'</h4>',
                         'after' => Html::button(Html::icon('plus').' Добавить Игроков к Матчу', [
@@ -124,7 +124,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
                         ]),
 
                     ],
-                    'team_id' => $model->guest_id,
+//                    'team_id' => $model->guest_id,
                     'columns' => [
                         ['class' => 'kartik\grid\CheckboxColumn'],
                         'surname',
@@ -140,19 +140,19 @@ $this->params['breadcrumbs'][] = 'Обновление';
                     ]
                 ],
             ]);
-            $gridId = 'game-players-guest';
+            $gridId = 'sub-players-guest';
             echo $this->render('_grid', [
                 'model' => $model,
                 'dataProvider' => $dataProvider['gamePlayersGuest'],
                 'gridOptions' => [
                     'id' => $gridId,
-                    'team' => $model->guest->name,
+//                    'team' => $model->guest->name,
                     'panel' => [
                         'heading' => '<h4>Состав матча команды '.$model->guest->name.'</h4>',
                         'after' => false,
 
                     ],
-                    'team_id' => $model->guest_id,
+//                    'team_id' => $model->guest_id,
                     'columns' => [
                         [
                             'attribute' => 'players.name',
@@ -176,7 +176,7 @@ $this->params['breadcrumbs'][] = 'Обновление';
                             'buttons' => [
                                 'delete-pjax' => function ($url, $model) {
                                     return Html::a('<span class="glyphicon glyphicon-trash"></span>', false, [
-                                        'onclick' => 'deletePlayer('.$model->id.')',
+                                        'onclick' => 'deletePlayer('.$model->id.',\'/admin/games-players/delete-pjax\')',
                                         'style' => 'cursor:pointer',
                                         'title' =>'Удалить',
 //                                'data-confirm'=>"Хотите удалить?",
@@ -206,4 +206,4 @@ $this->params['breadcrumbs'][] = 'Обновление';
 </div>
 
 <?php
-$this->registerJsFile('@web/js/games_update.js', ['depends' => ['yii\web\YiiAsset'],'position' => \yii\web\View::POS_END]);
+$this->registerJsFile('@web/js/addMany_deleteOne.js', ['depends' => ['yii\web\YiiAsset'],'position' => \yii\web\View::POS_END]);

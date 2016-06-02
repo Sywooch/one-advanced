@@ -11,6 +11,7 @@ use common\models\Games;
 use common\models\GamesSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -161,25 +162,26 @@ class GamesController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionAddPlayers()
+    public function actionAdd()
     {
-        $data = Yii::$app->request->post();
-        foreach ($data['players'] as $player) {
-            $model = new GamesPlayers();
-            $model->game_id = $data['game_id'];
-            $model->team_id = $data['team_id'];
-            $model->player_id = $player;
-            $model->save();
-//            if ($model->save()) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-
-//            $modelPlayer = $this->findModelPlayer($player);
-//            var_dump($modelPlayer);
+        $data = Yii::$app->request->post('data');
+        $players =ArrayHelper::getColumn(
+            GamesPlayers::find()
+                ->select('player_id')
+                ->where(['game_id' => $data['game'], 'team_id' => $data['team']])
+                ->asArray()
+                ->all(),
+            'player_id'
+        );
+        foreach ($data['array'] as $player) {
+            if (!in_array($player, $players)) {
+                $model = new GamesPlayers();
+                $model->game_id = $data['game'];
+                $model->team_id = $data['team'];
+                $model->player_id = $player;
+                $model->save();
+            }
         }
-//        return true;
     }
 
     /**

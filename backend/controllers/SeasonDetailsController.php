@@ -106,6 +106,14 @@ class SeasonDetailsController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    public function actionDeletePjax($id)
+    {
+        $this->findModel($id)->delete();
+
+        return true;
+    }
+
     /**
      * Finds the SeasonDetails model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

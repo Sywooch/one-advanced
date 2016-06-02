@@ -5,7 +5,7 @@ namespace backend\controllers;
 use common\models\User;
 use Yii;
 use common\models\Teams;
-use common\models\TeamsSearchSearch;
+use common\models\TeamsSearch;
 use common\models\Players;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -48,7 +48,7 @@ class TeamsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TeamsSearchSearch();
+        $searchModel = new TeamsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

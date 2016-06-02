@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use common\models\Teams;
 
 /**
- * TeamsSearchSearch represents the model behind the search form about `common\models\Teams`.
+ * TeamsSearch represents the model behind the search form about `common\models\Teams`.
  */
-class TeamsSearchSearch extends Teams
+class TeamsSearch extends Teams
 {
     /**
      * @inheritdoc

@@ -47,11 +47,11 @@ class Seasons extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'full_name' => 'Full Name',
-            'division' => 'Division',
-            'slug' => 'Slug',
-            'status' => 'Status',
+            'name' => 'Имя',
+            'full_name' => 'Полное имя',
+            'division' => 'Дивизион',
+            'slug' => 'Url',
+            'status' => 'Статус',
         ];
     }
 

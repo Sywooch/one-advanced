@@ -57,11 +57,11 @@ class Teams extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'slug' => 'Slug',
-            'year' => 'Year',
-            'web_site' => 'Web Site',
-            'description' => 'Description',
+            'name' => 'Имя',
+            'slug' => 'Url',
+            'year' => 'Год создания',
+            'web_site' => 'Сайт',
+            'description' => 'Описание',
         ];
     }
 
