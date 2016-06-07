@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Seasons */
 
-$this->title = 'Create Seasons';
-$this->params['breadcrumbs'][] = ['label' => 'Seasons', 'url' => ['index']];
+$this->title = 'Создать сезон';
+$this->params['breadcrumbs'][] = ['label' => 'Сезоны', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="seasons-create">

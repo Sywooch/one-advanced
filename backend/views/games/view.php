@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\GamesPlayers;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Games', 'url' => ['index']];
+$this->title = $model->home->name.' : '.$model->guest->name;
+$this->params['breadcrumbs'][] = ['label' => 'Матчи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="games-view">
@@ -15,43 +16,68 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы хотите безвозвратно удалить?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
+    <div class="row">
+        <div class="col-xs-4">
+            <?php echo DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+//            'id',
+//            [
+//                'attribute' => 'home.name',
+//                'label' => 'Команда дома',
+//            ],
+//            [
+//                'attribute' => 'guest.name',
+//                'label' => 'Команда в гостях',
+//            ],
+                    'score',
+                    [
+                        'attribute' => 'season.name',
+                        'label' => 'Сезон',
+                    ],
+                    'tour',
+                    'city',
+                    'stadium',
+                    'referee',
+                    'referee2',
+                    'referee3',
+                    'content:html',
+                    'date:datetime',
+                    'status',
+                ],
+            ]);
+            ?>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+            <?php
+            echo Html::tag('h4', 'Состав команды '.$model->home->name);
+            foreach ($gameData['home'] as $item) {
+                echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
+            }
+            ?>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <?php
+                echo Html::tag('h4', 'Состав команды '.$model->guest->name);
+                foreach ($gameData['guest'] as $item) {
+                    echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            [
-                'attribute' => 'home.name',
-                'label' => 'Команда дома',
-            ],
-            [
-                'attribute' => 'guest.name',
-                'label' => 'Команда в гостях',
-            ],
-            [
-                'attribute' => 'season.name',
-                'label' => 'Сезон',
-            ],
-            'tour',
-            'score',
-            'city',
-            'stadium',
-            'referee',
-            'referee2',
-            'referee3',
-            'content:html',
-            'date:datetime',
-            'status',
-        ],
-    ]) ?>
 
 </div>

@@ -3,6 +3,7 @@
 use frontend\widgets\NewsWidget;
 use yii\widgets\ListView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 
@@ -17,14 +18,23 @@ $this->title = 'Сайт Футбольного Клуба';
             </div>
         </div>
     </div>
-    <div class="row news-index">
+<!--    <div class="row news-index">-->
+    <div class="news-home">
         <?php
         echo ListView::widget([
             'dataProvider' => $dataProvider,
             'itemView' => '_list',
             'layout' => "{items}",
+            'itemOptions' => [
+                'class' => 'news'
+            ]
         ]);
         ?>
+        <div style="overflow: hidden">
+            <div class="pull-right">
+                <a href="<?php echo Url::toRoute(['/news']) ?>">Читать все материалы</a>
+            </div>
+        </div>
     </div>
 
 

@@ -11,6 +11,7 @@ use common\models\Games;
 use common\models\GamesSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -75,8 +76,17 @@ class GamesController extends Controller
 //        $dataProvider = new ActiveDataProvider([
 //            'query' => $query,
 //        ]);
+        $model = $this->findModel($id);
+        $gameData['home'] = GamesPlayers::find()
+            ->where(['game_id' => $model->id, 'team_id' => $model->home_id])
+            ->all();
+        $gameData['guest'] = GamesPlayers::find()
+            ->where(['game_id' => $model->id, 'team_id' => $model->guest_id])
+            ->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'gameData' => $gameData,
         ]);
     }
 
@@ -107,25 +117,33 @@ class GamesController extends Controller
     {
         $model = $this->findModel($id);
 
-        $dataProvider['playersHome'] = new ActiveDataProvider([
-            'query' => Players::find()
-                ->where(['teams_id' => $model->home_id]),
-        ]);
-
-        $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
-            'query' => GamesPlayers::find()
-                ->where(['game_id' => $model->id, 'team_id' => $model->home_id]),
-        ]);
-
-        $searchModel['gamesPlayers'] = new GamesPlayersSearch();
-        $dataProvider['gamesPlayers'] = $searchModel['gamesPlayers']->search(Yii::$app->request->queryParams);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+
+            $dataProvider['playersHome'] = new ActiveDataProvider([
+                'query' => Players::find()
+                    ->where(['teams_id' => $model->home_id]),
+            ]);
+
+            $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
+                'query' => GamesPlayers::find()
+                    ->where(['game_id' => $model->id, 'team_id' => $model->home_id]),
+            ]);
+
+            $dataProvider['playersGuest'] = new ActiveDataProvider([
+                'query' => Players::find()
+                    ->where(['teams_id' => $model->guest_id]),
+            ]);
+
+            $dataProvider['gamePlayersGuest'] = new ActiveDataProvider([
+                'query' => GamesPlayers::find()
+                    ->where(['game_id' => $model->id, 'team_id' => $model->guest_id]),
+            ]);
+
             return $this->render('update', [
                 'model' => $model,
-                'searchModel' => $searchModel,
+//                'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider
             ]);
         }
@@ -144,25 +162,26 @@ class GamesController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionAddPlayers()
+    public function actionAdd()
     {
-        $data = Yii::$app->request->post();
-        foreach ($data['players'] as $player) {
-            $model = new GamesPlayers();
-            $model->game_id = $data['game_id'];
-            $model->team_id = $data['team_id'];
-            $model->player_id = $player;
-            $model->save();
-//            if ($model->save()) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-
-//            $modelPlayer = $this->findModelPlayer($player);
-//            var_dump($modelPlayer);
+        $data = Yii::$app->request->post('data');
+        $players =ArrayHelper::getColumn(
+            GamesPlayers::find()
+                ->select('player_id')
+                ->where(['game_id' => $data['game'], 'team_id' => $data['team']])
+                ->asArray()
+                ->all(),
+            'player_id'
+        );
+        foreach ($data['array'] as $player) {
+            if (!in_array($player, $players)) {
+                $model = new GamesPlayers();
+                $model->game_id = $data['game'];
+                $model->team_id = $data['team'];
+                $model->player_id = $player;
+                $model->save();
+            }
         }
-//        return true;
     }
 
     /**

@@ -143,8 +143,8 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
             'actions'=>[
                 'type'=>Form::INPUT_RAW,
                 'value'=>'<div style="margin-top: 20px">' .
-                    Html::resetButton('Reset', ['class'=>'btn btn-default']) . ' ' .
-                    Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                    Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
+                    Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
                     '</div>'
             ],
         ]

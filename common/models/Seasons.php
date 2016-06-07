@@ -13,6 +13,9 @@ use Yii;
  * @property string $division
  * @property string $slug
  * @property string $status
+ *
+ * @property Games[] $games
+ * @property SeasonDetails[] $seasonDetails
  */
 class Seasons extends \yii\db\ActiveRecord
 {
@@ -44,11 +47,27 @@ class Seasons extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'full_name' => 'Full Name',
-            'division' => 'Division',
-            'slug' => 'Slug',
-            'status' => 'Status',
+            'name' => 'Имя',
+            'full_name' => 'Полное имя',
+            'division' => 'Дивизион',
+            'slug' => 'Url',
+            'status' => 'Статус',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGames()
+    {
+        return $this->hasMany(Games::className(), ['season_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSeasonDetails()
+    {
+        return $this->hasMany(SeasonDetails::className(), ['season_id' => 'id']);
     }
 }

@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Teams;
+use common\models\SeasonDetails;
 
 /**
- * TeamsSearchSearch represents the model behind the search form about `common\models\Teams`.
+ * SeasonDetailsSearch represents the model behind the search form about `common\models\SeasonDetails`.
  */
-class TeamsSearchSearch extends Teams
+class SeasonDetailsSearch extends SeasonDetails
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class TeamsSearchSearch extends Teams
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'slug', 'year', 'web_site', 'description'], 'safe'],
+            [['id', 'season_id', 'team_id', 'games', 'wins', 'draws', 'lesions', 'spectacles', 'goals_against', 'goals_scored'], 'integer'],
         ];
     }
 
@@ -41,7 +40,9 @@ class TeamsSearchSearch extends Teams
      */
     public function search($params)
     {
-        $query = Teams::find();
+        $query = SeasonDetails::find();
+
+        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,15 +56,19 @@ class TeamsSearchSearch extends Teams
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'season_id' => $this->season_id,
+            'team_id' => $this->team_id,
+            'games' => $this->games,
+            'wins' => $this->wins,
+            'draws' => $this->draws,
+            'lesions' => $this->lesions,
+            'spectacles' => $this->spectacles,
+            'goals_against' => $this->goals_against,
+            'goals_scored' => $this->goals_scored,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'year', $this->year])
-            ->andFilterWhere(['like', 'web_site', $this->web_site])
-            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

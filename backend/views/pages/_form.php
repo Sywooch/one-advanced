@@ -48,9 +48,12 @@ use kartik\builder\Form;
         'columns'=>2,
         'attributes'=>[
             'status'=>[
-                'type'=>Form::INPUT_RADIO_LIST,
+                'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
                 'items'=>[ 'on' => 'On', 'off' => 'Off'],
-                'options'=>['inline'=>true]
+                'options'=>
+                    ['inline'=>true,
+//                    'class'=>'show'
+                ]
             ],
             'actions'=>[
                 'type'=>Form::INPUT_RAW,
