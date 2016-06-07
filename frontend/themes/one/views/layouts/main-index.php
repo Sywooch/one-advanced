@@ -64,7 +64,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
 //        'brandLabel' => 'Frontend',
-        'brandLabel' => Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name]),
+        'brandLabel' => Html::img('@web/themes/one/src/logo.svg', ['alt'=>Yii::$app->name]),
         'brandUrl' => Yii::$app->homeUrl,
 //        'brandOptions' => ['class' => 'col-xs-4 brand'],
         'options' => [

@@ -15,7 +15,7 @@ $this->title = 'Сайт Футбольного Клуба';
 
         </div>
         <div class="panel-body">
-            <div class="row news-index">
+            <div class="news-index">
                 <?php
 //                yii\widgets\Pjax::begin(['options' => ['id'=>123, 'timeout'=>3000]]);
 //                \yii\widgets\Pjax::begin();

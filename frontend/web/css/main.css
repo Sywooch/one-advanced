@@ -488,16 +488,20 @@ body {
         }
 
             .news-date {
-                font-weight: bold;
-                color: #0b4c9d;
-                border-right: 1px solid #4879b6;
-                padding-right: 7px;
+                /*font-weight: bold;*/
+                color: #c3c3c3;
+                /*border-right: 1px solid #4879b6;*/
+                /*padding-right: 7px;*/
                 margin-right: 7px;
             }
 
+            .news-date-category {
+                font-size: 13px;
+            }
+
             .news-category {
-                color: #c3c3c3;
-                font-style: italic;
+                color: #0b4c9d;
+                /*font-style: italic;*/
                 /*font-size: 10px;*/
             }
 
@@ -511,8 +515,9 @@ body {
 
             .news-block h4 {
                 text-transform: uppercase;
-                font-size: 14px;
-                margin-top: 20px;
+                /*font-size: 14px;*/
+                font-weight: bold;
+                /*margin-top: 20px;*/
             }
 
                 .news-index a:hover h4 {
@@ -1011,7 +1016,7 @@ body {
     }
 
     .news-index .news-block {
-        height: 350px;
+        /*height: 350px;*/
     }
 
     .name-menu img.sponsor-header {
@@ -1062,9 +1067,9 @@ body {
         font-size: 22px;
     }
 
-    .news-list-block img {
-        height: 100px;
-    }
+    /*.news-list-block img {*/
+        /*height: 100px;*/
+    /*}*/
 
     .news-list-block h3 {
         margin-top: 0;
@@ -1089,4 +1094,16 @@ body {
 
     .news:focus {
         text-decoration: none;
+    }
+
+    .news-home-link, .news-list-block-link {
+        color: inherit;
+    }
+
+        .news-home-link:hover {
+            text-decoration: none;
+        }
+
+    a.news-category {
+        color: #01316c;
     }

@@ -18,7 +18,7 @@ $img = $model->getImage();
 //    echo Html::endTag('div');
 //echo Html::endTag('a');
 ?>
-    <a href="<?php echo Url::toRoute(['view','id'=>$model->id]) ?>" class="news-list-block">
+    <div class="news-list-block">
 <!--        <div class="well">-->
             <div class="row">
                 <div class="col-xs-2">
@@ -32,12 +32,14 @@ $img = $model->getImage();
                     <img src="<?php echo $img->getUrl('x150') ?>" alt="<?php echo $model->title; ?>" class="img-responsive">
                 </div>
                 <div class="col-xs-7">
-                    <h3><?php echo $model -> title ?></h3>
+                    <a href="<?php echo Url::toRoute(['view','id'=>$model->id]) ?>" class="news-list-block-link">
+                        <h3><?php echo $model -> title ?></h3>
+                    </a>
                     <div class="news-list-descr"><?php echo $model -> snippet ?></div>
                 </div>
             </div>
 <!--        </div>-->
-    </a>
+    </div>
 <?php
 //echo Html::beginTag('a',['class'=>'', 'href'=>Url::toRoute(['view','id'=>$model->id])]);
 //    echo Html::beginTag('div',['class'=>'well']);
