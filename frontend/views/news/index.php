@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'layout' => "{summary}\n{items}\n<div class=\"text-center\">{pager}</div>",
         'summary' => '<div class="summary">Показаны записи <b>{begin}-{end}</b> из <b>{totalCount}</b>.</div>',
 //        'summaryOptions' => ['tag' => 'div','class' => 'my-summary summary'],
-//        'itemOptions' => ['tag' => 'div','class' => 'news-item'],
+        'itemOptions' => ['class' => 'news-item'],
 
         'pager' => [
             'firstPageLabel' => '<<',

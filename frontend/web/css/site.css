@@ -106,9 +106,9 @@ a.desc:after {
         }
     }
 
-    .news-index a:hover .well {
-        border-color: #23527c;
-    }
+    /*.news-index a:hover .well {*/
+        /*border-color: #23527c;*/
+    /*}*/
     .news {
         color: inherit;
     }
@@ -116,8 +116,32 @@ a.desc:after {
         text-decoration: none;
     }
     .news-block {
-        height: 300px;
-        overflow: hidden;
+        /*height: 300px;*/
+        /*overflow: hidden;*/
+        border-bottom: solid 1px #bebebe;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .news-block-content h4 {
+        margin-top: 0;
+    }
+
+    .news-block > div {
+        position: relative;
+    }
+
+    .news-block-content {
+        position: static;
+    }
+
+    .news-date-category {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .news-date {
+        color: #bdbebe;
     }
 
     .gallery-view-block {
@@ -148,3 +172,47 @@ a.desc:after {
         /*float: left;*/
         /*padding: 0 10px 10px;*/
     /*}*/
+
+    .news-list-block {
+        display: block;
+        padding: 30px 20px;
+        border-top: 2px solid #0C3D7F;
+        color: #555555;
+        transition: 0.3s;
+    }
+
+    .news-index .list-view .news-item:nth-last-child(2) .news-list-block{
+        border-bottom: 2px solid #0C3D7F;
+    }
+
+        .news-list-block .day {
+            font-size: 40px;
+            line-height: 40px;
+            color: #8c8c8c;
+        }
+        .news-list-block .month {
+            /* background: #F1F1F1; */
+            padding: 0 10px;
+            background: #c8c8c8;
+            color: #fff;
+            display: inline-block;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        .news-list-block .year {
+            color: #8c8c8c;
+            font-size: 22px;
+        }
+        .news-list-block img {
+            height: 100px;
+        }
+
+        .news-list-block h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .news-list-block-link:hover {
+            text-decoration: none;
+        }

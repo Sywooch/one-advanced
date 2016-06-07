@@ -65,18 +65,17 @@ AppAsset::register($this);
                 <?php echo MenuWidget::widget(['position' => 'headerBottom']); ?>
             </div>
         </div>
-<!--        <p></p>-->
+        <p></p>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-<!--        <div class="row">-->
-<!--            <div class="col-sm-3"></div>-->
-<!--            <div class="col-sm-9">-->
-
+        <div class="row">
+            <div class="col-sm-9">
                 <?= $content ?>
-<!--            </div>-->
-<!--        </div>-->
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
     </div>
 </div>
 
