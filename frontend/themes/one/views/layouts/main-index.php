@@ -13,6 +13,7 @@ use yii\bootstrap\Carousel;
 use common\models\Players;
 use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
+use Madcoda\Youtube;
 use kartik\icons\Icon;
 Icon::map($this, Icon::FA);
 
@@ -317,6 +318,55 @@ AppAsset::register($this);
                         <div class="col-xs-6"><?php echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?></div>
                     </div>
                 </div>
+                <div class="video-tv">
+                    <h3>Балтика-ТВ <a href="http://www.youtube.com/user/fcbaltika" class="btn btn-dark pull-right" target="_blank">Все видео</a></h3>
+<!--                    <div class="well">-->
+                        <div class="row">
+                            <?php
+                            $key='AIzaSyAvDmtfH6P73IJzaV4bN0JyoJl--3Z4tc8';
+                            $youtube = new Youtube(array('key' => $key));
+                            $channel = $youtube->getChannelByName('fcbaltika');
+                            $playlist = $channel->contentDetails->relatedPlaylists->uploads;
+                            $playlistItems = $youtube->getPlaylistItemsByPlaylistId($playlist);
+                            $i = 0;
+                            foreach ($playlistItems as $item) {
+                                //        var_dump($item);
+                                $i++;
+                                if ($i <= 3) {
+                                    if ($i==1){
+                                        ?>
+                                        <div class="col-xs-8">
+                                            <div class="video-left-block">
+                                                <iframe type='text/html' src='http://www.youtube.com/embed/<?php echo $item->snippet->resourceId->videoId ?>?showinfo=0' width='100%' height='400' frameborder='0' allowfullscreen></iframe>
+                                                <div class="video-name"><?php echo $item->snippet->title ?></div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } elseif ($i==2) {
+                                        ?>
+                                        <div class="col-xs-4">
+                                        <div class="video-right-block">
+                                        <div class="video-right-block-top">
+                                            <iframe type='text/html' src='http://www.youtube.com/embed/<?php echo $item->snippet->resourceId->videoId ?>?showinfo=0' width='100%' height='170' frameborder='0' allowfullscreen></iframe>
+                                            <div class="video-name"><?php echo $item->snippet->title ?></div>
+                                        </div>
+                                        <?php
+                                    } elseif ($i==3) {
+                                        ?>
+                                        <div class="video-right-block-bottom">
+                                            <iframe type='text/html' src='http://www.youtube.com/embed/<?php echo $item->snippet->resourceId->videoId ?>?showinfo=0' width='100%' height='170' frameborder='0' allowfullscreen></iframe>
+                                            <div class="video-name"><?php echo $item->snippet->title ?></div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+<!--                    </div>-->
+                </div>
                 <div class="vote-galery">
                     <div class="row">
                         <div class="col-xs-6">
@@ -345,7 +395,7 @@ AppAsset::register($this);
                                         echo Html::endTag('div');
                                     }
                                     ?>
-                                    <button class="btn">Голосовать</button>
+                                    <button class="btn btn-dark">Голосовать</button>
                                 </div>
                             </div>
                         </div>

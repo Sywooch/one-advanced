@@ -511,6 +511,7 @@ body {
 
             .news-block .img-responsive {
                 width: 100%;
+                min-height: 110px;
             }
 
             .news-block h4 {
@@ -685,7 +686,7 @@ body {
     .vote-galery {
         margin-left: 25px;
         margin-right: 25px;
-        border-top: 1px solid #99adc7;
+        /*border-top: 1px solid #99adc7;*/
         color: #ffffff;
         padding-top: 10px;
     }
@@ -721,7 +722,7 @@ body {
                     display: inline-block;
                 }
 
-        .vote-block .btn {
+        .btn.btn-dark {
             background: #011b39;
             border-radius: 0;
             border: none;
@@ -732,6 +733,14 @@ body {
             line-height: 12px;
             margin-top: 15px;
         }
+        a.btn-dark {
+            color: #ffffff;
+        }
+
+            .btn.btn-dark:hover {
+                color: #011B39;
+                background: #ffffff;
+            }
 
     .footer {
         height: auto;
@@ -1106,4 +1115,34 @@ body {
 
     a.news-category {
         color: #01316c;
+    }
+
+    .video-tv {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 20px 40px;
+        color: #ffffff;
+        background: #0A2952;
+    }
+
+        .video-tv h3 {
+            margin-top: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+    .video-tv h3 .btn {
+        /*font-size: 12px;*/
+        /*margin-bottom: 0;*/
+        margin-top: 0;
+    }
+
+    .video-left-block {
+        padding-right: 10px;
+    }
+
+    .video-right-block-top {
+        min-height: 230px;
     }
