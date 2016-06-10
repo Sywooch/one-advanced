@@ -216,3 +216,7 @@ a.desc:after {
         .news-list-block-link:hover {
             text-decoration: none;
         }
+
+    .video-right-block-top {
+        min-height: 230px;
+    }
