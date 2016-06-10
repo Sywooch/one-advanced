@@ -25,7 +25,14 @@ $this->title = 'Сайт Футбольного Клуба';
         <?php
         echo ListView::widget([
             'dataProvider' => $dataProvider,
-            'itemView' => '_list',
+//            'itemView' => '_list',
+            'itemView' => function ($model, $key, $index, $widget) {
+//                var_dump($widget);
+                return $this->render('_list',['model' => $model, 'index' => $index]);
+
+                // or just do some echo
+                // return $model->title . ' posted by ' . $model->author;
+            },
             'layout' => "{items}",
             'itemOptions' => [
                 'class' => 'news'

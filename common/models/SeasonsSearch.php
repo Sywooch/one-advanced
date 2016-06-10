@@ -41,7 +41,7 @@ class SeasonsSearch extends Seasons
      */
     public function search($params)
     {
-        $query = Seasons::find();
+        $query = Seasons::find()->orderBy('id DESC');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
