@@ -5,7 +5,8 @@ use yii\helpers\Url;
 ?>
 
 <?php
-//Yii::$app->formatter->locale = 'ru-RU';
+Yii::$app->formatter->locale = 'ru-RU';
+//Yii::$app->formatter->locale = 'en-EN';
 //echo Yii::$app->formatter->asDate('2014-01-01');
 $img = $model->getImage();
 //echo Html::beginTag('a',['class'=>'', 'href'=>Url::toRoute(['view','id'=>$model->id])]);

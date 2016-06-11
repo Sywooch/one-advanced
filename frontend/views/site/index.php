@@ -53,11 +53,25 @@ $this->title = 'Сайт Футбольного Клуба';
                 $key='AIzaSyAvDmtfH6P73IJzaV4bN0JyoJl--3Z4tc8';
                 $youtube = new Youtube(array('key' => $key));
                 $channel = $youtube->getChannelByName('fcbaltika');
+//                var_dump($channel);
                 $playlist = $channel->contentDetails->relatedPlaylists->uploads;
                 $playlistItems = $youtube->getPlaylistItemsByPlaylistId($playlist);
                 $i = 0;
+                $playList = '';
+                $video = '';
                 foreach ($playlistItems as $item) {
-            //        var_dump($item);
+//                    echo $item->thumbnails->medium;
+//                    echo Html::img($item->snippet->thumbnails->medium->url, [
+//                        'width' => $item->snippet->thumbnails->default->width,
+//                        'height' => $item->snippet->thumbnails->default->height
+//                    ]);
+//                    var_dump($item->snippet->thumbnails);
+                    if ($i==0) {
+                        $video = $item->snippet->resourceId->videoId;
+                    } else {
+                        $playList .= $item->snippet->resourceId->videoId.',';
+                    }
+
                     $i++;
                     if ($i <= 3) {
                         if ($i==1){
@@ -91,6 +105,41 @@ $this->title = 'Сайт Футбольного Клуба';
                     }
                 }
                     ?>
+<!--                <div class="col-xs-12">-->
+<!--                    <iframe type='text/html'-->
+<!--                        src='http://www.youtube.com/watch?v=--><?php //echo $video ?><!--&list=--><?php //echo $playlist ?><!--' width='100%' height='450' frameborder='0' allowfullscreen></iframe>-->
+
+<!--                    <iframe type='text/html'-->
+<!--                        src='http://www.youtube.com/embed/--><?php //echo $video ?><!--?showinfo=1&playlist=--><?php //echo $playList ?><!--&plindex=0&layout=gallery' width='100%' height='450' frameborder='0' allowfullscreen></iframe>-->
+<!--                    <object width="425" height="344">-->
+<!--                        <param name="movie" value="https://www.youtube.com/v/u1zgFlCw8Aw?fs=1"</param>-->
+<!--                        <param name="allowFullScreen" value="true"></param>-->
+<!--                        <embed src="https://www.youtube.com/v/u1zgFlCw8Aw?fs=1"-->
+<!--                               type="application/x-shockwave-flash"-->
+<!--                               allowfullscreen="true"-->
+<!--                               width="425" height="344">-->
+<!--                        </embed>-->
+<!--                    </object>-->
+
+                    <!--                    <object width="640" height="390">-->
+<!--                        <param name="movie"-->
+<!--                               value="https://www.youtube.com/v/M7lc1UVf-VE?version=3&autoplay=0&enablejsapi=3"></param>-->
+<!--                        <param name="allowScriptAccess" value="always"></param>-->
+<!--                        <embed src="https://www.youtube.com/v/M7lc1UVf-VE?version=3&autoplay=0&enablejsapi=3"-->
+<!--                               type="application/x-shockwave-flash"-->
+<!--                               allowscriptaccess="always"-->
+<!--                               width="640" height="390"></embed>-->
+<!--                    </object>-->
+<!--                <object width="640" height="390">-->
+<!--                        <param name="movie"-->
+<!--                               value="https://www.youtube.com/v/apiplayer?video_id=M7lc1UVf-VE&version=3&autoplay=0"></param>-->
+<!--                        <param name="allowScriptAccess" value="always"></param>-->
+<!--                        <embed src="https://www.youtube.com/v/apiplayer?video_id=M7lc1UVf-VE&version=3&autoplay=0"-->
+<!--                               type="application/x-shockwave-flash"-->
+<!--                               allowscriptaccess="always"-->
+<!--                               width="640" height="390"></embed>-->
+<!--                    </object>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

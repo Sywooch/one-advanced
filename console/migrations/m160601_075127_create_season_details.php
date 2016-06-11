@@ -36,8 +36,5 @@ class m160601_075127_create_season_details extends Migration
     public function down()
     {
         $this->dropTable('season_details');
-
-        $this->dropForeignKey('season_details_fk1','news');
-        $this->dropForeignKey('season_details_fk2','players');
     }
 }
