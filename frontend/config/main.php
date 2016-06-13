@@ -51,6 +51,19 @@ return [
 //        'assetManager' => [
 //            'appendTimestamp' => true,
 //        ],
+        'assetManager' => [
+            'bundles' => [
+                'edgardmessias\assets\nprogress\NProgressAsset' => [
+                    'configuration' => [
+                        'minimum' => 0.08,
+                        'showSpinner' => true,
+                    ],
+                    'page_loading' => false,
+                    'pjax_events' => true,
+                    'jquery_ajax_events' => false,
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

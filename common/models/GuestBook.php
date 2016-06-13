@@ -12,7 +12,7 @@ use Yii;
  * @property string $body
  * @property string $email
  * @property integer $user_id
- * @property integer $ip
+ * @property string $ip
  * @property string $status
  * @property integer $date
  *
@@ -36,10 +36,11 @@ class GuestBook extends \yii\db\ActiveRecord
         return [
             [['body'], 'required'],
             [['body', 'status'], 'string'],
-            [['user_id', 'ip', 'date'], 'integer'],
+            [['user_id', 'date'], 'integer'],
+            [['ip'], 'string', 'max' => 50],
             [['name'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 255],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            ['email', 'email'],
         ];
     }
 

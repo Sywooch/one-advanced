@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\GuestBook */
 
-$this->title = 'Create Guest Book';
+$this->title = 'Создать запись в гостевой книге';
 $this->params['breadcrumbs'][] = ['label' => 'Guest Books', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

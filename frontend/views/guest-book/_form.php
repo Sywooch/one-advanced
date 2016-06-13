@@ -23,12 +23,14 @@ $this->registerJs(
     <?php Pjax::begin(['id' => 'new_record']) ?>
     <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]); ?>
     <div class="row">
-        <div class="col-xs-6">
-            <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-xs-6">
-            <?php echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-        </div>
+        <?php if (Yii::$app->user->isGuest): ?>
+            <div class="col-xs-6">
+                <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-xs-6">
+                <?php echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+            </div>
+        <?php endif; ?>
         <div class="col-xs-12">
             <?php echo $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 

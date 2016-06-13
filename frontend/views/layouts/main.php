@@ -13,6 +13,8 @@ use kartik\nav\NavX;
 use frontend\widgets\MenuWidget;
 
 AppAsset::register($this);
+\edgardmessias\assets\nprogress\NProgressAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

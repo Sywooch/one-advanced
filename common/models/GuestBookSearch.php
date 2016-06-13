@@ -18,8 +18,8 @@ class GuestBookSearch extends GuestBook
     public function rules()
     {
         return [
-            [['id', 'user_id', 'ip', 'date'], 'integer'],
-            [['name', 'body', 'email', 'status'], 'safe'],
+            [['id', 'user_id', 'date'], 'integer'],
+            [['name', 'body', 'email', 'ip', 'status'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class GuestBookSearch extends GuestBook
      */
     public function search($params)
     {
-        $query = GuestBook::find();
+        $query = GuestBook::find()->orderBy('date DESC');
 
         // add conditions that should always apply here
 
@@ -61,13 +61,13 @@ class GuestBookSearch extends GuestBook
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'ip' => $this->ip,
             'date' => $this->date,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'ip', $this->ip])
             ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
