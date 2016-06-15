@@ -3,17 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\SeasonDetails;
-use common\models\SeasonDetailsSearch;
-use yii\helpers\Url;
+use common\models\CategoryGames;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SeasonDetailsController implements the CRUD actions for SeasonDetails model.
+ * CategoryGamesController implements the CRUD actions for CategoryGames model.
  */
-class SeasonDetailsController extends Controller
+class CategoryGamesController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,52 +30,53 @@ class SeasonDetailsController extends Controller
     }
 
     /**
-     * Lists all SeasonDetails models.
+     * Lists all CategoryGames models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SeasonDetailsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => CategoryGames::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single SeasonDetails model.
+     * Displays a single CategoryGames model.
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new SeasonDetails model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-//    public function actionCreate()
+//    public function actionView($id)
 //    {
-//        $model = new SeasonDetails();
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        } else {
-//            return $this->render('create', [
-//                'model' => $model,
-//            ]);
-//        }
+//        return $this->render('view', [
+//            'model' => $this->findModel($id),
+//        ]);
 //    }
 
     /**
-     * Updates an existing SeasonDetails model.
+     * Creates a new CategoryGames model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new CategoryGames();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing CategoryGames model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,16 +84,10 @@ class SeasonDetailsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-//        var_dump($model->load(Yii::$app->request->post()));
-//        var_dump(Yii::$app->request->post());
-//        var_dump($model->save());
-//        var_dump($model->errors);
-//        die;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
 //            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(Url::previous());
-
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -102,7 +96,7 @@ class SeasonDetailsController extends Controller
     }
 
     /**
-     * Deletes an existing SeasonDetails model.
+     * Deletes an existing CategoryGames model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,24 +108,16 @@ class SeasonDetailsController extends Controller
         return $this->redirect(['index']);
     }
 
-
-    public function actionDeletePjax($id)
-    {
-        $this->findModel($id)->delete();
-
-        return true;
-    }
-
     /**
-     * Finds the SeasonDetails model based on its primary key value.
+     * Finds the CategoryGames model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SeasonDetails the loaded model
+     * @return CategoryGames the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SeasonDetails::findOne($id)) !== null) {
+        if (($model = CategoryGames::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

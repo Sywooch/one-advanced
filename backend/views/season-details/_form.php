@@ -7,33 +7,32 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\SeasonDetails */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="season-details-form well">
 
-<div class="season-details-form">
+            <?php $form = ActiveForm::begin(); ?>
+            <?php // echo $form->field($model, 'season_id')->textInput() ?>
+            <?php // echo $form->field($model, 'team_id')->textInput() ?>
+            <div class="row">
+                <div class="col-xs-3"><?php echo $form->field($model, 'games')->textInput() ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'wins')->textInput() ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'draws')->textInput() ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'lesions')->textInput() ?></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4"><?php echo $form->field($model, 'goals_against')->textInput() ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'goals_scored')->textInput() ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'spectacles')->textInput() ?></div>
+            </div>
 
-    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'season_id')->textInput() ?>
+            <div class="form-group">
+                <?php echo Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            </div>
 
-    <?= $form->field($model, 'team_id')->textInput() ?>
+            <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'games')->textInput() ?>
-
-    <?= $form->field($model, 'wins')->textInput() ?>
-
-    <?= $form->field($model, 'draws')->textInput() ?>
-
-    <?= $form->field($model, 'lesions')->textInput() ?>
-
-    <?= $form->field($model, 'spectacles')->textInput() ?>
-
-    <?= $form->field($model, 'goals_against')->textInput() ?>
-
-    <?= $form->field($model, 'goals_scored')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

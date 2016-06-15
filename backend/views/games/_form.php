@@ -32,6 +32,14 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
 //            'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
 //            'url' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите url...']],
 //            'sort' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите sort...']],
+            'category_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\Select2',
+                'options'=>[
+                    'data'=>ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
+                    'options'=>['placeholder'=>'Выберите Категорию']
+                ],
+            ],
             'home_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',

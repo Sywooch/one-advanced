@@ -11,6 +11,7 @@ use kartik\grid\GridView;
 /* @var $searchModel common\models\TeamsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+Url::remember();
 
 $this->title = 'Обновление Сезона: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Сезоны', 'url' => ['index']];
@@ -100,13 +101,13 @@ $this->params['breadcrumbs'][] = 'Обновление';
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'urlCreator' => function ($action, $model) {
-                        $url = Url::to(['games-players/'.$action, 'id' => $model->id]);
+                        $url = Url::to(['season-details/'.$action, 'id' => $model->id]);
                         return $url;
                     },
-                    'template' => '{delete-pjax}',
+                    'template' => '{update}{delete-pjax}',
                     'buttons' => [
                         'delete-pjax' => function ($url, $model) {
-                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', false, [
+                            return ' '.Html::a('<span class="glyphicon glyphicon-trash"></span>', false, [
                                 'onclick' => 'deletePlayer('.$model->id.',\'/admin/season-details/delete-pjax\')',
                                 'style' => 'cursor:pointer',
                                 'title' =>'Удалить',

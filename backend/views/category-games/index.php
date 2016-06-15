@@ -2,36 +2,31 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\SeasonsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Сезоны';
+$this->title = 'Категории игр';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="seasons-index">
+<div class="category-games-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать Сезон', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать категорию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?= GridView::widget([
+<?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
 //            'id',
             'name',
-            'full_name',
-            'division',
             'slug',
-            // 'status',
+            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-</div>
+<?php Pjax::end(); ?></div>

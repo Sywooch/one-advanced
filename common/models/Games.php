@@ -24,7 +24,9 @@ use yii\db\ActiveRecord;
  * @property integer $date
  * @property string $status
  * @property integer $gallery_id
+ * @property integer $category_id
  *
+ * @property CategoryGames $category
  * @property Gallery $gallery
  * @property Seasons $season
  * @property Teams $home
@@ -63,11 +65,16 @@ class Games extends \yii\db\ActiveRecord
     {
         return [
             [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
-            [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id'], 'integer'],
+            [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
             [['content', 'status'], 'string'],
             [['score'], 'string', 'max' => 50],
             [['date'], 'safe'],
             [['city', 'stadium', 'referee', 'referee2', 'referee3'], 'string', 'max' => 255],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryGames::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
+            [['home_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['home_id' => 'id']],
+            [['guest_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['guest_id' => 'id']],
+            [['season_id'], 'exist', 'skipOnError' => true, 'targetClass' => Seasons::className(), 'targetAttribute' => ['season_id' => 'id']],
         ];
     }
 
@@ -91,7 +98,16 @@ class Games extends \yii\db\ActiveRecord
             'content' => 'Контент',
             'date' => 'Дата',
             'status' => 'Статус',
+            'category_id' => 'Категория матча',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(CategoryGames::className(), ['id' => 'category_id']);
     }
 
     public function getAllTeams()
@@ -133,6 +149,11 @@ class Games extends \yii\db\ActiveRecord
     public function getAllSeasons()
     {
         return Seasons::find()->all();
+    }
+
+    public function getAllCategories()
+    {
+        return CategoryGames::find()->all();
     }
 
     /**

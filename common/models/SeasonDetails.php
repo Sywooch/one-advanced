@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "season_details".
@@ -37,7 +38,7 @@ class SeasonDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['season_id', 'team_id'], 'integer'],
+            [['season_id', 'team_id','season_id', 'games','wins', 'draws','lesions', 'spectacles', 'goals_against', 'goals_scored'], 'integer'],
             [['season_id'], 'exist', 'skipOnError' => true, 'targetClass' => Seasons::className(), 'targetAttribute' => ['season_id' => 'id']],
             [['team_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['team_id' => 'id']],
         ];
@@ -70,11 +71,29 @@ class SeasonDetails extends \yii\db\ActiveRecord
         return $this->hasOne(Seasons::className(), ['id' => 'season_id']);
     }
 
+    public function getAllSeason()
+    {
+        return ArrayHelper::map(
+            Seasons::find()->select(['id','name'])->where(['status'=>'on'])->asArray()->all(),
+            'id',
+            'name'
+        );
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getTeam()
     {
         return $this->hasOne(Teams::className(), ['id' => 'team_id']);
+    }
+
+    public function getAllTeam()
+    {
+        return ArrayHelper::map(
+            Teams::find()->select(['id','name'])->asArray()->all(),
+            'id',
+            'name'
+        );
     }
 }
