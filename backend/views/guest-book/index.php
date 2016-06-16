@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\GuestBookSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -12,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guest-book-index">
 
+    <div class="pull-right"><a href="<?php echo Url::toRoute('/black-list') ?>" class="btn btn-danger">Чёрный список <span class="badge"><?php echo $blackList ?></span></a></div>
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

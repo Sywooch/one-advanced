@@ -2,18 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\BlackList;
 use Yii;
-use common\models\GuestBook;
-use common\models\GuestBookSearch;
+use common\models\BlackList;
+use common\models\BlackListSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * GuestBookController implements the CRUD actions for GuestBook model.
+ * BlackListController implements the CRUD actions for BlackList model.
  */
-class GuestBookController extends Controller
+class BlackListController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,45 +30,31 @@ class GuestBookController extends Controller
     }
 
     /**
-     * Lists all GuestBook models.
+     * Lists all BlackList models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GuestBookSearch();
+        $searchModel = new BlackListSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $blackList = BlackList::find()->count();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'blackList' => $blackList,
         ]);
     }
 
     /**
-     * Displays a single GuestBook model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new GuestBook model.
+     * Creates a new BlackList model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new GuestBook();
+        $model = new BlackList();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -78,7 +63,7 @@ class GuestBookController extends Controller
     }
 
     /**
-     * Updates an existing GuestBook model.
+     * Updates an existing BlackList model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,7 +73,7 @@ class GuestBookController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -97,7 +82,7 @@ class GuestBookController extends Controller
     }
 
     /**
-     * Deletes an existing GuestBook model.
+     * Deletes an existing BlackList model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +95,15 @@ class GuestBookController extends Controller
     }
 
     /**
-     * Finds the GuestBook model based on its primary key value.
+     * Finds the BlackList model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return GuestBook the loaded model
+     * @return BlackList the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = GuestBook::findOne($id)) !== null) {
+        if (($model = BlackList::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

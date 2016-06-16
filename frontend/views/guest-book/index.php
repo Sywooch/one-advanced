@@ -10,7 +10,6 @@ $this->title = 'Гостевая книга';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guest-book-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form',[
