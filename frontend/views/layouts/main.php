@@ -68,15 +68,30 @@ AppAsset::register($this);
             </div>
         </div>
         <p></p>
+        <?php
+        if (isset($this->params['image_page'])) {
+            ?>
+            <img src="<?php echo $this->params['image_page']; ?>" alt="" class="img-responsive">
+            <p></p>
+            <?php
+        }
+        ?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+
         <div class="row">
             <div class="col-sm-9">
                 <?= $content ?>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <?php
+                if (isset($this->params['widget_bar'])) {
+                    echo $this->params['widget_bar'];
+                }
+                ?>
+            </div>
         </div>
     </div>
 </div>

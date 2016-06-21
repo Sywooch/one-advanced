@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/remove_image.js');
                             echo Html::a('Просмотр', $img->getUrl(), ['class' => 'btn  btn-primary','target' => '_blank']);
                         echo Html::endTag('div');
                         echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                            echo Html::a('Удалить', ['remove-image', 'id'=> $model->id], ['class' => 'btn  btn-danger']);
+                            echo Html::a('Удалить', ['remove-image', 'id'=> $img->id], ['class' => 'btn  btn-danger']);
                         echo Html::endTag('div');
                     echo Html::endTag('div');
                 }

@@ -7,6 +7,7 @@ use common\models\UploadForm;
 use yii\helpers\ArrayHelper;
 use kartik\builder\Form;
 use kartik\form\ActiveForm;
+use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -43,14 +44,29 @@ if($model->errors) {
         ]
     ]);
     $image=new UploadForm();
-    echo Form::widget([
-        'model'=>$image,
-        'form'=>$form,
-        'columns'=>1,
-        'attributes'=>[
-            'file' => ['type'=>Form::INPUT_FILE,'label'=>'Загрузить картинку'],
+    echo FileInput::widget([
+        'model' => $image,
+        'attribute' => 'file',
+        'options' => ['multiple' => false],
+        'pluginOptions' => [
+            'showPreview' => false,
+            'showCaption' => true,
+            'showRemove' => true,
+            'showUpload' => false
         ]
     ]);
+//    echo Form::widget([
+//        'model'=>$image,
+//        'form'=>$form,
+//        'columns'=>1,
+//        'attributes'=>[
+//            'file' => [
+//                'type'=>Form::INPUT_FILE,
+//                'widgetClass'=>'\kartik\widgets\FileInput',
+//                'label'=>'Загрузить картинку'
+//            ],
+//        ]
+//    ]);
 
     if ($model->isNewRecord) {
         $model->status_id = 'on';
