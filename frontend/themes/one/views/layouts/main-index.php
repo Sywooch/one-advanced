@@ -93,7 +93,7 @@ AppAsset::register($this);
             $carousel_items = [
                 [
                     'content' => Html::img('@web/themes/one/src/slider/slide1.png'),
-                    'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ ЛЮБИТЕЛИ ФУТБОЛА!</h2>
+                    'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ БОЛЕЛЬЩИКИ!</h2>
                               <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
                               <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
                               <p>В настоящий момент некоторые разделы находятся на этапе создания/редактирования/наполнения.</p>
@@ -102,7 +102,7 @@ AppAsset::register($this);
                               Все пожелания и предложения по нашему новому сайту вы можете оставить в разделе
                               <a href="'.Url::toRoute(['/guest-book']).'" style="color: #07366F;"><b>гостевая</b></a>.
                               </p>
-                              <p>Искренне надеемся, что наш новый сайт вам понравиться!</p>',
+                              <p>Искренне надеемся, что наш новый сайт вам понравится!</p>',
                 ],
                 [
                     'content' => Html::img('@web/themes/one/src/slider/slide.png'),
@@ -140,7 +140,7 @@ AppAsset::register($this);
                             echo Html::beginTag('div',['class'=>'promo-game-block']);
                                 echo Html::beginTag('div',['class'=>'promo-game-header']);
                                     echo Html::tag('div',
-                                        Html::tag('div','28.06.2015, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
+                                        Html::tag('div','21.05.2016, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
                                         Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop']),
                                         ['class'=>'row']
                                     );
@@ -150,10 +150,10 @@ AppAsset::register($this);
                                         echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
-                                        echo Html::tag('div','1:0');
+                                        echo Html::tag('div','0:3');
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Сахалин').Html::img('@web/themes/one/src/slider/sahalin-logo.jpg', ['class' => 'hidden-sm']);
+                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png', ['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
                                     echo Html::endTag('div');
                                 echo Html::endTag('div');
                             echo Html::endTag('div');
@@ -162,7 +162,7 @@ AppAsset::register($this);
                             echo Html::beginTag('div',['class'=>'promo-game-block']);
                                 echo Html::beginTag('div',['class'=>'promo-game-header']);
                                     echo Html::tag('div',
-                                        Html::tag('div','01.07.2015, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
+                                        Html::tag('div','11.07.2016, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
                                         Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop']),
                                         ['class'=>'row']
                                     );
@@ -175,7 +175,7 @@ AppAsset::register($this);
                                         echo Html::tag('div','-:-');
                                     echo Html::endTag('div');
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Ислочь').Html::img('@web/themes/one/src/slider/isloch-logo.png',['style'=>'height: 41px;width: auto;', 'class' => 'hidden-sm']);
+                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png',['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
                                     echo Html::endTag('div');
                                 echo Html::endTag('div');
                             echo Html::endTag('div');
