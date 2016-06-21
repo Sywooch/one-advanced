@@ -25,7 +25,7 @@ $img = $model->getImage();
 //        echo Html::endTag('div');
 //    echo Html::endTag('div');
 //echo Html::endTag('a');
-if ($index == 0 || $index == 1) {
+if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
     $classBlock = 'news-first-blocks';
     $imgUrl = $img->getUrl('x320');
     $classImgBlock = 'col-xs-12';
@@ -41,7 +41,9 @@ if ($index == 0 || $index == 1) {
     <div class="news-block news-block-<?php echo $index.' '.$classBlock ?> ">
         <div class="row">
             <div class="<?php echo $classImgBlock ?> news-block-img">
-                <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
+                <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>">
+                    <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
+                </a>
             </div>
             <div class="<?php echo $classContentBlock ?> news-block-content">
                 <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>" class="news-home-link">
