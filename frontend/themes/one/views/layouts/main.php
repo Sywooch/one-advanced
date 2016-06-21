@@ -121,7 +121,8 @@ AppAsset::register($this);
             </div>
             <div class="col-xs-3 main-block">
                 <?php
-                if (isset($this->params['widget_bar'])) {
+//                var_dump($this->params['widget_bar']);
+                if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {
                     echo '<div>'.$this->params['widget_bar'].'</div>';
                 } else {
                 ?>
