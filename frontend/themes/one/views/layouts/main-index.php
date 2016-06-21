@@ -14,8 +14,9 @@ use common\models\Players;
 use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
 use Madcoda\Youtube;
-use \yii\helpers\Url;
+use yii\helpers\Url;
 use kartik\icons\Icon;
+use frontend\widgets\GalleryWidget;
 Icon::map($this, Icon::FA);
 
 AppAsset::register($this);
@@ -140,8 +141,8 @@ AppAsset::register($this);
                             echo Html::beginTag('div',['class'=>'promo-game-block']);
                                 echo Html::beginTag('div',['class'=>'promo-game-header']);
                                     echo Html::tag('div',
-                                        Html::tag('div','21.05.2016, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
-                                        Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop']),
+                                        Html::tag('div','21.05.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
+                                        Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
                                         ['class'=>'row']
                                     );
                                 echo Html::endTag('div');
@@ -162,8 +163,8 @@ AppAsset::register($this);
                             echo Html::beginTag('div',['class'=>'promo-game-block']);
                                 echo Html::beginTag('div',['class'=>'promo-game-header']);
                                     echo Html::tag('div',
-                                        Html::tag('div','11.07.2016, Контрольный матч',['class'=>'promo-game-date col-xs-8 vtop']).
-                                        Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop']),
+                                        Html::tag('div','11.07.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
+                                        Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
                                         ['class'=>'row']
                                     );
                                 echo Html::endTag('div');
@@ -412,8 +413,13 @@ AppAsset::register($this);
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <h4>Галерея</h4>
-                            <?php echo Html::img('@web/themes/one/src/needless/gallery.png', ['class' => 'img-responsive']) ?>
+                            <div class="gallery-home">
+                                <?php
+                                echo GalleryWidget::widget(['template' => 'gallery-index']);
+                                ?>
+                            </div>
+<!--                            <h4>Галерея</h4>-->
+<!--                            --><?php //echo Html::img('@web/themes/one/src/needless/gallery.png', ['class' => 'img-responsive']) ?>
 
                         </div>
                     </div>

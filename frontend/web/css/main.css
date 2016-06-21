@@ -1158,3 +1158,31 @@ body {
     .guest-book-index .form-control {
         border-radius: 0;
     }
+
+    .top-img {
+        position: relative;
+        margin: 0 -15px 15px;
+    }
+
+    .header-name {
+        position: absolute;
+        bottom: 0;
+        color: #ffffff;
+        left: 15px;
+        text-transform: uppercase;
+    }
+
+    .gallery-home h5 a {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .gallery-home > a {
+        color: #ffffff;
+    }
+
+    .gallery-view-block .gallery-view-box {
+        width: 25%;
+    }

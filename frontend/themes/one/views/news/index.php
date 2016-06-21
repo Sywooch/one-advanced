@@ -9,10 +9,11 @@ use yii\widgets\ListView;
 
 $this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->params['headerName'] = $this->title;
 ?>
 <div class="news-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 <!--    <div class="row">-->
 <!--        <div class="col-xs-12">-->

@@ -17,13 +17,13 @@ foreach ($model as $item) {
                     $i = 0;
                     foreach($images as $img){
                         $i++;
-                        if ($i == 4) {
+                        if ($i == 5) {
                             break;
                         }
                         echo Html::tag(
                             'div',
                             Html::a(
-                                Html::img($img->getUrl('100x100'),['alt' => $item->name, 'class' => 'gallery-home-img']),
+                                Html::img($img->getUrl('100x100'),['alt' => $item->name, 'class' => 'gallery-home-img img-responsive']),
                                 $img->getUrl(),
                                 ['target' => '_blank']
                             ),

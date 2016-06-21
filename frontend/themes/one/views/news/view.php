@@ -8,9 +8,10 @@ use yii\helpers\Html;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->params['headerName'] = $this->title;
 ?>
 <div class="news-view">
-    <h1 class=""><?= Html::encode($this->title) ?></h1>
     <?php
     echo Html::tag('div',Html::tag('span',Yii::$app->formatter->asDate($model -> date,'dd.MM.yy'),['class'=>'news-date']).Html::tag('span',$model->category->name,['class'=>'news-category']),['class'=>'date-category news-index-date']);
     $images = $model->getImages();
