@@ -1146,3 +1146,15 @@ body {
     .video-right-block-top {
         min-height: 230px;
     }
+
+    .news-first-blocks .news-block-img img {
+        height: 230px;
+    }
+
+    .radius-null {
+        border-radius: 0;
+    }
+
+    .guest-book-index .form-control {
+        border-radius: 0;
+    }

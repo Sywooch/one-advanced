@@ -17,6 +17,8 @@ use kartik\icons\Icon;
 Icon::map($this, Icon::FA);
 
 AppAsset::register($this);
+\edgardmessias\assets\nprogress\NProgressAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

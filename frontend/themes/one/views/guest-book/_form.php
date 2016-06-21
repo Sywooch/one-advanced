@@ -19,20 +19,26 @@ $this->registerJs(
 );
 ?>
 
-<div class="guest-book-form well">
+<div class="guest-book-form "><!--well-->
     <?php Pjax::begin(['id' => 'new_record']) ?>
     <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]); ?>
     <div class="row">
         <?php if (Yii::$app->user->isGuest): ?>
-            <div class="col-xs-6">
-                <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-            </div>
-            <div class="col-xs-6">
-                <?php echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <?php echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+                    </div>
+                </div>
             </div>
         <?php endif; ?>
-        <div class="col-xs-12">
-            <?php echo $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+        <div class="col-xs-8">
+            <?php echo $form->field($model, 'body')->label('Сообщение')->textarea(['rows' => 6]) ?>
 
         <!--    --><?php //echo $form->field($model, 'user_id')->textInput() ?>
 
@@ -42,7 +48,7 @@ $this->registerJs(
         </div>
     </div>
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ? 'Опубликовать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

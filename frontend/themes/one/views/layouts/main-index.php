@@ -14,6 +14,7 @@ use common\models\Players;
 use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
 use Madcoda\Youtube;
+use \yii\helpers\Url;
 use kartik\icons\Icon;
 Icon::map($this, Icon::FA);
 
@@ -91,18 +92,31 @@ AppAsset::register($this);
 //        if ($controller_action == 'site/index') {
             $carousel_items = [
                 [
+                    'content' => Html::img('@web/themes/one/src/slider/slide1.png'),
+                    'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ ЛЮБИТЕЛИ ФУТБОЛА!</h2>
+                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
+                              <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
+                              <p>В настоящий момент некоторые разделы находятся на этапе создания/редактирования/наполнения.</p>
+                              <p>
+                              Приносим свои извинения за доставленные неудобства.
+                              Все пожелания и предложения по нашему новому сайту вы можете оставить в разделе
+                              <a href="'.Url::toRoute(['/guest-book']).'" style="color: #07366F;"><b>гостевая</b></a>.
+                              </p>
+                              <p>Искренне надеемся, что наш новый сайт вам понравиться!</p>',
+                ],
+                [
                     'content' => Html::img('@web/themes/one/src/slider/slide.png'),
                     'caption' => '<h2 style="margin-top: 0">ЕСТЬ<br> ПЕРВАЯ<br> ПОБЕДА!</h2>
                               <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
                               <p><div style="font-size: 16px"><b>БАЛТИКА - САХАЛИН 1:0</b></div><div style="font-size: 12px"><i>28.06.2015 г.Минск</i></div></p>
                               <p style="">На учебно-тренировочном сборе в Минске, «Балтика» провела одну из двух запланированных встреч с «Сахалином». На эту игру тренерский штаб калининградской команды выпустил... </p>',
                 ],
-                [
-                    'content' => Html::img('@web/themes/one/src/slider/slide-2.jpg'),
-                    'caption' => '<h2 style="margin-top: 0">ПЕРВАЯ<br> ИГРА<br> ГОДА!</h2>
-                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
-                              <p><div style="font-size: 16px"><b>БАЛТИКА - СОКОЛ 0:0</b></div><div style="font-size: 12px"><i>13.03.2016 г.Калининград</i></div></p>',
-                ],
+//                [
+//                    'content' => Html::img('@web/themes/one/src/slider/slide-2.jpg'),
+//                    'caption' => '<h2 style="margin-top: 0">ПЕРВАЯ<br> ИГРА<br> ГОДА!</h2>
+//                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
+//                              <p><div style="font-size: 16px"><b>БАЛТИКА - СОКОЛ 0:0</b></div><div style="font-size: 12px"><i>13.03.2016 г.Калининград</i></div></p>',
+//                ],
                 //Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name])
             ];
             echo Html::beginTag('div',['class'=>'carousel-home']);
@@ -116,7 +130,7 @@ AppAsset::register($this);
                         'class' => 'carousel'
                     ],
                     'clientOptions' => [
-                        'interval' => '1000000000',
+                        'interval' => '10000',
                     ],
         //        'cl'
                 ]);

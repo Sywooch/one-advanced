@@ -15,14 +15,22 @@ $this->title = 'Сайт Футбольного Клуба';
 
         </div>
         <div class="panel-body">
-            <div class="news-index">
+<!--            <div class="news-index">-->
+            <div class="news-home">
+
                 <?php
 //                yii\widgets\Pjax::begin(['options' => ['id'=>123, 'timeout'=>3000]]);
 //                \yii\widgets\Pjax::begin();
                 echo ListView::widget([
                     'dataProvider' => $dataProvider,
-                    'itemView' => '_list',
+//                    'itemView' => '_list',
+                    'itemView' => function ($model, $key, $index, $widget) {
+                        return $this->render('_list',['model' => $model, 'index' => $index]);
+                    },
                     'layout' => "{items}",
+                    'itemOptions' => [
+                        'class' => 'news'
+                    ]
                 ]);
 //                \yii\widgets\Pjax::end();
 //                yii\widgets\Pjax::end();
