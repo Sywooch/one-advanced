@@ -12,6 +12,7 @@ use common\models\SeasonsSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -108,7 +109,7 @@ class SeasonsController extends Controller
             $searchModel['teams'] = new TeamsSearch();
             $dataProvider['teams'] = $searchModel['teams']->search(Yii::$app->request->queryParams);
 
-            $dataProvider['seasonTeams'] = new ActiveDataProvider(['query' => SeasonDetails::find()]);
+            $dataProvider['seasonTeams'] = new ActiveDataProvider(['query' => SeasonDetails::find()->where(['season_id' => $id])]);
 
             return $this->render('update', [
                 'model' => $model,
@@ -158,6 +159,43 @@ class SeasonsController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    public function actionTeams() {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $id = $parents[0];
+                $model = $this->findModel($id);
+                foreach ($model->seasonDetails as $seasonDetails) {
+                    $out[] = ['id'=>$seasonDetails->team->id, 'name' => $seasonDetails->team->name];
+                }
+                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                return;
+            }
+        }
+        echo Json::encode(['output'=>'', 'selected'=>'']);
+    }
+    // THE CONTROLLER
+//    public function actionSubcat() {
+//        $out = [];
+//        if (isset($_POST['depdrop_parents'])) {
+//            $parents = $_POST['depdrop_parents'];
+//            if ($parents != null) {
+//                $cat_id = $parents[0];
+//                $out = self::getSubCatList($cat_id);
+//                // the getSubCatList function will query the database based on the
+//                // cat_id and return an array like below:
+//                // [
+//                //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+//                //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+//                // ]
+//                echo Json::encode(['output'=>$out, 'selected'=>'']);
+//                return;
+//            }
+//        }
+//        echo Json::encode(['output'=>'', 'selected'=>'']);
+//    }
 
     /**
      * Finds the Seasons model based on its primary key value.

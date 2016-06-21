@@ -50,7 +50,7 @@ AppAsset::register($this);
             'label' => 'Турнирная Таблица',
             'items' => [
                 ['label' => 'Игры', 'url' => ['/games']],
-                ['label' => 'Детали сезонов', 'url' => ['/seasons-details']],
+                ['label' => 'Детали сезонов', 'url' => ['/season-details']],
                 ['label' => 'Сезоны', 'url' => ['/seasons']],
                 ['label' => 'Команды', 'url' => ['/teams']],
                 ['label' => 'Игроки', 'url' => ['/players']],

@@ -5,12 +5,15 @@ use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use yii\helpers\ArrayHelper;
+use kartik\widgets\DepDrop;
 
 $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
 /* @var $form yii\widgets\ActiveForm */
+//var_dump($model->getAllSeasons());
+//var_dump(ArrayHelper::map($model->getAllSeasons(), 'id', 'name'));
 ?>
 
 <div class="games-form well">
@@ -40,28 +43,80 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
                     'options'=>['placeholder'=>'Выберите Категорию']
                 ],
             ],
-            'home_id'=>[
+            'season_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
                 'options'=>[
-                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Команду']
+                    'data'=>ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
+                    'options'=>[
+                        'placeholder'=>'Выберите Сезон',
+                        'id'=>'season-id'
+                    ]
                 ],
             ],
+//            echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
+//                'options'=>['id'=>'subcat-id'],
+//                'pluginOptions'=>[
+//                    'depends'=>['cat-id'],
+//                    'placeholder'=>'Select...',
+//                    'url'=>Url::to(['/site/subcat'])
+//                ]
+//            ]);
+        ]
+    ]);
+    echo $form->field($model, 'home_id')->widget(DepDrop::classname(), [
+        'options'=>['id'=>'home-id'],
+        'pluginOptions'=>[
+            'depends'=>['season-id'],
+            'placeholder'=>'Выберите Команду',
+            'url'=>\yii\helpers\Url::to(['/seasons/teams'])
+
+        ]
+    ]);
+    echo $form->field($model, 'guest_id')->widget(DepDrop::classname(), [
+        'options'=>['id'=>'guest-id'],
+        'pluginOptions'=>[
+            'depends'=>['season-id'],
+            'placeholder'=>'Выберите Команду',
+            'url'=>\yii\helpers\Url::to(['/seasons/teams'])
+
+        ]
+    ]);
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 3,
+//        'autoGenerateColumns' => true,
+//
+        'attributes' => [
+//            'home_id'=>[
+//                'type'=>Form::INPUT_WIDGET,
+//                'widgetClass'=>'\kartik\widgets\DepDrop',
+//                'options'=>[
+//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
+//                    'options'=>[
+//                        'placeholder'=>'Выберите Команду',
+//                        'depends'=>['season-id'],
+//                        'url'=>\yii\helpers\Url::to(['/site/subcat'])
+//
+//                    ],
+//
+//                ],
+//            ],
+//            'home_id'=>[
+//                'type'=>Form::INPUT_WIDGET,
+//                'widgetClass'=>'\kartik\widgets\Select2',
+//                'options'=>[
+//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
+//                    'options'=>['placeholder'=>'Выберите Команду']
+//                ],
+//            ],
             'guest_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
                 'options'=>[
                     'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
                     'options'=>['placeholder'=>'Выберите Команду']
-                ],
-            ],
-            'season_id'=>[
-                'type'=>Form::INPUT_WIDGET,
-                'widgetClass'=>'\kartik\widgets\Select2',
-                'options'=>[
-                    'data'=>ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Сезон']
                 ],
             ],
             'tour' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Тур...']],
