@@ -50,8 +50,11 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
                     'data'=>ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
                     'options'=>[
                         'placeholder'=>'Выберите Сезон',
-                        'id'=>'season-id'
-                    ]
+                        'id'=>'season-id',
+                    ],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
                 ],
             ],
 //            echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
@@ -66,10 +69,11 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
     ]);
     echo $form->field($model, 'home_id')->widget(DepDrop::classname(), [
         'options'=>['id'=>'home-id'],
+        'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
         'pluginOptions'=>[
             'depends'=>['season-id'],
             'placeholder'=>'Выберите Команду',
-            'url'=>\yii\helpers\Url::to(['/seasons/teams'])
+            'url'=>\yii\helpers\Url::to(['/seasons/teams']),
 
         ]
     ]);
