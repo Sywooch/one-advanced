@@ -5,7 +5,8 @@ use yii\widgets\ListView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use Madcoda\Youtube;
-use Madcoda\Tests\YoutubeTest;
+use frontend\widgets\GalleryWidget;
+
 
 /* @var $this yii\web\View */
 
@@ -142,4 +143,9 @@ $this->title = 'Сайт Футбольного Клуба';
 <!--                </div>-->
             </div>
         </div>
+    </div>
+    <div class="gallery-home">
+        <?php
+        echo GalleryWidget::widget(['template' => 'gallery-index']);
+        ?>
     </div>

@@ -13,11 +13,20 @@ use Yii;
  * @property string $meta_keywords
  * @property string $meta_descr
  * @property string $content
+ * @property string $widget_bar
  * @property string $slug
  * @property string $status
  */
 class Pages extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -33,7 +42,7 @@ class Pages extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'content', 'slug', 'status'], 'required'],
-            [['content', 'status'], 'string'],
+            [['content', 'widget_bar', 'status'], 'string'],
             [['name', 'meta_title', 'meta_keywords', 'meta_descr'], 'string', 'max' => 255],
             [['slug'], 'string', 'max' => 125],
         ];
@@ -51,6 +60,7 @@ class Pages extends \yii\db\ActiveRecord
             'meta_keywords' => 'Мета Keywords',
             'meta_descr' => 'Мета Descr',
             'content' => 'Контент',
+            'widget_bar' => 'Виджет бар',
             'slug' => 'Slug',
             'status' => 'Статус',
         ];
