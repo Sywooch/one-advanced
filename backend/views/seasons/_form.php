@@ -27,7 +27,7 @@ use kartik\builder\Form;
             'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
             'full_name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Полное Имя...']],
             'slug' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите slug...']],
-            'division' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите meta division...']],
+            'division' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Дивизион...']],
             'status'=>[
                 'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
                 'items'=>[ 'on' => 'On', 'off' => 'Off'],

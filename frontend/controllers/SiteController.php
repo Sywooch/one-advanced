@@ -77,9 +77,9 @@ class SiteController extends Controller
         $this->layout = 'main-index';
 
         $dataProvider = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC')->limit(6),
+            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC')->limit(10),
             'pagination' => [
-                'pageSize' => 6,
+                'pageSize' => 10,
             ],
         ]);
 

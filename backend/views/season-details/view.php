@@ -2,12 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\SeasonDetails */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Season Details', 'url' => ['index']];
+Url::remember();
+
+$this->title = $model->team->name . ' (' . $model->season->name . ')';
+$this->params['breadcrumbs'][] = ['label' => 'Детали сезона', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="season-details-view">
@@ -15,11 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить запись?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,9 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'season_id',
-            'team_id',
+//            'id',
+            [
+                'attribute' => 'season.name',
+                'label' => 'Сезон',
+            ],
+            [
+                'attribute' => 'team.name',
+                'label' => 'Команда',
+            ],
             'games',
             'wins',
             'draws',

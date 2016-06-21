@@ -41,7 +41,7 @@ class TeamsSearch extends Teams
      */
     public function search($params)
     {
-        $query = Teams::find();
+        $query = Teams::find()->orderBy('id DESC');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

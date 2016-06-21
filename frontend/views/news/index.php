@@ -9,6 +9,8 @@ use yii\widgets\ListView;
 
 $this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
+//Yii::$app->formatter->locale = 'ru-RU';
+
 ?>
 <div class="news-index">
 

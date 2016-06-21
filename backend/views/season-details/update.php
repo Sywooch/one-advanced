@@ -4,11 +4,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\SeasonDetails */
-
-$this->title = 'Update Season Details: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Season Details', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = $model->team->name . ' (' . $model->season->name . ')';
+$this->params['breadcrumbs'][] = ['label' => 'Детали сезона', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->team->name . ' (' . $model->season->name . ')', 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="season-details-update">
 

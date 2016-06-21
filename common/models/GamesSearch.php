@@ -41,7 +41,7 @@ class GamesSearch extends Games
      */
     public function search($params)
     {
-        $query = Games::find();
+        $query = Games::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 

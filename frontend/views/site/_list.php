@@ -5,6 +5,8 @@ use yii\helpers\Url;
 ?>
 
 <?php
+//var_dump($index);
+
 $img = $model->getImage();
 //echo Html::beginTag('a',['class'=>'news','href'=>Url::toRoute(['/news/view','id'=>$model->id])]);
 //    echo Html::beginTag('div',['class'=>'well']);
@@ -23,13 +25,25 @@ $img = $model->getImage();
 //        echo Html::endTag('div');
 //    echo Html::endTag('div');
 //echo Html::endTag('a');
+if ($index == 0 || $index == 1) {
+    $classBlock = 'news-first-blocks';
+    $imgUrl = $img->getUrl('x320');
+    $classImgBlock = 'col-xs-12';
+    $classContentBlock = 'col-xs-12';
+} else {
+    $classBlock = '';
+    $imgUrl = $img->getUrl('x120');
+    $classImgBlock = 'col-xs-4';
+    $classContentBlock = 'col-xs-8';
+
+}
 ?>
-    <div class="news-block">
+    <div class="news-block news-block-<?php echo $index.' '.$classBlock ?> ">
         <div class="row">
-            <div class="col-xs-4 news-block-img">
-                <img src="<?php echo $img->getUrl('x120') ?>" alt="<?php echo $model->title ?>" class="img-responsive">
+            <div class="<?php echo $classImgBlock ?> news-block-img">
+                <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
             </div>
-            <div class="col-xs-8 news-block-content">
+            <div class="<?php echo $classContentBlock ?> news-block-content">
                 <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>" class="news-home-link">
                     <h4><?php echo $model -> title ?></h4>
                 </a>
@@ -41,7 +55,6 @@ $img = $model->getImage();
             </div>
         </div>
     </div>
-
 <?php
 
 //echo Html::beginTag('a',['class'=>'', 'href'=>Url::toRoute(['view','id'=>$model->id])]);

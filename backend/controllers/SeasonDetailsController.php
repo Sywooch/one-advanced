@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\SeasonDetails;
 use common\models\SeasonDetailsSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -61,18 +62,18 @@ class SeasonDetailsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new SeasonDetails();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
+//    public function actionCreate()
+//    {
+//        $model = new SeasonDetails();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->render('create', [
+//                'model' => $model,
+//            ]);
+//        }
+//    }
 
     /**
      * Updates an existing SeasonDetails model.
@@ -83,9 +84,16 @@ class SeasonDetailsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+//        var_dump($model->load(Yii::$app->request->post()));
+//        var_dump(Yii::$app->request->post());
+//        var_dump($model->save());
+//        var_dump($model->errors);
+//        die;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+//            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
+
         } else {
             return $this->render('update', [
                 'model' => $model,
