@@ -297,3 +297,7 @@ a.desc:after {
         overflow: hidden;
         height: 90px;
     }
+
+    .standings .main-team {
+        font-weight: bold;
+    }

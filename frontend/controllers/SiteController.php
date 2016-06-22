@@ -1,6 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\SeasonDetails;
+use common\models\Seasons;
+use common\models\Teams;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -74,16 +77,32 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
+        $dataProvider['news'] = new ActiveDataProvider([
             'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC')->limit(10),
             'pagination' => [
                 'pageSize' => 7,
             ],
         ]);
+        $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
+//        var_dump($this);
+//        $this->params['teamId'] = $data['mainTeam']->id;
+        $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
+        $data['season'] = $data['seasonDetails']->season;
+//        var_dump($data['season']);
+        $dataProvider['standings'] = new ActiveDataProvider([
+            'query' => SeasonDetails::find()
+                ->where(['season_id' => $data['season']->id])
+                ->orderBy('spectacles DESC')
+                ->limit(20),
+            'pagination' => false,
+        ]);
+
+//        var_dump($dataProvider['standings']->getModels());
 
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'data' => $data,
         ]);
     }
 

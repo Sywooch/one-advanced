@@ -96,4 +96,9 @@ class Teams extends \yii\db\ActiveRecord
     {
         return $this->hasMany(SeasonDetails::className(), ['team_id' => 'id']);
     }
+
+    public function getLastSeasonDetails()
+    {
+        return $this->hasOne(SeasonDetails::className(), ['team_id' => 'id'])->orderBy('id DESC')->one();
+    }
 }
