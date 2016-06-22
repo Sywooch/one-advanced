@@ -191,6 +191,11 @@ AppAsset::register($this);
 <!--                <div class="index-video">-->
 <!--                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>-->
 <!--                </div>-->
+                <?php
+                if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {
+                echo '<div>'.$this->params['widget_bar'].'</div>';
+                } else {
+                ?>
                 <div class="standings">
                     <h4>Турнирная таблица</h4>
                     <p>ФОНБЕТ-Первенства России по футболу среди команд ФНЛ 2015/16</p>
@@ -228,6 +233,7 @@ AppAsset::register($this);
                         </tbody>
                     </table>
                 </div>
+                <?php } ?>
             </div>
             <div class="col-xs-8 main-block">
                 <?= Breadcrumbs::widget([

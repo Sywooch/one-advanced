@@ -97,6 +97,7 @@ class SiteController extends Controller
                 ->orderBy('spectacles DESC')
                 ->limit(20),
             'pagination' => false,
+            'sort' =>false
         ]);
 
 //        var_dump($dataProvider['standings']->getModels());

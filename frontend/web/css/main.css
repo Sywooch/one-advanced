@@ -571,7 +571,7 @@ body {
                 width: 100%;
             }
 
-            .standings table th, .standings table b {
+            .standings table th, .standings table b, .standings table .main-team {
                 color: #00316b;
             }
 
@@ -1185,4 +1185,18 @@ body {
 
     .gallery-view-block .gallery-view-box {
         width: 25%;
+    }
+
+    .standings tbody > tr > td {
+        border-top: 0;
+        /*padding: 0 5px 0 0;*/
+        /*padding: 0;*/
+        padding: 0 10px 2px 0;
+    }
+
+    .standings .table > thead > tr > th {
+        border-bottom: 0;
+        /*padding: 0;*/
+        /*padding: 0 5px 0 0;*/
+        padding: 0 10px 2px 0;
     }
