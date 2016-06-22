@@ -17,8 +17,11 @@ use common\models\UploadForm;
     <?php $image=new UploadForm(); ?>
 
     <?= $form->field($image, 'file')->fileInput()->label('Upload image') ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?php
+        if ($model->name != Yii::$app->params['main-team']) {
+            echo $form->field($model, 'name')->textInput(['maxlength' => true]);
+        }
+    ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 

@@ -40,7 +40,7 @@ class SeasonDetailsSearch extends SeasonDetails
      */
     public function search($params)
     {
-        $query = SeasonDetails::find();
+        $query = SeasonDetails::find()->orderBy('season_id DESC');
 
         // add conditions that should always apply here
 
