@@ -571,7 +571,7 @@ body {
                 width: 100%;
             }
 
-            .standings table th, .standings table b, .standings table .main-team {
+            .standings table th, .standings table b, .standings table .main-team, .standings table .main-team a {
                 color: #00316b;
             }
 
