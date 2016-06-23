@@ -53,7 +53,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                         'id'=>'season-id',
                     ],
                     'pluginOptions' => [
-                        'allowClear' => true,
+                        'allowClear' => true
                     ],
                 ],
             ],
@@ -69,10 +69,11 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
     ]);
     echo $form->field($model, 'home_id')->widget(DepDrop::classname(), [
         'options'=>['id'=>'home-id'],
+        'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
         'pluginOptions'=>[
             'depends'=>['season-id'],
             'placeholder'=>'Выберите Команду',
-            'url'=>\yii\helpers\Url::to(['/seasons/teams'])
+            'url'=>\yii\helpers\Url::to(['/seasons/teams']),
 
         ]
     ]);

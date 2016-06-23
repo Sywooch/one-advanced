@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\User;
+use rico\yii2images\models\Image;
 use Yii;
 use common\models\News;
 use common\models\NewsSearch;
@@ -158,11 +159,13 @@ class NewsController extends Controller
 
     public function actionRemoveImage($id)
     {
-        $model = $this->findModel($id);
-        $image = $model->getImage();
-        $model->removeImage($image) ;
-
-        return $this->redirect(['update','id'=>$model->id]);
+        $model = Image::findOne($id);
+        $itemId = $model->itemId;
+        if ($model->delete()) {
+            return $this->redirect(['update','id' => $itemId]);
+        } else {
+            return $model->errors;
+        }
     }
 
     public function actionSetMain($id,$id_img)

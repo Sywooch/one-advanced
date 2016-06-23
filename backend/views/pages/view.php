@@ -7,11 +7,13 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Pages */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cтраницы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$image = $model->getImage();
 ?>
 <div class="pages-view well">
-
+    <img src="<?php echo $image->getUrl(); ?>" alt="" class="img-responsive">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -41,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'meta_keywords',
             'meta_descr',
             'content:html',
+            'widget_bar:html',
 
         ],
     ]) ?>
