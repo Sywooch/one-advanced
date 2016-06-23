@@ -7,7 +7,7 @@ use kartik\builder\Form;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\DepDrop;
 
-$model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
+$model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date),'php:d-m-Y H:i');
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
@@ -50,8 +50,11 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
                     'data'=>ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
                     'options'=>[
                         'placeholder'=>'Выберите Сезон',
-                        'id'=>'season-id'
-                    ]
+                        'id'=>'season-id',
+                    ],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                    ],
                 ],
             ],
 //            echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
@@ -111,14 +114,14 @@ $model->date = Yii::$app->formatter->asDatetime($model->date,'php:d-m-Y H:i');
 //                    'options'=>['placeholder'=>'Выберите Команду']
 //                ],
 //            ],
-            'guest_id'=>[
-                'type'=>Form::INPUT_WIDGET,
-                'widgetClass'=>'\kartik\widgets\Select2',
-                'options'=>[
-                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Команду']
-                ],
-            ],
+//            'guest_id'=>[
+//                'type'=>Form::INPUT_WIDGET,
+//                'widgetClass'=>'\kartik\widgets\Select2',
+//                'options'=>[
+//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
+//                    'options'=>['placeholder'=>'Выберите Команду']
+//                ],
+//            ],
             'tour' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Тур...']],
             'score' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
             'date'=>[

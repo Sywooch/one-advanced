@@ -64,7 +64,8 @@ class Games extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
+            [['category_id', 'home_id', 'guest_id', 'season_id', 'score', 'city', 'content', 'status'], 'required'],
+//            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
             [['content', 'status'], 'string'],
             [['score'], 'string', 'max' => 50],
