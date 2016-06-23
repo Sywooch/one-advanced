@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model common\models\Teams */
 
 $this->title = 'Обновление Команды: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Teams', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Команды', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Обновление';
 ?>
 <div class="teams-update">
 
@@ -25,16 +25,16 @@ $this->params['breadcrumbs'][] = 'Update';
                     if(!$img->isMain) {
                         $columns = 4;
                         echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                            echo Html::a('Setmain', ['set-main', 'id'=> $model->id,'id_img'=>$img->id], ['class' => 'btn  btn-success']);
+                            echo Html::a('Сделать основной', ['set-main', 'id'=> $model->id,'id_img'=>$img->id], ['class' => 'btn  btn-success']);
                         echo Html::endTag('div');
                     } else {
                         $columns = 6;
                     }
                     echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                        echo Html::a('View', $img->getUrl(), ['class' => 'btn  btn-primary','target' => '_blank']);
+                        echo Html::a('Просмотр', $img->getUrl(), ['class' => 'btn  btn-primary','target' => '_blank']);
                     echo Html::endTag('div');
                     echo Html::beginTag('div',['class' => 'col-xs-'.$columns.' text-center']);
-                        echo Html::a('Remove', ['remove-image', 'id'=> $model->id], ['class' => 'btn  btn-danger']);
+                        echo Html::a('Удалить', ['remove-image', 'id'=> $model->id], ['class' => 'btn  btn-danger']);
                     echo Html::endTag('div');
                 echo Html::endTag('div');
             }

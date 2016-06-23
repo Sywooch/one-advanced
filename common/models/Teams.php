@@ -43,10 +43,11 @@ class Teams extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'slug'], 'required'],
+            [['name', 'slug', 'city', 'stadium'], 'required'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 200],
-            [['slug', 'year', 'web_site'], 'string', 'max' => 250]
+            [['slug', 'year', 'web_site'], 'string', 'max' => 250],
+            [['city', 'stadium'], 'string', 'max' => 255],
         ];
     }
 
@@ -62,6 +63,8 @@ class Teams extends \yii\db\ActiveRecord
             'year' => 'Год создания',
             'web_site' => 'Сайт',
             'description' => 'Описание',
+            'city' => 'Город',
+            'stadium' => 'Стадион',
         ];
     }
 
