@@ -11,6 +11,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\bootstrap\Carousel;
 use common\models\Players;
+use common\models\Teams;
 use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
 use Madcoda\Youtube;
@@ -248,7 +249,12 @@ AppAsset::register($this);
             </div>
         </div>
         <?php
-        $players = Players::find()->where(['teams_id'=>'3'])->all();
+        $teams = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
+//        var_dump();
+        $players = Players::find()->where(['teams_id'=>$teams->id])->orderBy('number')->all();
+        $playersGoals = Players::find()->where(['teams_id'=>$teams->id])->orderBy('goals DESC')->one();
+        $playersTransfers = Players::find()->where(['teams_id'=>$teams->id])->orderBy('transfers DESC')->one();
+//        var_dump($players);
 //        var_dump($players['2'])
         ?>
 <!--        <div class="statistics-season">-->
@@ -260,14 +266,14 @@ AppAsset::register($this);
                             <div class="col-xs-6 best-players-block">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший бомбардир</span>
-                                    <span class="best-players-goals">4 Гола</span>
+<!--                                    <span class="best-players-goals">4 Гола</span>-->
                                 </div>
                                 <div class="best-players-image">
                                     <?php
-                                    $images = $players['3']->getImages();
+                                    $images = $playersGoals->getImages();
                                     if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
 //                                        echo Html::beginTag('div',['class'=>'']);
-                                            $image = $players['3']->getImage();
+                                            $image = $playersGoals->getImage();
 //                                            echo Html::img($image->getUrl('x150'),['class' => 'img-responsive']);
                                             echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background:url('.$image->getUrl('x150').')']);
 //                                        echo Html::endTag('div');
@@ -275,23 +281,23 @@ AppAsset::register($this);
                                     ?>
                                 </div>
                                 <div class="best-players-number-name">
-                                    <span class="best-players-number">#<?php echo $players['3']['number'] ?></span>
+                                    <span class="best-players-number">#<?php echo $playersGoals['number'] ?></span>
                                     <span class="best-players-name">
-                                        <?php echo $players['3']['surname'].' '.$players['3']['name'] ?>
+                                        <?php echo $playersGoals['surname'].' '.$playersGoals['name'] ?>
                                     </span>
                                 </div>
                             </div>
                             <div class="col-xs-6 best-players-block">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший ассистент</span>
-                                    <span class="best-players-goals">3 передачи</span>
+<!--                                    <span class="best-players-goals">3 передачи</span>-->
                                 </div>
                                 <div class="best-players-image">
                                     <?php
-                                    $images = $players['2']->getImages();
+                                    $images = $playersTransfers->getImages();
                                     if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
 //                                        echo Html::beginTag('div',['class'=>'']);
-                                        $image = $players['2']->getImage();
+                                        $image = $playersTransfers->getImage();
 //                                        echo Html::img($image->getUrl('x150'),['class' => 'img-responsive']);
                                         echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background:url('.$image->getUrl('x150').')']);
 //                                        echo Html::endTag('div');
@@ -299,9 +305,9 @@ AppAsset::register($this);
                                     ?>
                                 </div>
                                 <div class="best-players-number-name">
-                                    <span class="best-players-number">#<?php echo $players['2']['number'] ?></span>
+                                    <span class="best-players-number">#<?php echo $playersTransfers['number'] ?></span>
                                     <span class="best-players-name">
-                                        <?php echo $players['2']['surname'].' '.$players['2']['name'] ?>
+                                        <?php echo $playersTransfers['surname'].' '.$playersTransfers['name'] ?>
                                     </span>
                                 </div>
                             </div>
@@ -318,12 +324,12 @@ AppAsset::register($this);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><th>Игры</th><td>11</td><td>13</td><td>24</td></tr>
-                                    <tr><th>Победы</th><td>5</td><td>3</td><td>8</td></tr>
-                                    <tr><th>Ничьи</th><td>3</td><td>4</td><td>7</td></tr>
-                                    <tr><th>Поражения</th><td>3</td><td>6</td><td>9</td></tr>
-                                    <tr><th>Забито</th><td>15</td><td>10</td><td>25</td></tr>
-                                    <tr><th>Пропущено</th><td>11</td><td>13</td><td>24</td></tr>
+                                    <tr><th>Игры</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Победы</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Ничьи</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Поражения</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Забито</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Пропущено</th><td>0</td><td>0</td><td>0</td></tr>
                                 </tbody>
                             </table>
                         </div>
