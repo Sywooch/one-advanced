@@ -19,7 +19,7 @@ class TeamsSearch extends Teams
     {
         return [
             [['id'], 'integer'],
-            [['name', 'slug', 'year', 'web_site', 'description'], 'safe'],
+            [['name', 'slug', 'year', 'web_site', 'description', 'city', 'stadium'], 'safe'],
         ];
     }
 
@@ -63,8 +63,9 @@ class TeamsSearch extends Teams
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'year', $this->year])
             ->andFilterWhere(['like', 'web_site', $this->web_site])
-            ->andFilterWhere(['like', 'description', $this->description]);
-
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'stadium', $this->stadium]);
         return $dataProvider;
     }
 }
