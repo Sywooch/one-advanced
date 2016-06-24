@@ -50,11 +50,11 @@ $this->params['widget_bar'] = Html::tag(
                             'height'=>$sizes['height']
                         ]);
                     }
-                    if ($model->team->web_site != '') {
-                        $result .= Html::a($model->team->name, Url::to($model->team->web_site, true), ['target' => '_blank']);
-                    } else {
-                        $result .= $model->team->name;
-                    }
+//                    if ($model->team->web_site != '') {
+//                        $result .= Html::a($model->team->name, Url::to($model->team->web_site, true), ['target' => '_blank']);
+//                    } else {
+                    $result .= $model->team->name;
+//                    }
                     return $result;
                 },
             ],
