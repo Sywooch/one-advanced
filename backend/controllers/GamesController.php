@@ -99,6 +99,14 @@ class GamesController extends Controller
     {
         $model = new Games();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+                $model->removeImages();
+                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
+                if($model->errors) {
+                    var_dump($model->errors);
+                    die;
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -118,6 +126,14 @@ class GamesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+                $model->removeImages();
+                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
+                if($model->errors) {
+                    var_dump($model->errors);
+                    die;
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
 

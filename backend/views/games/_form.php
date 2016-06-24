@@ -6,6 +6,8 @@ use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\DepDrop;
+use common\models\UploadForm;
+use kartik\file\FileInput;
 
 $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date),'php:d-m-Y H:i');
 
@@ -19,11 +21,12 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 <div class="games-form well">
 
     <?php
-    $form = ActiveForm::begin();
+    $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
     if ($model->isNewRecord) {
-//        $model->position = 'headerTop';
         $model->status = 'будет';
     }
+    $image=new UploadForm();
+
     echo Form::widget([
         'model' => $model,
         'form' => $form,
@@ -31,18 +34,6 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 //        'autoGenerateColumns' => true,
 //
         'attributes' => [
-
-//            'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
-//            'url' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите url...']],
-//            'sort' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите sort...']],
-            'category_id'=>[
-                'type'=>Form::INPUT_WIDGET,
-                'widgetClass'=>'\kartik\widgets\Select2',
-                'options'=>[
-                    'data'=>ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Категорию']
-                ],
-            ],
             'season_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
@@ -57,74 +48,47 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                     ],
                 ],
             ],
-//            echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
-//                'options'=>['id'=>'subcat-id'],
-//                'pluginOptions'=>[
-//                    'depends'=>['cat-id'],
-//                    'placeholder'=>'Select...',
-//                    'url'=>Url::to(['/site/subcat'])
-//                ]
-//            ]);
-        ]
-    ]);
-    echo $form->field($model, 'home_id')->widget(DepDrop::classname(), [
-        'options'=>['id'=>'home-id'],
-        'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
-        'pluginOptions'=>[
-            'depends'=>['season-id'],
-            'placeholder'=>'Выберите Команду',
-            'url'=>\yii\helpers\Url::to(['/seasons/teams']),
+            'home_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\DepDrop',
+                'options'=>[
+                    'id'=>'home-id',
+                    'pluginOptions'=>[
+                        'depends'=>['season-id'],
+                        'placeholder'=>'Выберите Команду',
+                        'url'=>\yii\helpers\Url::to(['/seasons/teams']),
 
-        ]
-    ]);
-    echo $form->field($model, 'guest_id')->widget(DepDrop::classname(), [
-        'options'=>['id'=>'guest-id'],
-        'pluginOptions'=>[
-            'depends'=>['season-id'],
-            'placeholder'=>'Выберите Команду',
-            'url'=>\yii\helpers\Url::to(['/seasons/teams'])
+                    ]
 
-        ]
-    ]);
-    echo Form::widget([
-        'model' => $model,
-        'form' => $form,
-        'columns' => 3,
-//        'autoGenerateColumns' => true,
-//
-        'attributes' => [
-//            'home_id'=>[
-//                'type'=>Form::INPUT_WIDGET,
-//                'widgetClass'=>'\kartik\widgets\DepDrop',
-//                'options'=>[
-//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
-//                    'options'=>[
-//                        'placeholder'=>'Выберите Команду',
-//                        'depends'=>['season-id'],
-//                        'url'=>\yii\helpers\Url::to(['/site/subcat'])
-//
-//                    ],
-//
-//                ],
-//            ],
-//            'home_id'=>[
-//                'type'=>Form::INPUT_WIDGET,
-//                'widgetClass'=>'\kartik\widgets\Select2',
-//                'options'=>[
-//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
-//                    'options'=>['placeholder'=>'Выберите Команду']
-//                ],
-//            ],
-//            'guest_id'=>[
-//                'type'=>Form::INPUT_WIDGET,
-//                'widgetClass'=>'\kartik\widgets\Select2',
-//                'options'=>[
-//                    'data'=>ArrayHelper::map($model->getAllTeams(), 'id', 'name'),
-//                    'options'=>['placeholder'=>'Выберите Команду']
-//                ],
-//            ],
+                ],
+            ],
+            'guest_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\DepDrop',
+                'options'=>[
+                    'id'=>'guest-id',
+                    'pluginOptions'=>[
+                        'depends'=>['season-id'],
+                        'placeholder'=>'Выберите Команду',
+                        'url'=>\yii\helpers\Url::to(['/seasons/teams']),
+
+                    ]
+
+                ],
+            ],
+            'category_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\Select2',
+                'options'=>[
+                    'data'=>ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
+                    'options'=>['placeholder'=>'Выберите Категорию']
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ],
             'tour' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Тур...']],
-            'score' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
+//            'score' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
             'date'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\DateTimePicker',
@@ -136,27 +100,6 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                     ]
                 ]
             ],
-            'referee' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Первого Судью...']],
-            'referee2' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Второго Судью...']],
-            'referee3' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Третьего Судью...']],
-
-//            'position' => [
-//                'type'=>Form::INPUT_RADIO_LIST,
-//                'items'=>[ 'headerTop' => 'HeaderTop', 'headerBottom' => 'HeaderBottom'],
-//                'options'=>['inline'=>true]
-//            ],
-//            'status'=>[
-//                'type'=>Form::INPUT_RADIO_LIST,
-//                'items'=>[ 'on' => 'On', 'off' => 'Off'],
-//                'options'=>['inline'=>true]
-//            ],
-//            'actions'=>[
-//                'type'=>Form::INPUT_RAW,
-//                'value'=>'<div style="margin-top: 20px">' .
-//                    Html::resetButton('Reset', ['class'=>'btn btn-default']) . ' ' .
-//                    Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
-//                    '</div>'
-//            ],
         ]
     ]);
 
@@ -169,6 +112,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
         ]
     ]);
 
+
     echo Form::widget([
         'model' => $model,
         'form' => $form,
@@ -176,47 +120,74 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 //        'autoGenerateColumns' => true,
 //
         'attributes' => [
-            'city' => [
-                'type'=>Form::INPUT_TEXT,
-                'options'=>['placeholder'=>'Введите Город...'],
-                'hint'=>'Город Проведения Матча'
-            ],
-            'stadium' => [
-                'type'=>Form::INPUT_TEXT,
-                'options'=>['placeholder'=>'Введите Стадион...'],
-                'hint'=>'Стадион Проведения Матча'
-            ],
-            'status'=>[
-                'label'=>'Статус',
-                'items'=>[
-                    'будет' => 'будет',
-                    'был' => 'был',
-                    'отменён' => 'отменён',
-                    'перенесён' => 'перенесён',
-                ],
-                'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
-                'options'=>[
-                    'class'=>'show'
-                ]
-            ],
+            'referee' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Первого Судью...']],
+            'referee2' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Второго Судью...']],
+            'referee3' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Третьего Судью...']],
+//            'city' => [
+//                'type'=>Form::INPUT_TEXT,
+//                'options'=>['placeholder'=>'Введите Город...'],
+//                'hint'=>'Город Проведения Матча'
+//            ],
+//            'stadium' => [
+//                'type'=>Form::INPUT_TEXT,
+//                'options'=>['placeholder'=>'Введите Стадион...'],
+//                'hint'=>'Стадион Проведения Матча'
+//            ],
+        ]
+    ]);
 
-        ]
-    ]);
-    echo Form::widget([       // 1 column layout
-        'model'=>$model,
-        'form'=>$form,
-        'columns'=>1,
-        'attributes'=>[
-            'actions'=>[
-                'type'=>Form::INPUT_RAW,
-                'value'=>'<div style="margin-top: 20px">' .
-                    Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
-                    Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
-                    '</div>'
-            ],
-        ]
-    ]);
     ?>
+    <div class="row">
+        <div class="col-xs-4">
+            <?php
+            echo '<label>Превью</label>';
+            echo FileInput::widget([
+                'model' => $image,
+                'attribute' => 'file',
+                'options' => ['multiple' => false],
+                'pluginOptions' => [
+                    'showPreview' => false,
+                    'showCaption' => true,
+                    'showRemove' => true,
+                    'showUpload' => false
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-xs-8">
+            <?php
+
+                echo Form::widget([       // 1 column layout
+                    'model'=>$model,
+                    'form'=>$form,
+                    'columns'=>2,
+                    'attributes'=>[
+                        'status'=>[
+                            'label'=>'Статус',
+                            'items'=>[
+                                'будет' => 'будет',
+                                'был' => 'был',
+                                'отменён' => 'отменён',
+                                'перенесён' => 'перенесён',
+                            ],
+                            'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
+                            'options'=>[
+                                'class'=>'show'
+                            ]
+                        ],
+                        'actions'=>[
+                            'type'=>Form::INPUT_RAW,
+                            'value'=>'<div style="margin-top: 20px">' .
+                                Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
+                                Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                                '</div>'
+                        ],
+                    ]
+                ]);
+
+            ?>
+        </div>
+    </div>
 
     <?php ActiveForm::end(); ?>
 
