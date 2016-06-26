@@ -164,10 +164,13 @@ AppAsset::register($this);
                             echo Html::beginTag('div',['class'=>'promo-game-block']);
                                 echo Html::beginTag('div',['class'=>'promo-game-header']);
                                     echo Html::tag('div',
-                                        Html::tag('div','11.07.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
+                                    Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right']).
+//                                    Html::tag('div', '<script src="http://megatimer.ru/s/e4d7007cd2e033e4d7e30b251ec7b569.js"></script>', ['class' => 'pull-right']).
+                                        Html::tag('div','11.07.2016, Фонбет-первенство россии',['class'=>'promo-game-date col-xs-8 vtop'])/*.
                                         Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
                                         ['class'=>'row']
                                     );
+//                                echo '<script src="http://megatimer.ru/s/b5d4829fb96d5e489b75b5746ac698e7.js"></script>';
                                 echo Html::endTag('div');
                                 echo Html::beginTag('div',['class'=>'row promo-game-row']);
                                     echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
