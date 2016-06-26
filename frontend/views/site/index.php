@@ -76,6 +76,8 @@ $this->params['widget_bar'] = Html::tag(
 
 ?>
 <div class="site-index">
+    <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>
+    <p></p>
     <div class="panel panel-primary">
         <div class="panel-heading">
             <div style="font-size: 20px; display: inline-block;">НОВОСТИ</div>
