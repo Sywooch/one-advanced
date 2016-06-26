@@ -35,6 +35,14 @@ use yii\db\ActiveRecord;
  */
 class Games extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -64,7 +72,7 @@ class Games extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'home_id', 'guest_id', 'season_id', 'score', 'city', 'content', 'status'], 'required'],
+            [['category_id', 'home_id', 'guest_id', 'season_id', 'content', 'status'], 'required'],
 //            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
             [['content', 'status'], 'string'],
