@@ -13,6 +13,15 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@app/themes/one/views',
+                    '@app/widgets' => '@app/themes/one/widgets',
+                ],
+
+            ],
+        ],
         'request' => [
             'baseUrl' => '',
             'enableCsrfValidation'=>false,

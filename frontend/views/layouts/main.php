@@ -69,6 +69,7 @@ AppAsset::register($this);
         </div>
         <p></p>
         <?php
+        var_dump($this->params['image_page']);
         if (isset($this->params['image_page'])) {
             ?>
             <img src="<?php echo $this->params['image_page']; ?>" alt="" class="img-responsive">
