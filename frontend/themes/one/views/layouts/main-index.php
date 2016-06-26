@@ -443,14 +443,17 @@ AppAsset::register($this);
         </div>
 <!--            </div>-->
 <!--        </div>-->
-<!--        <div class="social-widgets">-->
-<!--            <div class="row">-->
-<!--                <div class="col-xs-4 instagram text-center">-->
-<!--                    <iframe src="http://snapwidget.com/in/?u=ZmNiYWx0aWthfGlufDEyNXwyfDJ8fG5vfDE1fG5vbmV8b25TdGFydHxub3xubw==&ve=140416" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:280px; height:280px"></iframe>-->
+        <div class="social-widgets">
+            <div class="row">
+                <div class="col-xs-4 instagram">
+                    <h5><?php echo Icon::show('instagram'); ?>ФК Балтика в Инстаграм</h5>
+                    <!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/4c8ef695c2895cf0b2debaf947664f03.html" id="lightwidget_4c8ef695c2" name="lightwidget_4c8ef695c2"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
 <!--                    <iframe src="http://www.intagme.com/in/?u=ZmNiYWx0aWthfGlufDEwMHwyfDJ8fG5vfDI1fHVuZGVmaW5lZHxubw==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:250px; height: 250px" ></iframe>-->
 <!--                    <script src="http://snapwidget.com/js/snapwidget.js"></script>-->
-<!--                </div>-->
-<!--                <div class="col-xs-4 twitter">-->
+                </div>
+                <div class="col-xs-4 twitter">
+                    <h5><?php echo Icon::show('twitter'); ?>Официальный твитер ФК Балтика</h5>
+                    <a class="twitter-timeline" data-lang="ru" data-width="100%" data-height="340" data-dnt="true" href="https://twitter.com/fcbaltika"><!--Tweets by fcbaltika--></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><!--                            #twitterStyled .tweet {-->
 <!--                    <style type="text/css" id="twitterStyle">-->
 <!--                        #twitterStyled .tweet {-->
 <!--                            padding: 10px 10px 5px 10px;-->
@@ -492,18 +495,17 @@ AppAsset::register($this);
 <!--                    </style>-->
 <!--                    <a class="twitter-timeline" href="https://twitter.com/fcbaltika" data-widget-id="719619106937434113">Твиты от @fcbaltika</a>-->
 <!--                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
-<!--                </div>-->
-<!--                <div class="col-xs-4 vk">-->
-<!--                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>-->
-
-                    <!-- VK Widget -->
-<!--                    <div id="vk_groups" class="block-center"></div>-->
-<!--                    <script type="text/javascript">-->
-<!--                        VK.Widgets.Group("vk_groups", {mode: 0, width: "220", height: "270", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);-->
-<!--                    </script>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+                </div>
+                <div class="col-xs-4 vk">
+                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+<!--                     VK Widget -->
+                    <div id="vk_groups" class="block-center"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Group("vk_groups", {mode: 0, width: "360", height: "380", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

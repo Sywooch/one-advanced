@@ -1200,3 +1200,12 @@ body {
         /*padding: 0 5px 0 0;*/
         padding: 0 10px 2px 0;
     }
+
+    .social-widgets h5 {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .instagram h5 {
+        margin-bottom: 0;
+    }
