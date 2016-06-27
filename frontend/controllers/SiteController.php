@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Questions;
 use common\models\SeasonDetails;
 use common\models\Seasons;
 use common\models\Teams;
@@ -96,6 +97,11 @@ class SiteController extends Controller
                 ->limit(20),
             'pagination' => false,
         ]);
+
+        $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
+
+//        var_dump($data['questions']->answers->answer);
+//        var_dump($data['questions']->answers->how_many);
 
 //        var_dump($dataProvider['standings']->getModels());
 

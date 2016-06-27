@@ -35,7 +35,14 @@ return [
         ],
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
-        ]
+        ],
+//        'Poll' => [
+//            'name' => 'yiisoft/yii2-poll',
+//            'alias' =>[
+//                    '@pollext/poll' => $vendorDir . '/yiisoft/yii2-poll',
+//                ],
+//
+//        ]
 
     ],
 ];

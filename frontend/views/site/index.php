@@ -9,6 +9,7 @@ use frontend\widgets\GalleryWidget;
 use kartik\grid\GridView;
 use MetzWeb\Instagram\Instagram;
 use kartik\icons\Icon;
+//use pollext\poll\Poll;
 
 Icon::map($this, Icon::FA);
 
@@ -92,8 +93,37 @@ $this->params['widget_bar'] = Html::tag(
 ////$data = $instagram->getOAuthToken($code);
 ////
 //echo 'Your username is: ' . $data->user->username;
+
+var_dump($data['questions']);
+var_dump($data['questions']->answers);
 ?>
 <div class="site-index">
+    <div class="vote-home">
+        <h4><?php echo $data['questions']->questions ?></h4>
+            <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>
+            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="questions">
+                <?php
+//                echo \pollext\poll\Poll::widget([
+//                    'pollName'=>'Do you like PHP?',
+//                    'answerOptions'=>
+//                        [
+//                            'Yes',
+//                            'No',
+//                        ],
+//                ]);
+                ?>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="answer">...</div>
+        </div>
+
+    </div>
     <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>
     <p></p>
     <div class="panel panel-primary">
