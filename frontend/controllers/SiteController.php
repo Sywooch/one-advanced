@@ -89,7 +89,6 @@ class SiteController extends Controller
 //        $this->params['teamId'] = $data['mainTeam']->id;
         $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
         $data['season'] = $data['seasonDetails']->season;
-//        var_dump($data['season']);
         $dataProvider['standings'] = new ActiveDataProvider([
             'query' => SeasonDetails::find()
                 ->where(['season_id' => $data['season']->id])

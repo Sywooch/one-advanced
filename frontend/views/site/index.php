@@ -10,6 +10,9 @@ use kartik\grid\GridView;
 use MetzWeb\Instagram\Instagram;
 use kartik\icons\Icon;
 //use pollext\poll\Poll;
+use common\widgets\PollWidget;
+use yii\helpers\ArrayHelper;
+use yii\widgets\Pjax;
 
 Icon::map($this, Icon::FA);
 
@@ -94,23 +97,31 @@ $this->params['widget_bar'] = Html::tag(
 ////
 //echo 'Your username is: ' . $data->user->username;
 
-var_dump($data['questions']);
-var_dump($data['questions']->answers);
+
 ?>
 <div class="site-index">
     <div class="vote-home">
         <h4><?php echo $data['questions']->questions ?></h4>
             <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>
-            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>
-        </ul>
+<!--        <ul class="nav nav-tabs" role="tablist">-->
+<!--            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>-->
+<!--            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>-->
+<!--        </ul>-->
 
         <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="questions">
+<!--        <div class="tab-content">-->
+<!--            <div role="tabpanel" class="tab-pane active" id="questions">-->
                 <?php
-//                echo \pollext\poll\Poll::widget([
+//                var_dump($data['questions']);
+                $answers = ArrayHelper::map($data['questions']->answers, 'id', 'answer');
+//                var_dump($answers);
+//                $answers = \common\models\Answers::find()->select('answer')->where(['questions_id' => $data['questions']->id])->asArray()->all();
+//                $ans = [];
+//                foreach ($answers as $answer) {
+//                    $ans[] = $answer['answer'];
+//                }
+//                var_dump($ans);
+//                echo \pollext\poll\poll::widget([
 //                    'pollName'=>'Do you like PHP?',
 //                    'answerOptions'=>
 //                        [
@@ -118,10 +129,16 @@ var_dump($data['questions']->answers);
 //                            'No',
 //                        ],
 //                ]);
+                Pjax::begin();
+                echo PollWidget::widget([
+                    'pollName'=>$data['questions']->questions,
+                    'answerOptions'=> $answers,
+                ]);
+                Pjax::end();
                 ?>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="answer">...</div>
-        </div>
+<!--            </div>-->
+<!--            <div role="tabpanel" class="tab-pane" id="answer">...</div>-->
+<!--        </div>-->
 
     </div>
     <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>
