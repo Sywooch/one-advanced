@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Games */
+/* @var $model common\models\GamesEvents */
 
-$this->title = 'Создать матч';
-$this->params['breadcrumbs'][] = ['label' => 'Матчи', 'url' => ['index']];
+$this->title = 'Create Games Events';
+$this->params['breadcrumbs'][] = ['label' => 'Games Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="games-create">
+<div class="games-events-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -7,8 +7,8 @@ use common\models\Teams;
 /* @var $this yii\web\View */
 /* @var $model common\models\Players */
 
-$this->title = 'Create Players';
-$this->params['breadcrumbs'][] = ['label' => 'Players', 'url' => ['index']];
+$this->title = 'Создание игрока';
+$this->params['breadcrumbs'][] = ['label' => 'Игроки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="players-create">

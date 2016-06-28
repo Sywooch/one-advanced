@@ -96,51 +96,58 @@ $this->params['widget_bar'] = Html::tag(
 ////$data = $instagram->getOAuthToken($code);
 ////
 //echo 'Your username is: ' . $data->user->username;
-
-
 ?>
 <div class="site-index">
-    <div class="vote-home">
-        <h4><?php echo $data['questions']->questions ?></h4>
-            <!-- Nav tabs -->
-<!--        <ul class="nav nav-tabs" role="tablist">-->
-<!--            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>-->
-<!--            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>-->
-<!--        </ul>-->
+    <?php
+    if (!is_null($data['questions'])) {
+        $answersData = $data['questions']->answers;
+        if (!empty($answersData)) {
+        ?>
+            <div class="vote-home">
+                <h4><?php echo $data['questions']->questions ?></h4>
+                    <!-- Nav tabs -->
+        <!--        <ul class="nav nav-tabs" role="tablist">-->
+        <!--            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>-->
+        <!--            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>-->
+        <!--        </ul>-->
 
-        <!-- Tab panes -->
-<!--        <div class="tab-content">-->
-<!--            <div role="tabpanel" class="tab-pane active" id="questions">-->
-                <?php
-//                var_dump($data['questions']);
-                $answers = ArrayHelper::map($data['questions']->answers, 'id', 'answer');
-//                var_dump($answers);
-//                $answers = \common\models\Answers::find()->select('answer')->where(['questions_id' => $data['questions']->id])->asArray()->all();
-//                $ans = [];
-//                foreach ($answers as $answer) {
-//                    $ans[] = $answer['answer'];
-//                }
-//                var_dump($ans);
-//                echo \pollext\poll\poll::widget([
-//                    'pollName'=>'Do you like PHP?',
-//                    'answerOptions'=>
-//                        [
-//                            'Yes',
-//                            'No',
-//                        ],
-//                ]);
-                Pjax::begin();
-                echo PollWidget::widget([
-                    'pollName'=>$data['questions']->questions,
-                    'answerOptions'=> $answers,
-                ]);
-                Pjax::end();
-                ?>
-<!--            </div>-->
-<!--            <div role="tabpanel" class="tab-pane" id="answer">...</div>-->
-<!--        </div>-->
+                <!-- Tab panes -->
+        <!--        <div class="tab-content">-->
+        <!--            <div role="tabpanel" class="tab-pane active" id="questions">-->
+                        <?php
+        //                var_dump($data['questions']);
+                            $answers = ArrayHelper::map($answersData, 'id', 'answer');
+            //                var_dump($answers);
+            //                $answers = \common\models\Answers::find()->select('answer')->where(['questions_id' => $data['questions']->id])->asArray()->all();
+            //                $ans = [];
+            //                foreach ($answers as $answer) {
+            //                    $ans[] = $answer['answer'];
+            //                }
+            //                var_dump($ans);
+            //                echo \pollext\poll\poll::widget([
+            //                    'pollName'=>'Do you like PHP?',
+            //                    'answerOptions'=>
+            //                        [
+            //                            'Yes',
+            //                            'No',
+            //                        ],
+            //                ]);
+                            Pjax::begin();
+                            echo PollWidget::widget([
+                                'pollName'=>$data['questions']->questions,
+                                'answerOptions'=> $answers,
+                            ]);
+                            Pjax::end();
+                        ?>
+        <!--            </div>-->
+        <!--            <div role="tabpanel" class="tab-pane" id="answer">...</div>-->
+        <!--        </div>-->
 
-    </div>
+            </div>
+        <?php
+        }
+    }
+    ?>
     <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>
     <p></p>
     <div class="panel panel-primary">

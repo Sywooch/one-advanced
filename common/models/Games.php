@@ -31,6 +31,7 @@ use yii\db\ActiveRecord;
  * @property Seasons $season
  * @property Teams $home
  * @property Teams $guest
+ * @property GamesEvents[] $gamesEvents
  * @property GamesPlayers[] $gamesPlayers
  */
 class Games extends \yii\db\ActiveRecord
@@ -180,5 +181,13 @@ class Games extends \yii\db\ActiveRecord
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesEvents()
+    {
+        return $this->hasMany(GamesEvents::className(), ['game_id' => 'id']);
     }
 }

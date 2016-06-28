@@ -15,13 +15,15 @@ use Yii;
  * @property integer $height
  * @property integer $weight
  * @property integer $date
- * @property integer $role
+ * @property string $role
  * @property integer $teams_id
  * @property integer $goals
  * @property integer $transfers
  * @property integer $yellow_cards
  * @property integer $red_cards
  *
+ * @property GamesEvents[] $gamesEvents
+ * @property GamesEvents[] $gamesEvents0
  * @property GamesPlayers[] $gamesPlayers
  * @property Teams $teams
  */
@@ -51,7 +53,9 @@ class Players extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'surname', 'nationality', 'date', 'teams_id'], 'required'],
-            [['number', 'height', 'weight', 'date', 'role', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards'], 'integer'],
+            [['number', 'height', 'weight', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards'], 'integer'],
+            [['date'], 'safe'],
+            [['role'], 'string'],
             [['name', 'surname', 'nationality'], 'string', 'max' => 100],
             [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
@@ -94,5 +98,34 @@ class Players extends \yii\db\ActiveRecord
     public function getTeams()
     {
         return $this->hasOne(Teams::className(), ['id' => 'teams_id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesEvents()
+    {
+        return $this->hasMany(GamesEvents::className(), ['player_one_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesEvents0()
+    {
+        return $this->hasMany(GamesEvents::className(), ['player_two_id' => 'id']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->date = Yii::$app->formatter->asTimestamp($this->date);
+//            $this->date = Yii::$app->formatter->asDate($this->date);
+//            var_dump($this->date);
+//            die;
+            return true;
+        }
+        return false;
     }
 }

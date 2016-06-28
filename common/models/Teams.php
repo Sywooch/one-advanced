@@ -17,6 +17,7 @@ use Yii;
  * @property Games[] $games
  * @property Games[] $gamesGuest
  * @property Players[] $players
+ * @property GamesEvents[] $gamesEvents
  * @property SeasonDetails[] $seasonDetails
  */
 class Teams extends \yii\db\ActiveRecord
@@ -104,4 +105,13 @@ class Teams extends \yii\db\ActiveRecord
     {
         return $this->hasOne(SeasonDetails::className(), ['team_id' => 'id'])->orderBy('id DESC')->one();
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGamesEvents()
+    {
+        return $this->hasMany(GamesEvents::className(), ['team_id' => 'id']);
+    }
+
 }

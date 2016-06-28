@@ -14,6 +14,11 @@ return [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['admin','client'],
         ],
+
+        'formatter' => [
+            'dateFormat' => 'php:d.m.Y',
+            'datetimeFormat' => 'php:d.m.Y H:i:s',
+        ],
 //        'formatter' => [
 //            'class' => 'yii\i18n\Formatter',
 ////            'dateFormat' => 'php:d.m.Y',
