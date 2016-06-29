@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Games;
 use common\models\Questions;
 use common\models\SeasonDetails;
 use common\models\Seasons;
@@ -98,6 +99,16 @@ class SiteController extends Controller
         ]);
 
         $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
+        $data['gamesLast'] = Games::find()
+            ->where(['home_id' => $data['mainTeam']->id])
+            ->orWhere(['guest_id' => $data['mainTeam']->id])
+            ->orderBy('date')
+            ->one();
+        $data['gamesFirst'] = Games::find()
+            ->where(['home_id' => $data['mainTeam']->id])
+            ->orWhere(['guest_id' => $data['mainTeam']->id])
+            ->orderBy('date DESC')
+            ->one();
 
 //        var_dump($data['questions']->answers->answer);
 //        var_dump($data['questions']->answers->how_many);
