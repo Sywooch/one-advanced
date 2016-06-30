@@ -12,7 +12,6 @@ use kartik\file\FileInput;
 $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date),'php:d-m-Y H:i');
 
 
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
 /* @var $form yii\widgets\ActiveForm */
@@ -86,15 +85,36 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 
                 ],
             ],
+        ]
+    ]);
+
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 4,
+//        'autoGenerateColumns' => true,
+//
+        'attributes' => [
             'category_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
                 'options'=>[
                     'data'=>ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Категорию']
+                    'options'=>['placeholder'=>'Выберите Категорию'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
                 ],
-                'pluginOptions' => [
-                    'allowClear' => true
+            ],
+            'gallery_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\Select2',
+                'options'=>[
+                    'data'=>ArrayHelper::map($model->getAllGallery(), 'id', 'name'),
+                    'options'=>['placeholder'=>'Выберите Галерею'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
                 ],
             ],
             'tour' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Тур...']],

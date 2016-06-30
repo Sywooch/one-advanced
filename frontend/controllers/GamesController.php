@@ -67,9 +67,20 @@ class GamesController extends Controller
             ->where(['game_id' => $model->id, 'team_id' => $model->guest_id])
             ->all();
 
+        $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
+            'query' => GamesPlayers::find()
+                ->where(['game_id' => $model->id, 'team_id' => $model->home_id]),
+        ]);
+
+        $dataProvider['gamePlayersGuest'] = new ActiveDataProvider([
+            'query' => GamesPlayers::find()
+                ->where(['game_id' => $model->id, 'team_id' => $model->guest_id]),
+        ]);
+
         return $this->render('view', [
             'model' => $model,
             'gameData' => $gameData,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

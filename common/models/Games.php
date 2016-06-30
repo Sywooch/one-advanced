@@ -73,7 +73,7 @@ class Games extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'home_id', 'guest_id', 'season_id', 'content', 'status'], 'required'],
+            [['category_id', 'home_id', 'guest_id', 'score', 'season_id', 'content', 'category_id', 'status'], 'required'],
 //            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
             [['content', 'status'], 'string'],
@@ -109,6 +109,7 @@ class Games extends \yii\db\ActiveRecord
             'date' => 'Дата',
             'status' => 'Статус',
             'category_id' => 'Категория матча',
+            'gallery_id' => 'Галерея матча',
         ];
     }
 
@@ -172,6 +173,11 @@ class Games extends \yii\db\ActiveRecord
     public function getGallery()
     {
         return $this->hasOne(Gallery::className(), ['id' => 'gallery_id']);
+    }
+
+    public function getAllGallery()
+    {
+        return Gallery::find()->where(['status' => 'on'])->all();
     }
 
     public function beforeSave($insert)

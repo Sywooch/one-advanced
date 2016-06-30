@@ -15,16 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Создать матч', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             [
                 'label' => 'Матч',
                 'value' => function ($model) {
@@ -32,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'format' => 'raw',
             ],
-//            [
-//                'attribute' => 'home.name',
-//                'label' => 'Команда дома',
-//            ],
+            [
+                'attribute' => 'category.name',
+                'label' => 'Тип матча',
+            ],
 //            [
 //                'attribute' => 'guest.name',
 //                'label' => 'Команда в гостях',
@@ -52,7 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
              'date:date',
              'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}'
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

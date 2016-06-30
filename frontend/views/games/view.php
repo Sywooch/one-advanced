@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\GamesPlayers;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
@@ -11,8 +12,14 @@ $this->title = $model->home->name.' : '.$model->guest->name;
 $this->params['breadcrumbs'][] = ['label' => 'Матчи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-var_dump($model);
-var_dump($model->season);
+$compositionsStep = false;
+$galleryStep = false;
+if (!empty($gameData['home']) && !empty($gameData['guest'])) {
+    $compositionsStep = true;
+}
+if (!is_null($model->gallery)) {
+    $galleryStep = true;
+}
 
 ?>
 <div class="games-view">
@@ -52,20 +59,14 @@ var_dump($model->season);
                     ?>
                 </div>
                 <?php
-                if ($model->score == '') {
                     $score = explode(':', $model->score);
-                } else {
-                    $score = [0, 1];
-                }
-                var_dump($score);
                 ?>
                 <div class="game-view-score">
-<!--                    <span class="game-view-score">--><?php //echo $score[0] ?><!--</span>-->
-<!--                    <span class="game-view-devider">--><?php //echo ':' ?><!--</span>-->
-<!--                    <span class="game-view-score">--><?php //echo $score[1] ?><!--</span>-->
+                    <span class="game-view-score"><?php echo $score[0] ?></span>
+                    <span class="game-view-devider"><?php echo ':' ?></span>
+                    <span class="game-view-score"><?php echo $score[1] ?></span>
                 </div>
-                <div class="day-month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:d.m') ?></div>
-                <div class="year"><?php echo Yii::$app->formatter->asTime($model -> date,'H:i') ?></div>
+                <div class="day-month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:d.m H:i') ?></div>
                 <div class="game-view-city-stadion"><?php echo $model->home->city ?>, Стадион <?php echo $model->home->stadium?></div>
 
             </div>
@@ -91,73 +92,182 @@ var_dump($model->season);
     </div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-<!--        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>-->
-<!--        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>-->
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
+<!--        //        $galleryStep = false;-->
+
+        <?php if ($compositionsStep) : ?>
+            <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
+        <?php endif; ?>
+        <?php if ($galleryStep) : ?>
+            <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Фото</a></li>
+        <?php endif; ?>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">...</div>
-        <div role="tabpanel" class="tab-pane" id="profile">...</div>
-<!--        <div role="tabpanel" class="tab-pane" id="messages">...</div>-->
-<!--        <div role="tabpanel" class="tab-pane" id="settings">...</div>-->
+        <div role="tabpanel" class="tab-pane active" id="home"><?php echo $model->content ?></div>
+        <?php if ($compositionsStep) : ?>
+            <div role="tabpanel" class="tab-pane" id="compositions">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="panel panel-primary" style="margin-bottom: 0">
+                            <div class="panel-heading">
+                                <?php echo $model->home->name; ?>
+                                <div class="pull-right">г.<?php echo $model->home->city ?></div>
+                            </div>
+                        </div>
+                        <?php
+                        echo GridView::widget([
+                            'dataProvider' => $dataProvider['gamePlayersHome'],
+                            'pjax' => true,
+                            'options' => [
+                                'id' => 'game-view-home',
+                            ],
+                            'responsive'=>true,
+                            'hover'=>true,
+                            'bordered'=>false,
+                            'striped'=>true,
+                            'containerOptions'=>['style'=>'overflow: auto'],
+                            'layout' => '{items}',
+                            'columns' => [
+                                [
+                                    'label' => false,
+                                    'value' => function ($model) {
+                                        return $model->players->number;
+                                    },
+                                    'format' => 'raw',
+                                ],
+                                [
+                                    'label' => 'Основной состав',
+                                    'value' => function ($model) {
+                                        return $model->players->surname.' '.$model->players->name;
+                                    },
+                                    'format' => 'raw',
+                                ],
+                            ],
+                        ]);
+                        ?>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="panel panel-primary" style="margin-bottom: 0">
+                            <div class="panel-heading">
+                                <?php echo $model->guest->name; ?>
+                                <div class="pull-right">г.<?php echo $model->guest->city ?></div>
+                            </div>
+                        </div>
+                        <?php
+                        echo GridView::widget([
+                            'dataProvider' => $dataProvider['gamePlayersGuest'],
+                            'pjax' => true,
+                            'options' => [
+                                'id' => 'game-view-guest',
+                            ],
+                            'responsive'=>true,
+                            'hover'=>true,
+                            'bordered'=>false,
+                            'striped'=>true,
+                            'containerOptions'=>['style'=>'overflow: auto'],
+                            'layout' => '{items}',
+                            'columns' => [
+                                [
+                                    'label' => false,
+                                    'value' => function ($model) {
+                                        return $model->players->number;
+                                    },
+                                    'format' => 'raw',
+                                ],
+                                [
+                                    'label' => 'Основной состав',
+                                    'value' => function ($model) {
+                                        return $model->players->surname.' '.$model->players->name;
+                                    },
+                                    'format' => 'raw',
+                                ],
+                            ],
+                        ]);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($galleryStep) : ?>
+            <div role="tabpanel" class="tab-pane" id="gallery">
+                <div class="row" style="margin: 0">
+                    <?php
+    //                var_dump($model->gallery);
+    //                var_dump($model->gallery->getImages());
+                    $images = $model->gallery->getImages();
+                    if($images[0]['urlAlias']!='placeHolder') {
+                        foreach($images as $img){
+                            echo Html::tag('div',
+                                Html::a(
+                                    Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
+                                    $img->getUrl(),
+                                    ['target' => '_blank']
+                                ),
+                                ['class' => 'gallery-view-box']
+                            );
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 
-    <div class="row">
-        <div class="col-xs-4">
-            <?php echo DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-//            'id',
-//            [
-//                'attribute' => 'home.name',
-//                'label' => 'Команда дома',
-//            ],
-//            [
-//                'attribute' => 'guest.name',
-//                'label' => 'Команда в гостях',
-//            ],
-                    'score',
-                    [
-                        'attribute' => 'season.name',
-                        'label' => 'Сезон',
-                    ],
-                    'tour',
-                    'city',
-                    'stadium',
-                    'referee',
-                    'referee2',
-                    'referee3',
-                    'content:html',
-                    'date:datetime',
-                    'status',
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-xs-4">
-            <ul>
-            <?php
-            echo Html::tag('h4', 'Состав команды '.$model->home->name);
-            foreach ($gameData['home'] as $item) {
-                echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
-            }
-            ?>
-            </ul>
-        </div>
-        <div class="col-xs-4">
-            <ul>
-                <?php
-                echo Html::tag('h4', 'Состав команды '.$model->guest->name);
-                foreach ($gameData['guest'] as $item) {
-                    echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
-                }
-                ?>
-            </ul>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col-xs-4">-->
+<!--            --><?php //echo DetailView::widget([
+//                'model' => $model,
+//                'attributes' => [
+////            'id',
+////            [
+////                'attribute' => 'home.name',
+////                'label' => 'Команда дома',
+////            ],
+////            [
+////                'attribute' => 'guest.name',
+////                'label' => 'Команда в гостях',
+////            ],
+//                    'score',
+//                    [
+//                        'attribute' => 'season.name',
+//                        'label' => 'Сезон',
+//                    ],
+//                    'tour',
+//                    'city',
+//                    'stadium',
+//                    'referee',
+//                    'referee2',
+//                    'referee3',
+//                    'content:html',
+//                    'date:datetime',
+//                    'status',
+//                ],
+//            ]);
+//            ?>
+<!--        </div>-->
+<!--        <div class="col-xs-4">-->
+<!--            <ul>-->
+<!--            --><?php
+//            echo Html::tag('h4', 'Состав команды '.$model->home->name);
+//            foreach ($gameData['home'] as $item) {
+//                echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
+//            }
+//            ?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-xs-4">-->
+<!--            <ul>-->
+<!--                --><?php
+//                echo Html::tag('h4', 'Состав команды '.$model->guest->name);
+//                foreach ($gameData['guest'] as $item) {
+//                    echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
+//                }
+//                ?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
 </div>

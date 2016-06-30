@@ -101,6 +101,7 @@ class GamesController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->city = $model->home->city;
             $model->stadium = $model->home->stadium;
+            $model->score = '0:0';
             if ($model->save()) {
 
                 if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
