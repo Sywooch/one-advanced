@@ -301,3 +301,7 @@ a.desc:after {
     .standings .main-team {
         font-weight: bold;
     }
+
+    .games-view-score-teams > div {
+        display: inline-block;
+    }

@@ -114,7 +114,6 @@ $this->params['widget_bar'] = Html::tag(
 //    ]);
 //}
 
-//var_dump($data['gamesFirst']);
 ?>
 <div class="site-index">
     <?php
@@ -123,7 +122,7 @@ $this->params['widget_bar'] = Html::tag(
         <div class="carousel-promo well">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="promo-game-block">
+                    <a href="<?php echo Url::to(['/games/view', 'id' => $data['gamesLast']->id]);?>" class="promo-game-block">
                         <div class="promo-game-header">
                             <div class="row">
                                 <div class="promo-game-date col-xs-12 vtop">
@@ -178,7 +177,7 @@ $this->params['widget_bar'] = Html::tag(
                                 ?>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-xs-6">
                     <div class="promo-game-block">
