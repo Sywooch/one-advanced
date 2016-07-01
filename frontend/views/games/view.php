@@ -67,7 +67,7 @@ if (!is_null($model->gallery)) {
                     <span class="game-view-score"><?php echo $score[1] ?></span>
                 </div>
                 <div class="day-month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:d.m H:i') ?></div>
-                <div class="game-view-city-stadion"><?php echo $model->home->city ?>, Стадион <?php echo $model->home->stadium?></div>
+                <div class="game-view-city-stadion"><?php echo $model->city ?>, Стадион <?php echo $model->stadium?></div>
 
             </div>
             <div class="col-xs-4 text-left games-view-score-teams">

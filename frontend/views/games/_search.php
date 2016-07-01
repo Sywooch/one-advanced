@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\GamesSearch */
@@ -9,21 +11,39 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="games-search">
-
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+<!--    --><?php //echo $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'home_id') ?>
+<!--    --><?php //echo $form->field($model, 'home_id') ?>
 
-    <?= $form->field($model, 'guest_id') ?>
+<!--    --><?php //echo $form->field($model, 'guest_id') ?>
+    <div class="row">
+        <div class="col-xs-6">
+            <?php
+            echo $form->field($model, 'season_id')->widget(Select2::classname(),[
+                'data' => ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
+                'options' => ['placeholder' => 'Выберите сезон ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]) ;
+            ?>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group" style="margin-top: 25px">
+                <?php echo Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
+<!--                --><?php //echo Html::resetButton('Сбросить', ['class' => 'btn btn-default']) ?>
+                <?php echo Html::a('Сбросить', ['/games'], ['class' => 'btn btn-default']) ?>
+            </div>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'season_id') ?>
 
-    <?= $form->field($model, 'tour') ?>
+<!--    --><?php //echo $form->field($model, 'tour') ?>
 
     <?php // echo $form->field($model, 'score') ?>
 
@@ -43,10 +63,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'status') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 

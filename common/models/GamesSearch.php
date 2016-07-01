@@ -78,4 +78,44 @@ class GamesSearch extends Games
 
         return $dataProvider;
     }
+
+    public function searchFrontend($params)
+    {
+        $query = Games::find()->orderBy('date DESC');
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'home_id' => $this->home_id,
+            'guest_id' => $this->guest_id,
+            'season_id' => $this->season_id,
+            'tour' => $this->tour,
+            'score' => $this->score,
+            'date' => $this->date,
+        ]);
+
+        $query->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'stadium', $this->stadium])
+            ->andFilterWhere(['like', 'referee', $this->referee])
+            ->andFilterWhere(['like', 'referee2', $this->referee2])
+            ->andFilterWhere(['like', 'referee3', $this->referee3])
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'status', $this->status]);
+
+        return $dataProvider;
+    }
 }

@@ -44,7 +44,7 @@ class GamesController extends Controller
     public function actionIndex()
     {
         $searchModel = new GamesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchFrontend(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
