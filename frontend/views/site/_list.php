@@ -47,11 +47,22 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
             </div>
             <div class="<?php echo $classContentBlock ?> news-block-content">
                 <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>" class="news-home-link">
-                    <h4><?php echo $model -> title ?></h4>
+                    <h4>
+                        <?php
+                        echo $model -> title.' ';
+                        $date = date('d.m.Y',$model -> date_create);
+                        if ($date == date('d.m.Y')) {
+                            ?><span class="label label-primary">Сегодня</span><?php
+                        } elseif ($date == date('d.m.Y', strtotime('-1 day'))) {
+                            ?><span class="label label-primary">Вчера</span><?php
+                        }
+                        ?>
+
+                    </h4>
                 </a>
                 <div class="news-home-text"><?php echo $model -> snippet ?></div>
                 <div class="news-date-category">
-                    <span class="news-date"><?php echo date('d.m.y',$model -> date) ?></span>
+                    <span class="news-date"><?php echo date('d.m.y',$model -> date_create) ?></span>
                     <a href="#" class="news-category"><?php echo $model->category->name ?></a>
                 </div>
             </div>

@@ -13,6 +13,11 @@ use kartik\icons\Icon;
 use common\widgets\PollWidget;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
+use yii\bootstrap\Carousel;
+use frontend\assets\CarouselAsset;
+
+CarouselAsset::register($this);
+
 
 Icon::map($this, Icon::FA);
 
@@ -82,6 +87,33 @@ $this->params['widget_bar'] = Html::tag(
     ]),
     ['class' => 'standings']);
 
+if (!empty($data['allPlayers'])) {
+    $playersBD = '';
+    foreach ($data['allPlayers'] as $item) {
+        $image = $item->getImage();
+        $img = '';
+        if($image['urlAlias']!='placeHolder') {
+            $sizes = $image->getSizesWhen('x60');
+            $img = Html::img($image->getUrl('x60'),[
+                'alt'=> $item->surname . ' ' .$item->name,
+                'class' => '',
+                'width'=>$sizes['width'],
+                'height'=>$sizes['height']
+            ]);
+        }
+        $playersBD .= Html::tag('div',
+            Html::tag('div', $img, ['class' => 'col-xs-4 text-center']).
+            Html::tag('div',
+                Html::tag('div', $item->name).
+                Html::tag('div', Html::tag('b', $item->surname)).
+                Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
+                ['class' => 'col-xs-8']),
+            ['class' => 'row']).Html::tag('hr');
+//        var_dump($item);
+    }
+//    var_dump($data['allPlayers']);
+    $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['players-bd']);
+}
 //$instagram = new Instagram(array(
 //    'apiKey'      => '122e830161b4449c98371f3b313d39c3',
 //    'apiSecret'   => '7580616fd35047dca99080628cae50d4',
@@ -96,18 +128,18 @@ $this->params['widget_bar'] = Html::tag(
 ////$data = $instagram->getOAuthToken($code);
 ////
 //echo 'Your username is: ' . $data->user->username;
-//        var_dump($data['gamesLast']);
-//var_dump(Yii::$app->formatter->asDate($data['gamesLast']->date));
-//var_dump($data['gamesLast']->season->full_name);
-//var_dump($data['gamesLast']->home->name);
-//var_dump($data['gamesLast']->score);
-//var_dump($data['gamesLast']->guest->name);
-//$image = $data['gamesLast']->home->getImage();
+//        var_dump($data['gameLast']);
+//var_dump(Yii::$app->formatter->asDate($data['gameLast']->date));
+//var_dump($data['gameLast']->season->full_name);
+//var_dump($data['gameLast']->home->name);
+//var_dump($data['gameLast']->score);
+//var_dump($data['gameLast']->guest->name);
+//$image = $data['gameLast']->home->getImage();
 //if($image['urlAlias']!='placeHolder') {
-////    $image = $data['gamesLast']->home->getImage();
+////    $image = $data['gameLast']->home->getImage();
 //    $sizes = $image->getSizesWhen('x25');
 //    echo Html::img($image->getUrl('x25'),[
-//        'alt'=>$data['gamesLast']->home->name,
+//        'alt'=>$data['gameLast']->home->name,
 //        'class' => 'img-responsive',
 //        'width'=>$sizes['width'],
 //        'height'=>$sizes['height']
@@ -117,132 +149,538 @@ $this->params['widget_bar'] = Html::tag(
 ?>
 <div class="site-index">
     <?php
-    if (!is_null($data['gamesLast']) && !is_null($data['gamesLast'])) {
+    if (!is_null($data['gameLast']) && !is_null($data['gameLast'])) {
     ?>
-        <div class="carousel-promo well">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a href="<?php echo Url::to(['/games/view', 'id' => $data['gamesLast']->id]);?>" class="promo-game-block">
-                        <div class="promo-game-header">
-                            <div class="row">
-                                <div class="promo-game-date col-xs-12 vtop">
-                                    <?php echo Yii::$app->formatter->asDate($data['gamesLast']->date).', '.$data['gamesLast']->season->full_name ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row promo-game-row">
-                            <div class="col-xs-5 text-left promo-game-team vcenter">
-                                <?php
-                                $image = $data['gamesLast']->home->getImage();
-                                if($image['urlAlias']!='placeHolder') {
-                                    $sizes = $image->getSizesWhen('x45');
-                                    echo Html::img($image->getUrl('x45'),[
-                                        'alt'=>$data['gamesLast']->home->name,
-                                        'class' => 'hidden-sm',
-                                        'width'=>$sizes['width'],
-                                        'height'=>$sizes['height']
-                                    ]);
-                                }
-                                ?>
+        <!--<div class="carousel-promo well">
+            <?php
+/*            $carouselItems = [
+                [
+                    'content' => Html::tag('div',
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesLast'][2]['date']),
+                            ['class' => 'col-xs-6']
+                        ).
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesLast'][1]['date']),
+                            ['class' => 'col-xs-6']
+                        ),
+                        ['class' => 'row']
+                        ),
+                    'options' => ['class' => 'item']
+                ],
+                [
+                    'content' => Html::tag('div',
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesLast'][0]['date']),
+                            ['class' => 'col-xs-6']
+                        ).
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesFirst'][0]['date']),
+                            ['class' => 'col-xs-6']
+                        ),
+                        ['class' => 'row']
+                        ),
+                    'options' => ['class' => 'item active']
+                ],
+                [
+                    'content' => Html::tag('div',
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesFirst'][1]['date']),
+                            ['class' => 'col-xs-6']
+                        ).
+                        Html::tag(
+                            'div',
+                            Yii::$app->formatter->asDatetime($data['gamesFirst'][2]['date']),
+                            ['class' => 'col-xs-6']
+                        ),
+                        ['class' => 'row']
+                        ),
+                ]
+            ];
+            */?>
+            <div id="w4" class="carousel carousel-2d">
+                <div class="carousel-inner">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesLast'][2]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesLast'][2]->date).', '.$data['gamesLast'][2]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesLast'][2]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][2]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesLast'][2]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][2]->home->name;
+                                    echo ($data['gamesLast'][2]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesLast'][2]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
                                 <span>
                                     <?php
-                                    echo ($data['gamesLast']->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
-                                    echo $data['gamesLast']->home->name;
-                                    echo ($data['gamesLast']->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
-                                    ?>
+/*                                    echo ($data['gamesLast'][2]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][2]->guest->name;
+                                    echo ($data['gamesLast'][2]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
                                 </span>
+                                            <?php
+/*                                            $image = $data['gamesLast'][2]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][2]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-xs-2 text-center promo-game-score vcenter">
-                                <div><?php echo $data['gamesLast']->score ?></div>
-                            </div>
-                            <div class="col-xs-5 text-right promo-game-team vcenter">
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesLast'][1]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesLast'][1]->date).', '.$data['gamesLast'][1]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesLast'][1]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][1]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesLast'][1]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][1]->home->name;
+                                    echo ($data['gamesLast'][1]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesLast'][1]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
                                 <span>
                                     <?php
-                                    echo ($data['gamesLast']->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
-                                    echo $data['gamesLast']->guest->name;
-                                    echo ($data['gamesLast']->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
-                                    ?>
+/*                                    echo ($data['gamesLast'][1]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][1]->guest->name;
+                                    echo ($data['gamesLast'][1]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
                                 </span>
-                                <?php
-                                $image = $data['gamesLast']->home->getImage();
-                                if($image['urlAlias']!='placeHolder') {
-                                    $sizes = $image->getSizesWhen('x45');
-                                    echo Html::img($image->getUrl('x45'),[
-                                        'alt'=>$data['gamesLast']->home->name,
-                                        'class' => 'hidden-sm',
-                                        'width'=>$sizes['width'],
-                                        'height'=>$sizes['height']
-                                    ]);
-                                }
-                                ?>
+                                            <?php
+/*                                            $image = $data['gamesLast'][1]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][1]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesLast'][0]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesLast'][0]->date).', '.$data['gamesLast'][0]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesLast'][0]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][0]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesLast'][0]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][0]->home->name;
+                                    echo ($data['gamesLast'][0]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesLast'][0]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
+                                <span>
+                                    <?php
+/*                                    echo ($data['gamesLast'][0]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesLast'][0]->guest->name;
+                                    echo ($data['gamesLast'][0]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                            <?php
+/*                                            $image = $data['gamesLast'][0]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesLast'][0]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesFirst'][0]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesFirst'][0]->date).', '.$data['gamesFirst'][0]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesFirst'][0]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][0]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][0]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][0]->home->name;
+                                    echo ($data['gamesFirst'][0]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesFirst'][0]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
+                                <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][0]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][0]->guest->name;
+                                    echo ($data['gamesFirst'][0]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                            <?php
+/*                                            $image = $data['gamesFirst'][0]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][0]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesFirst'][1]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesFirst'][1]->date).', '.$data['gamesFirst'][1]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesFirst'][1]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][1]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][1]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][1]->home->name;
+                                    echo ($data['gamesFirst'][1]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesFirst'][1]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
+                                <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][1]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][1]->guest->name;
+                                    echo ($data['gamesFirst'][1]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                            <?php
+/*                                            $image = $data['gamesFirst'][1]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][1]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="<?php /*echo Url::to(['/games/view', 'id' => $data['gamesFirst'][2]->id]);*/?>" class="promo-game-block">
+                                    <div class="promo-game-header">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php /*echo Yii::$app->formatter->asDate($data['gamesFirst'][2]->date).', '.$data['gamesFirst'][2]->season->full_name */?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+/*                                            $image = $data['gamesFirst'][2]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][2]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                            <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][2]->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][2]->home->name;
+                                    echo ($data['gamesFirst'][2]->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php /*echo $data['gamesFirst'][2]->score */?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
+                                <span>
+                                    <?php
+/*                                    echo ($data['gamesFirst'][2]->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                    echo $data['gamesFirst'][2]->guest->name;
+                                    echo ($data['gamesFirst'][2]->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                    */?>
+                                </span>
+                                            <?php
+/*                                            $image = $data['gamesFirst'][2]->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$data['gamesFirst'][2]->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            */?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-6">
-<!--                    <div class="promo-game-block">-->
-                    <a href="<?php echo Url::to(['/games/view', 'id' => $data['gamesFirst']->id]);?>" class="promo-game-block">
-                        <div class="promo-game-header">
-                            <div class="row">
-                                <div class="promo-game-date col-xs-12 vtop">
-                                    <?php echo Yii::$app->formatter->asDate($data['gamesFirst']->date).', '.$data['gamesFirst']->season->full_name ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row promo-game-row">
-                            <div class="col-xs-5 text-left promo-game-team vcenter">
-                                <?php
-                                $image = $data['gamesFirst']->home->getImage();
-                                if($image['urlAlias']!='placeHolder') {
-                                    $sizes = $image->getSizesWhen('x45');
-                                    echo Html::img($image->getUrl('x45'),[
-                                        'alt'=>$data['gamesFirst']->home->name,
-                                        'class' => 'hidden-sm',
-                                        'width'=>$sizes['width'],
-                                        'height'=>$sizes['height']
-                                    ]);
-                                }
-                                ?>
-                                <span>
-                                    <?php
-                                    echo ($data['gamesFirst']->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
-                                    echo $data['gamesFirst']->home->name;
-                                    echo ($data['gamesFirst']->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
-                                    ?>
-                                </span>
-                            </div>
-                            <div class="col-xs-2 text-center promo-game-score vcenter">
-                                <div>-:-</div>
-                            </div>
-                            <div class="col-xs-5 text-right promo-game-team vcenter">
-
-                                <span>
-                                    <?php
-                                    echo ($data['gamesFirst']->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
-                                    echo $data['gamesFirst']->guest->name;
-                                    echo ($data['gamesFirst']->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
-                                    ?>
-                                </span>
-                                <?php
-                                $image = $data['gamesFirst']->home->getImage();
-                                if($image['urlAlias']!='placeHolder') {
-                                    $sizes = $image->getSizesWhen('x45');
-                                    echo Html::img($image->getUrl('x45'),[
-                                        'alt'=>$data['gamesFirst']->home->name,
-                                        'class' => 'hidden-sm',
-                                        'width'=>$sizes['width'],
-                                        'height'=>$sizes['height']
-                                    ]);
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <a class="left carousel-control" href="#w4" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#w4" data-slide="next">›</a>
             </div>
+        </div>-->
+        <?php
+//        var_dump($data['gamesFirst']);
+
+//        foreach (array_reverse($data['gamesLast']) as $item) {
+//            var_dump(Yii::$app->formatter->asDatetime($item['date']));
+//        }
+//        foreach ($data['gamesFirst'] as $item) {
+//            var_dump(Yii::$app->formatter->asDatetime($item['date']));
+//        }
+//        $gamesPreview = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
+//
+//        foreach ($gamesPreview as $item) {
+//            var_dump(Yii::$app->formatter->asDatetime($item['date']));
+//        }
+
+        ?>
+<!--        <a href="--><?php //echo Url::to(['/games/view', 'id' => $data['gamesLast'][0]->id]);?><!--" class="promo-game-block">-->
+<!--            link-->
+<!--        </a>-->
+        <div class="carousel-promo well">
+            <ul class="carousel carousel-3d">
+                <div class="carousel-bg"></div>
+                <?php
+                $i = 1;
+//                $gamesPreview = array_merge($data['gamesFirst'], $data['gamesLast']);
+                $gamesPreview = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
+                foreach ($gamesPreview as $item) {
+                    ?>
+                    <li class="item <?php //echo $i==1 ? 'active' : '' ?>">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block" data-pjax="false">
+<!--                                <div data-link="--><?php //echo Url::to(['/games/view', 'id' => $item->id], true);?><!--" class="promo-game-block">-->
+                                    <div class="promo-game-header text-center">
+                                        <div class="row">
+                                            <div class="promo-game-date col-xs-12 vtop">
+                                                <?php echo Yii::$app->formatter->asDatetime($item->date, 'php:d.m, H:i').', '.$item->city.', стадион '.$item->stadium ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team vcenter">
+                                            <?php
+                                            $image = $item->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$item->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            ?>
+                                            <span>
+                                                <?php
+                                                echo ($item->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                                echo $item->home->name;
+                                                echo ($item->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score vcenter">
+                                            <div><?php echo $item->score ?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team vcenter">
+                                            <span>
+                                                <?php
+                                                echo ($item->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                                echo $item->guest->name;
+                                                echo ($item->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                                ?>
+                                            </span>
+                                            <?php
+                                            $image = $item->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$item->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
+                    $i++;
+                }
+                ?>
+                <div class="controls">
+
+                <a href="#" class="left carousel-control previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                <a href="#" class="right carousel-control next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                </div>
+
+            </ul>
+
+<!--            <div class="controls">-->
+<!--                <a href="#" class="previous">Previous</a>-->
+<!--                <a href="#" class="next">Next</a>-->
+<!--            </div>-->
         </div>
     <?php
     }
+    $data['questions'] = null;
     if (!is_null($data['questions'])) {
         $answersData = $data['questions']->answers;
         if (!empty($answersData)) {
@@ -292,7 +730,7 @@ $this->params['widget_bar'] = Html::tag(
         }
     }
     ?>
-    <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>
+<!--    <script src="http://megatimer.ru/s/ee5f1eae51b2d310823adbb8ffa364be.js"></script>-->
     <p></p>
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -460,3 +898,10 @@ $this->params['widget_bar'] = Html::tag(
                 </div>
             </div>
 </div>
+<?php $this->registerJs('$(\'.carousel-2d\').carousel({
+        interval: false,
+        wrap: false
+    })'); ?>
+<script>
+
+</script>

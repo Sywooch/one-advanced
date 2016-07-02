@@ -6,6 +6,7 @@ use common\models\GamesPlayers;
 use common\models\GamesPlayersSearch;
 use common\models\Players;
 use common\models\PlayersSearch;
+use common\models\Teams;
 use Yii;
 use common\models\Games;
 use common\models\GamesSearch;
@@ -66,6 +67,22 @@ class GamesController extends Controller
         $gameData['guest'] = GamesPlayers::find()
             ->where(['game_id' => $model->id, 'team_id' => $model->guest_id])
             ->all();
+        $gameData['mainTeam'] = Teams::find()->select('id')->where(['name' => Yii::$app->params['main-team']])->one();
+
+
+        $gameData['nextGame'] = Games::find()
+            ->select('id')
+            ->where(['home_id' => $gameData['mainTeam']->id])
+            ->orWhere(['guest_id' => $gameData['mainTeam']->id])
+            ->andWhere(['>', 'date', $model->date])
+            ->one();
+        $gameData['prevGame'] = Games::find()
+            ->select('id')
+            ->where(['home_id' => $gameData['mainTeam']->id])
+            ->orWhere(['guest_id' => $gameData['mainTeam']->id])
+            ->andWhere(['<', 'date', $model->date])
+            ->orderBy('date DESC')
+            ->one();
 
         $dataProvider['gamePlayersHome'] = new ActiveDataProvider([
             'query' => GamesPlayers::find()

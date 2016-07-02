@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\Games;
+use common\models\Players;
 use common\models\Questions;
 use common\models\SeasonDetails;
 use common\models\Seasons;
@@ -80,7 +81,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $dataProvider['news'] = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC')->limit(10),
+            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC')->limit(10),
             'pagination' => [
                 'pageSize' => 7,
             ],
@@ -88,6 +89,12 @@ class SiteController extends Controller
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        var_dump($this);
 //        $this->params['teamId'] = $data['mainTeam']->id;
+        $data['allPlayers'] = Players::find()
+            ->where(['teams_id' => $data['mainTeam']->id])
+            ->andWhere(['>', 'date', strtotime(date("01.m.Y 00:00:00"))])
+            ->andWhere(['<', 'date', strtotime(date("t.m.Y 23:59:59"))])
+            ->orderBy('date')
+            ->all();
         $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
         $data['season'] = $data['seasonDetails']->season;
         $dataProvider['standings'] = new ActiveDataProvider([
@@ -99,17 +106,31 @@ class SiteController extends Controller
         ]);
 
         $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
-        $data['gamesLast'] = Games::find()
+        $data['gameLast'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
             ->orderBy('date')
             ->one();
-        $data['gamesFirst'] = Games::find()
+        $data['gameFirst'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
             ->orderBy('date DESC')
             ->one();
-
+        $data['gamesLast'] = Games::find()
+            ->where(['home_id' => $data['mainTeam']->id])
+            ->orWhere(['guest_id' => $data['mainTeam']->id])
+            ->andWhere(['<', 'date', time()])
+            ->orderBy('date DESC')
+            ->limit(3)
+            ->all();
+        $data['gamesFirst'] = Games::find()
+            ->where(['home_id' => $data['mainTeam']->id])
+            ->orWhere(['guest_id' => $data['mainTeam']->id])
+            ->andWhere(['>', 'date', time()])
+            ->orderBy('date')
+            ->limit(3)
+            ->all();
+//var_dump($data['gamesFirst']);
 //        var_dump($data['questions']->answers->answer);
 //        var_dump($data['questions']->answers->how_many);
 

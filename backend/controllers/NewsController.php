@@ -89,6 +89,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->date_create = time();
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
                 $model->attachImage($_FILES['UploadForm']['tmp_name']['file'],false);
                 if($model->errors) {

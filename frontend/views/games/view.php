@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\GamesPlayers;
 use kartik\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
@@ -24,8 +25,18 @@ if (!is_null($model->gallery)) {
 ?>
 <div class="games-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<!--    <h1>--><?php //echo Html::encode($this->title) ?><!--</h1>-->
+    <div class="row text-center">
+        <div class="col-xs-4">
+            <a href="<?php echo Url::to(['view', 'id' => $gameData['prevGame']->id]) ?>">Предыдущий матч</a>
+        </div>
+        <div class="col-xs-4">
+            <a href="<?php echo Url::to('/games') ?>">Расписание игр</a>
+        </div>
+        <div class="col-xs-4">
+            <a href="<?php echo Url::to(['view', 'id' => $gameData['nextGame']->id]) ?>">Следующий матч</a>
+        </div>
+    </div>
     <div class="well games-view-score">
         <div class="row">
             <div class="col-xs-4 text-right games-view-score-teams">

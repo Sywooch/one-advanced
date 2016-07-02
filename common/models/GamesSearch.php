@@ -18,8 +18,8 @@ class GamesSearch extends Games
     public function rules()
     {
         return [
-            [['id', 'home_id', 'guest_id', 'season_id', 'tour', 'score', 'date'], 'integer'],
-            [['city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'safe'],
+            [['id', 'home_id', 'guest_id', 'season_id', 'tour', 'score', 'date', 'gallery_id', 'category_id'], 'integer'],
+            [['score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'safe'],
         ];
     }
 
@@ -106,6 +106,8 @@ class GamesSearch extends Games
             'tour' => $this->tour,
             'score' => $this->score,
             'date' => $this->date,
+            'gallery_id' => $this->gallery_id,
+            'category_id' => $this->category_id,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])

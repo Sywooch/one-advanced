@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
 
 <!--    --><?php //echo $form->field($model, 'guest_id') ?>
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-4">
             <?php
             echo $form->field($model, 'season_id')->widget(Select2::classname(),[
                 'data' => ArrayHelper::map($model->getAllSeasons(), 'id', 'name'),
@@ -33,7 +33,18 @@ use yii\helpers\ArrayHelper;
             ]) ;
             ?>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-4">
+            <?php
+            echo $form->field($model, 'category_id')->widget(Select2::className(), [
+                'data' => ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
+                'options' => ['placeholder' => 'Выберите категорию ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])
+            ?>
+        </div>
+        <div class="col-xs-4">
             <div class="form-group" style="margin-top: 25px">
                 <?php echo Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
 <!--                --><?php //echo Html::resetButton('Сбросить', ['class' => 'btn btn-default']) ?>

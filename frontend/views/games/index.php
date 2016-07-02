@@ -73,11 +73,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'format' => 'raw',
             ],
-
+//            [
+//                'label' => false,
+//                'value' => function ($model) {
+//                    if ($model->tour != '0') {
+//                        return $model->tour;
+//                    } else {
+//                        return false;
+//                    }
+//                },
+//                'format' => 'raw',
+//            ],
             [
                 'label' => false,
                 'value' => function ($model) {
-                    return Html::tag('div', 'Сезон ' . $model->season->name) . Html::tag('div', $model->category->name);
+                    return Html::tag('div', 'Сезон ' . $model->season->name . ($model->tour != '0' ? ', Тур '.$model->tour : '')) . Html::tag('div', $model->category->name);
                 },
                 'format' => 'raw',
             ],
@@ -104,10 +114,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'content:ntext',
 //             'status',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}'
-            ],
+//            [
+//                'class' => 'yii\grid\ActionColumn',
+//                'template' => '{view}'
+//            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>

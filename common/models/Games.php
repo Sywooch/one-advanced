@@ -184,6 +184,9 @@ class Games extends \yii\db\ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             $this->date = Yii::$app->formatter->asTimestamp($this->date);
+            if ($this->tour == '') {
+                $this->tour = 0;
+            }
             return true;
         }
         return false;
