@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Players', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать игрока', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -50,7 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'weight',
             // 'date',
             // 'role',
-             'teams.name',
+            [
+                'label' => 'Команда',
+                'attribute' => 'teams.name'
+            ],
             // 'goals',
             // 'transfers',
             // 'yellow_cards',

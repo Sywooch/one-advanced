@@ -11,6 +11,7 @@ use kartik\file\FileInput;
 
 $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date),'php:d-m-Y H:i');
 
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Games */
 /* @var $form yii\widgets\ActiveForm */
@@ -21,9 +22,15 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 <div class="games-form well">
 
     <?php
+    $seasonTeams = [];
     $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
     if ($model->isNewRecord) {
         $model->status = 'будет';
+    } else {
+        foreach ($model->season->seasonDetails as $seasonDetails) {
+//            $seasonTeams[] = ['id'=>$seasonDetails->team->id, 'name' => $seasonDetails->team->name];
+            $seasonTeams[$seasonDetails->team->id] =  $seasonDetails->team->name;
+        }
     }
     $image=new UploadForm();
 
@@ -52,6 +59,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\DepDrop',
                 'options'=>[
+                    'data' => $seasonTeams,
                     'id'=>'home-id',
                     'pluginOptions'=>[
                         'depends'=>['season-id'],
@@ -66,6 +74,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\DepDrop',
                 'options'=>[
+                    'data' => $seasonTeams,
                     'id'=>'guest-id',
                     'pluginOptions'=>[
                         'depends'=>['season-id'],
@@ -76,19 +85,39 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 
                 ],
             ],
+        ]
+    ]);
+
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 4,
+//        'autoGenerateColumns' => true,
+//
+        'attributes' => [
             'category_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
                 'options'=>[
                     'data'=>ArrayHelper::map($model->getAllCategories(), 'id', 'name'),
-                    'options'=>['placeholder'=>'Выберите Категорию']
+                    'options'=>['placeholder'=>'Выберите Категорию'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
                 ],
-                'pluginOptions' => [
-                    'allowClear' => true
+            ],
+            'gallery_id'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\Select2',
+                'options'=>[
+                    'data'=>ArrayHelper::map($model->getAllGallery(), 'id', 'name'),
+                    'options'=>['placeholder'=>'Выберите Галерею'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
                 ],
             ],
             'tour' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Тур...']],
-//            'score' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
             'date'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\DateTimePicker',
@@ -123,18 +152,29 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
             'referee' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Первого Судью...']],
             'referee2' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Второго Судью...']],
             'referee3' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Третьего Судью...']],
-//            'city' => [
-//                'type'=>Form::INPUT_TEXT,
-//                'options'=>['placeholder'=>'Введите Город...'],
-//                'hint'=>'Город Проведения Матча'
-//            ],
-//            'stadium' => [
-//                'type'=>Form::INPUT_TEXT,
-//                'options'=>['placeholder'=>'Введите Стадион...'],
-//                'hint'=>'Стадион Проведения Матча'
-//            ],
         ]
     ]);
+    if (!$model->isNewRecord) {
+        echo Form::widget([
+            'model' => $model,
+            'form' => $form,
+            'columns' => 3,
+            'attributes' => [
+                'city' => [
+                    'type'=>Form::INPUT_TEXT,
+                    'options'=>['placeholder'=>'Введите Город...'],
+                    'hint'=>'Город Проведения Матча'
+                ],
+                'stadium' => [
+                    'type'=>Form::INPUT_TEXT,
+                    'options'=>['placeholder'=>'Введите Стадион...'],
+                    'hint'=>'Стадион Проведения Матча'
+                ],
+                'score' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
+
+            ]
+        ]);
+    }
 
     ?>
     <div class="row">
@@ -177,7 +217,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                         ],
                         'actions'=>[
                             'type'=>Form::INPUT_RAW,
-                            'value'=>'<div style="margin-top: 20px">' .
+                            'value'=>'<div style="margin-top: 25px">' .
                                 Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
                                 Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
                                 '</div>'

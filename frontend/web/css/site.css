@@ -301,3 +301,63 @@ a.desc:after {
     .standings .main-team {
         font-weight: bold;
     }
+
+    .games-view-score-teams > div {
+        display: inline-block;
+    }
+
+    .games-view .tab-pane {
+        padding: 20px 16px 20px;
+        border: 1px solid #DDDDDD;
+        border-top: 0;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .carousel-promo.well {
+        padding: 0;
+    }
+
+    .carousel-inner {
+        padding: 19px 49px;
+    }
+
+    .carousel-control {
+        width: 49px;
+    }
+
+    .carousel-3d .item {
+        background: #ffffff;
+        padding: 15px;
+        opacity: 0.7;
+    }
+
+    .carousel-3d .item.active {
+        opacity: 1;
+    }
+
+    .carousel-3d .item {
+        width: 450px;
+    }
+
+    .carousel-3d {
+        height: 135px;
+        padding-top: 20px;
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+
+    .carousel-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /*background: whitesmoke;*/
+        background: #337AB7;
+        z-index: 4;
+    }
+
+    .carousel-3d .carousel-control {
+        z-index: 7;
+        background: transparent;
+    }

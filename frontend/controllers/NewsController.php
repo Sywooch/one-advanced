@@ -34,7 +34,7 @@ class NewsController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date DESC'),
+            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC'),
             'pagination' => [
                 'pageSize' => 10,
             ],

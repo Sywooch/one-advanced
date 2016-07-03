@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nationality',
             'height',
             'weight',
-            'date',
+            'date:date',
             'role',
             'teams.name',
             'goals',

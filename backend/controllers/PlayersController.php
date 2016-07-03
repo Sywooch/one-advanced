@@ -106,6 +106,7 @@ class PlayersController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+                $model->removeImages();
                 $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
                 if($model->errors) {
                     var_dump($model->errors);

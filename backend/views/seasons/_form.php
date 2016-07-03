@@ -25,9 +25,27 @@ use kartik\builder\Form;
 
         'attributes' => [
             'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
-            'full_name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Полное Имя...']],
             'slug' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите slug...']],
             'division' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Дивизион...']],
+        ]
+    ]);
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 1,
+//        'autoGenerateColumns' => true,
+
+        'attributes' => [
+            'full_name' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите Полное Имя...']],
+        ]
+    ]);
+    echo Form::widget([
+        'model' => $model,
+        'form' => $form,
+        'columns' => 2,
+//        'autoGenerateColumns' => true,
+
+        'attributes' => [
             'status'=>[
                 'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
                 'items'=>[ 'on' => 'On', 'off' => 'Off'],

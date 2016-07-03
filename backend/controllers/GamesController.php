@@ -98,16 +98,26 @@ class GamesController extends Controller
     public function actionCreate()
     {
         $model = new Games();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
-                $model->removeImages();
-                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
-                if($model->errors) {
-                    var_dump($model->errors);
-                    die;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->city = $model->home->city;
+            $model->stadium = $model->home->stadium;
+            $model->score = '0:0';
+            if ($model->save()) {
+
+                if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+                    $model->removeImages();
+                    $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
+                    if($model->errors) {
+                        var_dump($model->errors);
+                        die;
+                    }
                 }
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                var_dump($model->errors);
+                exit();
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+
         } else {
             return $this->render('create', [
                 'model' => $model,

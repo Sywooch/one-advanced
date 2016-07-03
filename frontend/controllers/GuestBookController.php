@@ -56,6 +56,7 @@ class GuestBookController extends Controller
             curl_close($ch);
             // Will dump a beauty json :3
             $ipDetails = json_decode($result, true);
+//            $ipDetails = $_SERVER["REMOTE_ADDR"];
 
             if (!is_null($ipDetails)) {
                 $model->ip = $ipDetails['ip'];

@@ -28,7 +28,8 @@
         "kartik-v/yii2-mpdf": "@dev",
         "madcoda/php-youtube-api": "1.*",
         "edgardmessias/yii2-nprogress": "*",
-        "cosenary/instagram": "^2.3"
+        "cosenary/instagram": "^2.3",
+        "pollext/poll":"dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -18,6 +18,7 @@ use Yii;
  * @property string $status_id
  * @property integer $date
  * @property integer $gallery_id
+ * @property integer $date_create
  *
  * @property Gallery $gallery
  * @property Category $category
@@ -55,9 +56,11 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'alias', 'snippet', 'content'], 'required'],
-            [['category_id', 'views', 'comments', 'date', 'gallery_id'], 'integer'],
+            [['category_id', 'views', 'comments', 'date', 'gallery_id', 'date_create'], 'integer'],
             [['snippet', 'content', 'status_id'], 'string'],
             [['title', 'alias'], 'string', 'max' => 100],
+            [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -76,7 +79,8 @@ class News extends \yii\db\ActiveRecord
             'views' => 'Просмотры',
             'comments' => 'Коментарии',
             'status_id' => 'Статус',
-            'date' => 'Дата',
+            'date' => 'Дата обновления',
+            'date_create' => 'Дата создания',
         ];
     }
 
