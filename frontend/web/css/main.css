@@ -233,7 +233,7 @@ body {
 
 
         .carousel-home {
-            height: 540px;
+            height: 405px;
             margin-left: -15px;
             margin-right: -15px;
             margin-bottom: 15px;
@@ -249,12 +249,14 @@ body {
 
             .carousel .carousel-inner img {
                 width: 100%;
-                height: 540px;
+                /*height: 540px;*/
+                height: 405px;
             }
 
         .carousel-home .carousel-indicators {
             text-align: right;
-            bottom: 130px;
+            /*bottom: 130px;*/
+            bottom: 0;
             width: 63%;
         }
 
@@ -362,7 +364,8 @@ body {
     .carousel-caption {
         position: absolute;
         top: 5%;
-        bottom: 170px;
+        /*bottom: 170px;*/
+        bottom: 40px;
         right: 2%;
         left: auto;
         /*vertical-align: middle;*/
@@ -452,7 +455,7 @@ body {
                     /*padding: 0 10px;*/
                 }
                     .promo-game-team img {
-                        width: 40px;
+                        /*width: 40px;*/
                     }
 
                 .promo-game-score {
@@ -1208,4 +1211,143 @@ body {
     }
     .instagram h5 {
         margin-bottom: 0;
+    }
+
+    .carousel-home .carousel-inner {
+        padding: 0;
+    }
+
+    .carousel-3d .item {
+        width: 600px;
+        /*background: #eee;*/
+         color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-3d .item:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+    }
+
+    .carousel-3d a.promo-game-block {
+        padding: 0;
+        display: block;
+    }
+    .promo-game-team > span {
+        vertical-align: middle;
+    }
+
+    .carousel-promo-games {
+        margin-bottom: 15px;
+    }
+
+    .carousel-promo-games .carousel-bg {
+        /*background: #ffffff;*/
+        background: #0C3D7F;
+
+    }
+
+    .carousel-promo-games .carousel-3d {
+        /*height: 162px;*/
+        height: 125px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .carousel-promo-games .carousel-3d .carousel-control {
+        display: block;
+    }
+
+    .carousel-3d .carousel-control .glyphicon {
+        /*color: #0E366F;*/
+        color: #F3F3F3;
+    }
+
+    .carousel-3d .item {
+        padding: 0;
+    }
+
+    .carousel-3d .item a {
+        padding: 15px;
+    }
+
+    .prev-next-games a {
+        /* width: 100%; */
+        background: #0C3D7F;
+        /* width: auto; */
+        display: block;
+        padding: 5px;
+        color: #ffffff;
+        /*background: #F5F5F5;*/
+        /*color: #0C3D7F;*/
+    }
+
+    .prev-next-games {
+        margin-bottom: 15px;
+    }
+
+    .games-view-score {
+        /*background: #000 url("../i/bg-match.jpg") no-repeat 50% 0;*/
+        /*background: url(../themes/one/src/layout/games_bg.jpg) no-repeat 100% 100% #011936;*/
+        background: url(../themes/one/src/layout/games_bg.jpg) no-repeat #213315;
+
+        color: #fff;
+        /* text-transform: uppercase; */
+        /* font-size: 12px; */
+        /*background-size: cover;*/
+        margin-bottom: 20px;
+        padding: 30px 0;
+        background-size: 100% 100%;
+    }
+
+    .prev-next-games a span {
+        vertical-align: middle;
+    }
+
+    .prev-next-games a {
+        /*opacity: 0.8;*/
+        min-height: 34px;
+    }
+
+
+    .prev-next-games a:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .prev-next-games {
+        /*margin: 0 -10px 15px;*/
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    .prev-next-games > div {
+        /*padding: 0 4px;*/
+    }
+
+
+    .prev-next-games > div {
+        padding: 0 7.5px;
+    }
+
+    .games-view .tab-pane {
+        /*border: none;*/
+    }
+
+    .games-view .nav-tabs {
+        /*border-bottom: none;*/
+        /*background: #0C3D7F;*/
+    }
+
+    .players-bd {
+        background: #ffffff;
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    .players-bd h4 {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 0;
+        color: #00316b;
     }

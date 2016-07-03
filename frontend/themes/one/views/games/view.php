@@ -26,18 +26,18 @@ if (!is_null($model->gallery)) {
 <div class="games-view">
 
 <!--    <h1>--><?php //echo Html::encode($this->title) ?><!--</h1>-->
-    <div class="row text-center">
+    <div class="row text-center prev-next-games">
         <div class="col-xs-4">
-            <a href="<?php echo Url::to(['view', 'id' => $gameData['prevGame']->id]) ?>">Предыдущий матч</a>
+            <a href="<?php echo Url::to(['view', 'id' => $gameData['prevGame']->id]) ?>"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> <span>Предыдущий матч</span></a>
         </div>
         <div class="col-xs-4">
             <a href="<?php echo Url::to('/games') ?>">Расписание игр</a>
         </div>
         <div class="col-xs-4">
-            <a href="<?php echo Url::to(['view', 'id' => $gameData['nextGame']->id]) ?>">Следующий матч</a>
+            <a href="<?php echo Url::to(['view', 'id' => $gameData['nextGame']->id]) ?>"><span>Следующий матч</span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
         </div>
     </div>
-    <div class="well games-view-score">
+    <div class="games-view-score">
         <div class="row">
             <div class="col-xs-4 text-right games-view-score-teams">
                 <div class="text-center">

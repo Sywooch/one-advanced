@@ -18,9 +18,11 @@ use Madcoda\Youtube;
 use yii\helpers\Url;
 use kartik\icons\Icon;
 use frontend\widgets\GalleryWidget;
+use frontend\assets\CarouselAsset;
 Icon::map($this, Icon::FA);
 
 AppAsset::register($this);
+CarouselAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -136,60 +138,153 @@ AppAsset::register($this);
                     ],
         //        'cl'
                 ]);
-                echo Html::beginTag('div',['class'=>'carousel-promo']);
-                    echo Html::beginTag('div',['class'=>'row']);
-                        echo Html::beginTag('div',['class'=>'col-xs-6']);
-                            echo Html::beginTag('div',['class'=>'promo-game-block']);
-                                echo Html::beginTag('div',['class'=>'promo-game-header']);
-                                    echo Html::tag('div',
-                                        Html::tag('div','21.05.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
-                                        Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
-                                        ['class'=>'row']
-                                    );
-                                echo Html::endTag('div');
-                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
-                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
-                                    echo Html::endTag('div');
-                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
-                                        echo Html::tag('div','0:3');
-                                    echo Html::endTag('div');
-                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png', ['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
-                                    echo Html::endTag('div');
-                                echo Html::endTag('div');
-                            echo Html::endTag('div');
-                        echo Html::endTag('div');
-                        echo Html::beginTag('div',['class'=>'col-xs-6']);
-                            echo Html::beginTag('div',['class'=>'promo-game-block']);
-                                echo Html::beginTag('div',['class'=>'promo-game-header']);
-                                    echo Html::tag('div',
-                                    Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right']).
-//                                    Html::tag('div', '<script src="http://megatimer.ru/s/e4d7007cd2e033e4d7e30b251ec7b569.js"></script>', ['class' => 'pull-right']).
-                                        Html::tag('div','11.07.2016, Фонбет-первенство россии',['class'=>'promo-game-date col-xs-8 vtop'])/*.
-                                        Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
-                                        ['class'=>'row']
-                                    );
-//                                echo '<script src="http://megatimer.ru/s/b5d4829fb96d5e489b75b5746ac698e7.js"></script>';
-                                echo Html::endTag('div');
-                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
-                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
-                                    echo Html::endTag('div');
-                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
-                                        echo Html::tag('div','-:-');
-                                    echo Html::endTag('div');
-                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png',['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
-                                    echo Html::endTag('div');
-                                echo Html::endTag('div');
-                            echo Html::endTag('div');
-                        echo Html::endTag('div');
-                    echo Html::endTag('div');
-                echo Html::endTag('div');
+//                echo Html::beginTag('div',['class'=>'carousel-promo']);
+//                    echo Html::beginTag('div',['class'=>'row']);
+//                        echo Html::beginTag('div',['class'=>'col-xs-6']);
+//                            echo Html::beginTag('div',['class'=>'promo-game-block']);
+//                                echo Html::beginTag('div',['class'=>'promo-game-header']);
+//                                    echo Html::tag('div',
+//                                        Html::tag('div','21.05.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
+//                                        Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
+//                                        ['class'=>'row']
+//                                    );
+//                                echo Html::endTag('div');
+//                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
+//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
+//                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
+//                                    echo Html::endTag('div');
+//                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
+//                                        echo Html::tag('div','0:3');
+//                                    echo Html::endTag('div');
+//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
+//                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png', ['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
+//                                    echo Html::endTag('div');
+//                                echo Html::endTag('div');
+//                            echo Html::endTag('div');
+//                        echo Html::endTag('div');
+//                        echo Html::beginTag('div',['class'=>'col-xs-6']);
+//                            echo Html::beginTag('div',['class'=>'promo-game-block']);
+//                                echo Html::beginTag('div',['class'=>'promo-game-header']);
+//                                    echo Html::tag('div',
+//                                    Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right']).
+////                                    Html::tag('div', '<script src="http://megatimer.ru/s/e4d7007cd2e033e4d7e30b251ec7b569.js"></script>', ['class' => 'pull-right']).
+//                                        Html::tag('div','11.07.2016, Фонбет-первенство россии',['class'=>'promo-game-date col-xs-8 vtop'])/*.
+//                                        Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
+//                                        ['class'=>'row']
+//                                    );
+////                                echo '<script src="http://megatimer.ru/s/b5d4829fb96d5e489b75b5746ac698e7.js"></script>';
+//                                echo Html::endTag('div');
+//                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
+//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
+//                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
+//                                    echo Html::endTag('div');
+//                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
+//                                        echo Html::tag('div','-:-');
+//                                    echo Html::endTag('div');
+//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
+//                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png',['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
+//                                    echo Html::endTag('div');
+//                                echo Html::endTag('div');
+//                            echo Html::endTag('div');
+//                        echo Html::endTag('div');
+//                    echo Html::endTag('div');
+//                echo Html::endTag('div');
             echo Html::endTag('div');
 //        }
         ?>
+        <div class="carousel-promo-games">
+            <ul class="carousel carousel-3d">
+                <div class="carousel-bg"></div>
+                <?php
+                $i = 1;
+                foreach ($this->params['gamesPreview'] as $item) {
+                    ?>
+                    <li class="item">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block" data-pjax="false">
+                                    <div class="promo-game-header <?php echo $i != 4 ? 'text-center' : '' ?>">
+                                        <div class="row">
+                                            <div class="promo-game-date vtop <?php echo $i == 4 ? 'col-xs-8' : 'col-xs-12' ?>">
+                                                <?php
+                                                echo Yii::$app->formatter->asDatetime($item->date, 'php:d.m, H:i').'  '.$item->city.', стадион '.$item->stadium;
+                                                ?>
+                                            </div>
+                                            <?php
+                                            if ($i == 4) {
+                                                echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;']);
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="row promo-game-row">
+                                        <div class="col-xs-5 text-left promo-game-team">
+                                            <?php
+                                            $image = $item->home->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$item->home->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            ?>
+                                            <span>
+                                                <?php
+                                                echo ($item->home->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                                echo $item->home->name;
+                                                echo ($item->home->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="col-xs-2 text-center promo-game-score">
+                                            <div><?php
+                                                if ($item->score == '0:0' && $item->date > time()) {
+                                                    echo '-:-';
+                                                } else {
+                                                    echo $item->score;
+                                                }
+                                                ?></div>
+                                        </div>
+                                        <div class="col-xs-5 text-right promo-game-team">
+                                            <span>
+                                                <?php
+                                                echo ($item->guest->name == Yii::$app->params['main-team'] ? '<b>' : '');
+                                                echo $item->guest->name;
+                                                echo ($item->guest->name == Yii::$app->params['main-team'] ? '</b>' : '');
+                                                ?>
+                                            </span>
+                                            <?php
+                                            $image = $item->guest->getImage();
+                                            if($image['urlAlias']!='placeHolder') {
+                                                $sizes = $image->getSizesWhen('x45');
+                                                echo Html::img($image->getUrl('x45'),[
+                                                    'alt'=>$item->guest->name,
+                                                    'class' => 'hidden-sm',
+                                                    'width'=>$sizes['width'],
+                                                    'height'=>$sizes['height']
+                                                ]);
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
+                    $i++;
+                }
+                ?>
+                <div class="controls">
+                    <a href="#" class="left carousel-control previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                    <a href="#" class="right carousel-control next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                </div>
+
+            </ul>
+        </div>
         <div class="row main-row">
             <div class="col-xs-4">
 <!--                <div class="index-video">-->
@@ -238,6 +333,15 @@ AppAsset::register($this);
                     </table>
                 </div>
                 <?php } ?>
+                <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
+                    <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
+                </a>
+                <div class="text-center" style="margin-top: 15px;">
+                    <?php echo Html::img('@web/themes/one/src/banner_2.gif', ['alt' => 'sponsor']) ?>
+                </div>
+                <div class="text-center" style="margin-top: 15px;">
+                    <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor']) ?>
+                </div>
             </div>
             <div class="col-xs-8 main-block">
                 <?= Breadcrumbs::widget([
