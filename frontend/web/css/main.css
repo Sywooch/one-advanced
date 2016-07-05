@@ -1275,15 +1275,17 @@ body {
         /* width: 100%; */
         background: #0C3D7F;
         /* width: auto; */
-        display: block;
-        padding: 5px;
+        /*display: block;*/
+        /*padding: 5px;*/
         color: #ffffff;
         /*background: #F5F5F5;*/
         /*color: #0C3D7F;*/
+        padding: 5px 40px 10px;
+        background: rgba(0, 0, 0, 0.50);
     }
 
     .prev-next-games {
-        margin-bottom: 15px;
+        margin-bottom: 55px;
     }
 
     .games-view-score {
@@ -1295,9 +1297,10 @@ body {
         /* text-transform: uppercase; */
         /* font-size: 12px; */
         /*background-size: cover;*/
-        margin-bottom: 20px;
-        padding: 30px 0;
+        margin-bottom: 15px;
+        /*padding: 30px 15px;*/
         background-size: 100% 100%;
+        padding: 50px 15px 70px;
     }
 
     .prev-next-games a span {
@@ -1317,8 +1320,8 @@ body {
 
     .prev-next-games {
         /*margin: 0 -10px 15px;*/
-        margin-right: -8px;
-        margin-left: -8px;
+        /*margin-right: -8px;*/
+        /*margin-left: -8px;*/
     }
 
     .prev-next-games > div {
@@ -1337,6 +1340,12 @@ body {
     .games-view .nav-tabs {
         /*border-bottom: none;*/
         /*background: #0C3D7F;*/
+        margin: 0 15px;
+    }
+
+    .games-view .tab-content {
+        margin: 0 15px;
+        padding-bottom: 15px;
     }
 
     .players-bd {
@@ -1351,3 +1360,49 @@ body {
         margin-top: 0;
         color: #00316b;
     }
+
+    .main-block .games-view {
+        padding: 0;
+        margin: -15px -15px -20px;
+    }
+
+    .game-view-score {
+        font-size: 75px;
+        vertical-align: middle;
+    }
+
+    .score-team-games {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .games-index .grid-view a:hover {
+        text-decoration: none;
+    }
+
+.games-index-teams {
+    display: inline-block;
+    min-width: 150px;
+}
+
+.games-index-teams-score {
+    display: inline-block;
+    padding: 0 5px;
+    min-width: 35px;
+}
+
+.games-index-teams .games-index-logo {
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+}
+
+.main-block .sponsors {
+    padding: 0;
+    background: transparent;
+}
+
+.main-block .sponsors img {
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -107,7 +107,7 @@ AppAsset::register($this);
         </div>
 
         <div class="row main-row">
-            <div class="col-xs-9 main-block">
+            <div class="col-xs-12 main-block">
                 <?php
                 /*echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -119,27 +119,6 @@ AppAsset::register($this);
 <!--            <div class="col-sm-9">-->
 
                 <?= $content ?>
-            </div>
-            <div class="col-xs-3 main-block">
-                <?php
-//                var_dump($this->params['widget_bar']);
-                if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {
-                    echo '<div>'.$this->params['widget_bar'].'</div>';
-                } else {
-                    echo StandingsWidget::widget(['template' => 'smallTable']);
-                }
-                ?>
-                <div class="sponsors">
-                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </a>
-                    <div class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_2.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </div>
-                    <div class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </div>
-                </div>
             </div>
         </div>
         <?php

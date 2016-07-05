@@ -12,7 +12,7 @@ use yii\helpers\Url;
 $this->title = $model->home->name.' : '.$model->guest->name;
 $this->params['breadcrumbs'][] = ['label' => 'Матчи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
+$this->params['image_page'] = '';
 $compositionsStep = false;
 $galleryStep = false;
 if (!empty($gameData['home']) && !empty($gameData['guest'])) {
@@ -21,24 +21,28 @@ if (!empty($gameData['home']) && !empty($gameData['guest'])) {
 if (!is_null($model->gallery)) {
     $galleryStep = true;
 }
-
 ?>
 <div class="games-view">
 
 <!--    <h1>--><?php //echo Html::encode($this->title) ?><!--</h1>-->
-    <div class="row text-center prev-next-games">
-        <div class="col-xs-4">
-            <a href="<?php echo Url::to(['view', 'id' => $gameData['prevGame']->id]) ?>"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> <span>Предыдущий матч</span></a>
-        </div>
-        <div class="col-xs-4">
-            <a href="<?php echo Url::to('/games') ?>">Расписание игр</a>
-        </div>
-        <div class="col-xs-4">
-            <a href="<?php echo Url::to(['view', 'id' => $gameData['nextGame']->id]) ?>"><span>Следующий матч</span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
-        </div>
-    </div>
+
     <div class="games-view-score">
-        <div class="row">
+        <div class="row text-center prev-next-games">
+            <div class="col-xs-4">
+                <?php if (!is_null($gameData['prevGame'])) : ?>
+                <a href="<?php echo Url::to(['view', 'id' => $gameData['prevGame']->id]) ?>"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> <span>Предыдущий матч</span></a>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-4">
+                <a href="<?php echo Url::to('/games') ?>">Расписание игр</a>
+            </div>
+            <div class="col-xs-4">
+                <?php if (!is_null($gameData['nextGame'])) : ?>
+                <a href="<?php echo Url::to(['view', 'id' => $gameData['nextGame']->id]) ?>"><span>Следующий матч</span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="row score-team-games">
             <div class="col-xs-4 text-right games-view-score-teams">
                 <div class="text-center">
                     <?php

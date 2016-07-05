@@ -22,15 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'hover'=>true,
         'bordered'=>false,
         'striped'=>true,
-        'rowOptions'=>function ($model, $key, $index, $grid){
-            $class=$index%2?'odd':'even';
-//            var_dump($grid);
-            return [
-                'key'=>$key,
-                'index'=>$index,
-                'class'=>$class
-            ];
-        },
+//        'rowOptions'=>function ($model, $key, $index, $grid){
+//            $class=$index%2?'odd':'even';
+////            var_dump($grid);
+//            return [
+//                'key'=>$key,
+//                'index'=>$index,
+//                'class'=>$class
+//            ];
+//        },
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
             [
@@ -46,27 +46,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     $imageHome = $model->home->getImage();
                     if($imageHome['urlAlias']!='placeHolder') {
                         $sizes = $imageHome->getSizesWhen('x30');
-                        $logoHome = Html::img($imageHome->getUrl('x30'),[
+                        $logoHome = Html::tag('span', Html::img($imageHome->getUrl('x30'),[
                             'alt'=>$model->home->name,
                             'class' => 'hidden-sm',
                             'width'=>$sizes['width'],
                             'height'=>$sizes['height']
-                        ]);
+                        ]), ['class' => 'games-index-logo']);
                     }
                     $imageGuest = $model->guest->getImage();
                     if($imageGuest['urlAlias']!='placeHolder') {
                         $sizes = $imageGuest->getSizesWhen('x30');
-                        $logoGuest = Html::img($imageGuest->getUrl('x30'),[
+                        $logoGuest = Html::tag('span', Html::img($imageGuest->getUrl('x30'),[
                             'alt'=>$model->guest->name,
                             'class' => 'hidden-sm',
                             'width'=>$sizes['width'],
                             'height'=>$sizes['height']
-                        ]);
+                        ]), ['class' => 'games-index-logo']);
                     }
                     return Html::a(
-                        $model->home->name . ' ' . $logoHome .
-                        '&nbsp;' . ($model->score == '0:0' ? '&nbsp;:&nbsp;' : $model->score) . '&nbsp;' .
-                        $logoGuest . ' ' . $model->guest->name,
+                        Html::tag('div', $model->home->name . ' ' . $logoHome, ['class' => 'games-index-teams text-right']).
+                        Html::tag('div', ($model->score == '0:0' && $model->date > strtotime(date('d-m-Y')) ? '&nbsp;:&nbsp;' : $model->score), ['class' => 'games-index-teams-score text-center']).
+                        Html::tag('div', $logoGuest . ' ' . $model->guest->name, ['class' => 'games-index-teams text-left']),
                         ['view', 'id' => $model->id]
                     );
 //                    return $model->home->name . '&nbsp;' . ($model->score == '0:0' ? '&nbsp;:&nbsp;' : $model->score) . '&nbsp;' . $model->guest->name;
