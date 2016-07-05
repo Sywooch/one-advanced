@@ -83,17 +83,8 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
 
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <?= $content ?>
-            </div>
-            <div class="col-sm-3">
-                <?php
-                if (isset($this->params['widget_bar'])) {
-                    echo $this->params['widget_bar'];
-                } else {
-                    StandingsWidget::widget(['template' => 'smallTable']);
-                }
-                ?>
             </div>
         </div>
     </div>
