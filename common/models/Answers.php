@@ -13,6 +13,7 @@ use Yii;
  * @property integer $how_many
  *
  * @property Questions $questions
+ * @property AnswersPoll[] $answersPolls
  */
 class Answers extends \yii\db\ActiveRecord
 {
@@ -61,5 +62,13 @@ class Answers extends \yii\db\ActiveRecord
     public function getAllQuestions ()
     {
         return Questions::find()->where(['status' => 'on'])->all();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAnswersPolls()
+    {
+        return $this->hasMany(AnswersPoll::className(), ['answer_id' => 'id']);
     }
 }

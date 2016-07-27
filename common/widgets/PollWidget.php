@@ -71,6 +71,7 @@ class PollWidget extends poll
 
     public function run()
     {
+//        var_dump($this->answerOptions);
         $model = new voicesOfPoll;
         return  $this->render('index', [
             'pollData'=> $this->pollData,
