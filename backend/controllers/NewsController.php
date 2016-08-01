@@ -89,7 +89,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->alias = strtr($model->title, Yii::$app->params['transliterate']);
+            $model->alias = mb_strtolower(strtr($model->title, Yii::$app->params['transliterate']));
             $model->date_create = time();
             $model->save();
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
@@ -123,7 +123,7 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->title != $oldTitle) {
-                $model->alias = strtr($model->title, Yii::$app->params['transliterate']);
+                $model->alias = mb_strtolower(strtr($model->title, Yii::$app->params['transliterate']));
                 $model->save();
             }
 
