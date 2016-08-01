@@ -32,12 +32,12 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
 <div class="news-block news-block-<?php echo $index.' '.$classBlock ?> ">
     <div class="row">
         <div class="<?php echo $classImgBlock ?> news-block-img">
-            <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>">
+            <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>">
                 <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
             </a>
         </div>
         <div class="<?php echo $classContentBlock ?> news-block-content">
-            <a href="<?php echo Url::toRoute(['/news/view','id'=>$model->id]) ?>" class="news-home-link">
+            <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>" class="news-home-link">
                 <h4><?php echo $model -> title ?></h4>
             </a>
             <div class="news-home-text"><?php echo $model -> snippet ?></div>
