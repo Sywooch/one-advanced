@@ -59,6 +59,7 @@ class News extends \yii\db\ActiveRecord
             [['category_id', 'views', 'comments', 'date', 'gallery_id', 'date_create'], 'integer'],
             [['snippet', 'content', 'status_id'], 'string'],
             [['title', 'alias'], 'string', 'max' => 100],
+            [['alias'], 'unique'],
             [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];

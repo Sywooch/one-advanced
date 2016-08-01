@@ -82,7 +82,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $dataProvider['news'] = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC')->limit(10),
+            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create ASC')->limit(10),
             'pagination' => [
                 'pageSize' => 7,
             ],

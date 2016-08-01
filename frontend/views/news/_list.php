@@ -44,7 +44,7 @@ $img = $model->getImage();
             <img src="<?php echo $img->getUrl('x150') ?>" alt="<?php echo $model->title; ?>" class="img-responsive">
         </div>
         <div class="col-xs-7">
-            <a href="<?php echo Url::toRoute(['view','id'=>$model->id]) ?>" class="news-list-block-link">
+            <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
                 <h3><?php echo $model -> title ?></h3>
             </a>
             <div class="news-list-descr"><?php echo $model -> snippet ?></div>
