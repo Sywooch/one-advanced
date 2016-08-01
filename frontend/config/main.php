@@ -36,6 +36,11 @@ return [
                     'route' => '/pages/show-page',
                     'defaults' => ['slug' => 'error']
                 ],
+                'news' => 'news/index',
+                [
+                    'pattern' => 'news/<slug:\S+>',
+                    'route' => '/news/view',
+                ],
 //                '/site/index' => '/',
             ],
         ],
