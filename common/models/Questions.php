@@ -15,6 +15,7 @@ use Yii;
  * @property string $status
  *
  * @property Answers[] $answers
+ * @property AnswersPoll[] $answersPolls
  */
 class Questions extends \yii\db\ActiveRecord
 {
@@ -59,5 +60,13 @@ class Questions extends \yii\db\ActiveRecord
     public function getAnswers()
     {
         return $this->hasMany(Answers::className(), ['questions_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAnswersPolls()
+    {
+        return $this->hasMany(AnswersPoll::className(), ['quest_id' => 'id']);
     }
 }

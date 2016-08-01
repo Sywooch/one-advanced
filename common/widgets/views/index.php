@@ -75,6 +75,8 @@
 <?php if((Yii::$app->user->getId()==null && $_POST['pollStatus']!='show' && $isVote == false ) || ($pullName==$pollData['poll_name'] && $_POST['pollStatus']=='vote'&& $_POST['pollStatus']!='show' && Yii::$app->user->getId()==null)){
     echo "Sign in to vote";
 }?>
+
+<!--    --><?php //$isVote = true; $_POST['pollStatus']='shows'?>
     <?php if(($isVote == false && Yii::$app->user->getId()!=null && $_POST['pollStatus']!='show') || ($pullName==$pollData['poll_name'] && $_POST['pollStatus']=='vote'&& $_POST['pollStatus']!='show' && Yii::$app->user->getId()!=null)){?>
             
                 <?php echo Html::beginForm('#', 'post', ['class'=>'uk-width-medium-1-1 uk-form uk-form-horizontal']); ?>

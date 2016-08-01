@@ -89,6 +89,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->alias = strtr($model->title, Yii::$app->params['transliterate']);
             $model->date_create = time();
             $model->save();
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
@@ -118,8 +119,14 @@ class NewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldTitle = $model->title;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->title != $oldTitle) {
+                $model->alias = strtr($model->title, Yii::$app->params['transliterate']);
+                $model->save();
+            }
+
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
                 $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
                 if($model->errors) {
@@ -129,13 +136,6 @@ class NewsController extends Controller
             }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-//            if(isset($_GET['newmainimg'])) {
-//                foreach ($model->getImages() as $img) {
-//                    if ($img->id == $_GET['newmainimg']) {
-//                        $model->setMainImage($img);//will set current image main
-//                    }
-//                }
-//            }
 
             return $this->render('update', [
                 'model' => $model,

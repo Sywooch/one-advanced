@@ -30,7 +30,7 @@ if($model->errors) {
 
         'attributes' => [
             'title' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите title...']],
-            'alias' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите alias...']],
+            'alias' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите alias...'], 'visible' => !$model->isNewRecord],
         ]
     ]);
 

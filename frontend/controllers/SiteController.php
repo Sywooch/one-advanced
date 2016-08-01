@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\AnswersPoll;
 use common\models\Games;
 use common\models\Players;
 use common\models\Questions;
@@ -139,10 +140,12 @@ class SiteController extends Controller
 
 //        var_dump($dataProvider['standings']->getModels());
 
+        $model = new AnswersPoll();
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'data' => $data,
+            'model' => $model,
         ]);
     }
 
@@ -280,5 +283,10 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionVote ()
+    {
+        var_dump($_POST);
     }
 }

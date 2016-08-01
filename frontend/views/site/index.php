@@ -16,6 +16,7 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Carousel;
 use frontend\assets\CarouselAsset;
 use frontend\widgets\StandingsWidget;
+use pollext\poll\ajaxSubmitButton;
 CarouselAsset::register($this);
 
 
@@ -681,7 +682,7 @@ if (!empty($data['allPlayers'])) {
         </div>
     <?php
     }
-    $data['questions'] = null;
+//    $data['questions'] = null;
     if (!is_null($data['questions'])) {
         $answersData = $data['questions']->answers;
         if (!empty($answersData)) {
@@ -697,6 +698,48 @@ if (!empty($data['allPlayers'])) {
                 <!-- Tab panes -->
         <!--        <div class="tab-content">-->
         <!--            <div role="tabpanel" class="tab-pane active" id="questions">-->
+                <?php Pjax::begin(); ?>
+                <?php echo Html::beginForm(['/site/vote'], 'post', ['data-pjax' => '', 'class' => '']); ?>
+                <?php
+//                $i = 0;
+//                foreach ($answersData as $item) {
+//                    $i++;
+//                    echo Html::beginTag('div', ['class' => 'radio']);
+//                    echo Html::radio('answer-poll', $i==1 ? true : false, ['value' => $item['id'], 'label' => $item['answer']]);
+//                    echo Html::endTag('div');
+//                }
+//                    $form->field($model, 'Name')
+//                        ->radioList(ArrayHelper::map($answersData, 'id', 'answer'));
+//                echo Html::radioButtonGroup('answer-poll', 'test', ArrayHelper::map($answersData, 'id', 'answer'));
+//                echo Html::radioList('answer-poll', $answersData[0]['id'], ArrayHelper::map($answersData, 'id', 'answer'), ['class' => 'radio']);
+
+                ?>
+                <?php
+//                echo Html::activeRadioList($model,'answer_id',ArrayHelper::map($answersData, 'id', 'answer'));
+                echo Html::radioList('answer_id', false, ArrayHelper::map($answersData, 'id', 'answer'));
+                ?>
+                <input type="hidden" name="question_id" value="<?=$data['questions']['id']?>"/>
+
+                <!--                }-->
+                <p></p>
+<!--                --><?php //AjaxSubmitButton::begin([
+//                    'label' => 'Голосовать',
+//                    'ajaxOptions' => [
+//                        'type'=>'POST',
+//                        'url'=>'#',
+//                        'success' => new \yii\web\JsExpression('function(data){
+//                            $("body").html(data);
+//                            }'),
+//                    ],
+//                    'options' => ['class' => 'customclass', 'type' => 'submit'],
+//                ]);
+//                AjaxSubmitButton::end();
+                ?>
+                <?php echo Html::submitButton('Голосовать', ['class' => 'btn btn-sm btn-primary', 'name' => 'hash-button']) ?>
+                <?= Html::endForm() ?>
+<!--                <h3>--><?php //echo isset($stringHash) ? $stringHash : '' ?><!--</h3>-->
+                <!--    <h3>--><?php //echo $stringHash ?><!--</h3>-->
+                <?php Pjax::end(); ?>
                         <?php
         //                var_dump($data['questions']);
                             $answers = ArrayHelper::map($answersData, 'id', 'answer');
