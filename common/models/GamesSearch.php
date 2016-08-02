@@ -81,14 +81,34 @@ class GamesSearch extends Games
 
     public function searchFrontend($params)
     {
-        $query = Games::find()->orderBy('date DESC');
+//        strstr($params['sort'], '-') != false ? 'DESC' : ''
+        $queryParams = 'date DESC';
+        if (isset($params['sort'])) {
+            $queryParams = 'tour ';
+            if (strstr($params['sort'], '-') != false) {
+                $queryParams .= 'DESC';
+            } else {
+                $queryParams .= 'ASC';
+            }
+        }
+
+        $queryPagination = [
+            'pageSize'  => 20,
+        ];
+
+        if (isset($params['output'])) {
+            $queryPagination = [
+                'pageSize'  => $params['output']
+            ];
+        }
+        $query = Games::find()->orderBy($queryParams);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => $queryPagination,
         ]);
-
         $this->load($params);
 
         if (!$this->validate()) {

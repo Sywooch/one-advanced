@@ -125,12 +125,17 @@
         <?php 
             for($i = 0; $i<count($answersData); $i++){ 
                 $voicesPer = 0;
+                var_dump($sumOfVoices);
+                var_dump($answersData[$i]['value']/$sumOfVoices);
+                var_dump($answersData[$i]['value']);
+                var_dump($answersData);
                 if($sumOfVoices ==0){
                     $voicesPer = 0;
                 }else{
                     $voicesPer = round($answersData[$i]['value']/$sumOfVoices, 4);
                 }
-                
+                var_dump($voicesPer);
+
                 $lineWidth = $params['maxLineWidth']*$voicesPer;     
         ?>
             
