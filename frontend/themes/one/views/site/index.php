@@ -16,31 +16,58 @@ $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
     foreach ($data['allPlayers'] as $item) {
-        $image = $item->getImage();
-        $img = '';
-        if($image['urlAlias']!='placeHolder') {
-            $sizes = $image->getSizesWhen('x60');
-            $img = Html::img($image->getUrl('x60'),[
-                'alt'=> $item->surname . ' ' .$item->name,
-                'class' => '',
-                'width'=>$sizes['width'],
-                'height'=>$sizes['height']
-            ]);
+        if (date('m', $item->date) == date('m')) {
+            $image = $item->getImage();
+            $img = '';
+            if ($image['urlAlias'] != 'placeHolder') {
+                $sizes = $image->getSizesWhen('x60');
+                $img = Html::img($image->getUrl('x60'), [
+                    'alt' => $item->surname . ' ' . $item->name,
+                    'class' => '',
+                    'width' => $sizes['width'],
+                    'height' => $sizes['height']
+                ]);
+            }
+            $playersBD .= Html::tag('div',
+                    Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
+                    Html::tag('div',
+                        Html::tag('div', $item->name) .
+                        Html::tag('div', Html::tag('b', $item->surname)) .
+                        Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
+                        ['class' => 'col-xs-8']),
+                    ['class' => 'row']) . Html::tag('hr');
         }
-        $playersBD .= Html::tag('div',
-                Html::tag('div', $img, ['class' => 'col-xs-4 text-center']).
-                Html::tag('div',
-                    Html::tag('div', $item->name).
-                    Html::tag('div', Html::tag('b', $item->surname)).
-                    Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
-                    ['class' => 'col-xs-8']),
-                ['class' => 'row']).Html::tag('hr');
-//        var_dump($item);
     }
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);
 }
 $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
+if (!is_null($data['questions'])) {
+    $answersData = $data['questions']->answers;
+    if (!empty($answersData)) {
+        $this->params['vote'] = Html::tag(
+            'div',
+            Html::tag('h4', 'Голосование') .
+            Html::tag('p', $data['questions']->questions) .
+            Html::tag(
+                'div',
+                Html::tag('div',
+                    Html::img('@web/themes/one/src/logo.png', ['class' => 'img-responsive','alt'=>Yii::$app->name]),
+                    ['class' => 'col-xs-4 vote-logo']
+                ) .
+                Html::tag('div',
+                    $this->render('_poll',[
+                        'answersData' => $answersData,
+                        'questions' => $data['questions'],
+                        'answerPoll' => $data['answerPoll']]),
+                    ['class' => 'col-xs-8 vote-block']
+                ),
+                ['class' => 'row']
+            ),
+            ['class' => 'vote-home']);
+//        echo $this->params['vote'];
+    }
+}
 ?>
 <div class="site-index">
     <div class="panel panel-primary">

@@ -347,7 +347,7 @@ CarouselAsset::register($this);
 //                                        echo Html::beginTag('div',['class'=>'']);
                                             $image = $playersGoals->getImage();
 //                                            echo Html::img($image->getUrl('x150'),['class' => 'img-responsive']);
-                                            echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background:url('.$image->getUrl('x150').')']);
+                                            echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background-image:url('.$image->getUrl('x150').')']);
 //                                        echo Html::endTag('div');
                                     }
                                     ?>
@@ -371,7 +371,7 @@ CarouselAsset::register($this);
 //                                        echo Html::beginTag('div',['class'=>'']);
                                         $image = $playersTransfers->getImage();
 //                                        echo Html::img($image->getUrl('x150'),['class' => 'img-responsive']);
-                                        echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background:url('.$image->getUrl('x150').')']);
+                                        echo Html::tag('div',false,['class'=>'best-players-img','style'=> 'background-image:url('.$image->getUrl('x150').')']);
 //                                        echo Html::endTag('div');
                                     }
                                     ?>
@@ -396,12 +396,12 @@ CarouselAsset::register($this);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><th>Игры</th><td>0</td><td>0</td><td>0</td></tr>
-                                    <tr><th>Победы</th><td>0</td><td>0</td><td>0</td></tr>
-                                    <tr><th>Ничьи</th><td>0</td><td>0</td><td>0</td></tr>
-                                    <tr><th>Поражения</th><td>0</td><td>0</td><td>0</td></tr>
-                                    <tr><th>Забито</th><td>0</td><td>0</td><td>0</td></tr>
-                                    <tr><th>Пропущено</th><td>0</td><td>0</td><td>0</td></tr>
+                                    <tr><th>Игры</th><td>4</td><td>1</td><td>5</td></tr>
+                                    <tr><th>Победы</th><td>2</td><td>0</td><td>2</td></tr>
+                                    <tr><th>Ничьи</th><td>1</td><td>0</td><td>1</td></tr>
+                                    <tr><th>Поражения</th><td>1</td><td>1</td><td>2</td></tr>
+                                    <tr><th>Забито</th><td>2</td><td>1</td><td>3</td></tr>
+                                    <tr><th>Пропущено</th><td>1</td><td>2</td><td>3</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -467,34 +467,11 @@ CarouselAsset::register($this);
                 <div class="vote-galery">
                     <div class="row">
                         <div class="col-xs-6">
-                            <h4>Голосование</h4>
-                            <p>
-                                Кто по Вашему мнению лучший игрок ФК Балтика первой части
-                                ФОНБЕТ-Первенства России по футболу среди команд клубов ФНЛ 2015/16 ?
-                            </p>
-                            <div class="row">
-                                <div class="col-xs-4 vote-logo">
-                                    <?php echo Html::img('@web/themes/one/src/logo.png', ['class' => 'img-responsive','alt'=>Yii::$app->name]) ?>
-                                </div>
-                                <div class="col-xs-8 vote-block">
-                                    <?php
-                                    $i=0;
-                                    foreach($players as $player) {
-                                        $i++;
-                                        echo Html::beginTag('div',['class'=>'vote-players']);
-                                            echo Html::input('radio','optionsBestPlayers',$player['id'],['class'=>'vote-players-radio','checked'=>(($i==1)?true:false)]);
-                                            echo Html::label(
-                                                Html::tag('span','#'.$player['number'],['class'=>'vote-players-number']).
-                                                Html::tag('span',$player['name'].' '.$player['surname'],['class'=>'vote-players-name']),
-                                                false,
-                                                ['class'=>'input-helper input-helper--radio']
-                                            );
-                                        echo Html::endTag('div');
-                                    }
-                                    ?>
-                                    <button class="btn btn-dark">Голосовать</button>
-                                </div>
-                            </div>
+                            <?php
+                            if (isset($this->params['vote'])) {
+                                echo $this->params['vote'];
+                            }
+                            ?>
                         </div>
                         <div class="col-xs-6">
                             <div class="gallery-home">

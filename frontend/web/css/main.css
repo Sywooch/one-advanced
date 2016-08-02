@@ -630,13 +630,14 @@ body {
         }
 
             .best-players-img {
-                height: 115px;
+                height: 150px;
                 background-repeat: no-repeat !important;
-                width: 112px;
-                border-radius: 70px;
+                /*width: 90px;*/
+                /*border-radius: 70px;*/
                 margin-left: auto;
                 margin-right: auto;
-                border: 1px solid #0c3e7e;
+                /*border: 1px solid #0c3e7e;*/
+                background-position: center center;
             }
 
         .best-players-number-name {
