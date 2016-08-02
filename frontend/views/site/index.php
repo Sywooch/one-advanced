@@ -88,30 +88,30 @@ $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable
 //        ],
 //    ]),
 //    ['class' => 'standings']);
-
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
     foreach ($data['allPlayers'] as $item) {
-        $image = $item->getImage();
-        $img = '';
-        if($image['urlAlias']!='placeHolder') {
-            $sizes = $image->getSizesWhen('x60');
-            $img = Html::img($image->getUrl('x60'),[
-                'alt'=> $item->surname . ' ' .$item->name,
-                'class' => '',
-                'width'=>$sizes['width'],
-                'height'=>$sizes['height']
-            ]);
+        if (date('m', $item->date) == date('m')) {
+            $image = $item->getImage();
+            $img = '';
+            if($image['urlAlias']!='placeHolder') {
+                $sizes = $image->getSizesWhen('x60');
+                $img = Html::img($image->getUrl('x60'),[
+                    'alt'=> $item->surname . ' ' .$item->name,
+                    'class' => '',
+                    'width'=>$sizes['width'],
+                    'height'=>$sizes['height']
+                ]);
+            }
+            $playersBD .= Html::tag('div',
+                Html::tag('div', $img, ['class' => 'col-xs-4 text-center']).
+                Html::tag('div',
+                    Html::tag('div', $item->name).
+                    Html::tag('div', Html::tag('b', $item->surname)).
+                    Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
+                    ['class' => 'col-xs-8']),
+                ['class' => 'row']).Html::tag('hr');
         }
-        $playersBD .= Html::tag('div',
-            Html::tag('div', $img, ['class' => 'col-xs-4 text-center']).
-            Html::tag('div',
-                Html::tag('div', $item->name).
-                Html::tag('div', Html::tag('b', $item->surname)).
-                Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
-                ['class' => 'col-xs-8']),
-            ['class' => 'row']).Html::tag('hr');
-//        var_dump($item);
     }
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['players-bd']);
@@ -689,86 +689,20 @@ if (!empty($data['allPlayers'])) {
         ?>
             <div class="vote-home">
                 <h4><?php echo $data['questions']->questions ?></h4>
-                    <!-- Nav tabs -->
-        <!--        <ul class="nav nav-tabs" role="tablist">-->
-        <!--            <li role="presentation" class="active"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Голосование</a></li>-->
-        <!--            <li role="presentation"><a href="#answer" aria-controls="answer" role="tab" data-toggle="tab">Отчёт</a></li>-->
-        <!--        </ul>-->
-
-                <!-- Tab panes -->
-        <!--        <div class="tab-content">-->
-        <!--            <div role="tabpanel" class="tab-pane active" id="questions">-->
-                <?php Pjax::begin(); ?>
-                <?php echo Html::beginForm(['/site/vote'], 'post', ['data-pjax' => '', 'class' => '']); ?>
-                <?php
-//                $i = 0;
-//                foreach ($answersData as $item) {
-//                    $i++;
-//                    echo Html::beginTag('div', ['class' => 'radio']);
-//                    echo Html::radio('answer-poll', $i==1 ? true : false, ['value' => $item['id'], 'label' => $item['answer']]);
-//                    echo Html::endTag('div');
-//                }
-//                    $form->field($model, 'Name')
-//                        ->radioList(ArrayHelper::map($answersData, 'id', 'answer'));
-//                echo Html::radioButtonGroup('answer-poll', 'test', ArrayHelper::map($answersData, 'id', 'answer'));
-//                echo Html::radioList('answer-poll', $answersData[0]['id'], ArrayHelper::map($answersData, 'id', 'answer'), ['class' => 'radio']);
-
-                ?>
-                <?php
-//                echo Html::activeRadioList($model,'answer_id',ArrayHelper::map($answersData, 'id', 'answer'));
-                echo Html::radioList('answer_id', false, ArrayHelper::map($answersData, 'id', 'answer'));
-                ?>
-                <input type="hidden" name="question_id" value="<?=$data['questions']['id']?>"/>
-
-                <!--                }-->
-                <p></p>
-<!--                --><?php //AjaxSubmitButton::begin([
-//                    'label' => 'Голосовать',
-//                    'ajaxOptions' => [
-//                        'type'=>'POST',
-//                        'url'=>'#',
-//                        'success' => new \yii\web\JsExpression('function(data){
-//                            $("body").html(data);
-//                            }'),
-//                    ],
-//                    'options' => ['class' => 'customclass', 'type' => 'submit'],
-//                ]);
-//                AjaxSubmitButton::end();
-                ?>
-                <?php echo Html::submitButton('Голосовать', ['class' => 'btn btn-sm btn-primary', 'name' => 'hash-button']) ?>
-                <?= Html::endForm() ?>
-<!--                <h3>--><?php //echo isset($stringHash) ? $stringHash : '' ?><!--</h3>-->
-                <!--    <h3>--><?php //echo $stringHash ?><!--</h3>-->
-                <?php Pjax::end(); ?>
-                        <?php
-        //                var_dump($data['questions']);
-                            $answers = ArrayHelper::map($answersData, 'id', 'answer');
-            //                var_dump($answers);
-            //                $answers = \common\models\Answers::find()->select('answer')->where(['questions_id' => $data['questions']->id])->asArray()->all();
-            //                $ans = [];
-            //                foreach ($answers as $answer) {
-            //                    $ans[] = $answer['answer'];
-            //                }
-            //                var_dump($ans);
-            //                echo \pollext\poll\poll::widget([
-            //                    'pollName'=>'Do you like PHP?',
-            //                    'answerOptions'=>
-            //                        [
-            //                            'Yes',
-            //                            'No',
-            //                        ],
-            //                ]);
-                            Pjax::begin();
-                            echo PollWidget::widget([
-                                'pollName'=>$data['questions']->questions,
-                                'answerOptions'=> $answers,
-                            ]);
-                            Pjax::end();
-                        ?>
-        <!--            </div>-->
-        <!--            <div role="tabpanel" class="tab-pane" id="answer">...</div>-->
-        <!--        </div>-->
-
+                <?php echo $this->render('_poll',[
+                    'answersData' => $answersData,
+                    'questions' => $data['questions'],
+                    'answerPoll' => $data['answerPoll']]
+                );?>
+                    <?php
+//                        $answers = ArrayHelper::map($answersData, 'id', 'answer');
+//                        Pjax::begin();
+//                        echo PollWidget::widget([
+//                            'pollName'=>$data['questions']->questions,
+//                            'answerOptions'=> $answers,
+//                        ]);
+//                        Pjax::end();
+                    ?>
             </div>
         <?php
         }

@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Answers;
 use common\models\AnswersPoll;
 use common\models\Games;
 use common\models\Players;
@@ -92,8 +93,8 @@ class SiteController extends Controller
 //        $this->params['teamId'] = $data['mainTeam']->id;
         $data['allPlayers'] = Players::find()
             ->where(['teams_id' => $data['mainTeam']->id])
-            ->andWhere(['>', 'date', strtotime(date("01.m.Y 00:00:00"))])
-            ->andWhere(['<', 'date', strtotime(date("t.m.Y 23:59:59"))])
+//            ->andWhere(['>', 'date', strtotime(date("01.m.Y 00:00:00"))])
+//            ->andWhere(['<', 'date', strtotime(date("t.m.Y 23:59:59"))])
             ->orderBy('date')
             ->all();
         $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
@@ -131,11 +132,10 @@ class SiteController extends Controller
             ->orderBy('date')
             ->limit(3)
             ->all();
-//var_dump($data['gamesFirst']);
-//        var_dump($data['questions']->answers->answer);
-//        var_dump($data['questions']->answers->how_many);
-
-//        var_dump($dataProvider['standings']->getModels());
+        $data['answerPoll'] = AnswersPoll::find()->where([
+            'quest_id' => $data['questions']->id,
+            'ip' => $_SERVER['REMOTE_ADDR']
+        ])->one();
 
         $model = new AnswersPoll();
 
@@ -284,6 +284,21 @@ class SiteController extends Controller
 
     public function actionVote ()
     {
-        var_dump($_POST);
+        if (!empty(Yii::$app->request->post())) {
+            $model = new AnswersPoll();
+
+            $dataPost = Yii::$app->request->post();
+            $model->quest_id = $dataPost['question_id'];
+            $model->answer_id = $dataPost['answer_id'];
+            $model->ip = $_SERVER['REMOTE_ADDR'];
+            $model->date = time();
+            if ($model->save()) {
+                $modelAnswer = Answers::findOne($dataPost['answer_id']);
+                $modelAnswer->how_many = $modelAnswer->how_many+1;
+                $modelAnswer->save();
+            }
+        }
+
+        return $this->redirect(['/']);
     }
 }
