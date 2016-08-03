@@ -11,3 +11,7 @@ $(function () {
             }
         }, 100);
 });*/
+$('.carousel-2d').carousel({
+interval: false,
+    wrap: false
+});

@@ -108,7 +108,7 @@ AppAsset::register($this);
         </div>
 
         <div class="row main-row">
-            <div class="col-xs-9 main-block">
+            <div class="col-xs-9 main-block main-block-inner-left">
                 <?php
                 /*echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -121,7 +121,7 @@ AppAsset::register($this);
 
                 <?= $content ?>
             </div>
-            <div class="col-xs-3 main-block">
+            <div class="col-xs-3 main-block main-block-inner-right">
                 <?php
 //                var_dump($this->params['widget_bar']);
                 if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {

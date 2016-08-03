@@ -243,11 +243,11 @@ body {
             /*display: block;*/
         }
 
-            .carousel-control {
+            .carousel-home .carousel-control {
                 display: none;
             }
 
-            .carousel .carousel-inner img {
+            .carousel-home .carousel .carousel-inner img {
                 width: 100%;
                 /*height: 540px;*/
                 height: 405px;
@@ -361,7 +361,7 @@ body {
             /*display: none;*/
         /*}*/
 
-    .carousel-caption {
+    .carousel-home .carousel-caption {
         position: absolute;
         top: 5%;
         /*bottom: 170px;*/
@@ -388,21 +388,22 @@ body {
     }
 
         .carousel-promo {
-            position: absolute;
-            bottom: 0;
-            /*height: 140px;*/
-            background: rgba(255, 255, 255, 0.95);
-            left: 0;
-            right: 0;
+            /*position: absolute;*/
+            /*bottom: 0;*/
+            /*!*height: 140px;*!*/
+            /*background: rgba(255, 255, 255, 0.95);*/
+            /*left: 0;*/
+            /*right: 0;*/
         }
 
         .carousel-promo > .row > div:first-child {
-            border-right: 1px solid #d9d9d9;
+            /*border-right: 1px solid #d9d9d9;*/
         }
 
         .promo-game-block {
             padding: 20px 40px;
             color: #00316b;
+            display: block;
         }
 
         .carousel-promo > .row > div:first-child .promo-game-block {
@@ -459,7 +460,7 @@ body {
                     }
 
                 .promo-game-score {
-                    font-size: 35px;
+                    font-size: 30px;
                     padding: 0;
                 }
 
@@ -1252,28 +1253,28 @@ body {
         padding: 0;
         display: block;
     }
-    .promo-game-team > span {
+    .carousel-3d  .promo-game-team > span {
         vertical-align: middle;
     }
 
-    .carousel-promo-games {
+    .carousel-3d .carousel-promo-games {
         margin-bottom: 15px;
     }
 
-    .carousel-promo-games .carousel-bg {
+    .carousel-3d  .carousel-bg {
         /*background: #ffffff;*/
         background: #0C3D7F;
 
     }
 
-    .carousel-promo-games .carousel-3d {
+    .carousel-3d {
         /*height: 162px;*/
         height: 125px;
         padding-top: 0;
         padding-bottom: 0;
     }
 
-    .carousel-promo-games .carousel-3d .carousel-control {
+    .carousel-3d .carousel-control {
         display: block;
     }
 
@@ -1441,4 +1442,87 @@ body {
     left: 42%;
     line-height: 20px;
     color: #011B39;
+}
+
+.promo-game-score > div {
+    background: #00316B;
+}
+
+.promo-game-team.text-right {
+    padding-right: 15px;
+}
+
+.promo-game-team.text-left {
+    padding-left: 15px;
+}
+
+.carousel-2d:before {
+    left: 50%;
+    top: 25px;
+    bottom: 25px;
+}
+
+.carousel-promo-2d {
+    margin-bottom: 15px;
+    background: #ffffff;
+}
+.carousel-promo-2d .carousel-control {
+    background: none !important;
+    color: #00316B;
+}
+
+.carousel-control:hover, .carousel-control:focus {
+    color: #00316B;
+}
+
+.carousel-2d .promo-game-block {
+    padding: 0;
+}
+
+.carousel-2d .item > .row > div:first-child .promo-game-block {
+    padding-right: 20px;
+}
+.carousel-2d .item > .row > div:last-child .promo-game-block {
+    padding-left: 20px;
+}
+
+.carousel-2d .item {
+    display: block;
+    opacity: 0;
+    /*transition: all 0.4s ease;*/
+    /*transition: all 0.2s;*/
+    position: absolute;
+    top: 20px;
+    z-index: -1;
+}
+
+.carousel-2d .item.active {
+    opacity: 1;
+    position: relative;
+    top: 0;
+    z-index: auto;
+}
+
+.carousel-2d .text-left.promo-game-team > span {
+    margin-left: 0;
+}
+.carousel-2d .text-right.promo-game-team > span {
+    margin-left: 0;
+}
+
+.carousel-2d .promo-game-team {
+    white-space: nowrap;
+}
+
+.promo-game-score > div > div {
+    margin-top: -5px;
+    padding-bottom: 5px;
+}
+.main-block-inner-right .standings table td {
+    white-space: nowrap;
+}
+.main-block-inner-right .standings table td img,
+.main-block-inner-right .standings table tr > th:nth-child(3),
+.main-block-inner-right .standings table tr > td:nth-child(3) {
+    display: none;
 }
