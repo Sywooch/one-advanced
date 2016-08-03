@@ -338,7 +338,7 @@ CarouselAsset::register($this);
                             <div class="col-xs-6 best-players-block">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший бомбардир</span>
-<!--                                    <span class="best-players-goals">4 Гола</span>-->
+                                    <span class="best-players-goals"><?php echo $playersGoals->goals ?> Гол</span>
                                 </div>
                                 <div class="best-players-image">
                                     <?php
@@ -362,7 +362,7 @@ CarouselAsset::register($this);
                             <div class="col-xs-6 best-players-block">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший ассистент</span>
-<!--                                    <span class="best-players-goals">3 передачи</span>-->
+                                    <span class="best-players-goals"><?php echo $playersTransfers->transfers ?> передача</span>
                                 </div>
                                 <div class="best-players-image">
                                     <?php
