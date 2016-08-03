@@ -38,11 +38,12 @@ if (empty($answerPoll)) {
         }
         ?>
         <div class="poll-option-block">
-            <div class="poll-option-name"><?php echo $answersData[$i]->answer . ': ' . $answersData[$i]->how_many ?></div>
+            <div class="poll-option-name"><?php echo $answersData[$i]->answer ?></div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $voicesPer ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $voicesPer ?>%;">
-                    <?php echo $voicesPer ?>%
                 </div>
+                <div class="progress-bar-result-count"><?php echo $answersData[$i]->how_many ?></div>
+                <div class="progress-bar-result"><?php echo $voicesPer ?>%</div>
             </div>
         </div>
         <?php
