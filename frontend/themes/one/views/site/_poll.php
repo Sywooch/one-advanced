@@ -10,8 +10,12 @@ if (empty($answerPoll)) {
     echo Html::radioList('answer_id', 1, ArrayHelper::map($answersData, 'id', 'answer'), [
         'item' => function ($index, $label, $name, $checked, $value) {
             return  Html::tag('div',
-                Html::input('radio', $name, $value, ['class' => 'vote-players-radio', 'checked' => $checked]) .
-                Html::tag('label', $label, ['class' => 'input-helper input-helper--radio']),
+
+                Html::tag('label',
+                    Html::input('radio', $name, $value, ['class' => 'vote-players-radio', 'checked' => $checked]) .
+                    Html::tag('div', false, ['class' => 'radio-appearance']) .
+
+                    $label, ['class' => 'input-helper input-helper--radio']),
                 ['class' => 'vote-players']
             );
         },

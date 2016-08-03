@@ -900,27 +900,28 @@ body {
         position: relative;
         display: inline-block;
         margin-bottom: 5px;
+        cursor: pointer;
     }
 
-    .vote-block .input-helper:before {
-        content: '';
-        display: block;
-        position: absolute;
-    }
+    /*.vote-block .input-helper:before {*/
+        /*content: '';*/
+        /*display: block;*/
+        /*position: absolute;*/
+    /*}*/
 
     .vote-block .input-helper--radio {
         padding-left: 25px;
 
     }
-    .vote-block .input-helper--radio:before {
-        top: 6px;
-        left: 0;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        /*border: 1px solid #222;*/
-        background: #011b39;
-    }
+    /*.vote-block .input-helper--radio:before {*/
+        /*top: 6px;*/
+        /*left: 0;*/
+        /*width: 11px;*/
+        /*height: 11px;*/
+        /*border-radius: 50%;*/
+        /*!*border: 1px solid #222;*!*/
+        /*background: #011b39;*/
+    /*}*/
     /*.input-helper--checkbox {*/
         /*padding-left: 20px;*/
 
@@ -936,13 +937,30 @@ body {
         display: none;
 
     }
-    .vote-block input[type="radio"]:checked + label:before {
-        /*background: #222;*/
-        background: #ffffff;
-        /*border-width: 3px;*/
-        border: 3px solid #011b39;
-
+    .vote-block .input-helper .radio-appearance {
+        display: block;
+        position: absolute;
     }
+
+        .vote-block .input-helper--radio .radio-appearance {
+            top: 6px;
+            left: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            /*border: 1px solid #222;*/
+            background: #011b39;
+        }
+
+            .vote-block .input-helper input[type="radio"]:checked + .radio-appearance {
+                background: #ffffff;
+                border: 3px solid #011b39;
+            }
+
+    /*.vote-block input[type="radio"]:checked + .input-helper--radio:before {*/
+        /*background: #ffffff;*/
+        /*border: 3px solid #011b39;*/
+    /*}*/
     /*input[type="checkbox"] {*/
         /*display: none;*/
     /*}*/
