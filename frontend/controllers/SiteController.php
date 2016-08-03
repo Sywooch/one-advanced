@@ -287,7 +287,7 @@ class SiteController extends Controller
 
     public function actionVote ()
     {
-        if (!empty(Yii::$app->request->post())) {
+        if (!empty($_POST)) {
             $model = new AnswersPoll();
 
             $dataPost = Yii::$app->request->post();
