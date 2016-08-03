@@ -90,6 +90,10 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+a:hover, a:focus, a:hover:focus {
+    text-decoration: none;
+}
+
     .news-index .img-thumbnail {
         /*width: 100%;*/
     }
@@ -318,7 +322,7 @@ a.desc:after {
     }
 
     .carousel-inner {
-        padding: 19px 49px;
+        padding: 24px 49px;
     }
 
     .carousel-control {
@@ -346,7 +350,7 @@ a.desc:after {
         padding-bottom: 20px;
     }
 
-    .carousel-bg {
+    .carousel-3d .carousel-bg {
         position: absolute;
         top: 0;
         right: 0;
@@ -360,4 +364,53 @@ a.desc:after {
     .carousel-3d .carousel-control {
         z-index: 7;
         background: transparent;
+    }
+
+    .carousel-2d {
+        /*height: 100px;*/
+    }
+
+    .promo-game-row {
+        display: table;
+        width: 100%;
+    }
+
+    .vcenter {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+    }
+
+    .promo-game-team {
+        padding: 0;
+    }
+
+    .promo-game-date {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .promo-game-score > div {
+        background: #337AB7;
+        color: #ffffff;
+        border-radius: 4px;
+        padding: 2px 6px;
+    }
+
+    .carousel-2d:before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        width: 1px;
+        background: #DDDDDD;
+        left: 49%;
+    }
+
+    .text-right.promo-game-team > span {
+        margin-right: 10px;
+    }
+
+    .text-left.promo-game-team > span {
+        margin-left: 10px;
     }

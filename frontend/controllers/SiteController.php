@@ -299,6 +299,6 @@ class SiteController extends Controller
             }
         }
 
-        return $this->redirect(['/']);
+        return $this->redirect(['/#vote']);
     }
 }
