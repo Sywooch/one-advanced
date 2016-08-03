@@ -303,17 +303,21 @@ if(Yii::$app->params['gamesPreview3d']) {
                     ?>
                     <div id="w5" class="carousel carousel-2d">
                         <div class="carousel-inner">
-                            <?php foreach($carIt as $items) { $i++?>
+                            <?php foreach($carIt as $items) { $i++;$j=0;?>
                                 <div class="item <?php echo $i==2 ? 'active' : ''?>">
                                     <div class="row">
-                                        <?php foreach($items as $item) { ?>
+                                        <?php foreach($items as $item) {$j++ ?>
                                             <div class="col-xs-6">
                                                 <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block">
                                                     <div class="promo-game-header">
                                                         <div class="row">
-                                                            <div class="promo-game-date col-xs-12 vtop">
+                                                            <div class="promo-game-date col-xs-12 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
                                                                 <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s').', '.$item->category->name ?>
                                                             </div>
+                                                            <?php if($i==2 & $j==2) {
+                                                                echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;margin-top: -2px;']);
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
                                                     <div class="promo-game-row">
