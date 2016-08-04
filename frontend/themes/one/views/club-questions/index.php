@@ -17,6 +17,7 @@ $this->params['image_page'] = '/themes/one/src/layout/guest.png';
 <div class="guest-book-index">
     <?= $this->render('_form',[
         'model' => $model,
+        'data' => $data
     ]) ?>
 <?php Pjax::begin(['id' => 'guest_records']); ?>
     <?= ListView::widget([

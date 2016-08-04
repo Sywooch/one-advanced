@@ -23,7 +23,7 @@ Icon::map($this);
         </div>
         <div class="panel-body">
             <div class="guest-book-content">
-                <?php echo $model->question ?>
+                <?php echo ($model->addressee != 'all' ? $model->addressee . ', ' : '') .$model->question ?>
             </div>
         </div>
     </div>

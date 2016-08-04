@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
+use kartik\widgets\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\GuestBook */
@@ -38,6 +39,24 @@ $this->registerJs(
             </div>
         <?php endif; ?>
         <div class="col-xs-8">
+            <?php
+            $addressee = [];
+            $addressee['all'] = 'Всем';
+            $playersRole = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий'];
+            foreach($data['mainTeam']->players as $item) {
+                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' ('.$playersRole[$item['role']].')';
+            }
+            foreach($data['mainTeam']->coachingStaff as $item) {
+                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' (' . $item['role'] . ')';
+            }
+            //            echo $form->field($model, 'addressee')->dropDownList($addressee);
+            echo $form->field($model, 'addressee')->widget(Select2::classname(), [
+                'data' => $addressee,
+                'options' => ['placeholder' => 'Выбрать адресата ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
             <?php echo $form->field($model, 'question')->label('Сообщение')->textarea(['rows' => 6]) ?>
 
         <!--    --><?php //echo $form->field($model, 'user_id')->textInput() ?>
