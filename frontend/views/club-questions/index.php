@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form',[
         'model' => $model,
+        'data' => $data
     ]) ?>
 <?php Pjax::begin(['id' => 'guest_records']); ?>
     <?= ListView::widget([

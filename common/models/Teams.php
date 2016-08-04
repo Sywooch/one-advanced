@@ -13,7 +13,10 @@ use Yii;
  * @property string $year
  * @property string $web_site
  * @property string $description
+ * @property string $city
+ * @property string $stadium
  *
+ * @property CoachingStaff[] $coachingStaff
  * @property Games[] $games
  * @property Games[] $gamesGuest
  * @property Players[] $players
@@ -91,6 +94,14 @@ class Teams extends \yii\db\ActiveRecord
     public function getPlayers()
     {
         return $this->hasMany(Players::className(), ['teams_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCoachingStaff()
+    {
+        return $this->hasMany(CoachingStaff::className(), ['teams_id' => 'id']);
     }
 
     /**

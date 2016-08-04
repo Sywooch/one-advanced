@@ -54,6 +54,7 @@ AppAsset::register($this);
                 ['label' => 'Сезоны', 'url' => ['/seasons']],
                 ['label' => 'Команды', 'url' => ['/teams']],
                 ['label' => 'Игроки', 'url' => ['/players']],
+                ['label' => 'Тренерский штаб', 'url' => ['/coaching-staff']],
                 ['label' => 'Категории игр', 'url' => ['/category-games']],
             ],
         ],

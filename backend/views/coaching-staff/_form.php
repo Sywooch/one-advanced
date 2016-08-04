@@ -8,7 +8,7 @@ use kartik\widgets\FileInput;
 use kartik\builder\Form;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Players */
+/* @var $model common\models\CoachingStaff */
 /* @var $form yii\widgets\ActiveForm */
 if($model->errors) {
     var_dump($model->errors);
@@ -32,7 +32,9 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
             <?php
-
+            if ($model->isNewRecord) {
+                $model->status = 'on';
+            }
             $image=new UploadForm();
             echo '<label>Превью</label>';
             echo FileInput::widget([
@@ -52,31 +54,20 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                 'model' => $model,
                 'form' => $form,
                 'columns' => 3,
-        //        'autoGenerateColumns' => true,
-        //
+                //        'autoGenerateColumns' => true,
+                //
                 'attributes' => [
-                    'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
                     'surname' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Фамилию...']],
+                    'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
+                    'patronymic' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Отчество...']],
+                    'role' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Должность...']],
                     'teams_id'=>[
                         'type'=>Form::INPUT_WIDGET,
                         'widgetClass'=>'\kartik\widgets\Select2',
                         'options'=>[
-                            'data'=>ArrayHelper::map($teams, 'id', 'name'),
+                            'data'=>ArrayHelper::map($model->allTeams, 'id', 'name'),
                             'options'=>[
-                                'placeholder'=>'Выберите команду',
-                            ],
-                            'pluginOptions' => [
-                                'allowClear' => true
-                            ],
-                        ],
-                    ],
-                    'role'=>[
-                        'type'=>Form::INPUT_WIDGET,
-                        'widgetClass'=>'\kartik\widgets\Select2',
-                        'options'=>[
-                            'data'=>['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий', ],
-                            'options'=>[
-                                'placeholder'=>'Выберите Позицию Игрока',
+                                'placeholder'=>'Выберите Команду',
                             ],
                             'pluginOptions' => [
                                 'allowClear' => true
@@ -86,7 +77,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                     'date'=>[
                         'type'=>Form::INPUT_WIDGET,
                         'widgetClass'=>'\kartik\widgets\DatePicker',
-        //                'hint'=>'Введите дату рождения',
+                        //                'hint'=>'Введите дату рождения',
                         'options' => [
                             'pluginOptions' => [
                                 'autoclose' => true,
@@ -94,28 +85,28 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             ]
                         ]
                     ],
-                    'number' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Номер...']],
-                    'nationality' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Гражданство...']],
-                    'height' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Рост Игрока...']],
-                    'weight' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Вес Игрока...']],
+                    'status'=>[
+                        'label'=>'Статус',
+                        'items'=>[
+                            'on' => 'On',
+                            'off' => 'Off'
+                        ],
+                        'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
+                        'options'=>[
+                            'class'=>'show'
+                        ]
+                    ],
+                    'actions'=>[
+                        'type'=>Form::INPUT_RAW,
+                        'value'=>'<div style="margin-top: 25px">' .
+                            Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
+                            Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                            '</div>'
+                    ],
                 ]
             ]);
 
             ?>
-
-
-            <?php // echo $form->field($model, 'goals')->textInput() ?>
-
-            <?php // echo $form->field($model, 'transfers')->textInput() ?>
-
-            <?php // echo $form->field($model, 'yellow_cards')->textInput() ?>
-
-            <?php // echo $form->field($model, 'red_cards')->textInput() ?>
-
-            <div class="form-group">
-                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-            </div>
-
             <?php ActiveForm::end(); ?>
         </div>
     </div>
