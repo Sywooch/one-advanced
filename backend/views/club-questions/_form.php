@@ -18,6 +18,7 @@ use yii\widgets\ActiveForm;
         $model->date = time();
     }
     ?>
+    <?php echo $form->field($model, 'addressee')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'question')->textarea(['rows' => 6, 'readonly' => !$model->isNewRecord]) ?>
 

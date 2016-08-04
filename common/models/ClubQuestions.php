@@ -16,6 +16,7 @@ use Yii;
  * @property string $ip
  * @property string $status
  * @property integer $date
+ * @property string $addressee
  */
 class ClubQuestions extends \yii\db\ActiveRecord
 {
@@ -33,10 +34,10 @@ class ClubQuestions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question'], 'required'],
+            [['question', 'addressee'], 'required'],
             [['question', 'answer', 'status'], 'string'],
             [['user_id', 'date'], 'integer'],
-            [['name'], 'string', 'max' => 100],
+            [['name', 'addressee'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 255],
             [['ip'], 'string', 'max' => 50],
         ];
@@ -57,6 +58,7 @@ class ClubQuestions extends \yii\db\ActiveRecord
             'ip' => 'Ip',
             'status' => 'Статус',
             'date' => 'дата',
+            'addressee' => 'Адресат',
         ];
     }
 }

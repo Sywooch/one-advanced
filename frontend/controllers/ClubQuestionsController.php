@@ -3,7 +3,9 @@
 namespace frontend\controllers;
 
 use common\models\BlackList;
+use common\models\ClubQuestions;
 use common\models\ClubQuestionsSearchSearch;
+use common\models\Teams;
 use common\models\User;
 use kartik\widgets\Alert;
 use Yii;
@@ -39,9 +41,11 @@ class ClubQuestionsController extends Controller
      */
     public function actionIndex()
     {
-        $model = new ClubQuestionsSearch();
+        $model = new ClubQuestions();
+        $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->with('players')->with('coachingStaff')->one();
         if ($model->load(Yii::$app->request->post()))
         {
+//            var_dump($model);die;
             $ip = $_SERVER['REMOTE_ADDR'];
             if (isset($ip)) {
                 $model->ip = $ip;
@@ -67,7 +71,7 @@ class ClubQuestionsController extends Controller
                 }
 
                 if ($model->save()) {
-                    $model = new ClubQuestionsSearch();
+                    $model = new ClubQuestions();
 //                    echo Alert::widget([
 //                        'options' => [
 //                            'class' => 'alert-success'
@@ -88,7 +92,7 @@ class ClubQuestionsController extends Controller
 //            }
         }
         $dataProvider = new ActiveDataProvider([
-            'query' => ClubQuestionsSearch::find()->where(['status' => 'on'])->orderBy('date DESC'),
+            'query' => ClubQuestions::find()->where(['status' => 'on'])->orderBy('date DESC'),
             'pagination' => [
                 'pageSize' => 20,
             ],
@@ -97,6 +101,7 @@ class ClubQuestionsController extends Controller
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'model' => $model,
+            'data' => $data,
         ]);
     }
 }

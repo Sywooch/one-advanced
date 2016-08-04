@@ -7,7 +7,7 @@ Icon::map($this);
 //echo Icon::show('user');
 //echo Icon::show('home');
 //echo Icon::show('user', ['class' => 'fa-3x'], Icon::BSG);
-//var_dump($model->answer);
+//var_dump($model->addressee);
 ?>
 <div class="guest-book-block">
 <div class="row">
@@ -27,7 +27,7 @@ Icon::map($this);
     </div>
     <div class="col-xs-12">
         <div class="well guest-book-block-content">
-            <?php echo $model->question ?>
+            <?php echo ($model->addressee != 'all' ? $model->addressee . ', ' : '') . $model->question ?>
         </div>
         <?php if ($model->answer != '') : ?>
             <div class="row">
