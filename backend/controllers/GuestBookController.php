@@ -3,9 +3,11 @@
 namespace backend\controllers;
 
 use common\models\BlackList;
+use common\models\User;
 use Yii;
 use common\models\GuestBook;
 use common\models\GuestBookSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,6 +29,18 @@ class GuestBookController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return User::isUserAdmin(Yii::$app->user->identity->username);
+                        }
+                    ],
+                ],
+            ]
         ];
     }
 

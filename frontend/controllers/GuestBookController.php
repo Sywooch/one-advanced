@@ -42,24 +42,30 @@ class GuestBookController extends Controller
         $model = new GuestBook();
         if ($model->load(Yii::$app->request->post()))
         {
-            $url ='http://freegeoip.net/json/';
-            $ch = curl_init();
-            // Disable SSL verification
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            // Will return the response, if false it print the response
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // Set the url
-            curl_setopt($ch, CURLOPT_URL,$url);
-            // Execute
-            $result=curl_exec($ch);
-            // Closing
-            curl_close($ch);
-            // Will dump a beauty json :3
-            $ipDetails = json_decode($result, true);
+//            $url ='http://freegeoip.net/json/';
+//            $ch = curl_init();
+//            // Disable SSL verification
+//            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//            // Will return the response, if false it print the response
+//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//            // Set the url
+//            curl_setopt($ch, CURLOPT_URL,$url);
+//            // Execute
+//            $result=curl_exec($ch);
+//            // Closing
+//            curl_close($ch);
+//            // Will dump a beauty json :3
+//            $ipDetails = json_decode($result, true);
 //            $ipDetails = $_SERVER["REMOTE_ADDR"];
 
-            if (!is_null($ipDetails)) {
-                $model->ip = $ipDetails['ip'];
+//            if (!is_null($ipDetails)) {
+//                $model->ip = $ipDetails['ip'];
+//            } else {
+//                $model->ip = 'NULL';
+//            }
+            $ip = $_SERVER['REMOTE_ADDR'];
+            if (isset($ip)) {
+                $model->ip = $ip;
             } else {
                 $model->ip = 'NULL';
             }

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\GuestBook */
+/* @var $model common\models\ClubQuestions */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Гостевая книга', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Вопросы клубу', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="guest-book-view">
+<div class="club-questions-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить запись?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,9 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//            'id',
+            'id',
             'name',
-            'body:ntext',
+            'question:ntext',
+            'answer:ntext',
             'email:email',
             'user_id',
             'ip',
