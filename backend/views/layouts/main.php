@@ -65,6 +65,7 @@ AppAsset::register($this);
                 ['label' => 'Галерея', 'url' => ['/gallery']],
                 ['label' => 'Гостевая', 'url' => ['/guest-book']],
                 ['label' => 'Голосование', 'url' => ['/questions']],
+                ['label' => 'Вопросы клубу', 'url' => ['/club-questions']],
             ],
         ],
     ];

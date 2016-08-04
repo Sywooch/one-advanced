@@ -2,19 +2,19 @@
 
 namespace backend\controllers;
 
-use common\models\User;
 use Yii;
-use common\models\CategoryGames;
-use yii\data\ActiveDataProvider;
+use common\models\ClubQuestions;
+use common\models\ClubQuestionsSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\User;
 
 /**
- * CategoryGamesController implements the CRUD actions for CategoryGames model.
+ * ClubQuestionsController implements the CRUD actions for ClubQuestions model.
  */
-class CategoryGamesController extends Controller
+class ClubQuestionsController extends Controller
 {
     /**
      * @inheritdoc
@@ -44,44 +44,43 @@ class CategoryGamesController extends Controller
     }
 
     /**
-     * Lists all CategoryGames models.
+     * Lists all ClubQuestions models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => CategoryGames::find(),
-        ]);
+        $searchModel = new ClubQuestionsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single CategoryGames model.
+     * Displays a single ClubQuestions model.
      * @param integer $id
      * @return mixed
      */
-//    public function actionView($id)
-//    {
-//        return $this->render('view', [
-//            'model' => $this->findModel($id),
-//        ]);
-//    }
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
-     * Creates a new CategoryGames model.
+     * Creates a new ClubQuestions model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CategoryGames();
+        $model = new ClubQuestions();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -90,7 +89,7 @@ class CategoryGamesController extends Controller
     }
 
     /**
-     * Updates an existing CategoryGames model.
+     * Updates an existing ClubQuestions model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,8 +99,7 @@ class CategoryGamesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -110,7 +108,7 @@ class CategoryGamesController extends Controller
     }
 
     /**
-     * Deletes an existing CategoryGames model.
+     * Deletes an existing ClubQuestions model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -123,15 +121,15 @@ class CategoryGamesController extends Controller
     }
 
     /**
-     * Finds the CategoryGames model based on its primary key value.
+     * Finds the ClubQuestions model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CategoryGames the loaded model
+     * @return ClubQuestions the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CategoryGames::findOne($id)) !== null) {
+        if (($model = ClubQuestions::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
