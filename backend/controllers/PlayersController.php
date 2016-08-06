@@ -103,7 +103,7 @@ class PlayersController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+//        var_dump($model); die;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
                 $model->removeImages();

@@ -41,6 +41,10 @@ return [
                     'pattern' => 'news/<slug:\S+>',
                     'route' => '/news/view',
                 ],
+                [
+                    'pattern' => 'players/view/<id:\w+>',
+                    'route' => '/players/view',
+                ],
 //                '/site/index' => '/',
             ],
         ],

@@ -94,6 +94,11 @@ a:hover, a:focus, a:hover:focus {
     text-decoration: none;
 }
 
+    a {
+        color: #333333;
+        text-decoration: none;
+    }
+
     .news-index .img-thumbnail {
         /*width: 100%;*/
     }
@@ -413,4 +418,159 @@ a:hover, a:focus, a:hover:focus {
 
     .text-left.promo-game-team > span {
         margin-left: 10px;
+    }
+
+    .players-index .list-view .item {
+        margin-top: 20px;
+    }
+
+    .players-index h3 {
+        margin-bottom: 0;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .players-index .list-view {
+        border-bottom: 1px solid #E3E3E3;
+        padding-bottom: 25px;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .players-index .list-view:last-child {
+        border-bottom: 0;
+        padding-bottom: 10px;
+    }
+
+    .players-index .players-surname {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .players-index .players-info-block {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .players-index .players-number-block {
+        position: absolute;
+        bottom: 0;
+        color: #7f7f7f;
+        text-transform: uppercase;
+    }
+
+    .players-index .players-name {
+        margin-top: 15px;
+    }
+
+    .players-index .players-number {
+        font-weight: bold;
+        color: #00316b;
+        font-size: 18px;
+    }
+
+    .players-index .players-img-box {
+        background: #ffffff;
+        padding: 5px 5px 0 5px;
+    }
+
+    .players-index .list-view:first-child h3 {
+        margin-top: 0;
+    }
+
+    .player-img-box {
+        /*width: 265px;*/
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        background: linear-gradient(#ffffff 10%, #FBFBFB 50%,#D9D9D9);
+    }
+
+    .player-number-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #00316b;
+        color: #ffffff;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        font-size: 70px;
+        font-weight: bold;
+    }
+
+    .player-img-block {
+        padding-right: 0;
+    }
+
+    .player-info-block {
+        height: 400px;
+        padding-left: 0;
+    }
+
+    .player-info-subblock {
+        background: #00316b;
+        color: #ffffff;
+        padding: 30px;
+        font-size: 16px;
+        height: 100%;
+    }
+
+    .player-name-surname {
+        font-size: 35px;
+    }
+    .player-name-surname b {
+        text-transform: uppercase;
+    }
+
+    .player-role {
+        margin-right: 15px;
+        text-transform: uppercase;
+    }
+
+    .player-info {
+        padding: 30px;
+        border-top: 2px solid #ffffff;
+        margin: 30px -30px;
+        border-bottom: 2px solid #ffffff;
+    }
+
+    .player-info .player-info-box, .player-game-info .player-info-box {
+        display: inline-block;
+        margin-right: 40px;
+    }
+
+    .player-info-box {
+        text-transform: uppercase;
+        /*font-size: 14px;*/
+    }
+
+    .player-info-box div {
+        font-weight: bold;
+         /*font-size: 16px;*/
+    }
+
+    .player-game-info .player-info-box {
+        min-width: 100px;
+    }
+
+    .player-game-info {
+        margin-bottom: 10px;
+    }
+
+    .player-content-block {
+        background: #ffffff;
+    }
+
+    .player-content-block h2 {
+        position: relative;
+    }
+
+    .player-content-block h2 span {
+        position: absolute;
+        left: -40px;
     }

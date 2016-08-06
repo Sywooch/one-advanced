@@ -29,7 +29,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'image' => [
-                'class' => 'rico\yii2images\behaviors\ImageBehave',
+                'class' => 'common\widgets\costaRico\yii2Images\behaviors\ImageBehave',
             ]
         ];
         /*Original code*/
