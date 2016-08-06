@@ -569,7 +569,7 @@ if(Yii::$app->params['gamesPreview3d']) {
                         ?>
                     </div>
                 </div>
-                <div class="vote-galery">
+                <div id="vote" class="vote-galery">
                     <div class="row">
                         <div class="col-xs-6">
                             <?php
