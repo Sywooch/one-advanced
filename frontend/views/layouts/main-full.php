@@ -15,6 +15,7 @@ use frontend\widgets\StandingsWidget;
 
 AppAsset::register($this);
 \edgardmessias\assets\nprogress\NProgressAsset::register($this);
+$this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
 ?>
 <?php $this->beginPage() ?>

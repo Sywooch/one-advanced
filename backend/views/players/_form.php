@@ -18,7 +18,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
 ?>
 
 <div class="players-form well">
-
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="row">
         <div class="col-xs-3">
             <?php
@@ -29,7 +29,6 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
             ?>
         </div>
         <div class="col-xs-9">
-            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
             <?php
 
@@ -56,6 +55,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
         //
                 'attributes' => [
                     'name' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Имя...']],
+                    'patronymic' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Отчество...']],
                     'surname' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Фамилию...']],
                     'teams_id'=>[
                         'type'=>Form::INPUT_WIDGET,
@@ -74,7 +74,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                         'type'=>Form::INPUT_WIDGET,
                         'widgetClass'=>'\kartik\widgets\Select2',
                         'options'=>[
-                            'data'=>['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий', ],
+                            'data' => ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий', ],
                             'options'=>[
                                 'placeholder'=>'Выберите Позицию Игрока',
                             ],
@@ -94,13 +94,25 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             ]
                         ]
                     ],
-                    'number' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Номер...']],
-                    'nationality' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Гражданство...']],
-                    'height' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Рост Игрока...']],
-                    'weight' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Вес Игрока...']],
                 ]
             ]);
-
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 4,
+                //        'autoGenerateColumns' => true,
+                //
+                'attributes' => [
+                    'number' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Номер...']],
+                    'nationality' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Гражданство...']],
+                    'height' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Рост...']],
+                    'weight' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Вес...']],
+                    'goals' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Голов...']],
+                    'transfers' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Передачи...']],
+                    'yellow_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Желтых карточек...']],
+                    'red_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Красных карточек...']],
+                ]
+            ]);
             ?>
 
 
@@ -112,11 +124,31 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
 
             <?php // echo $form->field($model, 'red_cards')->textInput() ?>
 
+        </div>
+        <div class="col-xs-12">
+            <?php
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 1,
+                //        'autoGenerateColumns' => true,
+                //
+                'attributes' => [
+                    'content' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите Контент...']],
+                ]
+            ]);
+            ?>
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             </div>
-
-            <?php ActiveForm::end(); ?>
         </div>
     </div>
+    <?php ActiveForm::end(); ?>
+
 </div>
+<?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
+<?php $this->registerJs('
+CKEDITOR.replace("players-content");
+ CKEDITOR.filter.allowedContentRules = true;
+ CKEDITOR.config.allowedContent=true;
+'); ?>

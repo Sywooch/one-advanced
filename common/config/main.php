@@ -14,19 +14,14 @@ return [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['admin','client'],
         ],
-
         'formatter' => [
+            'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'php:d.m.Y',
-            'datetimeFormat' => 'php:d.m.Y H:i:s',
+            'datetimeFormat' => 'php:d.m.Y H:i',
+            'timeFormat' => 'php:H:i',
+            'defaultTimeZone' => 'Europe/Moscow',
+            'locale' => 'ru-RU'
         ],
-//        'formatter' => [
-//            'class' => 'yii\i18n\Formatter',
-////            'dateFormat' => 'php:d.m.Y',
-////            'datetimeFormat' => 'php:j F, H:i',
-////            'timeFormat' => 'php:H:i:s',
-//            'defaultTimeZone' => 'Europe/Moscow',
-//            'locale' => 'ru-RU'
-//        ],
     ],
     'modules' => [
         'yii2images' => [

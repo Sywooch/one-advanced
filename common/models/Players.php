@@ -21,6 +21,8 @@ use Yii;
  * @property integer $transfers
  * @property integer $yellow_cards
  * @property integer $red_cards
+ * @property string $content
+ * @property string $patronymic
  *
  * @property GamesEvents[] $gamesEvents
  * @property GamesEvents[] $gamesEvents0
@@ -33,7 +35,7 @@ class Players extends \yii\db\ActiveRecord
     {
         return [
             'image' => [
-                'class' => 'rico\yii2images\behaviors\ImageBehave',
+                'class' => 'common\widgets\costaRico\yii2Images\behaviors\ImageBehave',
             ]
         ];
     }
@@ -55,8 +57,8 @@ class Players extends \yii\db\ActiveRecord
             [['name', 'surname', 'nationality', 'date', 'teams_id'], 'required'],
             [['number', 'height', 'weight', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards'], 'integer'],
             [['date'], 'safe'],
-            [['role'], 'string'],
-            [['name', 'surname', 'nationality'], 'string', 'max' => 100],
+            [['role', 'content'], 'string'],
+            [['name', 'surname', 'nationality', 'patronymic'], 'string', 'max' => 100],
             [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
     }
@@ -70,6 +72,7 @@ class Players extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Имя',
             'surname' => 'Фамилия',
+            'patronymic' => 'Отчество',
             'number' => 'Номер',
             'nationality' => 'Национальность',
             'height' => 'Рост',
@@ -81,6 +84,7 @@ class Players extends \yii\db\ActiveRecord
             'transfers' => 'Передачи',
             'yellow_cards' => 'Желтые Карточки',
             'red_cards' => 'Красные Карточки',
+            'content' => 'Контент'
         ];
     }
 
