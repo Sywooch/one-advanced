@@ -9,6 +9,7 @@ use common\models\Questions;
 use common\models\SeasonDetails;
 use common\models\Seasons;
 use common\models\Teams;
+use kartik\widgets\Alert;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -84,6 +85,49 @@ class SiteController extends Controller
     {
         $this->layout = 'main-index';
 
+        $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
+        $data['answerPoll'] = AnswersPoll::find()->where([
+            'quest_id' => $data['questions']->id,
+            'ip' => $_SERVER['REMOTE_ADDR']
+        ])->one();
+
+        if (!empty(Yii::$app->request->post())) {
+            $model = new AnswersPoll();
+
+            $dataPost = Yii::$app->request->post();
+            $model->quest_id = $dataPost['question_id'];
+            $model->answer_id = $dataPost['answer_id'];
+            $model->ip = $_SERVER['REMOTE_ADDR'];
+            $model->date = time();
+            $alertMessage = '';
+            if ($model->save()) {
+                $modelAnswer = Answers::findOne($dataPost['answer_id']);
+                $modelAnswer->how_many = $modelAnswer->how_many+1;
+                $modelAnswer->save();
+                $data['answerPoll'] = AnswersPoll::find()->where([
+                    'quest_id' => $data['questions']->id,
+                    'ip' => $_SERVER['REMOTE_ADDR']
+                ])->one();
+            } else {
+                $alertMessage = Alert::widget([
+                    'options' => [
+                        'class' => 'alert-danger'
+                    ],
+                    'body' => '<b>Ошибка!</b> Ответ не был записан.',
+                ]);
+            }
+            return $this->render('_poll', [
+                    'answersData' => $data['questions']->answers,
+                    'questions' => $data['questions'],
+                    'answerPoll' => $data['answerPoll'],
+                    'alertMessage' => $alertMessage,
+
+                ]
+            );
+        }
+
+
+
         $dataProvider['news'] = new ActiveDataProvider([
             'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC')->limit(10),
             'pagination' => [
@@ -91,8 +135,6 @@ class SiteController extends Controller
             ],
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
-//        var_dump($this);
-//        $this->params['teamId'] = $data['mainTeam']->id;
         $data['allPlayers'] = Players::find()
             ->where(['teams_id' => $data['mainTeam']->id])
 //            ->andWhere(['>', 'date', strtotime(date("01.m.Y 00:00:00"))])
@@ -110,7 +152,6 @@ class SiteController extends Controller
             'sort' =>false
         ]);
 
-        $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
         $data['gameLast'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
@@ -135,10 +176,6 @@ class SiteController extends Controller
             ->orderBy('date')
             ->limit(3)
             ->all();
-        $data['answerPoll'] = AnswersPoll::find()->where([
-            'quest_id' => $data['questions']->id,
-            'ip' => $_SERVER['REMOTE_ADDR']
-        ])->one();
 
         $model = new AnswersPoll();
 
@@ -285,23 +322,33 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionVote ()
-    {
-        if (!empty($_POST)) {
-            $model = new AnswersPoll();
+//    public function actionVote ()
+//    {
+//        if (!empty(Yii::$app->request->post())) {
+//            $model = new AnswersPoll();
+//
+//            $dataPost = Yii::$app->request->post();
+//            $model->quest_id = $dataPost['question_id'];
+//            $model->answer_id = $dataPost['answer_id'];
+//            $model->ip = $_SERVER['REMOTE_ADDR'];
+//            $model->date = time();
+//            if ($model->save()) {
+//                $modelAnswer = Answers::findOne($dataPost['answer_id']);
+//                $modelAnswer->how_many = $modelAnswer->how_many+1;
+//                $modelAnswer->save();
+//            }
+//        }
+//        if (!empty($_POST)) {
 
-            $dataPost = Yii::$app->request->post();
-            $model->quest_id = $dataPost['question_id'];
-            $model->answer_id = $dataPost['answer_id'];
-            $model->ip = $_SERVER['REMOTE_ADDR'];
-            $model->date = time();
-            if ($model->save()) {
-                $modelAnswer = Answers::findOne($dataPost['answer_id']);
-                $modelAnswer->how_many = $modelAnswer->how_many+1;
-                $modelAnswer->save();
-            }
-        }
+//        return Alert::widget();
 
-        return $this->redirect(['/#vote']);
-    }
+//        return Alert::widget([
+//            'options' => [
+//                'class' => 'alert-danger'
+//            ],
+//            'body' => '<b>Ошибка!</b> Нет данных.'
+//        ]);
+
+//        return $this->redirect(['/#vote']);
+//    }
 }
