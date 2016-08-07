@@ -91,7 +91,7 @@ class SiteController extends Controller
             'ip' => $_SERVER['REMOTE_ADDR']
         ])->one();
 
-        if (!empty(Yii::$app->request->post())) {
+        if (!empty($_POST)) {
             $model = new AnswersPoll();
 
             $dataPost = Yii::$app->request->post();
