@@ -59,7 +59,9 @@ if (!is_null($data['questions'])) {
                     $this->render('_poll',[
                         'answersData' => $answersData,
                         'questions' => $data['questions'],
-                        'answerPoll' => $data['answerPoll']]),
+                        'answerPoll' => $data['answerPoll'],
+                        'alertMessage' => '',
+                    ]),
                     ['class' => 'col-xs-8 vote-block']
                 ),
                 ['class' => 'row']
