@@ -2,11 +2,13 @@
 use yii\widgets\Pjax;
 use kartik\helpers\Html;
 use yii\helpers\ArrayHelper;
-//use common\models\AnswersPoll;
 
+Pjax::begin(['id' => 'answer-poll', 'timeout' => 5000 ]);
 if (empty($answerPoll)) {
-    Pjax::begin();
-    echo Html::beginForm(['/site/vote'], 'post', ['data-pjax' => '1', 'class' => '']);
+    if (isset($alertMessage) && $alertMessage != '') {
+        echo $alertMessage;
+    }
+    echo Html::beginForm(['/'], 'post', ['data-pjax' => '1', 'class' => '']);
     echo Html::radioList('answer_id', 1, ArrayHelper::map($answersData, 'id', 'answer'), [
         'item' => function ($index, $label, $name, $checked, $value) {
             return Html::tag('div', Html::radio($name, $checked, [
@@ -20,7 +22,6 @@ if (empty($answerPoll)) {
     echo Html::input('hidden', 'question_id', $questions['id']);
     echo Html::submitButton('Голосовать', ['class' => 'btn btn-sm btn-primary', 'name' => 'hash-button']);
     echo Html::endForm();
-    Pjax::end();
 } else {
     $sumOfVoices = 0;
     foreach($answersData as $item) {
@@ -45,3 +46,4 @@ if (empty($answerPoll)) {
         <?php
     }
 }
+Pjax::end();

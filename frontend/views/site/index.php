@@ -333,9 +333,14 @@ if (!empty($data['allPlayers'])) {
                 </div>
             </div>
         <?php } ?>
+
     <?php
     }
 //    $data['questions'] = null;
+    echo \kartik\widgets\AlertBlock::widget([
+        'type' => \kartik\widgets\AlertBlock::TYPE_ALERT,
+        'useSessionFlash' => true
+    ]);
     if (!is_null($data['questions'])) {
         $answersData = $data['questions']->answers;
         if (!empty($answersData)) {
@@ -345,7 +350,9 @@ if (!empty($data['allPlayers'])) {
                 <?php echo $this->render('_poll',[
                     'answersData' => $answersData,
                     'questions' => $data['questions'],
-                    'answerPoll' => $data['answerPoll']]
+                    'answerPoll' => $data['answerPoll'],
+                    'alertMessage' => '',
+                    ]
                 );?>
                     <?php
 //                        $answers = ArrayHelper::map($answersData, 'id', 'answer');
