@@ -258,6 +258,7 @@ body {
             /*bottom: 130px;*/
             bottom: 0;
             width: 63%;
+            display: none;
         }
 
             .carousel-home .carousel-indicators li {
@@ -363,10 +364,11 @@ body {
 
     .carousel-home .carousel-caption {
         position: absolute;
-        top: 5%;
+        top: 25px;
         /*bottom: 170px;*/
-        bottom: 40px;
-        right: 2%;
+        /*bottom: 40px;*/
+        bottom: 25px;
+        right: 25px;
         left: auto;
         /*vertical-align: middle;*/
         /*height: auto;*/

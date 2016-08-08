@@ -102,7 +102,7 @@ if(Yii::$app->params['gamesPreview3d']) {
                 [
                     'content' => Html::img('@web/themes/one/src/slider/new-slide.png'),
                     'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ БОЛЕЛЬЩИКИ!</h2>
-                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
+                              <hr style="border-color: #011f5f; border-width: 2px; margin: 20px 0;">
                               <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
                               <p>В настоящий момент некоторые разделы находятся на этапе создания/редактирования/наполнения.</p>
                               <p>
