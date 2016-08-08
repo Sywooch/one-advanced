@@ -783,7 +783,7 @@ if(Yii::$app->params['gamesPreview3d']) {
                         echo Html::a(Icon::show('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
                         echo Html::a(Icon::show('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
                         ?>
-                        <div class="copyright">Разработак и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
+                        <div class="copyright">Разработка и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
                     </div>
                 </div>
 <!--            </div>-->

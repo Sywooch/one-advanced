@@ -134,31 +134,40 @@ AppAsset::register($this);
         <div class="footer-top">
             <div class="footer-promotions">
                 <div class="footer-promotions-top">
+                    <div class="row text-center">
+                        <?php
+                        echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
+
+                        //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        ?>
+                    </div>
+                </div>
+                <div class="footer-promotions-middle">
                     <div class="row">
                         <?php
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-1']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),['class'=>'']);
                         ?>
                     </div>
                     <?php
-//                    echo Html::img('@web/themes/one/src/promotions/RFS.png');
-//                    echo Html::img('@web/themes/one/src/promotions/KO.png');
-//                    echo Html::img('@web/themes/one/src/promotions/KGD.png');
-//                    echo Html::img('@web/themes/one/src/promotions/FNL.png');
-//                    echo Html::img('@web/themes/one/src/promotions/FNL_fonbet.png');
+                    //                    echo Html::img('@web/themes/one/src/promotions/RFS.png');
+                    //                    echo Html::img('@web/themes/one/src/promotions/KO.png');
+                    //                    echo Html::img('@web/themes/one/src/promotions/KGD.png');
+                    //                    echo Html::img('@web/themes/one/src/promotions/FNL.png');
+                    //                    echo Html::img('@web/themes/one/src/promotions/FNL_fonbet.png');
                     ?>
                 </div>
                 <div class="footer-promotions-bottom">
                     <div class="row">
                         <?php
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
-//                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sport.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/polytan.png', ['class' => 'img-responsive']),['class'=>'col-xs-3']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                        //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
                         ?>
                     </div>
                 </div>
@@ -236,13 +245,14 @@ AppAsset::register($this);
                     </div>
                 </div>
                 <div class="footer-social">
-                    <div class="pull-right">
+                    <div class="pull-right text-right">
                         <?php
                         echo Html::a(Icon::show('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
                         echo Html::a(Icon::show('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
                         echo Html::a(Icon::show('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
                         echo Html::a(Icon::show('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
                         ?>
+                        <div class="copyright">Разработка и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
                     </div>
                 </div>
 <!--            </div>-->
