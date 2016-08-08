@@ -100,7 +100,7 @@ if(Yii::$app->params['gamesPreview3d']) {
 //        if ($controller_action == 'site/index') {
             $carousel_items = [
                 [
-                    'content' => Html::img('@web/themes/one/src/slider/slide1.png'),
+                    'content' => Html::img('@web/themes/one/src/slider/new-slide.png'),
                     'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ БОЛЕЛЬЩИКИ!</h2>
                               <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
                               <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
