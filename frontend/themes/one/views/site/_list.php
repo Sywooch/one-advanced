@@ -18,7 +18,7 @@ $img = $model->getImage();
 //echo Html::endTag('a');
 if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
     $classBlock = 'news-first-blocks';
-    $imgUrl = $img->getUrl('x320');
+    $imgUrl = $img->getUrl('x352');
     $classImgBlock = 'col-xs-12';
     $classContentBlock = 'col-xs-12';
 } else {
