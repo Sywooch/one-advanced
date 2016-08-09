@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
+use limion\bootstraplightbox\BootstrapMediaLightboxAsset;
 use common\widgets\Alert;
 use kartik\nav\NavX;
 use frontend\widgets\MenuWidget;
@@ -15,6 +16,8 @@ use frontend\widgets\StandingsWidget;
 
 AppAsset::register($this);
 \edgardmessias\assets\nprogress\NProgressAsset::register($this);
+BootstrapMediaLightboxAsset::register($this);
+
 $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
 ?>
@@ -49,7 +52,9 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+
     } else {
+        $menuItems[] = ['label' => 'Админ панель', 'url' => ['/admin'], 'visible' => Yii::$app->user->identity->role == 30];
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],

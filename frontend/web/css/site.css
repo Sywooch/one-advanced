@@ -171,10 +171,15 @@ a:hover, a:focus, a:hover:focus {
 
     .gallery-index .gallery-view-box-name {
         padding-right: 20px;
+        max-width: 100px;
     }
 
         .gallery-index .gallery-view-block .item {
-            float: left;
+            /*float: left;*/
+            display: inline-block;
+            vertical-align: top;
+            /*float: none;*/
+            margin-top: 15px;
         }
 
     /*.gallery-view-box {*/

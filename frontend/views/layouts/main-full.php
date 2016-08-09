@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
+use limion\bootstraplightbox\BootstrapMediaLightboxAsset;
 use common\widgets\Alert;
 use kartik\nav\NavX;
 use frontend\widgets\MenuWidget;
@@ -15,6 +16,8 @@ use frontend\widgets\StandingsWidget;
 
 AppAsset::register($this);
 \edgardmessias\assets\nprogress\NProgressAsset::register($this);
+BootstrapMediaLightboxAsset::register($this);
+
 $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
 ?>
