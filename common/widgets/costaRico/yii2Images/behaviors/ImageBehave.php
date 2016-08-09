@@ -31,7 +31,15 @@ class ImageBehave extends Behavior
      */
     public function attachImage($absolutePath, $isMain = false, $name = '')
     {
-        $fileRealName = $_FILES['UploadForm']['name']['file'];
+//        var_dump($_FILES);
+//        die;
+        if(isset($_FILES['UploadForm'])) {
+            $fileRealName = $_FILES['UploadForm']['name']['file'];
+        } else if (isset($_FILES['gallery'])) {
+            $fileRealName = $_FILES['gallery']['name'];
+        } else {
+            $fileRealName = $absolutePath;
+        }
         if(!preg_match('#http#', $absolutePath)){
             if (!file_exists($absolutePath)) {
                 throw new \Exception('File not exist! :'.$absolutePath);
