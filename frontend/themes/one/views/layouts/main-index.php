@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
+use limion\bootstraplightbox\BootstrapMediaLightboxAsset;
 use common\widgets\Alert;
 use yii\bootstrap\Carousel;
 use common\models\Players;
@@ -26,6 +27,9 @@ AppAsset::register($this);
 if(Yii::$app->params['gamesPreview3d']) {
     CarouselAsset::register($this);
 }
+BootstrapMediaLightboxAsset::register($this);
+
+$this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
