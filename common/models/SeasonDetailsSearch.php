@@ -72,4 +72,44 @@ class SeasonDetailsSearch extends SeasonDetails
 
         return $dataProvider;
     }
+    public function searchFrontend($params)
+    {
+        $model = Teams::find()->where(['name' => Yii::$app->params['main-team']])->with('seasonDetails')->one();
+        $season_id = $model->lastSeasonDetails->season_id;
+        $query = SeasonDetails::find()
+            ->select('*, `goals_scored`-`goals_against` as `rm`')
+            ->where(['season_id' => $season_id])
+            ->orderBy('spectacles DESC, wins DESC, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against');
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'season_id' => $this->season_id,
+            'team_id' => $this->team_id,
+            'games' => $this->games,
+            'wins' => $this->wins,
+            'draws' => $this->draws,
+            'lesions' => $this->lesions,
+            'spectacles' => $this->spectacles,
+            'goals_against' => $this->goals_against,
+            'goals_scored' => $this->goals_scored,
+        ]);
+
+        return $dataProvider;
+    }
 }

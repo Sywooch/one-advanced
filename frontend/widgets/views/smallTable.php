@@ -61,5 +61,6 @@ echo Html::tag(
             ],
             'spectacles',
         ],
-    ]),
+    ]) .
+    Html::tag('div', Html::a('Все результаты', ['/season-details']), ['class' => 'text-center']),
     ['class' => 'standings']);

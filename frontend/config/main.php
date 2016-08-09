@@ -45,6 +45,9 @@ return [
                     'pattern' => 'players/view/<id:\w+>',
                     'route' => '/players/view',
                 ],
+                'season/tournament' => 'season-details',
+//                'season/tournament' => 'season-details/index',
+
 //                '/site/index' => '/',
             ],
         ],
