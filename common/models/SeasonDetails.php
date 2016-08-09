@@ -54,12 +54,12 @@ class SeasonDetails extends \yii\db\ActiveRecord
             'season_id' => 'Сезон',
             'team_id' => 'Команда',
             'games' => 'Игр',
-            'wins' => 'Побед',
+            'wins' => 'Выигрыши',
             'draws' => 'Ничьи',
-            'lesions' => 'Поражений',
+            'lesions' => 'Поражения',
             'spectacles' => 'Очки',
-            'goals_against' => 'Пропущенные',
-            'goals_scored' => 'Забитые',
+            'goals_against' => 'Голы Пропущеные',
+            'goals_scored' => 'Голы Забитые',
         ];
     }
 
@@ -77,6 +77,18 @@ class SeasonDetails extends \yii\db\ActiveRecord
             Seasons::find()->select(['id','name'])->where(['status'=>'on'])->asArray()->all(),
             'id',
             'name'
+        );
+    }
+
+    public function getAllTeamSeason()
+    {
+        $model = Teams::find()->where(['name' => Yii::$app->params['main-team']])->with('seasonDetails')->one();
+        $season_id = $model->seasonDetails;
+        var_dump($season_id);die;
+        return ArrayHelper::map(
+            Seasons::find()->select(['id','full_name'])->where(['status'=>'on', 'id' => $season_id])->asArray()->all(),
+            'id',
+            'full_name'
         );
     }
 

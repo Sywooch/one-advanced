@@ -112,6 +112,12 @@ class Teams extends \yii\db\ActiveRecord
         return $this->hasMany(SeasonDetails::className(), ['team_id' => 'id']);
     }
 
+    public function getSeasonTeamDetails()
+    {
+//        return SeasonDetails::find()->where()
+        return $this->hasMany(SeasonDetails::className(), ['team_id' => 'id']);
+    }
+
     public function getLastSeasonDetails()
     {
         return $this->hasOne(SeasonDetails::className(), ['team_id' => 'id'])->orderBy('id DESC')->one();

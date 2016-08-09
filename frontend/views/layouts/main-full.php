@@ -48,11 +48,13 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 //        ['label' => 'About', 'url' => ['/site/about']],
 //        ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Новости', 'url' => ['/news/index']],
+        ['label' => 'Турнирная таблица', 'url' => ['/season-details']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[] = ['label' => 'Админ панель', 'url' => ['/admin'], 'visible' => Yii::$app->user->identity->role == 30];
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],
