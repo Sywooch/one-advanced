@@ -16,6 +16,11 @@ foreach ($model as $item) {
                 if($images[0]['urlAlias']!='placeHolder') {
                     $i = 0;
                     foreach($images as $img){
+                        $class = ['target' => '_blank'];
+                        $imgExtension = pathinfo($img->filePath)['extension'];
+                        if ($imgExtension != '') {
+                            $class = ['class' => 'lightbox'];
+                        }
                         $i++;
                         if ($i == 5) {
                             break;
@@ -24,8 +29,7 @@ foreach ($model as $item) {
                             'div',
                             Html::a(
                                 Html::img($img->getUrl('100x100'),['alt' => $item->name, 'class' => 'gallery-home-img img-responsive']),
-                                $img->getUrl(),
-                                ['target' => '_blank']
+                                $img->getUrl(), $class
                             ),
                             ['class' => 'gallery-view-box']
                         );

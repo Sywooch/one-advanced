@@ -58,11 +58,12 @@ if(Yii::$app->params['gamesPreview3d']) {
                 ['label' => 'Регистрация', 'url' => ['/site/signup']],
             ];
         } else {
-            $menuItems = [[
+            $menuItems[] = ['label' => 'Админ панель', 'url' => ['/admin'], 'visible' => Yii::$app->user->identity->role == 30];
+            $menuItems[] = [
                 'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
-            ]];
+            ];
         }
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right navbar-login-signup'],
@@ -307,17 +308,19 @@ if(Yii::$app->params['gamesPreview3d']) {
                                 <div class="item <?php echo $i==2 ? 'active' : ''?>">
                                     <div class="row">
                                         <?php foreach($items as $item) {$j++ ?>
-                                            <div class="col-xs-6">
+<!--                                            --><?php //var_dump($item->season->full_name); ?>
+                                            <div class="col-xs-6 .carousel-promo-block">
                                                 <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block">
                                                     <div class="promo-game-header">
                                                         <div class="row">
-                                                            <div class="promo-game-date col-xs-12 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
-                                                                <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s').', '.$item->category->name ?>
-                                                            </div>
                                                             <?php if($i==2 & $j==2) {
                                                                 echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;margin-top: -2px;']);
                                                             }
                                                             ?>
+                                                            <div class="promo-game-date col-xs-12 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
+                                                                <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s') ?>
+                                                            </div>
+                                                            <div class="col-xs-12 promo-game-pervenstvo text-center"><?php echo $item->season->full_name ?></div>
                                                         </div>
                                                     </div>
                                                     <div class="promo-game-row">
@@ -374,6 +377,23 @@ if(Yii::$app->params['gamesPreview3d']) {
                                                         </div>
                                                     </div>
                                                 </a>
+                                                <div class="promo-photo-video-ticket text-center">
+<!--                                                    --><?php //var_dump($item); ?>
+                                                    <?php
+                                                    if ($item->date > time()) {
+                                                        if ($item->home->name == Yii::$app->params['main-team']) {
+                                                            echo Html::a(Icon::show('ticket'), '#!');
+                                                        }
+                                                    }
+//                                                    var_dump($item->gallery);
+                                                    if (!is_null($item->gallery)) {
+                                                        echo Html::a(Icon::show('camera'), '#!');
+                                                    }
+                                                    echo Html::a(Icon::show('video-camera'), '#!');
+
+                                                    ?>
+<!--                                                    --><?php //var_dump($item); ?>
+                                                </div>
                                             </div>
                                         <?php } ?>
                                     </div>
@@ -381,10 +401,10 @@ if(Yii::$app->params['gamesPreview3d']) {
                             <?php } ?>
                         </div>
                         <a class="left carousel-control" href="#w5" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
                         </a>
                         <a class="right carousel-control" href="#w5" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -435,8 +455,8 @@ if(Yii::$app->params['gamesPreview3d']) {
 //        var_dump($players['2'])
         ?>
 <!--        <div class="statistics-season">-->
-            <div class="row statistics-season">
-                <div class="col-xs-12">
+            <div class="statistics-season">
+                <div class="">
                     <h4>Статистика сезона</h4>
                     <div class="row">
                         <div class="col-xs-7 best-players">
@@ -518,8 +538,9 @@ if(Yii::$app->params['gamesPreview3d']) {
             <div class="col-xs-12">
                 <div class="promo-banners">
                     <div class="row">
-                        <div class="col-xs-6"><?php echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?></div>
-                        <div class="col-xs-6"><?php echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?></div>
+<!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
+<!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
+                        <div class="col-xs-6 col-xs-offset-3"><?php echo Html::img('@web/themes/one/src/needless/attributika.png'); ?></div>
                     </div>
                 </div>
                 <div class="video-tv">
@@ -595,65 +616,69 @@ if(Yii::$app->params['gamesPreview3d']) {
 <!--            </div>-->
 <!--        </div>-->
         <div class="social-widgets">
-            <div class="row">
-                <div class="col-xs-4 instagram">
-                    <h5><?php echo Icon::show('instagram'); ?>ФК Балтика в Инстаграм</h5>
-                    <!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/4c8ef695c2895cf0b2debaf947664f03.html" id="lightwidget_4c8ef695c2" name="lightwidget_4c8ef695c2"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-<!--                    <iframe src="http://www.intagme.com/in/?u=ZmNiYWx0aWthfGlufDEwMHwyfDJ8fG5vfDI1fHVuZGVmaW5lZHxubw==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:250px; height: 250px" ></iframe>-->
-<!--                    <script src="http://snapwidget.com/js/snapwidget.js"></script>-->
-                </div>
-                <div class="col-xs-4 twitter">
-                    <h5><?php echo Icon::show('twitter'); ?>Официальный твитер ФК Балтика</h5>
-                    <a class="twitter-timeline" data-lang="ru" data-width="100%" data-height="340" data-dnt="true" href="https://twitter.com/fcbaltika"><!--Tweets by fcbaltika--></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><!--                            #twitterStyled .tweet {-->
-<!--                    <style type="text/css" id="twitterStyle">-->
-<!--                        #twitterStyled .tweet {-->
-<!--                            padding: 10px 10px 5px 10px;-->
-<!--                            margin:10px;-->
-<!--                            border-radius: 10px;-->
-<!--                            background-color: #9bcfe2;-->
-<!--                        }-->
-<!--                        #twitterStyled .tweet:nth-child(odd) {-->
-<!--                            margin-right:50px;-->
-<!--                        }-->
-<!--                        #twitterStyled .tweet:nth-child(even) {-->
-<!--                            margin-left:50px;-->
-<!--                        }-->
-<!--                        #twitterStyled .profile > img {-->
-<!--                            display: none;-->
-<!--                        }-->
-<!--                        #twitterStyled .tweet .tweet-actions {-->
-<!--                            visibility: hidden;-->
-<!--                        }-->
-<!--                        #twitterStyled .tweet:hover .tweet-actions {-->
-<!--                            visibility: visible;-->
-<!--                        }-->
-<!--                        #twitterStyled .stream {-->
-<!--                            background-color: #7AC0DA;-->
-<!--                            color:#fff;-->
-<!--                        }-->
-<!--                        #twitterStyled .header {-->
-<!--                            border-bottom: 1px dashed #fff;-->
-<!--                            margin-bottom:10px;-->
-<!--                            padding-bottom:5px;-->
-<!--                        }-->
-<!--                        #twitterStyled .p-name {-->
-<!--                            color: #207290;-->
-<!--                        }-->
-<!--                        #twitterStyled .p-nickname, #twitterStyled .dt-updated {-->
-<!--                            color: #2b8fb4;-->
-<!--                        }-->
-<!---->
-<!--                    </style>-->
-<!--                    <a class="twitter-timeline" href="https://twitter.com/fcbaltika" data-widget-id="719619106937434113">Твиты от @fcbaltika</a>-->
-<!--                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
-                </div>
-                <div class="col-xs-4 vk">
-                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
-<!--                     VK Widget -->
-                    <div id="vk_groups" class="block-center"></div>
-                    <script type="text/javascript">
-                        VK.Widgets.Group("vk_groups", {mode: 0, width: "360", height: "380", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);
-                    </script>
+            <div>
+                <h4>Мы в сети</h4>
+                <div class="row">
+                    <div class="col-xs-4 instagram">
+                        <h5><?php echo Icon::show('instagram'); ?>ФК Балтика в Инстаграм</h5>
+                        <!-- LightWidget WIDGET --><script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/4c8ef695c2895cf0b2debaf947664f03.html" id="lightwidget_4c8ef695c2" name="lightwidget_4c8ef695c2"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;margin-left: -10px;"></iframe>
+    <!--                    <iframe src="http://www.intagme.com/in/?u=ZmNiYWx0aWthfGlufDEwMHwyfDJ8fG5vfDI1fHVuZGVmaW5lZHxubw==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:250px; height: 250px" ></iframe>-->
+    <!--                    <script src="http://snapwidget.com/js/snapwidget.js"></script>-->
+                    </div>
+                    <div class="col-xs-4 twitter">
+                        <h5><?php echo Icon::show('twitter'); ?>Официальный твитер ФК Балтика</h5>
+                        <a class="twitter-timeline" data-lang="ru" data-width="100%" data-height="340" data-dnt="true" href="https://twitter.com/fcbaltika"><!--Tweets by fcbaltika--></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><!--                            #twitterStyled .tweet {-->
+    <!--                    <style type="text/css" id="twitterStyle">-->
+    <!--                        #twitterStyled .tweet {-->
+    <!--                            padding: 10px 10px 5px 10px;-->
+    <!--                            margin:10px;-->
+    <!--                            border-radius: 10px;-->
+    <!--                            background-color: #9bcfe2;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .tweet:nth-child(odd) {-->
+    <!--                            margin-right:50px;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .tweet:nth-child(even) {-->
+    <!--                            margin-left:50px;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .profile > img {-->
+    <!--                            display: none;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .tweet .tweet-actions {-->
+    <!--                            visibility: hidden;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .tweet:hover .tweet-actions {-->
+    <!--                            visibility: visible;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .stream {-->
+    <!--                            background-color: #7AC0DA;-->
+    <!--                            color:#fff;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .header {-->
+    <!--                            border-bottom: 1px dashed #fff;-->
+    <!--                            margin-bottom:10px;-->
+    <!--                            padding-bottom:5px;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .p-name {-->
+    <!--                            color: #207290;-->
+    <!--                        }-->
+    <!--                        #twitterStyled .p-nickname, #twitterStyled .dt-updated {-->
+    <!--                            color: #2b8fb4;-->
+    <!--                        }-->
+    <!---->
+    <!--                    </style>-->
+    <!--                    <a class="twitter-timeline" href="https://twitter.com/fcbaltika" data-widget-id="719619106937434113">Твиты от @fcbaltika</a>-->
+    <!--                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+                    </div>
+                    <div class="col-xs-4 vk">
+                        <h5><?php echo Icon::show('vk'); ?>ФК Балтика Вконтакте</h5>
+                        <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+    <!--                     VK Widget -->
+                        <div id="vk_groups" class="block-center"></div>
+                        <script type="text/javascript">
+                            VK.Widgets.Group("vk_groups", {mode: 0, width: "350", height: "380", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>

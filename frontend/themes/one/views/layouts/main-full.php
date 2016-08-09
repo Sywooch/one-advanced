@@ -52,11 +52,12 @@ AppAsset::register($this);
                 ['label' => 'Регистрация', 'url' => ['/site/signup']],
             ];
         } else {
-            $menuItems = [[
+            $menuItems[] = ['label' => 'Админ панель', 'url' => ['/admin'], 'visible' => Yii::$app->user->identity->role == 30];
+            $menuItems[] = [
                 'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
-            ]];
+            ];
         }
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right navbar-login-signup'],
