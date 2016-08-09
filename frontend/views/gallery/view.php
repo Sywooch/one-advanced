@@ -21,11 +21,16 @@ $this->params['breadcrumbs'][] = $this->title;
         $allImgConfig = [];
         if($images[0]['urlAlias']!='placeHolder') {
             foreach($images as $img){
+                $class = ['target' => '_blank'];
+                $imgExtension = pathinfo($img->filePath)['extension'];
+                if ($imgExtension != '') {
+                    $class = ['class' => 'lightbox'];
+                }
+
                 echo Html::tag('div',
                     Html::a(
                         Html::img($img->getUrl('160x130'),['alt' => $model->name, 'class' => 'thumbnail']),
-                        $img->getUrl(),
-                        ['target' => '_blank']
+                        $img->getUrl(),$class
                     ),
                     ['class' => 'gallery-view-box']
                 );
