@@ -23,6 +23,7 @@ use Yii;
  * @property integer $red_cards
  * @property string $content
  * @property string $patronymic
+ * @property string $tag
  *
  * @property GamesEvents[] $gamesEvents
  * @property GamesEvents[] $gamesEvents0
@@ -59,6 +60,7 @@ class Players extends \yii\db\ActiveRecord
             [['date'], 'safe'],
             [['role', 'content'], 'string'],
             [['name', 'surname', 'nationality', 'patronymic'], 'string', 'max' => 100],
+            [['tag'], 'string', 'max' => 255],
             [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
     }
@@ -84,7 +86,8 @@ class Players extends \yii\db\ActiveRecord
             'transfers' => 'Передачи',
             'yellow_cards' => 'Желтые Карточки',
             'red_cards' => 'Красные Карточки',
-            'content' => 'Контент'
+            'content' => 'Контент',
+            'tag' => 'Тег',
         ];
     }
 

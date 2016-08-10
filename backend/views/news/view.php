@@ -65,7 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'views',
             'comments',
             'status_id',
-            'date:datetime',
+            'date:date',
+            'date_create:date',
         ],
     ]) ?>
 

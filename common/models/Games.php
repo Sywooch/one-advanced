@@ -25,12 +25,17 @@ use yii\db\ActiveRecord;
  * @property string $status
  * @property integer $gallery_id
  * @property integer $category_id
+ * @property string $translation
+ * @property string $video_id
+ * @property string $behavior_rules
+ * @property string $ticket_id
+ * @property string $prizes
  *
- * @property CategoryGames $category
  * @property Gallery $gallery
- * @property Seasons $season
+ * @property CategoryGames $category
  * @property Teams $home
  * @property Teams $guest
+ * @property Seasons $season
  * @property GamesEvents[] $gamesEvents
  * @property GamesPlayers[] $gamesPlayers
  */
@@ -76,10 +81,10 @@ class Games extends \yii\db\ActiveRecord
             [['category_id', 'home_id', 'guest_id', 'score', 'season_id', 'content', 'category_id', 'status'], 'required'],
 //            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
-            [['content', 'status'], 'string'],
+            [['content', 'status', 'translation', 'behavior_rules', 'prizes'], 'string'],
             [['score'], 'string', 'max' => 50],
             [['date'], 'safe'],
-            [['city', 'stadium', 'referee', 'referee2', 'referee3'], 'string', 'max' => 255],
+            [['city', 'stadium', 'referee', 'referee2', 'referee3', 'video_id', 'ticket_id'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryGames::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
             [['home_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['home_id' => 'id']],
@@ -110,6 +115,11 @@ class Games extends \yii\db\ActiveRecord
             'status' => 'Статус',
             'category_id' => 'Категория матча',
             'gallery_id' => 'Галерея матча',
+            'translation' => 'Трансляция',
+            'video_id' => 'ID Видео',
+            'behavior_rules' => 'Правила поведения',
+            'ticket_id' => 'ID Kassir',
+            'prizes' => 'Призы',
         ];
     }
 

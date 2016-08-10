@@ -8,10 +8,23 @@ class m160808_083035_add_tags_news_player extends Migration
     {
         $this->addColumn('players', 'tag', $this->string()->notNull());
         $this->addColumn('news', 'tags', $this->text()->notNull());
+        $this->addColumn('games', 'translation', $this->text()->notNull());
+        $this->addColumn('games', 'video_id', $this->string()->notNull());
+        $this->addColumn('games', 'behavior_rules', $this->text()->notNull());
+        $this->addColumn('games', 'ticket_id', $this->string()->notNull());
+        $this->addColumn('games', 'prizes', $this->text()->notNull());
+        $this->alterColumn('seasons', 'full_name',$this->text()->notNull());
+
     }
 
     public function down()
     {
+        $this->alterColumn('seasons', 'full_name',$this->string(200)->notNull());
+        $this->dropColumn('games', 'prizes');
+        $this->dropColumn('games', 'ticket_id');
+        $this->dropColumn('games', 'behavior_rules');
+        $this->dropColumn('games', 'video_id');
+        $this->dropColumn('games', 'translation');
         $this->dropColumn('news', 'tags');
         $this->dropColumn('players', 'tag');
     }
