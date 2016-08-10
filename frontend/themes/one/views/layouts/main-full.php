@@ -130,139 +130,139 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
         $players = Players::find()->where(['teams_id'=>'3'])->all();
 //        var_dump($players['2'])
         ?>
-    </div>
-</div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-top">
-            <div class="footer-promotions">
-                <div class="footer-promotions-top">
-                    <div class="row text-center">
-                        <?php
-                        echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
+        <footer class="footer">
+<!--            <div class="container">-->
+                <div class="footer-top">
+                    <div class="footer-promotions">
+                        <div class="footer-promotions-top">
+                            <div class="row text-center">
+                                <?php
+                                echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
 
-                        //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        ?>
-                    </div>
-                </div>
-                <div class="footer-promotions-middle">
-                    <div class="row">
-                        <?php
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),['class'=>'']);
-                        ?>
-                    </div>
-                    <?php
-                    //                    echo Html::img('@web/themes/one/src/promotions/RFS.png');
-                    //                    echo Html::img('@web/themes/one/src/promotions/KO.png');
-                    //                    echo Html::img('@web/themes/one/src/promotions/KGD.png');
-                    //                    echo Html::img('@web/themes/one/src/promotions/FNL.png');
-                    //                    echo Html::img('@web/themes/one/src/promotions/FNL_fonbet.png');
-                    ?>
-                </div>
-                <div class="footer-promotions-bottom">
-                    <div class="row">
-                        <?php
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-info">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a class="footer-info-link" href="#">Контакты</a>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="footer-info-text">
-                                    <h6>Приемная</h6>
-                                    <a href="tel:84012216501">8(4012)21-65-01</a>
-                                </div>
-                                <div class="footer-info-text">
-                                    <h6>Пресс-служба</h6>
-                                    <a href="tel:84012956392">8(4012)95-63-92</a>
-                                </div>
-                                <div class="footer-info-text">
-                                    <a href="mailto:football@fc-baltika.ru">Пресс-служба</a>
-                                    <a href="mailto:press@fc-baltika.ru"></a>
-                                </div>
+                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                ?>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="footer-info-text">
-                                    <div>236000, г.Калининград</div>
-                                    <div>ул. Дмитрия Донского, д.2.</div>
-                                </div>
+                        </div>
+                        <div class="footer-promotions-middle">
+                            <div class="row">
+                                <?php
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),['class'=>'']);
+                                ?>
+                            </div>
+                            <?php
+                            //                    echo Html::img('@web/themes/one/src/promotions/RFS.png');
+                            //                    echo Html::img('@web/themes/one/src/promotions/KO.png');
+                            //                    echo Html::img('@web/themes/one/src/promotions/KGD.png');
+                            //                    echo Html::img('@web/themes/one/src/promotions/FNL.png');
+                            //                    echo Html::img('@web/themes/one/src/promotions/FNL_fonbet.png');
+                            ?>
+                        </div>
+                        <div class="footer-promotions-bottom">
+                            <div class="row">
+                                <?php
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-2']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-2">
-                        <a class="footer-info-link" href="#">Главная</a>
-                        <a class="footer-info-link" href="#">Новости</a>
-                        <a class="footer-info-link" href="#">Команда</a>
-                        <a class="footer-info-link-small" href="#">Сотрудничество</a>
-                        <a class="footer-info-link-small" href="#">Журналистам</a>
+                    <div class="footer-info">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <a class="footer-info-link" href="#">Контакты</a>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="footer-info-text">
+                                            <h6>Приемная</h6>
+                                            <a href="tel:84012216501">8(4012)21-65-01</a>
+                                        </div>
+                                        <div class="footer-info-text">
+                                            <h6>Пресс-служба</h6>
+                                            <a href="tel:84012956392">8(4012)95-63-92</a>
+                                        </div>
+                                        <div class="footer-info-text">
+                                            <a href="mailto:football@fc-baltika.ru">Пресс-служба</a>
+                                            <a href="mailto:press@fc-baltika.ru"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="footer-info-text">
+                                            <div>236000, г.Калининград</div>
+                                            <div>ул. Дмитрия Донского, д.2.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="footer-info-link" href="#">Главная</a>
+                                <a class="footer-info-link" href="#">Новости</a>
+                                <a class="footer-info-link" href="#">Команда</a>
+                                <a class="footer-info-link-small" href="#">Сотрудничество</a>
+                                <a class="footer-info-link-small" href="#">Журналистам</a>
 
-                    </div>
-                    <div class="col-xs-2">
-                        <a class="footer-info-link" href="#">Клуб</a>
-                        <a class="footer-info-link-small" href="#">Руководство</a>
-                        <a class="footer-info-link-small" href="#">Тренерский Штаб</a>
-                        <a class="footer-info-link-small" href="#">Персонал</a>
-                        <a class="footer-info-link-small" href="#">Стадион</a>
-                        <a class="footer-info-link-small" href="#">История</a>
-                        <a class="footer-info-link-small" href="#">Контакты</a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a class="footer-info-link" href="#">Сезон</a>
-                        <a class="footer-info-link-small" href="#">Турнирная Таблица</a>
-                        <a class="footer-info-link-small" href="#">Бомбардиры</a>
-                        <a class="footer-info-link" href="#">Билеты</a>
-                        <a class="footer-info-link" href="#">Атрибутика</a>
-                    </div>
-                    <div class="col-xs-2">
-                        <a class="footer-info-link" href="#">Галерея</a>
-                        <a class="footer-info-link" href="#">Балтика-TV</a>
-                        <a class="footer-info-link" href="#">Скидки</a>
-                        <a class="footer-info-link" href="#">Гостевая</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="footer-info-link" href="#">Клуб</a>
+                                <a class="footer-info-link-small" href="#">Руководство</a>
+                                <a class="footer-info-link-small" href="#">Тренерский Штаб</a>
+                                <a class="footer-info-link-small" href="#">Персонал</a>
+                                <a class="footer-info-link-small" href="#">Стадион</a>
+                                <a class="footer-info-link-small" href="#">История</a>
+                                <a class="footer-info-link-small" href="#">Контакты</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="footer-info-link" href="#">Сезон</a>
+                                <a class="footer-info-link-small" href="#">Турнирная Таблица</a>
+                                <a class="footer-info-link-small" href="#">Бомбардиры</a>
+                                <a class="footer-info-link" href="#">Билеты</a>
+                                <a class="footer-info-link" href="#">Атрибутика</a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="footer-info-link" href="#">Галерея</a>
+                                <a class="footer-info-link" href="#">Балтика-TV</a>
+                                <a class="footer-info-link" href="#">Скидки</a>
+                                <a class="footer-info-link" href="#">Гостевая</a>
 
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-<!--            <div class="row">-->
-                <div class="footer-copiright">
-                    <div class="footer-logo">
-                        <?php echo Html::img('@web/themes/one/src/logo.png', ['class' => 'img-responsive','alt'=>Yii::$app->name]) ?>
+                <div class="footer-bottom">
+                    <!--            <div class="row">-->
+                    <div class="footer-copiright">
+                        <div class="footer-logo">
+                            <?php echo Html::img('@web/themes/one/src/logo.png', ['class' => 'img-responsive','alt'=>Yii::$app->name]) ?>
+                        </div>
+                        <div class="footer-copiright-text">
+                            <div>При использовании материалов ссылка на официальный сайт ФК БАЛТИКА обязательна</div>
+                            <div>Copyright &copy; <?= date('Y') ?></div>
+                        </div>
                     </div>
-                    <div class="footer-copiright-text">
-                        <div>При использовании материалов ссылка на официальный сайт ФК БАЛТИКА обязательна</div>
-                        <div>Copyright &copy; <?= date('Y') ?></div>
+                    <div class="footer-social">
+                        <div class="pull-right text-right">
+                            <?php
+                            echo Html::a(Icon::show('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
+                            echo Html::a(Icon::show('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
+                            echo Html::a(Icon::show('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
+                            echo Html::a(Icon::show('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
+                            ?>
+                            <div class="copyright">Разработка и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-social">
-                    <div class="pull-right text-right">
-                        <?php
-                        echo Html::a(Icon::show('facebook'),'https://www.facebook.com/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(Icon::show('twitter'),'https://twitter.com/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(Icon::show('youtube'),'http://www.youtube.com/user/fcbaltika',['target'=>'_blank']);
-                        echo Html::a(Icon::show('instagram'),'https://www.instagram.com/fcbaltika/',['target'=>'_blank']);
-                        ?>
-                        <div class="copyright">Разработка и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
-                    </div>
+                    <!--            </div>-->
                 </div>
 <!--            </div>-->
-        </div>
+        </footer>
     </div>
-</footer>
+</div>
 
 <?php $this->endBody() ?>
 </body>
