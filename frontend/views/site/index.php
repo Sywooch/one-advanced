@@ -251,7 +251,7 @@ if (!empty($data['allPlayers'])) {
                 $carIt = [
                     [$data['gamesLast'][2], $data['gamesLast'][1]],
                     [$data['gamesLast'][0], $data['gamesFirst'][0]],
-                    [$data['gamesLast'][1], $data['gamesFirst'][2]],
+                    [$data['gamesFirst'][1], $data['gamesFirst'][2]],
                 ];
                 $i=0;
                 ?>
@@ -318,6 +318,30 @@ if (!empty($data['allPlayers'])) {
                                             </div>
                                         </div>
                                     </a>
+                                    <div class="promo-photo-video-ticket text-center">
+                                        <?php
+//                                        var_dump($item);
+                                        if ($item->date > time()) {
+                                            if ($item->home->name == Yii::$app->params['main-team']) {
+                                                if ($item->ticket_id != '' ) {
+                                                    echo Html::a(Icon::show('ticket'), 'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id, [
+                                                        'onclick' => 'kassirWidget.summon({width:940, url:\'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id . '\'}); return false;',
+                                                        'target' => '_blank'
+                                                    ]);
+                                                }
+                                            }
+                                        }
+                                        if (!is_null($item->gallery)) {
+                                            echo Html::a(Icon::show('camera'), ['/games/view', 'id' => $item->id, 'tab' => 'gallery']);
+                                        }
+                                        if ($item->video_id != '') {
+                                            echo Html::a(Icon::show('video-camera'), ['/games/view', 'id' => $item->id, 'tab' => 'video']);
+                                        }
+                                        if ($item->prizes != '') {
+                                            echo Html::a(Icon::show('gift'), ['/games/view', 'id' => $item->id, 'tab' => 'prizes']);
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             <?php } ?>
                             </div>

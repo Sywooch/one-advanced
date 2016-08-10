@@ -57,26 +57,30 @@ $this->params['breadcrumbs'][] = $this->title;
             ]);
             ?>
         </div>
-        <div class="col-xs-4">
-            <ul>
-            <?php
-            echo Html::tag('h4', 'Состав команды '.$model->home->name);
-            foreach ($gameData['home'] as $item) {
-                echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
-            }
-            ?>
-            </ul>
-        </div>
-        <div class="col-xs-4">
-            <ul>
+        <?php if (!empty($gameData['home']) && !empty($gameData['guest'])) { ?>
+            <div class="col-xs-4">
+                <ul>
                 <?php
-                echo Html::tag('h4', 'Состав команды '.$model->guest->name);
-                foreach ($gameData['guest'] as $item) {
+                echo Html::tag('h4', 'Состав команды '.$model->home->name);
+                foreach ($gameData['home'] as $item) {
                     echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
                 }
                 ?>
-            </ul>
-        </div>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <ul>
+                    <?php
+                    echo Html::tag('h4', 'Состав команды '.$model->guest->name);
+                    foreach ($gameData['guest'] as $item) {
+                        echo Html::tag('li', '#'.$item->players->number.' '.$item->players->surname.' '.$item->players->name);
+                    }
+                    ?>
+                </ul>
+            </div>
+        <?php } else { ?>
+            <div class="col-xs-8"><?php echo $model->recaps ?></div>
+        <?php } ?>
     </div>
 
 

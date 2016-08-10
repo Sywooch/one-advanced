@@ -25,12 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <?php
+    $imgBlock = '';
+    $img = $model->getImage();
+    if($img['urlAlias']!='placeHolder') {
+        $imgBlock = Html::img($img->getUrl('x30'));
+    }
+
+    echo DetailView::widget([
         'model' => $model,
         'attributes' => [
 //            'id',
             'name',
-            'full_name',
+            [
+                'attribute' => 'full_name',
+                'value' => $imgBlock . $model->full_name,
+                'format' => 'html'
+            ],
             'division',
             'slug',
             'status',

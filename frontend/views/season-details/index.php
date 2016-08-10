@@ -17,26 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="season-details-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-<!--            <div style="overflow: hidden">-->
-<!--                <div class="" style="margin-bottom: 10px;">-->
-<!--                    <a class="btn btn-default" role="button" data-toggle="collapse"-->
-<!--                       href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
-<!--                        Поиск <span class="caret"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="collapse" id="collapseExample">-->
-<!--                <div class="well">-->
-<!--                </div>-->
-<!--            </div>-->
-
-    <p>
-    </p>
-<!--    <div class="row">-->
-<!--        <div class="col-xs-6">-->
-<!--            --><?php //echo $this->render('_search', ['model' => $searchModel]); ?>
-<!--        </div>-->
-<!--    </div>-->
     <div class="panel panel-default">
 <!--        <div class="panel-body">-->
             <?php Pjax::begin(); ?>
@@ -55,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         [
                             'class' => 'yii\grid\SerialColumn',
-                            'header' => '№'
+                            'header' => 'Место'
                         ],
 
             //            'id',
@@ -66,35 +46,50 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'team.name',
                             'label' => 'Команда',
+                            'value' => function ($data) {
+                                $imgBlock = '';
+                                $img = $data->team->getImage();
+                                if($img['urlAlias']!='placeHolder') {
+                                    $imgBlock = Html::img($img->getUrl('x20'), ['class' => 'team-img']);
+                                }
+                                return $imgBlock . $data->team->name;
+                            },
+                            'format' => 'raw'
                         ],
                         [
                             'attribute' => 'games',
-                            'label' => 'И',
+                            'label' => '<span title="Игры" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">И</span>',
+                            'encodeLabel' => false,
                         ],
                         [
                             'attribute' => 'wins',
-                            'label' => 'В',
+                            'label' => '<span title="Выигрыши" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">В</span>',
+                            'encodeLabel' => false,
                         ],
                         [
                             'attribute' => 'draws',
-                            'label' => 'Н',
+                            'label' => '<span title="Ничьи" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">Н</span>',
+                            'encodeLabel' => false,
                         ],
                         [
                             'attribute' => 'lesions',
-                            'label' => 'П',
-                        ],
-                        [
-                            'attribute' => 'goals_against',
-                            'label' => 'ГП',
+                            'label' => '<span title="Пропущеные" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">П</span>',
+                            'encodeLabel' => false,
                         ],
                         [
                             'attribute' => 'goals_scored',
-                            'label' => 'ГЗ',
+                            'label' => '<span title="Голы забитые" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">ГЗ</span>',
+                            'encodeLabel' => false,
                         ],
                         [
-                            'label' => 'РМ',
+                            'attribute' => 'goals_against',
+                            'label' => '<span title="Голы пропущенные" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">ГП</span>',
+                            'encodeLabel' => false,
+                        ],
+                        [
+                            'label' => '<span title="Разница мячей" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">РМ</span>',
+                            'encodeLabel' => false,
                             'value' => function($data){
-            //                    var_dump($data);
                                 $rm = $data->goals_scored - $data->goals_against;
                                 return $rm;
                             }
