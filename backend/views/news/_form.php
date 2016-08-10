@@ -15,6 +15,8 @@ use kartik\widgets\FileInput;
 if($model->errors) {
     var_dump($model->errors);
 }
+$model->date_create = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date_create),'php:d-m-Y');
+
 ?>
 
 <div class="news-form well">
@@ -74,14 +76,24 @@ if($model->errors) {
     echo Form::widget([
         'model'=>$model,
         'form'=>$form,
-        'columns'=>3,
+        'columns'=>2,
         'attributes'=>[
-
             'category_id'=>[
                 'type'=>Form::INPUT_WIDGET,
                 'widgetClass'=>'\kartik\widgets\Select2',
                 'options'=>['data'=>ArrayHelper::map($model->getAllCategory(), 'id', 'name')],
                 'hint'=>'Нажмите и выберите категорию'
+            ],
+            'date_create'=>[
+                'type'=>Form::INPUT_WIDGET,
+                'widgetClass'=>'\kartik\widgets\DatePicker',
+                'hint'=>'Введите дату',
+                'options' => [
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'dd-mm-yyyy'
+                    ]
+                ]
             ],
             'status_id'=>[
                 'type'=>Form::INPUT_RADIO_LIST,

@@ -34,8 +34,8 @@ class Seasons extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'full_name', 'division', 'slug', 'status'], 'required'],
-            [['status'], 'string'],
-            [['name', 'full_name', 'division'], 'string', 'max' => 200],
+            [['status', 'full_name'], 'string'],
+            [['name', 'division'], 'string', 'max' => 200],
             [['slug'], 'string', 'max' => 250]
         ];
     }

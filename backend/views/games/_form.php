@@ -174,6 +174,44 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 
             ]
         ]);
+        echo Form::widget([
+            'model' => $model,
+            'form' => $form,
+            'columns' => 1,
+            'attributes' => [
+                'translation' => [
+                    'type'=>Form::INPUT_TEXTAREA,
+                ],
+            ]
+        ]);
+//        var_dump($model->home->name);
+//        var_dump(Yii::$app->params['main-team']);
+        if ($model->home->name == Yii::$app->params['main-team']) {
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 1,
+                'attributes' => [
+                    'behavior_rules' => [
+                        'type'=>Form::INPUT_TEXTAREA,
+                    ],
+                    'prizes' => [
+                        'type'=>Form::INPUT_TEXTAREA,
+                    ],
+                ]
+            ]);
+
+        }
+        echo Form::widget([
+            'model' => $model,
+            'form' => $form,
+            'columns' => 2,
+            'attributes' => [
+                'video_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
+                'ticket_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите Счёт...']],
+
+            ]
+        ]);
     }
 
     ?>
@@ -232,9 +270,14 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
-<?php $this->registerJs('
+<?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/standard/ckeditor.js'); ?>
+<?php $this->registerJs(
+    <<<JS
 CKEDITOR.replace("games-content");
+//CKEDITOR.replace("games-translation");
+CKEDITOR.replace("games-behavior_rules");
+CKEDITOR.replace("games-prizes");
  CKEDITOR.filter.allowedContentRules = true;
  CKEDITOR.config.allowedContent=true;
-'); ?>
+JS
+); ?>

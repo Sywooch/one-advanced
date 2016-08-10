@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 
 <?php
-Yii::$app->formatter->locale = 'ru-RU';
+//Yii::$app->formatter->locale = 'ru-RU';
 //Yii::$app->formatter->locale = 'en-EN';
 //echo Yii::$app->formatter->asDate('2014-01-01');
 $img = $model->getImage();
@@ -35,9 +35,9 @@ $img = $model->getImage();
     <div class="row">
         <div class="col-xs-2">
             <div class="news-list-date text-center">
-                <div class="day"><?php echo Yii::$app->formatter->asDate($model -> date,'dd') ?></div>
-                <div class="month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:M') ?></div>
-                <div class="year"><?php echo Yii::$app->formatter->asDate($model -> date,'yyyy') ?></div>
+                <div class="day"><?php echo Yii::$app->formatter->asDate($model -> date_create,'dd') ?></div>
+                <div class="month"><?php echo Yii::$app->formatter->asDate($model -> date_create,'php:M') ?></div>
+                <div class="year"><?php echo Yii::$app->formatter->asDate($model -> date_create,'yyyy') ?></div>
             </div>
         </div>
         <div class="col-xs-3">

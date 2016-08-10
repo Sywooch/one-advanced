@@ -19,6 +19,7 @@ use Yii;
  * @property integer $date
  * @property integer $gallery_id
  * @property integer $date_create
+ * @property string $tags
  *
  * @property Gallery $gallery
  * @property Category $category
@@ -56,8 +57,8 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'snippet', 'content'], 'required'],
-            [['category_id', 'views', 'comments', 'date', 'gallery_id', 'date_create'], 'integer'],
-            [['snippet', 'content', 'status_id'], 'string'],
+            [['category_id', 'views', 'comments', 'date', 'gallery_id'], 'integer'],
+            [['snippet', 'content', 'status_id', 'tags'], 'string'],
             [['title', 'alias'], 'string', 'max' => 100],
             [['alias'], 'unique'],
             [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
@@ -82,6 +83,7 @@ class News extends \yii\db\ActiveRecord
             'status_id' => 'Статус',
             'date' => 'Дата обновления',
             'date_create' => 'Дата создания',
+            'tags' => 'Теги',
         ];
     }
 
@@ -114,6 +116,7 @@ class News extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
+            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create);
             $this->date = time();
             return true;
         }
