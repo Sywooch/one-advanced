@@ -50,15 +50,17 @@ echo Html::tag(
                         $result .= $model->team->name;
 //                    }
 //                    $result .= Html::a($model->team->name, []);
-                    return $result;
+                    return Html::tag('div', $result, ['class' => 'standings-team-name']);
                 },
             ],
             [
-                'label' => 'И',
+                'label' => '<span title="Игры" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">И</span>',
+                'encodeLabel' => false,
                 'attribute' => 'games',
             ],
             [
-                'label' => 'О',
+                'label' => '<span title="Очки" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">О</span>',
+                'encodeLabel' => false,
                 'attribute' => 'spectacles',
             ],
         ],

@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'responsive'=>true,
         'hover'=>true,
         'bordered'=>false,
-        'striped'=>true,
+        'striped'=>false,
+        'summary' => false,
 //        'rowOptions'=>function ($model, $key, $index, $grid){
 //            $class=$index%2?'odd':'even';
 ////            var_dump($grid);
@@ -37,6 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'date',
                 'label' => false,
                 'format' => 'date'
+            ],
+            [
+                'label' => false,
+                'value' => function ($model) {
+                    $result = '';
+                    if ($model->tour != '0') {
+                        $result = Html::tag('div', 'Тур '.$model->tour);
+                    } else {
+                        $result = $model->category->name;
+                    }
+                    return $result;
+                },
+                'format' => 'raw',
             ],
             [
                 'label' => false,
@@ -63,12 +77,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             'height'=>$sizes['height']
                         ]), ['class' => 'games-index-logo']);
                     }
-                    return Html::a(
+                    return Html::tag('div', Html::a(
                         Html::tag('div', $model->home->name . ' ' . $logoHome, ['class' => 'games-index-teams text-right']).
                         Html::tag('div', ($model->score == '0:0' && $model->date > strtotime(date('d-m-Y')) ? '&nbsp;:&nbsp;' : $model->score), ['class' => 'games-index-teams-score text-center']).
                         Html::tag('div', $logoGuest . ' ' . $model->guest->name, ['class' => 'games-index-teams text-left']),
                         ['view', 'id' => $model->id]
-                    );
+                    ), ['class' => 'text-center']);
 //                    return $model->home->name . '&nbsp;' . ($model->score == '0:0' ? '&nbsp;:&nbsp;' : $model->score) . '&nbsp;' . $model->guest->name;
                 },
                 'format' => 'raw',
@@ -84,17 +98,17 @@ $this->params['breadcrumbs'][] = $this->title;
 //                },
 //                'format' => 'raw',
 //            ],
+//            [
+//                'label' => false,
+//                'value' => function ($model) {
+//                    return Html::tag('div', 'Сезон ' . $model->season->name . ($model->tour != '0' ? ', Тур '.$model->tour : '')) . Html::tag('div', $model->category->name);
+//                },
+//                'format' => 'raw',
+//            ],
             [
                 'label' => false,
                 'value' => function ($model) {
-                    return Html::tag('div', 'Сезон ' . $model->season->name . ($model->tour != '0' ? ', Тур '.$model->tour : '')) . Html::tag('div', $model->category->name);
-                },
-                'format' => 'raw',
-            ],
-            [
-                'label' => false,
-                'value' => function ($model) {
-                    return Html::tag('div', $model->stadium) . Html::tag('div', $model->city);
+                    return Html::tag('div', Html::tag('div', $model->stadium) . Html::tag('div', $model->city), ['class' => 'stadium-city']);
                 },
                 'format' => 'raw'
             ],

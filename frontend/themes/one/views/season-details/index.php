@@ -17,14 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="season-details-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <div class="panel panel-default">
+<!--    <div class="panel panel-default">-->
 <!--        <div class="panel-body">-->
             <?php Pjax::begin(); ?>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
             //        'filterModel' => $searchModel,
                     'bordered'=>false,
-                    'striped'=>true,
+                    'striped'=>false,
                     'condensed'=>false,
                     'responsive'=>false,
                     'hover'=>true,
@@ -103,5 +103,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]); ?>
             <?php Pjax::end(); ?>
 <!--        </div>-->
-    </div>
+<!--    </div>-->
 </div>

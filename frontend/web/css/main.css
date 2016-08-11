@@ -174,18 +174,18 @@ a {
     margin: 10px auto;
 }
 
-.navbar-bottom .navbar-brand:before {
-    content: '';
-    /*box-shadow: 0 0 100px 55px #ffffff;*/
-    box-shadow: 0 0 170px 70px rgba(255, 255, 255, 0.5);
-    position: absolute;
-    top: 25%;
-    display: block;
-    width: 1px;
-    height: 1px;
-    z-index: 100;
-    left: 50%;
-}
+/*.navbar-bottom .navbar-brand:before {*/
+    /*content: '';*/
+    /*!*box-shadow: 0 0 100px 55px #ffffff;*!*/
+    /*box-shadow: 0 0 170px 70px rgba(255, 255, 255, 0.5);*/
+    /*position: absolute;*/
+    /*top: 25%;*/
+    /*display: block;*/
+    /*width: 1px;*/
+    /*height: 1px;*/
+    /*z-index: 100;*/
+    /*left: 50%;*/
+/*}*/
 
 .navbar-bottom .navbar-nav {
     margin-top: 10px;
@@ -454,6 +454,7 @@ a {
     display: inline-block;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: left;
 }
 
 .promo-game-row {
@@ -1485,7 +1486,7 @@ a.news-category {
 
 .games-index-teams {
     display: inline-block;
-    min-width: 150px;
+    min-width: 180px;
 }
 
 .games-index-teams-score {
@@ -1778,6 +1779,7 @@ a.news-category {
 .promo-game-pervenstvo {
     font-size: 12px;
     text-transform: uppercase;
+    border-right: 1px solid #EEEEEE;
 }
 
 .promo-game-date {
@@ -1904,13 +1906,17 @@ a.news-category {
     margin: 0 -110px;
 }
 
-.btn-success {
+.btn-success, .btn-primary {
     background-color: #0C3D7F;
     border-color: #0C3D7F;
+}
+
+.btn-success {
     border-radius: 0;
 }
 
-.btn-success:hover, .btn-success:focus {
+.btn-success:hover, .btn-success:focus,
+.btn-primary:hover, .btn-primary:focus {
     background-color: #0C3D7F;
     border-color: #0C3D7F;
 }
@@ -1936,6 +1942,27 @@ a.news-category {
     max-width: 100%;
 }
 
-.banners-index h4, .players-bd h4, .standings h4 {
+.banners-index h4,
+.players-bd h4,
+.standings h4,
+.statistics-season h4,
+.video-tv h3,
+.vote-galery h4,
+.social-widgets h4 {
     font-style: italic;
+}
+
+.standings-team-name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 153px;
+    overflow: hidden;
+}
+
+.news-date-box .label.label-primary {
+    background-color: #0C3D7F;
+}
+
+.stadium-city {
+    width: 225px;
 }

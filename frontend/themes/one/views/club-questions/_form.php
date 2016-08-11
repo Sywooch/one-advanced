@@ -57,6 +57,8 @@ $this->registerJs(
                     'allowClear' => true
                 ],
             ]); ?>
+        </div>
+        <div class="col-xs-12">
             <?php echo $form->field($model, 'question')->label('Сообщение')->textarea(['rows' => 6]) ?>
 
         <!--    --><?php //echo $form->field($model, 'user_id')->textInput() ?>
@@ -66,7 +68,7 @@ $this->registerJs(
         <!--    --><?php //echo $form->field($model, 'date')->textInput() ?>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group text-right">
         <?php echo Html::submitButton($model->isNewRecord ? 'Опубликовать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

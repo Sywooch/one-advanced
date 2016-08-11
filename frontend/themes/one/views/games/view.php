@@ -15,11 +15,42 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['image_page'] = '';
 $compositionsStep = false;
 $galleryStep = false;
-if (!empty($gameData['home']) && !empty($gameData['guest'])) {
+$translationStep = false;
+$videoStep = false;
+$behavior_rulesStep = false;
+$prizesStep = false;
+$contentActive = 'active';
+$galleryActive = '';
+$videoActive = '';
+$prizesActive = '';
+if ((!empty($gameData['home']) && !empty($gameData['guest'])) || ($model->recaps != '')) {
     $compositionsStep = true;
 }
 if (!is_null($model->gallery)) {
     $galleryStep = true;
+}
+if ($model->translation != '') {
+    $translationStep = true;
+}
+if ($model->video_id != '') {
+    $videoStep = true;
+    if (isset($_GET['tab']) && $_GET['tab'] == 'video') {
+        $contentActive = '';
+        $galleryActive = '';
+        $videoActive = 'active';
+    }
+}
+if ($model->behavior_rules != '' && $model->date > strtotime('-3 hour')) {
+    $behavior_rulesStep = true;
+}
+if ($model->prizes != '') {
+    $prizesStep = true;
+    if (isset($_GET['tab']) && $_GET['tab'] == 'prizes') {
+        $contentActive = '';
+        $galleryActive = '';
+        $videoActive = '';
+        $prizesActive = 'active';
+    }
 }
 ?>
 <div class="games-view">
@@ -106,131 +137,169 @@ if (!is_null($model->gallery)) {
         </div>
     </div>
     <div class="game-view-block">
-<!--        television  exclamation-triangle   pencil     -->
+        <?php if ($model->content != '') : ?>
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Отчёт</a></li>
-    <!--        //        $galleryStep = false;-->
-
-            <?php if ($compositionsStep) : ?>
-                <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
-            <?php endif; ?>
-            <?php if ($galleryStep) : ?>
-                <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Фото</a></li>
-            <?php endif; ?>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="home"><?php echo $model->content ?></div>
-            <?php if ($compositionsStep) : ?>
-                <div role="tabpanel" class="tab-pane" id="compositions">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="panel panel-primary" style="margin-bottom: 0">
-                                <div class="panel-heading">
-                                    <?php echo $model->home->name; ?>
-                                    <div class="pull-right">г.<?php echo $model->home->city ?></div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="<?php echo $contentActive ?>">
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Отчёт</a>
+                </li>
+                <?php if ($compositionsStep) : ?>
+                    <li role="presentation">
+                        <a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Составы</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($galleryStep) : ?>
+                    <li role="presentation" class="<?php echo $galleryActive ?>">
+                        <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab"><i class="fa fa-camera" aria-hidden="true"></i> Фото</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($translationStep) : ?>
+                    <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab"><i class="fa fa-television" aria-hidden="true"></i> Трансляция</a></li>
+                <?php endif; ?>
+                <?php if ($videoStep) : ?>
+                    <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Видео</a></li>
+                <?php endif; ?>
+                <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
+                    <li role="presentation"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Правила поведения на матче</a></li>
+                <?php endif; ?>
+                <?php if ($prizesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
+                    <li role="presentation" class="<?php echo $prizesActive ?>"><a href="#prizes" aria-controls="prizes" role="tab" data-toggle="tab"><i class="fa fa-gift" aria-hidden="true"></i> Призы</a></li>
+                <?php endif; ?>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <?php if ($model->content != '') : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->content ?></div>
+                <?php endif; ?>
+                <?php if ($compositionsStep) : ?>
+                    <div role="tabpanel" class="tab-pane" id="compositions">
+                        <?php if ($model->recaps != '') : ?>
+                            <?php echo $model->recaps ?>
+                        <?php else : ?>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="panel panel-primary" style="margin-bottom: 0">
+                                        <div class="panel-heading">
+                                            <?php echo $model->home->name; ?>
+                                            <div class="pull-right">г.<?php echo $model->home->city ?></div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    echo GridView::widget([
+                                        'dataProvider' => $dataProvider['gamePlayersHome'],
+                                        'pjax' => true,
+                                        'options' => [
+                                            'id' => 'game-view-home',
+                                        ],
+                                        'responsive'=>true,
+                                        'hover'=>true,
+                                        'bordered'=>false,
+                                        'striped'=>true,
+                                        'containerOptions'=>['style'=>'overflow: auto'],
+                                        'layout' => '{items}',
+                                        'columns' => [
+                                            [
+                                                'label' => false,
+                                                'value' => function ($model) {
+                                                    return $model->players->number;
+                                                },
+                                                'format' => 'raw',
+                                            ],
+                                            [
+                                                'label' => 'Основной состав',
+                                                'value' => function ($model) {
+                                                    return $model->players->surname.' '.$model->players->name;
+                                                },
+                                                'format' => 'raw',
+                                            ],
+                                        ],
+                                    ]);
+                                    ?>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="panel panel-primary" style="margin-bottom: 0">
+                                        <div class="panel-heading">
+                                            <?php echo $model->guest->name; ?>
+                                            <div class="pull-right">г.<?php echo $model->guest->city ?></div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    echo GridView::widget([
+                                        'dataProvider' => $dataProvider['gamePlayersGuest'],
+                                        'pjax' => true,
+                                        'options' => [
+                                            'id' => 'game-view-guest',
+                                        ],
+                                        'responsive'=>true,
+                                        'hover'=>true,
+                                        'bordered'=>false,
+                                        'striped'=>true,
+                                        'containerOptions'=>['style'=>'overflow: auto'],
+                                        'layout' => '{items}',
+                                        'columns' => [
+                                            [
+                                                'label' => false,
+                                                'value' => function ($model) {
+                                                    return $model->players->number;
+                                                },
+                                                'format' => 'raw',
+                                            ],
+                                            [
+                                                'label' => 'Основной состав',
+                                                'value' => function ($model) {
+                                                    return $model->players->surname.' '.$model->players->name;
+                                                },
+                                                'format' => 'raw',
+                                            ],
+                                        ],
+                                    ]);
+                                    ?>
                                 </div>
                             </div>
-                            <?php
-                            echo GridView::widget([
-                                'dataProvider' => $dataProvider['gamePlayersHome'],
-                                'pjax' => true,
-                                'options' => [
-                                    'id' => 'game-view-home',
-                                ],
-                                'responsive'=>true,
-                                'hover'=>true,
-                                'bordered'=>false,
-                                'striped'=>true,
-                                'containerOptions'=>['style'=>'overflow: auto'],
-                                'layout' => '{items}',
-                                'columns' => [
-                                    [
-                                        'label' => false,
-                                        'value' => function ($model) {
-                                            return $model->players->number;
-                                        },
-                                        'format' => 'raw',
-                                    ],
-                                    [
-                                        'label' => 'Основной состав',
-                                        'value' => function ($model) {
-                                            return $model->players->surname.' '.$model->players->name;
-                                        },
-                                        'format' => 'raw',
-                                    ],
-                                ],
-                            ]);
-                            ?>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="panel panel-primary" style="margin-bottom: 0">
-                                <div class="panel-heading">
-                                    <?php echo $model->guest->name; ?>
-                                    <div class="pull-right">г.<?php echo $model->guest->city ?></div>
-                                </div>
-                            </div>
-                            <?php
-                            echo GridView::widget([
-                                'dataProvider' => $dataProvider['gamePlayersGuest'],
-                                'pjax' => true,
-                                'options' => [
-                                    'id' => 'game-view-guest',
-                                ],
-                                'responsive'=>true,
-                                'hover'=>true,
-                                'bordered'=>false,
-                                'striped'=>true,
-                                'containerOptions'=>['style'=>'overflow: auto'],
-                                'layout' => '{items}',
-                                'columns' => [
-                                    [
-                                        'label' => false,
-                                        'value' => function ($model) {
-                                            return $model->players->number;
-                                        },
-                                        'format' => 'raw',
-                                    ],
-                                    [
-                                        'label' => 'Основной состав',
-                                        'value' => function ($model) {
-                                            return $model->players->surname.' '.$model->players->name;
-                                        },
-                                        'format' => 'raw',
-                                    ],
-                                ],
-                            ]);
-                            ?>
-                        </div>
+                        <?php endif; ?>
+
                     </div>
-                </div>
-            <?php endif; ?>
-            <?php if ($galleryStep) : ?>
-                <div role="tabpanel" class="tab-pane" id="gallery">
-                    <div class="row" style="margin: 0">
-                        <?php
-        //                var_dump($model->gallery);
-        //                var_dump($model->gallery->getImages());
-                        $images = $model->gallery->getImages();
-                        if($images[0]['urlAlias']!='placeHolder') {
-                            foreach($images as $img){
-                                echo Html::tag('div',
-                                    Html::a(
-                                        Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
-                                        $img->getUrl(),
-                                        ['target' => '_blank']
-                                    ),
-                                    ['class' => 'gallery-view-box']
-                                );
+                <?php endif; ?>
+                <?php if ($galleryStep) : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $galleryActive ?>" id="gallery">
+                        <div class="row" style="margin: 0">
+                            <?php
+                            //                var_dump($model->gallery);
+                            //                var_dump($model->gallery->getImages());
+                            $images = $model->gallery->getImages();
+                            if($images[0]['urlAlias']!='placeHolder') {
+                                foreach($images as $img){
+                                    echo Html::tag('div',
+                                        Html::a(
+                                            Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
+                                            $img->getUrl(),
+                                            ['target' => '_blank']
+                                        ),
+                                        ['class' => 'gallery-view-box']
+                                    );
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
-                </div>
-            <?php endif; ?>
-        </div>
+                <?php endif; ?>
+                <?php if ($translationStep) : ?>
+                    <div role="tabpanel" class="tab-pane" id="translation"><?php echo $model->translation ?></div>
+                <?php endif; ?>
+                <?php if ($videoStep) : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $videoActive ?>" id="video">
+                        <!--                width="560" height="315"-->
+                        <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->video_id ?>" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                <?php endif; ?>
+                <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
+                    <div role="tabpanel" class="tab-pane" id="behavior_rules"><?php echo $model->behavior_rules ?></div>
+                <?php endif; ?>
+                <?php if ($prizesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $prizesActive ?>" id="prizes"><?php echo $model->prizes ?></div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </div>
 <!--    <div class="row">-->
 <!--        <div class="col-xs-4">-->

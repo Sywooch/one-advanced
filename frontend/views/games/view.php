@@ -148,7 +148,6 @@ if ($model->prizes != '') {
     <?php if ($model->content != '') : ?>
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
-<!--        //        $galleryStep = false;-->
         <?php if ($compositionsStep) : ?>
             <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
         <?php endif; ?>

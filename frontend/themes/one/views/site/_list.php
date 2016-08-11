@@ -44,6 +44,17 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
             <div class="news-date-category">
                 <span class="news-date"><?php echo date('d.m.y',$model -> date) ?></span>
                 <a href="#!" class="news-category"><?php echo $model->category->name ?></a>
+                <span class="news-date-box">
+                    <?php
+                    $date = date('d.m.Y',$model -> date_create);
+                    //                        var_dump($date);
+                    if ($date == date('d.m.Y')) {
+                        ?><span class="label label-primary">Сегодня</span><?php
+                    } elseif ($date == date('d.m.Y', strtotime('-1 day'))) {
+                        ?><span class="label label-primary">Вчера</span><?php
+                    }
+                    ?>
+                </span>
             </div>
         </div>
     </div>

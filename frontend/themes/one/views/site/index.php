@@ -20,13 +20,16 @@ if (!empty($data['allPlayers'])) {
             $image = $item->getImage();
             $img = '';
             if ($image['urlAlias'] != 'placeHolder') {
-                $sizes = $image->getSizesWhen('x60');
-                $img = Html::img($image->getUrl('x60'), [
-                    'alt' => $item->surname . ' ' . $item->name,
-                    'class' => '',
-                    'width' => $sizes['width'],
-                    'height' => $sizes['height']
+//                $sizes = $image->getSizesWhen('60x60');
+                $img = Html::tag('div', false, [
+                    'style' => 'background-image:url(\''. $image->getUrl('60x') .'\');height:60px;width:60px;background-repeat: no-repeat;background-size: 100%;'
                 ]);
+//                $img = Html::img($image->getUrl('x60'), [
+//                    'alt' => $item->surname . ' ' . $item->name,
+//                    'class' => '',
+////                    'width' => $sizes['width'],
+////                    'height' => $sizes['height']
+//                ]);
             }
             $playersBD .= Html::tag('div',
                     Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .

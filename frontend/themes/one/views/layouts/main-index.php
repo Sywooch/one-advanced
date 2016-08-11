@@ -318,13 +318,13 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                     <div class="promo-game-header">
                                                         <div class="row">
                                                             <?php if($i==2 & $j==2) {
-                                                                echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;margin-top: -2px;']);
+//                                                                echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;margin-top: -2px;']);
                                                             }
                                                             ?>
-                                                            <div class="promo-game-date col-xs-12 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
+                                                            <div class="col-xs-6 promo-game-pervenstvo text-right"><?php echo $item->season->full_name ?></div>
+                                                            <div class="promo-game-date col-xs-6 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
                                                                 <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s') ?>
                                                             </div>
-                                                            <div class="col-xs-12 promo-game-pervenstvo text-center"><?php echo $item->season->full_name ?></div>
                                                         </div>
                                                     </div>
                                                     <div class="promo-game-row">
@@ -382,21 +382,31 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                     </div>
                                                 </a>
                                                 <div class="promo-photo-video-ticket text-center">
-<!--                                                    --><?php //var_dump($item); ?>
                                                     <?php
+
                                                     if ($item->date > time()) {
                                                         if ($item->home->name == Yii::$app->params['main-team']) {
-                                                            echo Html::a(Icon::show('ticket'), '#!');
+                                                            if ($item->ticket_id != '' ) {
+                                                                echo Html::a(Icon::show('ticket'), 'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id, [
+                                                                    'onclick' => 'kassirWidget.summon({width:940, url:\'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id . '\'}); return false;',
+                                                                    'target' => '_blank'
+                                                                ]);
+                                                            }
                                                         }
                                                     }
-//                                                    var_dump($item->gallery);
-                                                    if (!is_null($item->gallery)) {
-                                                        echo Html::a(Icon::show('camera'), '#!');
+                                                    if (!is_null($item->behavior_rules) && $item->date > strtotime('-3 hour')) {
+                                                        echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules']);
                                                     }
-                                                    echo Html::a(Icon::show('video-camera'), '#!');
-
+                                                    if (!is_null($item->gallery)) {
+                                                        echo Html::a(Icon::show('camera'), ['/games/view', 'id' => $item->id, 'tab' => 'gallery']);
+                                                    }
+                                                    if ($item->video_id != '') {
+                                                        echo Html::a(Icon::show('video-camera'), ['/games/view', 'id' => $item->id, 'tab' => 'video']);
+                                                    }
+                                                    if ($item->prizes != '') {
+                                                        echo Html::a(Icon::show('gift'), ['/games/view', 'id' => $item->id, 'tab' => 'prizes']);
+                                                    }
                                                     ?>
-<!--                                                    --><?php //var_dump($item); ?>
                                                 </div>
                                             </div>
                                         <?php } ?>
