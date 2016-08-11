@@ -30,6 +30,7 @@ class StandingsWidget extends \yii\bootstrap\Widget
                 ->orderBy('spectacles DESC, wins DESC, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against')
                 ->limit(20),
             'pagination' => false,
+            'sort' => false,
         ]);
         return $this->render($this->template,['data' => $data, 'dataProvider' => $dataProvider]);
     }

@@ -42,7 +42,7 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
         <div class="row">
             <?php if($img->urlAlias != 'placeHolder') :?>
             <div class="<?php echo $classImgBlock ?> news-block-img">
-                <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>">
+                <a href="<?php echo Url::toRoute(['/news/view','slug'=>$model->alias]) ?>">
                     <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
                 </a>
             </div>
@@ -53,6 +53,7 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
                         <?php
                         echo $model -> title.' ';
                         $date = date('d.m.Y',$model -> date_create);
+//                        var_dump($date);
                         if ($date == date('d.m.Y')) {
                             ?><span class="label label-primary">Сегодня</span><?php
                         } elseif ($date == date('d.m.Y', strtotime('-1 day'))) {

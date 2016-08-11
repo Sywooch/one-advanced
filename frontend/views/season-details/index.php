@@ -95,8 +95,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                         ],
                         [
+                            'label' => '<span title="Очки" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">О</span>',
+                            'encodeLabel' => false,
                             'attribute' => 'spectacles',
-                            'label' => 'О',
                         ],
                     ],
                 ]); ?>
