@@ -8,6 +8,7 @@ use common\models\Gallery;
 class GalleryWidget extends \yii\bootstrap\Widget
 {
     public $template;
+    public $limit;
 
     public function init()
     {
@@ -16,7 +17,7 @@ class GalleryWidget extends \yii\bootstrap\Widget
 
     public function run()
     {
-        $model = Gallery::find()->where(['status' => 'on'])->orderBy('id DESC')->limit(3)->all();
+        $model = Gallery::find()->where(['status' => 'on'])->orderBy('id DESC')->limit($this->limit)->all();
 
         return $this->render($this->template,['model' => $model]);
     }
