@@ -28,6 +28,11 @@ if ((!empty($gameData['home']) && !empty($gameData['guest'])) || ($model->recaps
 }
 if (!is_null($model->gallery)) {
     $galleryStep = true;
+    if (isset($_GET['tab']) && $_GET['tab'] == 'gallery') {
+        $contentActive = '';
+        $galleryActive = 'active';
+        $videoActive = '';
+    }
 }
 if ($model->translation != '') {
     $translationStep = true;

@@ -317,13 +317,23 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                 <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block">
                                                     <div class="promo-game-header">
                                                         <div class="row">
-                                                            <?php if($i==2 & $j==2) {
-//                                                                echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right', 'style' => 'margin-right: 15px;margin-top: -2px;']);
-                                                            }
-                                                            ?>
-                                                            <div class="col-xs-6 promo-game-pervenstvo text-right"><?php echo $item->season->full_name ?></div>
+                                                            <div class="col-xs-6 promo-game-pervenstvo text-right">
+                                                                <?php
+                                                                $img = $item->season->getImage();
+                                                                if ($img['urlAlias']!='placeHolder') {
+                                                                    echo Html::img($img->getUrl('15x'), ['style' => 'margin-right:5px;']);
+                                                                }
+//                                                                var_dump();
+                                                                echo $item->season->full_name
+                                                                ?>
+                                                            </div>
                                                             <div class="promo-game-date col-xs-6 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
                                                                 <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s') ?>
+
+                                                                <?php if($i==2 & $j==2) {
+                                                                    echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'timer', 'style' => 'margin-right: 0px;margin-top: 0px;line-height: 10px;margin-left: 2px;']);
+                                                                }
+                                                                ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -394,7 +404,8 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                             }
                                                         }
                                                     }
-                                                    if (!is_null($item->behavior_rules) && $item->date > strtotime('-3 hour')) {
+//                                                    var_dump($item->behavior_rules);
+                                                    if ($item->behavior_rules != '' && $item->date > strtotime('-3 hour')) {
                                                         echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules']);
                                                     }
                                                     if (!is_null($item->gallery)) {

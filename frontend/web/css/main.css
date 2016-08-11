@@ -1966,3 +1966,7 @@ a.news-category {
 .stadium-city {
     width: 225px;
 }
+
+.promo-game-date.col-xs-6.vtop > div.timer > div {
+    text-align: left !important;
+}
