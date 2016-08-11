@@ -61,6 +61,7 @@ class News extends \yii\db\ActiveRecord
             [['snippet', 'content', 'status_id', 'tags'], 'string'],
             [['title', 'alias'], 'string', 'max' => 100],
             [['alias'], 'unique'],
+            [['date_create'], 'safe'],
             [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -116,7 +117,7 @@ class News extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create);
+            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create. ' 12:00');
             $this->date = time();
             return true;
         }

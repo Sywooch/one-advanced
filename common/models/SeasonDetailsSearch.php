@@ -86,6 +86,7 @@ class SeasonDetailsSearch extends SeasonDetails
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => false,
+            'sort' => false,
         ]);
 
         $this->load($params);

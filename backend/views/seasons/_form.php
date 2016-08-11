@@ -4,6 +4,8 @@ use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
+use common\models\UploadForm;
+use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Seasons */
@@ -13,7 +15,7 @@ use kartik\builder\Form;
 <div class="seasons-form well">
     <?php
 
-    $form = ActiveForm::begin();
+    $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
     if ($model->isNewRecord) {
         $model->status = 'on';
     }
@@ -37,6 +39,18 @@ use kartik\builder\Form;
 
         'attributes' => [
             'full_name' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите Полное Имя...']],
+        ]
+    ]);
+    $image=new UploadForm();
+    echo FileInput::widget([
+        'model' => $image,
+        'attribute' => 'file',
+        'options' => ['multiple' => false],
+        'pluginOptions' => [
+            'showPreview' => false,
+            'showCaption' => true,
+            'showRemove' => true,
+            'showUpload' => false
         ]
     ]);
     echo Form::widget([

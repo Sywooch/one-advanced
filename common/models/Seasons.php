@@ -19,6 +19,15 @@ use Yii;
  */
 class Seasons extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'common\widgets\costaRico\yii2Images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */

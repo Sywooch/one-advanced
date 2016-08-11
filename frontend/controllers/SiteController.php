@@ -98,9 +98,13 @@ class SiteController extends Controller
             $model->quest_id = $dataPost['question_id'];
             $model->answer_id = $dataPost['answer_id'];
             $model->ip = $_SERVER['REMOTE_ADDR'];
+            $check = AnswersPoll::find()->where([
+                'quest_id' => $model->quest_id,
+                'ip' => $model->ip,
+            ])->one();
             $model->date = time();
             $alertMessage = '';
-            if ($model->save()) {
+            if ($model->save() && is_null($check)) {
                 $modelAnswer = Answers::findOne($dataPost['answer_id']);
                 $modelAnswer->how_many = $modelAnswer->how_many+1;
                 $modelAnswer->save();
@@ -116,6 +120,7 @@ class SiteController extends Controller
                     'body' => '<b>Ошибка!</b> Ответ не был записан.',
                 ]);
             }
+
             return $this->render('_poll', [
                     'answersData' => $data['questions']->answers,
                     'questions' => $data['questions'],

@@ -393,6 +393,7 @@ a:hover, a:focus, a:hover:focus {
 
     .promo-game-team {
         padding: 0;
+        white-space: nowrap;
     }
 
     .promo-game-date {

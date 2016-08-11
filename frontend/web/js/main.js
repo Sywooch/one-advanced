@@ -15,3 +15,5 @@ $('.carousel-2d').carousel({
 interval: false,
     wrap: false
 });
+
+$("body").tooltip({ selector: '[data-toggle=tooltip]' });

@@ -30,6 +30,7 @@ use yii\db\ActiveRecord;
  * @property string $behavior_rules
  * @property string $ticket_id
  * @property string $prizes
+ * @property string $recaps
  *
  * @property Gallery $gallery
  * @property CategoryGames $category
@@ -78,10 +79,10 @@ class Games extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'home_id', 'guest_id', 'score', 'season_id', 'content', 'category_id', 'status'], 'required'],
+            [['category_id', 'home_id', 'guest_id', 'score', 'season_id', 'category_id', 'status'], 'required'],
 //            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
-            [['content', 'status', 'translation', 'behavior_rules', 'prizes'], 'string'],
+            [['content', 'status', 'translation', 'behavior_rules', 'prizes', 'recaps'], 'string'],
             [['score'], 'string', 'max' => 50],
             [['date'], 'safe'],
             [['city', 'stadium', 'referee', 'referee2', 'referee3', 'video_id', 'ticket_id'], 'string', 'max' => 255],
@@ -120,6 +121,7 @@ class Games extends \yii\db\ActiveRecord
             'behavior_rules' => 'Правила поведения',
             'ticket_id' => 'ID Kassir',
             'prizes' => 'Призы',
+            'recaps' => 'Составы',
         ];
     }
 

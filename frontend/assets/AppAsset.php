@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/main.js',
+        'https://kgd.kassir.ru/start.js?ver=1.0',
     ];
     public $depends = [
         'yii\web\YiiAsset',
