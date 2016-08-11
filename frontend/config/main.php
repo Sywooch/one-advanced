@@ -46,6 +46,9 @@ return [
                     'route' => '/players/view',
                 ],
                 'season/tournament' => 'season-details',
+
+                'coaches' => 'coaching-staff',
+                'coaches/<action:(index|create|update|delete)>' => 'coaching-staff/<action>',
 //                'season/tournament' => 'season-details/index',
 
 //                '/site/index' => '/',
