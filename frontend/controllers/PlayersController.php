@@ -67,7 +67,7 @@ class PlayersController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'main-full';
+//        $this->layout = 'main-full';
 
         return $this->render('view', [
             'model' => $this->findModel($id),

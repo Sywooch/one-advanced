@@ -105,131 +105,133 @@ if (!is_null($model->gallery)) {
             </div>
         </div>
     </div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
-<!--        //        $galleryStep = false;-->
+    <div class="game-view-block">
+<!--        television  exclamation-triangle   pencil     -->
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Отчёт</a></li>
+    <!--        //        $galleryStep = false;-->
 
-        <?php if ($compositionsStep) : ?>
-            <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
-        <?php endif; ?>
-        <?php if ($galleryStep) : ?>
-            <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Фото</a></li>
-        <?php endif; ?>
-    </ul>
+            <?php if ($compositionsStep) : ?>
+                <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
+            <?php endif; ?>
+            <?php if ($galleryStep) : ?>
+                <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Фото</a></li>
+            <?php endif; ?>
+        </ul>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home"><?php echo $model->content ?></div>
-        <?php if ($compositionsStep) : ?>
-            <div role="tabpanel" class="tab-pane" id="compositions">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="panel panel-primary" style="margin-bottom: 0">
-                            <div class="panel-heading">
-                                <?php echo $model->home->name; ?>
-                                <div class="pull-right">г.<?php echo $model->home->city ?></div>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home"><?php echo $model->content ?></div>
+            <?php if ($compositionsStep) : ?>
+                <div role="tabpanel" class="tab-pane" id="compositions">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="panel panel-primary" style="margin-bottom: 0">
+                                <div class="panel-heading">
+                                    <?php echo $model->home->name; ?>
+                                    <div class="pull-right">г.<?php echo $model->home->city ?></div>
+                                </div>
                             </div>
+                            <?php
+                            echo GridView::widget([
+                                'dataProvider' => $dataProvider['gamePlayersHome'],
+                                'pjax' => true,
+                                'options' => [
+                                    'id' => 'game-view-home',
+                                ],
+                                'responsive'=>true,
+                                'hover'=>true,
+                                'bordered'=>false,
+                                'striped'=>true,
+                                'containerOptions'=>['style'=>'overflow: auto'],
+                                'layout' => '{items}',
+                                'columns' => [
+                                    [
+                                        'label' => false,
+                                        'value' => function ($model) {
+                                            return $model->players->number;
+                                        },
+                                        'format' => 'raw',
+                                    ],
+                                    [
+                                        'label' => 'Основной состав',
+                                        'value' => function ($model) {
+                                            return $model->players->surname.' '.$model->players->name;
+                                        },
+                                        'format' => 'raw',
+                                    ],
+                                ],
+                            ]);
+                            ?>
                         </div>
-                        <?php
-                        echo GridView::widget([
-                            'dataProvider' => $dataProvider['gamePlayersHome'],
-                            'pjax' => true,
-                            'options' => [
-                                'id' => 'game-view-home',
-                            ],
-                            'responsive'=>true,
-                            'hover'=>true,
-                            'bordered'=>false,
-                            'striped'=>true,
-                            'containerOptions'=>['style'=>'overflow: auto'],
-                            'layout' => '{items}',
-                            'columns' => [
-                                [
-                                    'label' => false,
-                                    'value' => function ($model) {
-                                        return $model->players->number;
-                                    },
-                                    'format' => 'raw',
-                                ],
-                                [
-                                    'label' => 'Основной состав',
-                                    'value' => function ($model) {
-                                        return $model->players->surname.' '.$model->players->name;
-                                    },
-                                    'format' => 'raw',
-                                ],
-                            ],
-                        ]);
-                        ?>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="panel panel-primary" style="margin-bottom: 0">
-                            <div class="panel-heading">
-                                <?php echo $model->guest->name; ?>
-                                <div class="pull-right">г.<?php echo $model->guest->city ?></div>
+                        <div class="col-xs-6">
+                            <div class="panel panel-primary" style="margin-bottom: 0">
+                                <div class="panel-heading">
+                                    <?php echo $model->guest->name; ?>
+                                    <div class="pull-right">г.<?php echo $model->guest->city ?></div>
+                                </div>
                             </div>
+                            <?php
+                            echo GridView::widget([
+                                'dataProvider' => $dataProvider['gamePlayersGuest'],
+                                'pjax' => true,
+                                'options' => [
+                                    'id' => 'game-view-guest',
+                                ],
+                                'responsive'=>true,
+                                'hover'=>true,
+                                'bordered'=>false,
+                                'striped'=>true,
+                                'containerOptions'=>['style'=>'overflow: auto'],
+                                'layout' => '{items}',
+                                'columns' => [
+                                    [
+                                        'label' => false,
+                                        'value' => function ($model) {
+                                            return $model->players->number;
+                                        },
+                                        'format' => 'raw',
+                                    ],
+                                    [
+                                        'label' => 'Основной состав',
+                                        'value' => function ($model) {
+                                            return $model->players->surname.' '.$model->players->name;
+                                        },
+                                        'format' => 'raw',
+                                    ],
+                                ],
+                            ]);
+                            ?>
                         </div>
-                        <?php
-                        echo GridView::widget([
-                            'dataProvider' => $dataProvider['gamePlayersGuest'],
-                            'pjax' => true,
-                            'options' => [
-                                'id' => 'game-view-guest',
-                            ],
-                            'responsive'=>true,
-                            'hover'=>true,
-                            'bordered'=>false,
-                            'striped'=>true,
-                            'containerOptions'=>['style'=>'overflow: auto'],
-                            'layout' => '{items}',
-                            'columns' => [
-                                [
-                                    'label' => false,
-                                    'value' => function ($model) {
-                                        return $model->players->number;
-                                    },
-                                    'format' => 'raw',
-                                ],
-                                [
-                                    'label' => 'Основной состав',
-                                    'value' => function ($model) {
-                                        return $model->players->surname.' '.$model->players->name;
-                                    },
-                                    'format' => 'raw',
-                                ],
-                            ],
-                        ]);
-                        ?>
                     </div>
                 </div>
-            </div>
-        <?php endif; ?>
-        <?php if ($galleryStep) : ?>
-            <div role="tabpanel" class="tab-pane" id="gallery">
-                <div class="row" style="margin: 0">
-                    <?php
-    //                var_dump($model->gallery);
-    //                var_dump($model->gallery->getImages());
-                    $images = $model->gallery->getImages();
-                    if($images[0]['urlAlias']!='placeHolder') {
-                        foreach($images as $img){
-                            echo Html::tag('div',
-                                Html::a(
-                                    Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
-                                    $img->getUrl(),
-                                    ['target' => '_blank']
-                                ),
-                                ['class' => 'gallery-view-box']
-                            );
+            <?php endif; ?>
+            <?php if ($galleryStep) : ?>
+                <div role="tabpanel" class="tab-pane" id="gallery">
+                    <div class="row" style="margin: 0">
+                        <?php
+        //                var_dump($model->gallery);
+        //                var_dump($model->gallery->getImages());
+                        $images = $model->gallery->getImages();
+                        if($images[0]['urlAlias']!='placeHolder') {
+                            foreach($images as $img){
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
+                                        $img->getUrl(),
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class' => 'gallery-view-box']
+                                );
+                            }
                         }
-                    }
-                    ?>
+                        ?>
+                    </div>
                 </div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </div>
-
 <!--    <div class="row">-->
 <!--        <div class="col-xs-4">-->
 <!--            --><?php //echo DetailView::widget([

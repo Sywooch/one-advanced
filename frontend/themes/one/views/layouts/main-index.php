@@ -416,7 +416,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
             <?php } ?>
         <?php } ?>
         <div class="row main-row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
 <!--                <div class="index-video">-->
 <!--                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SH5gKOoECNY" frameborder="0" allowfullscreen></iframe>-->
 <!--                </div>-->
@@ -427,17 +427,20 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     StandingsWidget::widget(['template' => 'smallTable']);
                 }
                 ?>
-                <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
-                    <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
-                </a>
-                <div class="text-center" style="margin-top: 15px;">
-                    <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor']) ?>
-                </div>
-                <div class="text-center" style="margin-top: 15px;">
-                    <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor']) ?>
+                <div class="banners-index">
+                    <h4>Баннеры</h4>
+                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
+                        <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
+                    </a>
+                    <div class="text-center" style="margin-top: 15px;">
+                        <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor']) ?>
+                    </div>
+                    <div class="text-center" style="margin-top: 15px;">
+                        <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor']) ?>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-8 main-block">
+            <div class="col-xs-9 main-block">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
@@ -684,7 +687,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         <div class="col-xs-6">
                             <div class="gallery-home">
                                 <?php
-                                echo GalleryWidget::widget(['template' => 'gallery-index']);
+                                echo GalleryWidget::widget(['template' => 'gallery-index', 'limit' => 5]);
                                 ?>
                             </div>
 <!--                            <h4>Галерея</h4>-->

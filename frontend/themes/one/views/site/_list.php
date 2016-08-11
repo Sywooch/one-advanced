@@ -43,7 +43,7 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
             <div class="news-home-text"><?php echo $model -> snippet ?></div>
             <div class="news-date-category">
                 <span class="news-date"><?php echo date('d.m.y',$model -> date) ?></span>
-                <a href="#" class="news-category"><?php echo $model->category->name ?></a>
+                <a href="#!" class="news-category"><?php echo $model->category->name ?></a>
             </div>
         </div>
     </div>

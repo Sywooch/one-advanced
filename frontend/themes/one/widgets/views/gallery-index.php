@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<a href="<?php echo Url::toRoute('/gallery'); ?>" class="pull-right">Все фото</a>
+<a href="<?php echo Url::toRoute('/gallery'); ?>" class="pull-right btn btn-dark">Все фото</a>
 <h4>Галерея</h4>
 <?php
 foreach ($model as $item) {

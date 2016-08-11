@@ -10,7 +10,7 @@ use frontend\widgets\StandingsWidget;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Сайт Футбольного Клуба';
+$this->title = 'Официальный Сайт Футбольного Клуба';
 
 $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable']);
 if (!empty($data['allPlayers'])) {

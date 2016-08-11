@@ -7,14 +7,14 @@ Icon::map($this);
 //echo Icon::show('user');
 //echo Icon::show('home');
 //echo Icon::show('user', ['class' => 'fa-3x'], Icon::BSG);
-//var_dump($model);
+//var_dump($model->id);
 ?>
 <div class="guest-book-block">
     <div class="panel panel-default radius-null">
         <div class="panel-heading">
             <div class="guest-book-date pull-right">
                 <?php
-                echo Yii::$app->formatter->asDatetime($model -> date, 'dd.MM.yyyy'/*'long'*/).' в '.
+                echo '['.$model->id.'] ' . Yii::$app->formatter->asDatetime($model -> date, 'dd.MM.yyyy'/*'long'*/).' в '.
                     Yii::$app->formatter->asDatetime($model -> date, 'php:H:i')
                 ?>
             </div>
