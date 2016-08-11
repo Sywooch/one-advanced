@@ -503,7 +503,7 @@ if (!empty($data['allPlayers'])) {
     </div>
     <div class="gallery-home">
         <?php
-        echo GalleryWidget::widget(['template' => 'gallery-index']);
+        echo GalleryWidget::widget(['template' => 'gallery-index', 'limit' => 3]);
         ?>
     </div>
     <div class="social-widgets">
