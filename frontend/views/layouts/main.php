@@ -49,6 +49,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 //        ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Новости', 'url' => ['/news/index']],
         ['label' => 'Турнирная таблица', 'url' => ['/season-details']],
+        ['label' => 'Тренерский штаб', 'url' => ['/coaching-staff']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
