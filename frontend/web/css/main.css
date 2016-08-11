@@ -1269,12 +1269,12 @@ a.news-category {
     color: #ffffff;
 }
 
-.gallery-view-block .gallery-view-box {
+.gallery-index .gallery-view-block .gallery-view-box {
     /*width: 25%;*/
     float: none;
     padding: 0;
 }
-.gallery-view-block .gallery-view-box img {
+.gallery-index .gallery-view-block .gallery-view-box img {
     width: 100%;
 }
 
