@@ -15,6 +15,7 @@ $this->params['image_page'] = '/themes/one/src/layout/guest.png';
 
 ?>
 <div class="guest-book-index">
+    <h1><?php echo $this->title ?></h1>
     <?= $this->render('_form',[
         'model' => $model,
     ]) ?>

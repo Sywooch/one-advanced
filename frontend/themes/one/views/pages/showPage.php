@@ -15,6 +15,6 @@ $this->params['headerName'] = $model->name;
 ?>
 
 <div class="page-<?php echo $model->slug?>">
-<!--    <h1>--><?php //echo $model->name ?><!--</h1>-->
+    <h1><?php echo $model->name ?></h1>
     <?php echo $model->content ?>
 </div>

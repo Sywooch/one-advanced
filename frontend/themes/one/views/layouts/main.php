@@ -94,25 +94,25 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
     <div class="container">
         <?php
-        if (isset($this->params['image_page'])) {
-            $imagePage = $this->params['image_page'];
-        } else {
-            $imagePage = '/themes/one/src/layout/news.png';
-        }
+//        if (isset($this->params['image_page'])) {
+//            $imagePage = $this->params['image_page'];
+//        } else {
+//            $imagePage = '/themes/one/src/layout/news.png';
+//        }
 
-        if (isset($this->params['headerName'])) {
-            $headerName = $this->params['headerName'];
-        } else {
-            $headerName = '';
-        }
+//        if (isset($this->params['headerName'])) {
+//            $headerName = $this->params['headerName'];
+//        } else {
+//            $headerName = '';
+//        }
         ?>
-        <div class="top-img">
-            <img src="<?php echo $imagePage; ?>" alt="" class="img-responsive">
-            <div class="header-name"><h1><?php echo Html::encode($headerName); ?></h1></div>
-        </div>
+<!--        <div class="top-img">-->
+<!--            <img src="--><?php //echo $imagePage; ?><!--" alt="" class="img-responsive">-->
+<!--            <div class="header-name"><h1>--><?php //echo Html::encode($headerName); ?><!--</h1></div>-->
+<!--        </div>-->
 
         <div class="row main-row">
-            <div class="col-xs-9 main-block main-block-inner-left">
+            <div class="col-xs-12 main-block main-block-inner-left">
                 <?php
                 /*echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -125,27 +125,26 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
                 <?= $content ?>
             </div>
-            <div class="col-xs-3 main-block main-block-inner-right">
-                <?php
-//                var_dump($this->params['widget_bar']);
-                if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {
-                    echo '<div>'.$this->params['widget_bar'].'</div>';
-                } else {
-                    echo StandingsWidget::widget(['template' => 'smallTable']);
-                }
-                ?>
-                <div class="sponsors">
-                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </a>
-                    <div class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_2.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </div>
-                    <div class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="col-xs-3 main-block main-block-inner-right">-->
+<!--                --><?php
+//                if (isset($this->params['widget_bar']) && $this->params['widget_bar'] != '') {
+//                    echo '<div>'.$this->params['widget_bar'].'</div>';
+//                } else {
+//                    echo StandingsWidget::widget(['template' => 'smallTable']);
+//                }
+//                ?>
+<!--                <div class="sponsors">-->
+<!--                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">-->
+<!--                        --><?php //echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
+<!--                    </a>-->
+<!--                    <div class="text-center" style="margin-top: 15px; display: block;">-->
+<!--                        --><?php //echo Html::img('@web/themes/one/src/banner_2.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
+<!--                    </div>-->
+<!--                    <div class="text-center" style="margin-top: 15px; display: block;">-->
+<!--                        --><?php //echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor', 'class' => 'img-responsive']) ?>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
         <?php
         $players = Players::find()->where(['teams_id'=>'3'])->all();
@@ -157,12 +156,14 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                 <div class="footer-top">
                     <div class="footer-promotions">
                         <div class="footer-promotions-top">
-                            <div class="row text-center">
-                                <?php
-                                echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
+                            <div class="text-center">
+                                <div class="footer-promotions-head">
+                                    <?php
+                                    echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
 
-                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                                ?>
+                                    //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                    ?>
+                                </div>
                             </div>
                         </div>
                         <div class="footer-promotions-middle">

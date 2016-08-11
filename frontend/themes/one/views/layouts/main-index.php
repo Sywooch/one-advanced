@@ -513,6 +513,84 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        $mainTeam = $this->params['data']['mainTeam'];
+//                        var_dump($this->params['data']['mainTeam']->id);
+//                        var_dump($mainTeam->games);
+//                        var_dump($mainTeam->gamesGuest);
+//                        var_dump($mainTeam->games->home);
+                        $games = [];
+                        $games['home'] = $mainTeam->games;
+                        $games['guest'] = $mainTeam->gamesGuest;
+                        $games['homeCount'] = 0;
+                        $games['homeWins'] = 0;
+                        $games['homeLose'] = 0;
+                        $games['homeDrow'] = 0;
+                        $games['homeScored'] = 0;
+                        $games['homeMissing'] = 0;
+                        $games['guestCount'] = 0;
+                        $games['guestWins'] = 0;
+                        $games['guestLose'] = 0;
+                        $games['guestDrow'] = 0;
+                        $games['guestScored'] = 0;
+                        $games['guestMissing'] = 0;
+//                        var_dump($this->params['data']['season']);
+                        foreach ($games['home'] as $item) {
+                            if ($item->category->name == 'Первенство') {
+                                if ($item->season_id == $this->params['data']['season']->id) {
+
+                                    if ($item->date < time()){
+                                        $games['homeCount']++;
+//                                        var_dump($item->score);
+                                        $score = explode(':', $item->score);
+//                                        var_dump($score);
+                                        $games['homeScored'] += $score[0];
+                                        $games['homeMissing'] += $score[1];
+                                        if ($score[0] > $score[1]) {
+                                            $games['homeWins']++;
+                                        } elseif($score[0] < $score[1]) {
+                                            $games['homeLose']++;
+                                        } elseif($score[0] = $score[1]) {
+                                            $games['homeDrow']++;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                        foreach ($games['guest'] as $item) {
+                            if ($item->category->name == 'Первенство') {
+                                if ($item->season_id == $this->params['data']['season']->id) {
+                                    if ($item->date < time()){
+                                        $games['guestCount']++;
+                                        $score = explode(':', $item->score);
+                                        $games['guestScored'] += $score[1];
+                                        $games['guestMissing'] += $score[0];
+                                        if ($score[0] < $score[1]) {
+                                            $games['guestWins']++;
+                                        } elseif($score[0] > $score[1]) {
+                                            $games['guestLose']++;
+                                        } elseif($score[0] = $score[1]) {
+                                            $games['guestDrow']++;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+//                        var_dump($games['homeCount'],$games['homeWins'],$games['homeLose'],$games['homeDrow'],$games['homeScored'],$games['homeMissing']);
+//                        var_dump($games['guestCount'],$games['guestWins'],$games['guestLose'],$games['guestDrow'],$games['guestScored'],$games['guestMissing']);
+
+//                        $games['homeCount'] = count($games['home']);
+//                        $games['guestCount'] = count($games['guest']);
+                        $games['count'] = $games['homeCount'] + $games['guestCount'];
+                        $games['wins'] = $games['homeWins'] + $games['guestWins'];
+                        $games['drow'] = $games['homeDrow'] + $games['guestDrow'];
+                        $games['lose'] = $games['homeLose'] + $games['guestLose'];
+                        $games['scored'] = $games['homeScored'] + $games['guestScored'];
+                        $games['missing'] = $games['homeMissing'] + $games['guestMissing'];
+//                        var_dump($games);
+                        ?>
                         <div class="col-xs-5 game-statistics">
                             <table>
     <!--                                <caption>...</caption>-->
@@ -525,12 +603,12 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><th>Игры</th><td>4</td><td>1</td><td>5</td></tr>
-                                    <tr><th>Победы</th><td>2</td><td>0</td><td>2</td></tr>
-                                    <tr><th>Ничьи</th><td>1</td><td>0</td><td>1</td></tr>
-                                    <tr><th>Поражения</th><td>1</td><td>1</td><td>2</td></tr>
-                                    <tr><th>Забито</th><td>2</td><td>1</td><td>3</td></tr>
-                                    <tr><th>Пропущено</th><td>1</td><td>2</td><td>3</td></tr>
+                                    <tr><th>Игры</th><td><?php echo $games['homeCount'] ?></td><td><?php echo $games['guestCount'] ?></td><td><?php echo $games['count'] ?></td></tr>
+                                    <tr><th>Победы</th><td><?php echo $games['homeWins'] ?></td><td><?php echo $games['guestWins'] ?></td><td><?php echo $games['wins'] ?></td></tr>
+                                    <tr><th>Ничьи</th><td><?php echo $games['homeDrow'] ?></td><td><?php echo $games['guestDrow'] ?></td><td><?php echo $games['drow'] ?></td></tr>
+                                    <tr><th>Поражения</th><td><?php echo $games['homeLose'] ?></td><td><?php echo $games['guestLose'] ?></td><td><?php echo $games['lose'] ?></td></tr>
+                                    <tr><th>Забито</th><td><?php echo $games['homeScored'] ?></td><td><?php echo $games['guestScored'] ?></td><td><?php echo $games['scored'] ?></td></tr>
+                                    <tr><th>Пропущено</th><td><?php echo $games['homeMissing'] ?></td><td><?php echo $games['guestMissing'] ?></td><td><?php echo $games['missing'] ?></td></tr>
                                 </tbody>
                             </table>
                         </div>

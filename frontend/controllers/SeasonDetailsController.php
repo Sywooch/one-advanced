@@ -38,7 +38,7 @@ class SeasonDetailsController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'main-full';
+//        $this->layout = 'main-full';
 
         $searchModel = new SeasonDetailsSearch();
         $dataProvider = $searchModel->searchFrontend(Yii::$app->request->queryParams);

@@ -6,7 +6,7 @@ use yii\helpers\Url;
 echo Html::tag(
     'div',
     Html::tag('h4', 'Турнирная таблица').
-    Html::tag('p', $data['season']['full_name']).
+//    Html::tag('p', $data['season']['full_name']).
     GridView::widget([
         'dataProvider' => $dataProvider['standings'],
         'bordered'=>false,
@@ -54,11 +54,14 @@ echo Html::tag(
                 },
             ],
             [
-                'label' => 'Игры',
+                'label' => 'И',
                 'attribute' => 'games',
             ],
-            'spectacles',
+            [
+                'label' => 'О',
+                'attribute' => 'spectacles',
+            ],
         ],
     ]) .
-    Html::tag('div', Html::a('Все результаты', ['/season-details']), ['class' => 'text-center all-results-link']),
+    Html::tag('div', Html::a('Просмотреть всю таблицу', ['/season-details']), ['class' => 'text-center all-results-link']),
     ['class' => 'standings']);

@@ -41,6 +41,7 @@ if (!empty($data['allPlayers'])) {
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);
 }
+$this->params['data'] = $data;
 $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
 if (!is_null($data['questions'])) {
     $answersData = $data['questions']->answers;

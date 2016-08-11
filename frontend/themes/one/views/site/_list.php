@@ -18,12 +18,12 @@ $img = $model->getImage();
 //echo Html::endTag('a');
 if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
     $classBlock = 'news-first-blocks';
-    $imgUrl = $img->getUrl('x352');
+    $imgUrl = $img->getUrl('375x160');
     $classImgBlock = 'col-xs-12';
     $classContentBlock = 'col-xs-12';
 } else {
     $classBlock = '';
-    $imgUrl = $img->getUrl('x120');
+    $imgUrl = $img->getUrl('235x100');
     $classImgBlock = 'col-xs-4';
     $classContentBlock = 'col-xs-8';
 
