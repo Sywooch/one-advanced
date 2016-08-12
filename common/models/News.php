@@ -117,7 +117,12 @@ class News extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create. ' 12:00');
+//            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create);
+
+//            var_dump($this->isNewRecord );
+//            var_dump($this->date);
+//            die;
+//            $this->date_create = Yii::$app->formatter->asTimestamp($this->date_create);
             $this->date = time();
             return true;
         }
