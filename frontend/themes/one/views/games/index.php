@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         Html::tag('div', ($model->score == '0:0' && $model->date > strtotime(date('d-m-Y')) ? '&nbsp;:&nbsp;' : $model->score), ['class' => 'games-index-teams-score text-center']).
                         Html::tag('div', $logoGuest . ' ' . $model->guest->name, ['class' => 'games-index-teams text-left']),
                         ['view', 'id' => $model->id]
-                    ), ['class' => 'text-center']);
+                    ), ['class' => 'text-center games-index-team-score']);
 //                    return $model->home->name . '&nbsp;' . ($model->score == '0:0' ? '&nbsp;:&nbsp;' : $model->score) . '&nbsp;' . $model->guest->name;
                 },
                 'format' => 'raw',

@@ -70,7 +70,7 @@ if ($model->prizes != '') {
                 <?php endif; ?>
             </div>
             <div class="col-xs-4">
-                <a href="<?php echo Url::to('/games') ?>">Расписание игр</a>
+                <a href="<?php echo Url::to(['/games', 'output' => 'all']) ?>">Расписание игр</a>
             </div>
             <div class="col-xs-4">
                 <?php if (!is_null($gameData['nextGame'])) : ?>
@@ -110,9 +110,13 @@ if ($model->prizes != '') {
                     ?>
                 </div>
                 <?php
+                    if ($model->score == '0:0' && $model->date > time()) {
+                        $model->score = '-:-';
+                    }
                     $score = explode(':', $model->score);
+
                 ?>
-                <div class="game-view-score">
+                <div class="game-view-score-block">
                     <span class="game-view-score"><?php echo $score[0] ?></span>
                     <span class="game-view-devider"><?php echo ':' ?></span>
                     <span class="game-view-score"><?php echo $score[1] ?></span>
@@ -274,11 +278,15 @@ if ($model->prizes != '') {
                             $images = $model->gallery->getImages();
                             if($images[0]['urlAlias']!='placeHolder') {
                                 foreach($images as $img){
+                                    $options = ['target' => '_blank'];
+                                    $imgExtension = pathinfo($img->filePath)['extension'];
+                                    if ($imgExtension != '') {
+                                        $options = ['class' => 'lightbox'];
+                                    }
                                     echo Html::tag('div',
                                         Html::a(
                                             Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
-                                            $img->getUrl(),
-                                            ['target' => '_blank']
+                                            $img->getUrl(),$options
                                         ),
                                         ['class' => 'gallery-view-box']
                                     );

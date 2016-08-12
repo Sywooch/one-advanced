@@ -313,25 +313,25 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                     <div class="row">
                                         <?php foreach($items as $item) {$j++ ?>
 <!--                                            --><?php //var_dump($item->season->full_name); ?>
-                                            <div class="col-xs-6 .carousel-promo-block">
+                                            <div class="col-xs-6 carousel-promo-block">
                                                 <a href="<?php echo Url::to(['/games/view', 'id' => $item->id]);?>" class="promo-game-block">
                                                     <div class="promo-game-header">
                                                         <div class="row">
-                                                            <div class="col-xs-6 promo-game-pervenstvo text-right">
+                                                            <div class="col-xs-6 promo-game-pervenstvo text-right vcenter">
                                                                 <?php
                                                                 $img = $item->season->getImage();
                                                                 if ($img['urlAlias']!='placeHolder') {
-                                                                    echo Html::img($img->getUrl('15x'), ['style' => 'margin-right:5px;']);
+                                                                    echo Html::img($img->getUrl('20x'), ['style' => 'margin-right:5px;']);
                                                                 }
 //                                                                var_dump();
-                                                                echo $item->season->full_name
+                                                                echo Html::tag('div', $item->season->division, ['class' => 'game-preview-name']);
                                                                 ?>
                                                             </div>
-                                                            <div class="promo-game-date col-xs-6 vtop" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
+                                                            <div class="promo-game-date col-xs-6 vcenter" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
                                                                 <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s') ?>
 
                                                                 <?php if($i==2 & $j==2) {
-                                                                    echo Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'timer', 'style' => 'margin-right: 0px;margin-top: 0px;line-height: 10px;margin-left: 2px;']);
+                                                                    echo Html::tag('div', '(' . '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>' . ')', ['class' => 'timer']);
                                                                 }
                                                                 ?>
                                                             </div>
@@ -834,7 +834,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div class="footer-info">
                         <div class="row">
                             <div class="col-xs-4">
-                                <a class="footer-info-link" href="#">Контакты</a>
+                                <a class="footer-info-link">Контакты</a>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <div class="footer-info-text">
@@ -859,34 +859,35 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 </div>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Главная</a>
-                                <a class="footer-info-link" href="#">Новости</a>
-                                <a class="footer-info-link" href="#">Команда</a>
-                                <a class="footer-info-link-small" href="#">Сотрудничество</a>
-                                <a class="footer-info-link-small" href="#">Журналистам</a>
+                                <a class="footer-info-link" href="/">Главная</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/news'])?>">Новости</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/players'])?>">Команда</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/partnership'])?>">Сотрудничество</a>
+                                <a class="footer-info-link-small" href="#!">Журналистам</a>
 
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Клуб</a>
-                                <a class="footer-info-link-small" href="#">Руководство</a>
-                                <a class="footer-info-link-small" href="#">Тренерский Штаб</a>
-                                <a class="footer-info-link-small" href="#">Персонал</a>
-                                <a class="footer-info-link-small" href="#">Стадион</a>
-                                <a class="footer-info-link-small" href="#">История</a>
-                                <a class="footer-info-link-small" href="#">Контакты</a>
+                                <a class="footer-info-link" href="#!">Клуб</a>
+                                <a class="footer-info-link-small" href="#!">Руководство</a>
+                                <a class="footer-info-link-small" href="#!">Тренерский Штаб</a>
+                                <a class="footer-info-link-small" href="#!">Персонал</a>
+                                <a class="footer-info-link-small" href="#!">Стадион</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/history-club'])?>">История</a>
+                                <a class="footer-info-link-small" href="#!">Контакты</a>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Сезон</a>
-                                <a class="footer-info-link-small" href="#">Турнирная Таблица</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/games?output=all'])?>">Сезон</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
                                 <a class="footer-info-link-small" href="#">Бомбардиры</a>
-                                <a class="footer-info-link" href="#">Билеты</a>
-                                <a class="footer-info-link" href="#">Атрибутика</a>
+                                <a class="footer-info-link" href="https://kgd.kassir.ru/kassirwidget/event/1482">Билеты</a>
+                                <a class="footer-info-link" href="#!">Атрибутика</a>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Галерея</a>
-                                <a class="footer-info-link" href="#">Балтика-TV</a>
-                                <a class="footer-info-link" href="#">Скидки</a>
-                                <a class="footer-info-link" href="#">Гостевая</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/gallery'])?>">Галерея</a>
+                                <a class="footer-info-link" href="https://www.youtube.com/user/fcbaltika">Балтика-TV</a>
+<!--                                <a class="footer-info-link" href="#">Скидки</a>-->
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/guest-book'])?>">Гостевая</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/club-questions'])?>">Вопросы клубу</a>
 
                             </div>
                         </div>

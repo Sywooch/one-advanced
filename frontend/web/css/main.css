@@ -541,7 +541,8 @@ a {
 
 .news-block .img-responsive {
     width: 100%;
-    min-height: 100px;
+    min-height: 150px;
+    height: auto;
 }
 
 .news-block h4 {
@@ -780,14 +781,16 @@ a {
     font-size: 12px;
     line-height: 12px;
     margin-top: 15px;
+    font-style: normal;
 }
 a.btn-dark {
     color: #ffffff;
 }
 
-.btn.btn-dark:hover {
+.btn.btn-dark:hover, .btn.btn-dark:focus {
     color: #011B39;
     background: #ffffff;
+    outline: none;
 }
 
 .footer {
@@ -1126,7 +1129,8 @@ a.btn-dark {
     display: block;
     /*padding: 20px;*/
     padding: 30px 20px;
-    border-top: 2px solid #0C3D7F;
+    /*border-top: 2px solid #0C3D7F;*/
+    border-top: 1px solid #eeeeee;
     /*border-bottom: 2px solid;*/
     /*margin-top: 20px;*/
     color: #555555;
@@ -1235,7 +1239,9 @@ a.news-category {
 }
 
 .news-first-blocks .news-block-img img {
-    height: 160px;
+    /*height: 220px;*/
+    height: auto;
+    min-height: 220px;
 }
 
 .radius-null {
@@ -1467,13 +1473,16 @@ a.news-category {
 
 .main-block .games-view {
     padding: 0;
-    margin: -15px -15px -20px;
+    /*margin: -15px -15px -20px;*/
 }
 
-.game-view-score {
+.game-view-score, .game-view-devider {
     font-size: 75px;
     vertical-align: middle;
 }
+
+/*.game-view-score-block {*/
+/*}*/
 
 .score-team-games {
     font-size: 20px;
@@ -1605,10 +1614,10 @@ a.news-category {
 }
 
 .carousel-2d .item > .row > div:first-child .promo-game-block {
-    padding-right: 20px;
+    /*padding-right: 20px;*/
 }
 .carousel-2d .item > .row > div:last-child .promo-game-block {
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 .carousel-2d .item {
@@ -1780,6 +1789,12 @@ a.news-category {
     font-size: 12px;
     text-transform: uppercase;
     border-right: 1px solid #EEEEEE;
+    margin-right: -4px;
+}
+
+.game-preview-name {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .promo-game-date {
@@ -1819,11 +1834,11 @@ a.news-category {
 }
 
 .carousel-2d .item > .row > div:first-child .promo-photo-video-ticket {
-    padding-right: 20px;
+    /*padding-right: 20px;*/
 }
 
 .carousel-2d .item > .row > div:last-child .promo-photo-video-ticket {
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 .wrap-index .main-block {
     padding-top: 15px;
@@ -1967,6 +1982,22 @@ a.news-category {
     width: 225px;
 }
 
-.promo-game-date.col-xs-6.vtop > div.timer > div {
-    text-align: left !important;
+.promo-game-date > div.timer > div {
+    display: inline-block !important;
+}
+
+.games-index-team-score {
+    white-space: nowrap;
+}
+
+.carousel-inner {
+    padding: 25px 40px;
+}
+
+.timer {
+    display: inline-block;
+    margin-right: 0px;
+    margin-top: 0px;
+    line-height: 10px;
+    margin-left: 2px;
 }

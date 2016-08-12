@@ -18,12 +18,12 @@ $img = $model->getImage();
 //echo Html::endTag('a');
 if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
     $classBlock = 'news-first-blocks';
-    $imgUrl = $img->getUrl('375x160');
+    $imgUrl = $img->getUrl('375x220');
     $classImgBlock = 'col-xs-12';
     $classContentBlock = 'col-xs-12';
 } else {
     $classBlock = '';
-    $imgUrl = $img->getUrl('235x100');
+    $imgUrl = $img->getUrl('235x150');
     $classImgBlock = 'col-xs-4';
     $classContentBlock = 'col-xs-8';
 
@@ -42,7 +42,7 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
             </a>
             <div class="news-home-text"><?php echo $model -> snippet ?></div>
             <div class="news-date-category">
-                <span class="news-date"><?php echo date('d.m.y',$model -> date) ?></span>
+                <span class="news-date"><?php echo date('d.m.y',$model -> date_create) ?></span>
                 <a href="#!" class="news-category"><?php echo $model->category->name ?></a>
                 <span class="news-date-box">
                     <?php

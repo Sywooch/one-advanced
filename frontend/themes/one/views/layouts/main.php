@@ -16,6 +16,7 @@ use frontend\widgets\MenuWidget;
 //use rmrevin\yii\fontawesome\FA;
 use kartik\icons\Icon;
 use frontend\widgets\StandingsWidget;
+use yii\helpers\Url;
 Icon::map($this, Icon::FA);
 
 AppAsset::register($this);
@@ -199,7 +200,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div class="footer-info">
                         <div class="row">
                             <div class="col-xs-4">
-                                <a class="footer-info-link" href="#">Контакты</a>
+                                <a class="footer-info-link">Контакты</a>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <div class="footer-info-text">
@@ -224,34 +225,35 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 </div>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Главная</a>
-                                <a class="footer-info-link" href="#">Новости</a>
-                                <a class="footer-info-link" href="#">Команда</a>
-                                <a class="footer-info-link-small" href="#">Сотрудничество</a>
-                                <a class="footer-info-link-small" href="#">Журналистам</a>
+                                <a class="footer-info-link" href="/">Главная</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/news'])?>">Новости</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/players'])?>">Команда</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/partnership'])?>">Сотрудничество</a>
+                                <a class="footer-info-link-small" href="#!">Журналистам</a>
 
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Клуб</a>
-                                <a class="footer-info-link-small" href="#">Руководство</a>
-                                <a class="footer-info-link-small" href="#">Тренерский Штаб</a>
-                                <a class="footer-info-link-small" href="#">Персонал</a>
-                                <a class="footer-info-link-small" href="#">Стадион</a>
-                                <a class="footer-info-link-small" href="#">История</a>
-                                <a class="footer-info-link-small" href="#">Контакты</a>
+                                <a class="footer-info-link" href="#!">Клуб</a>
+                                <a class="footer-info-link-small" href="#!">Руководство</a>
+                                <a class="footer-info-link-small" href="#!">Тренерский Штаб</a>
+                                <a class="footer-info-link-small" href="#!">Персонал</a>
+                                <a class="footer-info-link-small" href="#!">Стадион</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/history-club'])?>">История</a>
+                                <a class="footer-info-link-small" href="#!">Контакты</a>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Сезон</a>
-                                <a class="footer-info-link-small" href="#">Турнирная Таблица</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/games?output=all'])?>">Сезон</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
                                 <a class="footer-info-link-small" href="#">Бомбардиры</a>
-                                <a class="footer-info-link" href="#">Билеты</a>
-                                <a class="footer-info-link" href="#">Атрибутика</a>
+                                <a class="footer-info-link" href="https://kgd.kassir.ru/kassirwidget/event/1482">Билеты</a>
+                                <a class="footer-info-link" href="#!">Атрибутика</a>
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#">Галерея</a>
-                                <a class="footer-info-link" href="#">Балтика-TV</a>
-                                <a class="footer-info-link" href="#">Скидки</a>
-                                <a class="footer-info-link" href="#">Гостевая</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/gallery'])?>">Галерея</a>
+                                <a class="footer-info-link" href="https://www.youtube.com/user/fcbaltika">Балтика-TV</a>
+                                <!--                                <a class="footer-info-link" href="#">Скидки</a>-->
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/guest-book'])?>">Гостевая</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/club-questions'])?>">Вопросы клубу</a>
 
                             </div>
                         </div>

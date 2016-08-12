@@ -29,7 +29,9 @@ $img = $model->getImage();
                     </div>
                 </div>
                 <div class="col-xs-3">
+                    <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
                     <img src="<?php echo $img->getUrl('235x') ?>" alt="<?php echo $model->title; ?>" class="img-responsive">
+                    </a>
                 </div>
                 <div class="col-xs-7">
                     <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
