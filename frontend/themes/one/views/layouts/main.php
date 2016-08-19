@@ -212,8 +212,8 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                             <a href="tel:84012956392">8(4012)95-63-92</a>
                                         </div>
                                         <div class="footer-info-text">
-                                            <a href="mailto:football@fc-baltika.ru">Пресс-служба</a>
-                                            <a href="mailto:press@fc-baltika.ru"></a>
+                                            <a href="mailto:football@fc-baltika.ru" style="text-transform: lowercase">football@fc-baltika.ru</a>
+                                            <a href="mailto:press@fc-baltika.ru" style="text-transform: lowercase">press@fc-baltika.ru</a>
                                         </div>
                                     </div>
                                     <div class="col-xs-6">

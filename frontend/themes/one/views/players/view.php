@@ -32,7 +32,7 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
                     <div class="player-name-info">
                         <div class="player-number-img"><?php echo $model->number ?></div>
                         <div class="player-name-surname">
-                            <?php echo $model->name . ' ' . $model->patronymic . ' ' . '<b>' . $model->surname . '</b>' ?>
+                            <?php echo $model->name . /*. ' ' . $model->patronymic .*/ ' ' . '<b>' . $model->surname . '</b>' ?>
                         </div>
                         <div class="player-role-nat">
                             <span class="player-role">

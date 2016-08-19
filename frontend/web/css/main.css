@@ -2056,3 +2056,6 @@ a.news-category {
 .player-content-block h2 {
     font-style: italic;
 }
+.news-view .news-view-block img {
+    max-width: 100%;
+}
