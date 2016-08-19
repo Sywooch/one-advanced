@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="menu-form well">
+<div class="menu-form">
 
     <?php
     $form = ActiveForm::begin();

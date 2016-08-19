@@ -17,7 +17,8 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
 
 ?>
 
-<div class="players-form well">
+<div class="players-form">
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
         <div class="col-xs-3">
@@ -29,7 +30,6 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
             ?>
         </div>
         <div class="col-xs-9">
-            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
             <?php
             if ($model->isNewRecord) {
@@ -85,6 +85,27 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             ]
                         ]
                     ],
+                ]
+            ]);
+
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 2,
+                //        'autoGenerateColumns' => true,
+                //
+                'attributes' => [
+                    'category'=>[
+                        'label'=>'Категория',
+                        'items'=>[
+                            'admin' => 'Администрация',
+                            'trainer' => 'Тренерский штаб',
+                        ],
+                        'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
+                        'options'=>[
+                            'class'=>'show'
+                        ]
+                    ],
                     'status'=>[
                         'label'=>'Статус',
                         'items'=>[
@@ -96,6 +117,30 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             'class'=>'show'
                         ]
                     ],
+                ]
+            ]);
+
+            ?>
+        </div>
+        <div class="col-xs-12">
+            <?php
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 1,
+                //        'autoGenerateColumns' => true,
+                //
+                'attributes' => [
+                    'content' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите Контент...']],
+                ]
+            ]);
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 3,
+                //        'autoGenerateColumns' => true,
+                //
+                'attributes' => [
                     'actions'=>[
                         'type'=>Form::INPUT_RAW,
                         'value'=>'<div style="margin-top: 25px">' .
@@ -105,9 +150,14 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                     ],
                 ]
             ]);
-
             ?>
-            <?php ActiveForm::end(); ?>
         </div>
     </div>
+    <?php ActiveForm::end(); ?>
 </div>
+<?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
+<?php $this->registerJs('
+CKEDITOR.replace("coachingstaff-content");
+ CKEDITOR.filter.allowedContentRules = true;
+ CKEDITOR.config.allowedContent=true;
+'); ?>

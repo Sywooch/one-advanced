@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="row">
     <div class="col-xs-6">
-        <div class="season-details-form well">
+        <div class="season-details-forml">
 
             <?php $form = ActiveForm::begin(); ?>
             <?php // echo $form->field($model, 'season_id')->textInput() ?>

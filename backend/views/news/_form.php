@@ -19,7 +19,7 @@ $model->date_create = Yii::$app->formatter->asDatetime(($model->isNewRecord ? ti
 
 ?>
 
-<div class="news-form well">
+<div class="news-form">
 
     <?php
 

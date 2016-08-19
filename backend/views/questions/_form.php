@@ -10,7 +10,7 @@ use kartik\builder\Form;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="questions-form well">
+<div class="questions-form">
 
     <?php
     $form = ActiveForm::begin();

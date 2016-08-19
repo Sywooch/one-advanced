@@ -12,7 +12,7 @@ use kartik\widgets\FileInput;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="seasons-form well">
+<div class="seasons-form">
     <?php
 
     $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);

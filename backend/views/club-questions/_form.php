@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="club-questions-form well">
+<div class="club-questions-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

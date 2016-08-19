@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="answers-form well">
+<div class="answers-form">
 
     <?php
     $form = ActiveForm::begin();

@@ -11,6 +11,8 @@ use yii\helpers\Url;
 
 $this->title = 'Гостевая книга';
 $this->params['breadcrumbs'][] = $this->title;
+//$this->params['panel'] = true;
+
 ?>
 <div class="guest-book-index">
 

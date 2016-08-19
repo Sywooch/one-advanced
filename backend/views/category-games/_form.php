@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="row">
     <div class="col-xs-6">
-        <div class="category-games-form well">
+        <div class="category-games-form">
 
             <?php $form = ActiveForm::begin(); ?>
 

@@ -15,6 +15,8 @@ use Yii;
  * @property string $role
  * @property integer $teams_id
  * @property string $status
+ * @property string $content
+ * @property string $category
  *
  * @property Teams $teams
  */
@@ -42,10 +44,10 @@ class CoachingStaff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'surname', 'date', 'role', 'teams_id', 'status'], 'required'],
+            [['name', 'surname', 'date', 'role', 'teams_id', 'status', 'category'], 'required'],
             [['teams_id'], 'integer'],
             [['date'], 'safe'],
-            [['status'], 'string'],
+            [['status', 'content', 'category'], 'string'],
             [['name', 'surname', 'patronymic', 'role'], 'string', 'max' => 100],
             [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
@@ -64,7 +66,9 @@ class CoachingStaff extends \yii\db\ActiveRecord
             'date' => 'Дата рождения',
             'role' => 'Должность',
             'teams_id' => 'Команда',
-            'status' => 'статус',
+            'status' => 'Статус',
+            'content' => 'Контент',
+            'category' => 'Категория',
         ];
     }
 
