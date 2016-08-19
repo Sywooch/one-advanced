@@ -2053,3 +2053,6 @@ a.news-category {
 .player-img-block {
     padding-top: 30px;
 }
+.player-content-block h2 {
+    font-style: italic;
+}

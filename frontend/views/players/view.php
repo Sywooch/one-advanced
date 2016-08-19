@@ -86,7 +86,7 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
         <div class="player-content-block">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-2">
-                    <h2><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Информация об игроке</h2>
+                    <h2><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Биография</h2>
                     <?php echo $model->content; ?>
                 </div>
             </div>
