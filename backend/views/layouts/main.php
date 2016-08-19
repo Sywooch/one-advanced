@@ -70,7 +70,7 @@ AppAsset::register($this);
                         <h3>Меню</h3>
                         <?php
                         $menuItems = [
-                            ['label' => 'Главная', 'url' => ['/site'], "icon" => "home"],
+                            ['label' => 'Главная', 'url' => ['/site/index'], "icon" => "home"],
                             [
                                 'label' => 'Новости',
                                 "icon" => "list",
