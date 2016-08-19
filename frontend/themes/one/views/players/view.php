@@ -19,7 +19,6 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
         <div class="row">
             <div class="col-xs-5 text-center player-img-block">
                 <div class="player-img-box">
-                    <div class="player-number-img"><?php echo $model->number ?></div>
                     <?php
                     $images = $model->getImage();
                     if($images['urlAlias']!='placeHolder') {
@@ -31,6 +30,7 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
             <div class="col-xs-7 player-info-block">
                 <div class="player-info-subblock">
                     <div class="player-name-info">
+                        <div class="player-number-img"><?php echo $model->number ?></div>
                         <div class="player-name-surname">
                             <?php echo $model->name . ' ' . $model->patronymic . ' ' . '<b>' . $model->surname . '</b>' ?>
                         </div>
@@ -87,7 +87,7 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
     <?php if($model->content || $model->content != '') : ?>
         <div class="player-content-block">
             <div class="row">
-                <div class="col-xs-10 col-xs-offset-2">
+                <div class="col-xs-12">
                     <h2><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Информация об игроке</h2>
                     <?php echo $model->content; ?>
                 </div>
