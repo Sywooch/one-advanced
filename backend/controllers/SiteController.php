@@ -1,7 +1,10 @@
 <?php
 namespace backend\controllers;
 
+use common\models\ClubQuestions;
+use common\models\GuestBook;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\LoginForm;
@@ -68,7 +71,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = [];
+        $dataProvider['guest-book'] = new ActiveDataProvider([
+            'query' => GuestBook::find()->where(['status' => 'on'])->orderBy('date DESC')->limit(10),
+        ]);
+        $dataProvider['club-questions'] = new ActiveDataProvider([
+            'query' => ClubQuestions::find()->where(['status' => 'on'])->orderBy('date DESC')->limit(10),
+        ]);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     public function actionLogin()

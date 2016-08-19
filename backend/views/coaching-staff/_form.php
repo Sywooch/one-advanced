@@ -17,7 +17,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
 
 ?>
 
-<div class="players-form well">
+<div class="players-form">
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">

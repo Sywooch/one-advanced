@@ -19,7 +19,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 //var_dump(ArrayHelper::map($model->getAllSeasons(), 'id', 'name'));
 ?>
 
-<div class="games-form well">
+<div class="games-form">
 
     <?php
     $seasonTeams = [];

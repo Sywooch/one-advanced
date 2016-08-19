@@ -30,7 +30,8 @@
         "edgardmessias/yii2-nprogress": "*",
         "cosenary/instagram": "^2.3",
         "pollext/poll":"dev-master",
-        "limion/yii2-bootstrap-media-lightbox": "*"
+        "limion/yii2-bootstrap-media-lightbox": "*",
+        "yiister/yii2-gentelella": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

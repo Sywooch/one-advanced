@@ -13,7 +13,7 @@ use kartik\widgets\FileInput;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="teams-form well">
+<div class="teams-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 

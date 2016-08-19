@@ -1,5 +1,33 @@
-@media (max-width: 1200px) {
-    .container {
-        width: 95% !important;
-    }
+/*@media (max-width: 1200px) {*/
+    /*.container {*/
+        /*width: 95% !important;*/
+    /*}*/
+/*}*/
+.guest-body {
+    max-height: 39px;
+    overflow: hidden;
+}
+.right_col > .x_panel {
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+.right_col > .x_panel > .x_content > div > h1 {
+    display: none;
+}
+
+.profile_pic .img-circle.profile_img span.glyphicon.glyphicon-user {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background: #CCC;
+    border-radius: 50%;
+    text-align: center;
+    top: 0;
+    padding: 7px;
+    color: #ffffff;
+}
+
+.breadcrumb {
+    background: transparent;
 }

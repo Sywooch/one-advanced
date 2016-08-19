@@ -15,7 +15,7 @@ use kartik\widgets\FileInput;
 $image = $model->getImage();
 ?>
 
-<div class="pages-form well">
+<div class="pages-form">
     <img src="<?php echo $image->getUrl(); ?>" alt="" class="img-responsive thumbnail">
     <?php
     $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
