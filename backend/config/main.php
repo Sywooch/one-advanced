@@ -21,6 +21,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'login' => 'site/login',
+                '/' => '/site/index',
+
             ],
         ],
         'user' => [

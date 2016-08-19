@@ -4,12 +4,13 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use yiister\gentelella\assets\Asset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 AppAsset::register($this);
-
+Asset::register($this);
 //$user['username'] ='';
 //$user['email'] ='';
 //$user['role'] ='';

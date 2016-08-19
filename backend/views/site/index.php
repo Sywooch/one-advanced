@@ -34,7 +34,7 @@ $this->params['panel'] = true;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}{update}',
                 'urlCreator' => function ($action, $model, $key, $index) {
-                    $url ='club-questions/' . $action . '?id='.$model->id;
+                    $url ='/admin/club-questions/' . $action . '?id='.$model->id;
                     return $url;
                 }
             ],
@@ -69,7 +69,7 @@ $this->params['panel'] = true;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}{update}',
                 'urlCreator' => function ($action, $model, $key, $index) {
-                    $url ='guest-book/' . $action . '?id='.$model->id;
+                    $url ='/admin/guest-book/' . $action . '?id='.$model->id;
                     return $url;
                 }
             ],
