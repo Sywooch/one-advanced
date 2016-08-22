@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         echo Html::tag(
             'div',
-                Html::tag('span',Yii::$app->formatter->asDate($model -> date, 'dd.MM.yy'/*'long'*/),['class'=>' ']).
+                Html::tag('span',Yii::$app->formatter->asDate($model -> date_create, 'dd.MM.yy'/*'long'*/),['class'=>' ']).
                 ' | '.
                 Html::tag('span',$model->category->name,['class'=>'']),
             /*['class'=>'bg-primary center-block text-center','style'=>'width:'.$sizes['width'].'px']*/

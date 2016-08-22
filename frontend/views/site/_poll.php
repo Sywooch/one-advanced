@@ -9,7 +9,7 @@ if (empty($answerPoll)) {
         echo $alertMessage;
     }
     echo Html::beginForm(['/'], 'post', ['data-pjax' => '1', 'class' => '']);
-    echo Html::radioList('answer_id', 1, ArrayHelper::map($answersData, 'id', 'answer'), [
+    echo Html::radioList('answer_id', $answersData[0]->id, ArrayHelper::map($answersData, 'id', 'answer'), [
         'item' => function ($index, $label, $name, $checked, $value) {
             return Html::tag('div', Html::radio($name, $checked, [
                 'value' => $value,

@@ -15,18 +15,14 @@ return [
             'defaultRoles' => ['admin','client'],
         ],
         'formatter' => [
-//            'class' => 'yii\i18n\Formatter',
-//            'dateFormat' => 'php:d.m.Y',
-//            'datetimeFormat' => 'php:d.m.Y H:i',
-//            'timeFormat' => 'php:H:i',
-//            'defaultTimeZone' => 'Europe/Kaliningrad',
-//            'locale' => 'ru-RU',
+            'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'php:d.m.Y',
             'datetimeFormat' => 'php:d.m.Y H:i',
-            'timeZone' => 'Europe/Kaliningrad',
-            'defaultTimeZone' => 'UTC',
-            'locale' => 'ru-RU',
-
+            'timeFormat' => 'php:H:i',
+//            'defaultTimeZone' => 'Europe/Moscow',
+//            'timeZone' => 'Europe/Kaliningrad',
+//            'defaultTimeZone' => 'UTC',
+            'locale' => 'ru-RU'
         ],
     ],
     'modules' => [
