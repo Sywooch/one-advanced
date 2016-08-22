@@ -324,7 +324,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                                     echo Html::img($img->getUrl('20x'), ['style' => 'margin-right:5px;']);
                                                                 }
 //                                                                var_dump();
-                                                                echo Html::tag('div', $item->season->division, ['class' => 'game-preview-name']);
+                                                                echo Html::tag('div', $item->category->name == 'Первенство' ? $item->season->division : $item->category->name, ['class' => 'game-preview-name']);
                                                                 ?>
                                                             </div>
                                                             <div class="promo-game-date col-xs-6 vcenter" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
