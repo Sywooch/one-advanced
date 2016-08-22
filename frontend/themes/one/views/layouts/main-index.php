@@ -319,11 +319,12 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                         <div class="row">
                                                             <div class="col-xs-6 promo-game-pervenstvo text-right vcenter">
                                                                 <?php
-                                                                $img = $item->season->getImage();
-                                                                if ($img['urlAlias']!='placeHolder') {
-                                                                    echo Html::img($img->getUrl('20x'), ['style' => 'margin-right:5px;']);
+                                                                if ($item->category->name == 'Первенство') {
+                                                                    $img = $item->season->getImage();
+                                                                    if ($img['urlAlias']!='placeHolder') {
+                                                                        echo Html::img($img->getUrl('20x'), ['style' => 'margin-right:5px;']);
+                                                                    }
                                                                 }
-//                                                                var_dump();
                                                                 echo Html::tag('div', $item->category->name == 'Первенство' ? $item->season->division : $item->category->name, ['class' => 'game-preview-name']);
                                                                 ?>
                                                             </div>
