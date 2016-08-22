@@ -266,7 +266,7 @@ if (!empty($data['allPlayers'])) {
                                         <div class="promo-game-header">
                                             <div class="row">
                                                 <div class="promo-game-date col-xs-12 vtop">
-                                                    <?php echo Yii::$app->formatter->asDate($item->date).', '.$item->category->name ?>
+                                                    <?php echo Yii::$app->formatter->asDateTime($item->date).', '.$item->category->name ?>
                                                 </div>
                                             </div>
                                         </div>
