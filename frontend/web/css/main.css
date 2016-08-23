@@ -535,6 +535,11 @@ a {
     /*font-size: 10px;*/
 }
 
+.news-home .news-category {
+    display: inline-block;
+    margin-right: 5px;
+}
+
 .news-img img {
     height: 110px;
 }
@@ -2141,7 +2146,7 @@ a.news-category {
     bottom: 0;
     left: 15px;
     background: #FFFFFF;
-    opacity: 0.4;
+    opacity: 0.1;
     transition: all 0.2s ease;
 }
 
