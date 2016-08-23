@@ -29,21 +29,23 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
 
 }
 ?>
+<a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>">
 <div class="news-block news-block-<?php echo $index.' '.$classBlock ?> ">
     <div class="row">
         <div class="<?php echo $classImgBlock ?> news-block-img">
-            <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>">
+
                 <img src="<?php echo $imgUrl ?>" alt="<?php echo $model->title ?>" class="img-responsive">
-            </a>
         </div>
         <div class="<?php echo $classContentBlock ?> news-block-content">
-            <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?>" class="news-home-link">
+<!--            <a href="--><?php //echo Url::toRoute(['/news/view', 'slug' => $model->alias]) ?><!--" class="news-home-link">-->
                 <h4><?php echo $model -> title ?></h4>
-            </a>
+
             <div class="news-home-text"><?php echo $model -> snippet ?></div>
             <div class="news-date-category">
                 <span class="news-date"><?php echo date('d.m.y',$model -> date_create) ?></span>
-                <a href="#!" class="news-category"><?php echo $model->category->name ?></a>
+                <div class="news-category">
+                    <?php echo $model->category->name ?>
+                </div>
                 <span class="news-date-box">
                     <?php
                     $date = date('d.m.Y',$model -> date_create);
@@ -59,6 +61,7 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
         </div>
     </div>
 </div>
+</a>
 <!--<div class="news-block">
     <div class="row">
         <div class="col-xs-4 news-block-img">

@@ -13,10 +13,21 @@ Url::remember();
 
 $this->title = 'Турнирная таблица';
 $this->params['breadcrumbs'][] = $this->title;
+
+$season = $dataProvider->getModels()[0]->season;
 ?>
 <div class="season-details-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p style="font-size: 18px">
+        <?php
+        $img = $season->getImage();
+        if ($img['urlAlias']!='placeHolder') {
+            echo Html::img($img->getUrl('50x'), ['style' => 'margin-right:5px;']);
+        }
+        echo $season->full_name;
+        ?>
+    </p>
 <!--    <div class="panel panel-default">-->
 <!--        <div class="panel-body">-->
             <?php Pjax::begin(); ?>

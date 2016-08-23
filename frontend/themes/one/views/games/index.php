@@ -3,12 +3,16 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax;
+use common\models\Teams;
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\GamesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Матчи';
 $this->params['breadcrumbs'][] = $this->title;
+$homeTeamId = Teams::find()->select('id')->where(['name' => Yii::$app->params['main-team']])->one()->id;
+
 ?>
 <div class="games-index">
 
@@ -23,7 +27,51 @@ $this->params['breadcrumbs'][] = $this->title;
         'bordered'=>false,
         'striped'=>false,
         'summary' => false,
-//        'rowOptions'=>function ($model, $key, $index, $grid){
+        'rowOptions'=>function ($model, $key, $index, $grid) use ($homeTeamId){
+//            var_dump($homeTeamId);
+//            var_dump($model);
+            $win = false;
+            $draw = false;
+            $defeat = false;
+            if ($model->date < time()){
+                $score = explode(':', $model->score);
+//                var_dump($model);
+                if ($model->home_id == $homeTeamId) {
+                    if ($score[0] > $score[1]) {
+                        $win = true;
+                    } elseif($score[0] < $score[1]) {
+                        $defeat = true;
+                    } elseif($score[0] == $score[1]) {
+                        $draw = true;
+                    }
+//                    var_dump($score);
+//                    var_dump($win,$draw,$defeat);
+                }
+                if ($model->guest_id == $homeTeamId) {
+                    if ($score[0] < $score[1]) {
+                        $win = true;
+                    } elseif($score[0] > $score[1]) {
+                        $defeat = true;
+                    } elseif($score[0] == $score[1]) {
+                        $draw = true;
+                    }
+                }
+            }
+//            var_dump($win,$draw,$defeat);
+            $class = '';
+            if ($win) {
+                $class = 'win';
+            } elseif ($draw) {
+                $class = 'draw';
+            } elseif ($defeat) {
+                $class = 'defeat';
+            }
+            return ['class' => $class];
+//            if ($model->guest_id = $homeTeamId) {
+//                var_dump($model->score);
+//
+//            }
+//            var_dump($model->score);
 //            $class=$index%2?'odd':'even';
 ////            var_dump($grid);
 //            return [
@@ -31,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'index'=>$index,
 //                'class'=>$class
 //            ];
-//        },
+        },
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
             [

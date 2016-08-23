@@ -18,8 +18,10 @@ $img = $model->getImage();
 //    echo Html::endTag('div');
 //echo Html::endTag('a');
 ?>
+    <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
     <div class="news-list-block">
 <!--        <div class="well">-->
+
             <div class="row">
                 <div class="col-xs-2">
                     <div class="news-list-date">
@@ -29,19 +31,21 @@ $img = $model->getImage();
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
+
                     <img src="<?php echo $img->getUrl('235x') ?>" alt="<?php echo $model->title; ?>" class="img-responsive">
-                    </a>
+
                 </div>
                 <div class="col-xs-7">
-                    <a href="<?php echo Url::toRoute(['view', 'slug' => $model->alias]) ?>" class="news-list-block-link">
+<!--                    <a href="--><?php //echo Url::toRoute(['view', 'slug' => $model->alias]) ?><!--" class="news-list-block-link">-->
                         <h3><?php echo $model -> title ?></h3>
-                    </a>
+<!--                    </a>-->
                     <div class="news-list-descr"><?php echo $model -> snippet ?></div>
                 </div>
             </div>
 <!--        </div>-->
     </div>
+    </a>
+
 <?php
 //echo Html::beginTag('a',['class'=>'', 'href'=>Url::toRoute(['view','id'=>$model->id])]);
 //    echo Html::beginTag('div',['class'=>'well']);

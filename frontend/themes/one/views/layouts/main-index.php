@@ -477,7 +477,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
         <?php
         $teams = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        var_dump();
-        $players = Players::find()->where(['teams_id'=>$teams->id])->orderBy('number')->all();
+//        $players = Players::find()->where(['teams_id'=>$teams->id])->orderBy('number')->all();
         $playersGoals = Players::find()->where(['teams_id'=>$teams->id])->orderBy('goals DESC')->one();
         $playersTransfers = Players::find()->where(['teams_id'=>$teams->id])->orderBy('transfers DESC')->one();
 //        var_dump($players);
@@ -490,6 +490,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div class="row">
                         <div class="col-xs-7 best-players">
                             <div class="col-xs-6 best-players-block">
+                                <a href="<?php echo Url::toRoute(['/players/view', 'id' => $playersGoals['id']]) ?>">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший бомбардир</span>
                                     <span class="best-players-goals"><?php echo $playersGoals->goals ?> Гол</span>
@@ -512,8 +513,10 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                         <?php echo $playersGoals['surname'].' '.$playersGoals['name'] ?>
                                     </span>
                                 </div>
+                                </a>
                             </div>
                             <div class="col-xs-6 best-players-block">
+                                <a href="<?php echo Url::toRoute(['/players/view', 'id' => $playersTransfers['id']]) ?>">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший ассистент</span>
                                     <span class="best-players-goals"><?php echo $playersTransfers->transfers ?> передача</span>
@@ -536,6 +539,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                         <?php echo $playersTransfers['surname'].' '.$playersTransfers['name'] ?>
                                     </span>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <?php
@@ -575,7 +579,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                             $games['homeWins']++;
                                         } elseif($score[0] < $score[1]) {
                                             $games['homeLose']++;
-                                        } elseif($score[0] = $score[1]) {
+                                        } elseif($score[0] == $score[1]) {
                                             $games['homeDrow']++;
                                         }
                                     }
@@ -595,7 +599,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                             $games['guestWins']++;
                                         } elseif($score[0] > $score[1]) {
                                             $games['guestLose']++;
-                                        } elseif($score[0] = $score[1]) {
+                                        } elseif($score[0] == $score[1]) {
                                             $games['guestDrow']++;
                                         }
                                     }
@@ -783,7 +787,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
     <!--                     VK Widget -->
                         <div id="vk_groups" class="block-center"></div>
                         <script type="text/javascript">
-                            VK.Widgets.Group("vk_groups", {mode: 0, width: "350", height: "380", color1: '0c3e7e', color2: 'ffffff', color3: '011b39'}, 26849788);
+                            VK.Widgets.Group("vk_groups", {mode: 0, width: "350", height: "350", color1: '0c3e7e', color2: 'ffffff', color3: 'FFFFFF'}, 26849788);
                         </script>
                     </div>
                 </div>
