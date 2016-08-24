@@ -84,7 +84,7 @@ $season = $dataProvider->getModels()[0]->season;
                         ],
                         [
                             'attribute' => 'lesions',
-                            'label' => '<span title="Пропущеные" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">П</span>',
+                            'label' => '<span title="Поражения" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">П</span>',
                             'encodeLabel' => false,
                         ],
                         [
@@ -113,6 +113,22 @@ $season = $dataProvider->getModels()[0]->season;
                     ],
                 ]); ?>
             <?php Pjax::end(); ?>
+    <div class="transcript">
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-6">
+                <div><span class="transcript-label">И</span><span class="transcript-value">Игры</span></div>
+                <div><span class="transcript-label">В</span><span class="transcript-value">Выигрыши</span></div>
+                <div><span class="transcript-label">Н</span><span class="transcript-value">Ничьи</span></div>
+                <div><span class="transcript-label">П</span><span class="transcript-value">Поражения</span></div>
+            </div>
+            <div class="col-xs-3">
+                <div><span class="transcript-label">ГЗ</span><span class="transcript-value">Голов забито</span></div>
+                <div><span class="transcript-label">ГП</span><span class="transcript-value">Голов пропущено</span></div>
+                <div><span class="transcript-label">РМ</span><span class="transcript-value">Разница мячей</span></div>
+                <div><span class="transcript-label">О</span><span class="transcript-value">Очки</span></div>
+            </div>
+        </div>
+    </div>
 <!--        </div>-->
 <!--    </div>-->
 </div>

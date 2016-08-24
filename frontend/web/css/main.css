@@ -1244,9 +1244,9 @@ a.news-category {
 }
 
 .news-first-blocks .news-block-img img {
-    /*height: 220px;*/
-    height: auto;
-    min-height: 220px;
+    height: 235px;
+    /*height: auto;*/
+    /*min-height: 220px;*/
 }
 
 .radius-null {
@@ -2156,4 +2156,27 @@ a.news-category {
 
 .best-players-block a {
     color: #ffffff;
+}
+
+.news-block-content {
+    margin-top: 20px;
+}
+
+.news-first-blocks {
+    border-bottom: 0;
+}
+
+.transcript {
+    margin-top: 20px;
+}
+
+.transcript-value {
+    color: #808080;
+}
+
+.transcript-value:before {
+    content: '—';
+    font-size: 14px;
+    margin-left: .2em;
+    margin-right: .2em;
 }
