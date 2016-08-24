@@ -42,23 +42,27 @@ AppAsset::register($this);
             <div class="left_col scroll-view">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/" class="site_title"><i class="fa fa-futbol-o" style="border: none;"></i> <span>ФК Балтика!</span></a>
+<!--                    <a href="/" class="site_title"><i class="fa fa-futbol-o" style="border: none;"></i> <span>ФК Балтика!</span></a>-->
+                    <a href="/" class="site_title">
+                        <?php echo Html::img('@web/images/logo.svg'); ?>
+                        <span>ФК Балтика</span>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
 
                 <!-- menu prile quick info -->
-                <div class="profile">
-                    <div class="profile_pic">
-                        <div class="img-circle profile_img">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        </div>
-                    </div>
+<!--                <div class="profile">-->
+<!--                    <div class="profile_pic">-->
+<!--                        <div class="img-circle profile_img">-->
+<!--                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="profile_info">
-                        <span>Добро пожаловать,</span>
-                        <h2><?php echo Yii::$app->user->identity->username; ?></h2>
-                    </div>
-                </div>
+<!--                    <div class="profile_info">-->
+<!--                        <span>Добро пожаловать,</span>-->
+<!--                        <h2>--><?php //echo Yii::$app->user->identity->username; ?><!--</h2>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!-- /menu prile quick info -->
 
                 <br />
@@ -83,12 +87,12 @@ AppAsset::register($this);
                                 ],
                             ],
                             [
-                                'label' => 'Турнирная Таблица',
+                                'label' => 'Настройки сезонов',
                                 "url" => "#!",
                                 "icon" => "list-alt",
                                 'items' => [
                                     ['label' => 'Игры', 'url' => ['/games']],
-                                    ['label' => 'Детали сезонов', 'url' => ['/season-details']],
+                                    ['label' => 'Таблица', 'url' => ['/season-details']],
                                     ['label' => 'Сезоны', 'url' => ['/seasons']],
                                     ['label' => 'Команды', 'url' => ['/teams']],
                                     ['label' => 'Игроки', 'url' => ['/players']],
@@ -137,8 +141,11 @@ AppAsset::register($this);
                                 <i class="fa fa-sign-out"></i> <span>Выход</span>
                             </a>
                         </li>
+<!--                        <li class="">-->
+<!--                            <a href="--><?php //echo Yii::$app->urlManager->hostInfo ?><!--" title="На сайт"><span class="fa fa-share" aria-hidden="true"></span><span class="hidden-sm"> На сайт</span></a>-->
+<!--                        </li>-->
                         <li class="">
-                            <a href="<?php echo Yii::$app->urlManager->hostInfo ?>" title="На сайт"><span class="fa fa-share" aria-hidden="true"></span><span class="hidden-sm"> На сайт</span></a>
+                            <div><span>Добро пожаловать, </span><b><?php echo Yii::$app->user->identity->username; ?></b></div>
                         </li>
                     </ul>
                 </nav>

@@ -14,6 +14,35 @@ $this->params['panel'] = true;
     <?php
     Panel::begin(
         [
+            'header' => 'Последние Новости',
+            'icon' => 'list',
+            'collapsable' => true,
+        ]
+    );
+    echo GridView::widget([
+        'dataProvider' => $dataProvider['news'],
+        'options' => [
+            'class' => 'guest-book-home'
+        ],
+        'summary' => false,
+        'columns' => [
+            'title',
+            'snippet',
+//            'category:name',
+//            'status',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}',
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    $url ='/admin/news/' . $action . '?id='.$model->id;
+                    return $url;
+                }
+            ],
+        ],
+    ]);
+    Panel::end();
+    Panel::begin(
+        [
             'header' => 'Вопросы Клубу',
             'icon' => 'question-circle-o',
             'collapsable' => true,

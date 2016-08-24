@@ -55,6 +55,8 @@ class NewsController extends Controller
     {
 //        $model = $this->findModel($id);
         $model = News::find()->where(['alias' => $slug])->one();
+        $model->views = $model->views + 1;
+        $model->save();
         return $this->render('view', [
             'model' => $model,
         ]);
