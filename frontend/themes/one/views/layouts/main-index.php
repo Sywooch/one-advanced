@@ -651,7 +651,10 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div class="row">
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
-                        <div class="col-xs-6 col-xs-offset-3"><?php echo Html::img('@web/themes/one/src/needless/attributika.png'); ?></div>
+<!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
+<!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
+                        <div class="col-xs-6 text-right"><a href="<?php echo Url::toRoute(['/page/atributika'])?>"><?php echo Html::img('@web/themes/one/src/needless/attributika.png'); ?></a></div>
+                        <div class="col-xs-6"><a href="<?php echo Url::toRoute(['/club-questions']); ?>"><?php echo Html::img('@web/themes/one/src/needless/vopros.jpg'); ?></a></div>
                     </div>
                 </div>
                 <div class="video-tv">
@@ -868,11 +871,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/news'])?>">Новости</a>
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/players'])?>">Команда</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/partnership'])?>">Сотрудничество</a>
-                                <a class="footer-info-link-small" href="#!">Журналистам</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/smi'])?>">Журналистам</a>
 
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#!">Клуб</a>
+                                <a class="footer-info-link">Клуб</a>
                                 <a class="footer-info-link-small" href="#!">Руководство</a>
                                 <a class="footer-info-link-small" href="#!">Тренерский Штаб</a>
                                 <a class="footer-info-link-small" href="#!">Персонал</a>
@@ -885,7 +888,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
                                 <a class="footer-info-link-small" href="#">Бомбардиры</a>
                                 <a class="footer-info-link" href="https://kgd.kassir.ru/kassirwidget/event/1482">Билеты</a>
-                                <a class="footer-info-link" href="#!">Атрибутика</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/atributika'])?>">Атрибутика</a>
                             </div>
                             <div class="col-xs-2">
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/gallery'])?>">Галерея</a>

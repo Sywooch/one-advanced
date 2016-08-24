@@ -229,11 +229,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/news'])?>">Новости</a>
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/players'])?>">Команда</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/partnership'])?>">Сотрудничество</a>
-                                <a class="footer-info-link-small" href="#!">Журналистам</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/smi'])?>">Журналистам</a>
 
                             </div>
                             <div class="col-xs-2">
-                                <a class="footer-info-link" href="#!">Клуб</a>
+                                <a class="footer-info-link">Клуб</a>
                                 <a class="footer-info-link-small" href="#!">Руководство</a>
                                 <a class="footer-info-link-small" href="#!">Тренерский Штаб</a>
                                 <a class="footer-info-link-small" href="#!">Персонал</a>
@@ -246,7 +246,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
                                 <a class="footer-info-link-small" href="#">Бомбардиры</a>
                                 <a class="footer-info-link" href="https://kgd.kassir.ru/kassirwidget/event/1482">Билеты</a>
-                                <a class="footer-info-link" href="#!">Атрибутика</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/atributika'])?>">Атрибутика</a>
                             </div>
                             <div class="col-xs-2">
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/gallery'])?>">Галерея</a>
