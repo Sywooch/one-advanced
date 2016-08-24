@@ -6,6 +6,7 @@ use common\models\User;
 use Yii;
 use common\models\CoachingStaff;
 use common\models\CoachingStaffSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -35,14 +36,38 @@ class CoachingStaffController extends Controller
      * Lists all CoachingStaff models.
      * @return mixed
      */
-    public function actionIndex()
+//    public function actionIndex()
+//    {
+//        $searchModel = new CoachingStaffSearch();
+//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//
+//        return $this->render('index', [
+//            'searchModel' => $searchModel,
+//            'dataProvider' => $dataProvider,
+//        ]);
+//    }
+
+    public function actionAdministrations()
     {
-        $searchModel = new CoachingStaffSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => CoachingStaff::find()->where(['category' => 'admin']),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'title' => 'Административный состав'
+        ]);
+    }
+
+    public function actionCoaches()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => CoachingStaff::find()->where(['category' => 'trainer']),
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'title' => 'Тренерский штаб'
         ]);
     }
 

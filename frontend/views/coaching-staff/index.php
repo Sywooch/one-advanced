@@ -7,8 +7,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\CoachingStaffSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Тренерский штаб';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="coaching-staff-index">
 
