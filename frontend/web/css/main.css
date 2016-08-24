@@ -2180,3 +2180,12 @@ a.news-category {
     margin-left: .2em;
     margin-right: .2em;
 }
+
+.coaching-staff-index .players-surname {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.coaching-staff-index .players-role {
+    color: #999;
+}

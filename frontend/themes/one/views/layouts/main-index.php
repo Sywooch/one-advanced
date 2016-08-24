@@ -876,9 +876,9 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                             </div>
                             <div class="col-xs-2">
                                 <a class="footer-info-link">Клуб</a>
-                                <a class="footer-info-link-small" href="#!">Руководство</a>
-                                <a class="footer-info-link-small" href="#!">Тренерский Штаб</a>
-                                <a class="footer-info-link-small" href="#!">Персонал</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/person/administrations'])?>">Руководство</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/person/coaches'])?>">Тренерский Штаб</a>
+<!--                                <a class="footer-info-link-small" href="#!">Персонал</a>-->
                                 <a class="footer-info-link-small" href="#!">Стадион</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/history-club'])?>">История</a>
                                 <a class="footer-info-link-small" href="#!">Контакты</a>
