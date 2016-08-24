@@ -21,8 +21,8 @@ class m160808_083035_add_tags_news_player extends Migration
 
     public function down()
     {
-//        $this->dropColumn('coaching_staff', 'category');
-//        $this->dropColumn('coaching_staff', 'content');
+        $this->dropColumn('coaching_staff', 'category');
+        $this->dropColumn('coaching_staff', 'content');
         $this->alterColumn('seasons', 'full_name',$this->string(200)->notNull());
         $this->dropColumn('games', 'recaps');
         $this->dropColumn('games', 'prizes');

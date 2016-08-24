@@ -19,7 +19,7 @@ class CoachingStaffSearch extends CoachingStaff
     {
         return [
             [['id', 'teams_id'], 'integer'],
-            [['name', 'surname', 'patronymic', 'role'], 'safe'],
+            [['name', 'surname', 'patronymic', 'role', 'category'], 'safe'],
         ];
     }
 
@@ -62,13 +62,15 @@ class CoachingStaffSearch extends CoachingStaff
             'id' => $this->id,
             'date' => $this->date,
             'teams_id' => $this->teams_id,
+            'category' => $this->category,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'patronymic', $this->patronymic])
             ->andFilterWhere(['like', 'role', $this->role])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'category', $this->category]);
 
         return $dataProvider;
     }

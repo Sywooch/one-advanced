@@ -46,9 +46,15 @@ return [
                     'route' => '/players/view',
                 ],
                 'season/tournament' => 'season-details',
+                'person/administrations' => 'coaching-staff/administrations',
+                'person/coaches' => 'coaching-staff/coaches',
+                [
+                    'pattern' => 'person/<category:\S+>/<id:\w+>',
+                    'route' => '/coaching-staff/view',
+                ],
 
-                'coaches' => 'coaching-staff',
-                'coaches/<action:(index|create|update|delete)>' => 'coaching-staff/<action>',
+//                'coaches' => 'coaching-staff',
+//                'coaches/<action:(index|create|update|delete)>' => 'coaching-staff/<action>',
 //                'season/tournament' => 'season-details/index',
 
 //                '/site/index' => '/',
