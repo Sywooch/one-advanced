@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 Url::remember();
 
-$this->title = 'Season Details';
+$this->title = 'Таблица';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="season-details-index">

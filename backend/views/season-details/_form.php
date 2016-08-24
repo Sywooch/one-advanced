@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
             <?php // echo $form->field($model, 'season_id')->textInput() ?>
             <?php // echo $form->field($model, 'team_id')->textInput() ?>
             <div class="row">
-                <div class="col-xs-3"><?php echo $form->field($model, 'games')->textInput() ?></div>
-                <div class="col-xs-3"><?php echo $form->field($model, 'wins')->textInput() ?></div>
-                <div class="col-xs-3"><?php echo $form->field($model, 'draws')->textInput() ?></div>
-                <div class="col-xs-3"><?php echo $form->field($model, 'lesions')->textInput() ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'games')->input('number', ['step'=>1]); ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'wins')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'draws')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'lesions')->input('number', ['step'=>1]) ?></div>
             </div>
             <div class="row">
-                <div class="col-xs-4"><?php echo $form->field($model, 'goals_against')->textInput() ?></div>
-                <div class="col-xs-4"><?php echo $form->field($model, 'goals_scored')->textInput() ?></div>
-                <div class="col-xs-4"><?php echo $form->field($model, 'spectacles')->textInput() ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'goals_against')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'goals_scored')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'spectacles')->input('number', ['step'=>1]) ?></div>
             </div>
 
 

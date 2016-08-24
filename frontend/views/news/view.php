@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -14,9 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         echo Html::tag(
             'div',
-                Html::tag('span',Yii::$app->formatter->asDate($model -> date_create, 'dd.MM.yy'/*'long'*/),['class'=>' ']).
-                ' | '.
-                Html::tag('span',$model->category->name,['class'=>'']),
+            Html::tag('span',Yii::$app->formatter->asDate($model -> date_create, 'dd.MM.yy'/*'long'*/),['class'=>' ']).
+            ' | '.
+            Html::tag('span',$model->category->name,['class'=>'']) .
+            ' | ' .
+            Html::tag('span', Html::icon('eye-open') . ' ' . $model->views),
             /*['class'=>'bg-primary center-block text-center','style'=>'width:'.$sizes['width'].'px']*/
             ['class'=>'']
         );

@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 use common\models\ClubQuestions;
 use common\models\GuestBook;
+use common\models\News;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -74,9 +75,15 @@ class SiteController extends Controller
         $dataProvider = [];
         $dataProvider['guest-book'] = new ActiveDataProvider([
             'query' => GuestBook::find()->where(['status' => 'on'])->orderBy('date DESC')->limit(10),
+            'pagination' => false
         ]);
         $dataProvider['club-questions'] = new ActiveDataProvider([
             'query' => ClubQuestions::find()->where(['status' => 'on'])->orderBy('date DESC')->limit(10),
+            'pagination' => false
+        ]);
+        $dataProvider['news'] = new ActiveDataProvider([
+            'query' => News::find()->orderBy('date_create DESC, date DESC')->limit(5),
+            'pagination' => false
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
