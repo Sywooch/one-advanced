@@ -2189,3 +2189,13 @@ a.news-category {
 .coaching-staff-index .players-role {
     color: #999;
 }
+
+.news-home span.news-view {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.news-view .news-view {
+    margin-left: 5px;
+}

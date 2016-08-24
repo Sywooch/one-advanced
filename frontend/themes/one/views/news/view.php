@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use kartik\icons\Icon;
 
 /* @var $this yii\web\View */
@@ -24,7 +24,13 @@ $this->params['headerName'] = $this->title;
     ?>
     <div class="news-view-block">
         <?php
-        echo Html::tag('div', Html::tag('span',Yii::$app->formatter->asDate($model -> date_create,'dd.MM.yy'),['class'=>'news-date']).Html::tag('span',$model->category->name,['class'=>'news-category']),['class'=>'date-category news-index-date']);
+        echo Html::tag(
+            'div',
+            Html::tag('span',Yii::$app->formatter->asDate($model -> date_create,'dd.MM.yy'),['class'=>'news-date']) .
+            Html::tag('span',$model->category->name,['class'=>'news-category']) .
+            Html::tag('span', Html::icon('eye-open') . ' ' . $model->views, ['class' => 'news-view']),
+            ['class'=>'date-category news-index-date']
+        );
         echo Html::tag('h1', $this->title);
         echo Html::tag('div', $model->snippet, ['class' => 'news-snippet']);
         echo Html::tag('div',$model->content,['class'=>'news-view-content']);

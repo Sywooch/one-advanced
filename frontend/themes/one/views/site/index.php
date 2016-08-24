@@ -77,10 +77,9 @@ if (!is_null($data['questions'])) {
 ?>
 <div class="site-index">
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <div style="font-size: 20px; display: inline-block;">НОВОСТИ</div>
-
-        </div>
+<!--        <div class="panel-heading">-->
+<!--            <div style="font-size: 20px; display: inline-block;">НОВОСТИ</div>-->
+<!--        </div>-->
         <div class="panel-body">
 <!--            <div class="news-index">-->
             <div class="news-home">

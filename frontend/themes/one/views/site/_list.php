@@ -1,5 +1,5 @@
 <?php
-use yii\helpers\Html;
+use kartik\helpers\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 ?>
@@ -57,6 +57,9 @@ if ($index == 0 || $index == 1 || $index == 2 || $index == 3) {
                     }
                     ?>
                 </span>
+                <?php
+                echo Html::tag('span', Html::icon('eye-open') . ' ' . $model->views, ['class' => 'news-view'])
+                ?>
             </div>
         </div>
     </div>
