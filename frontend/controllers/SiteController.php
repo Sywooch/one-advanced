@@ -256,8 +256,7 @@ class SiteController extends Controller
 
     public function actionDocuments()
     {
-//        $dir = glob('../web/files/documents/*');
-        $dir = glob('../web/files/test/*');
+        $dir = glob('../web/files/documents/*');
         return $this->render('documents', ['data' => $dir]);
     }
 
