@@ -33,10 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
             ],
 //            [
-//                'attribute' => 'home.name',
-//                'label' => 'Команда дома',
-//            ],
-//            [
 //                'attribute' => 'guest.name',
 //                'label' => 'Команда в гостях',
 //            ],
@@ -49,8 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'referee2',
             // 'referee3',
             // 'content:ntext',
-             'date:date',
-             'status',
+            [
+                'attribute' => 'category.name',
+                'label' => 'Категория',
+            ],
+             'date:datetime',
+//             'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

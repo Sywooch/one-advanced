@@ -580,3 +580,11 @@ a:hover, a:focus, a:hover:focus {
         position: absolute;
         left: -40px;
     }
+
+    .documents-view .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+
+    .documents-view .table > tbody > tr > td .glyphicon {
+        font-size: 30px;
+    }

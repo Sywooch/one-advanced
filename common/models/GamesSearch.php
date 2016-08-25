@@ -41,12 +41,13 @@ class GamesSearch extends Games
      */
     public function search($params)
     {
-        $query = Games::find()->orderBy('id DESC');
+        $query = Games::find()->orderBy('date ASC');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => false
         ]);
 
         $this->load($params);
