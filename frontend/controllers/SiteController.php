@@ -254,6 +254,13 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionDocuments()
+    {
+//        $dir = glob('../web/files/documents/*');
+        $dir = glob('../web/files/test/*');
+        return $this->render('documents', ['data' => $dir]);
+    }
+
     /**
      * Signs user up.
      *

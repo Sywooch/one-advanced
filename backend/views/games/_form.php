@@ -9,7 +9,7 @@ use kartik\widgets\DepDrop;
 use common\models\UploadForm;
 use kartik\file\FileInput;
 
-$model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : $model->date),'php:d-m-Y H:i');
+$model->date = date('d-m-Y H:i', ($model->isNewRecord ? time() : $model->date));
 
 
 /* @var $this yii\web\View */

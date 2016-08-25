@@ -43,6 +43,7 @@ return [
                     'pattern' => 'person/<category:\S+>/<id:\w+>',
                     'route' => '/coaching-staff/view',
                 ],
+                'documents' => 'site/documents',
 
 //                'coaches' => 'coaching-staff',
 //                'coaches/<action:(index|create|update|delete)>' => 'coaching-staff/<action>',
