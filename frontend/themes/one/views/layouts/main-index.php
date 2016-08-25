@@ -458,7 +458,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor']) ?>
                     </div>
                     <div class="text-center" style="margin-top: 15px;">
-                        <?php echo Html::img('@web/themes/one/src/banner_3.gif', ['alt' => 'sponsor']) ?>
+                        <?php echo Html::img('@web/themes/one/src/banner-det.jpg', ['alt' => 'sponsor']) ?>
                     </div>
                 </div>
             </div>
