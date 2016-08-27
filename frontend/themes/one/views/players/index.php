@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->params['headerName'] = $this->title;
 ?>
 <div class="players-index">
-
     <!--    --><?php //Pjax::begin(); ?>
     <div class="list-view">
         <h3>Вратари</h3>
@@ -77,6 +76,10 @@ $this->params['headerName'] = $this->title;
             'summary' => false,
         ]);
         ?>
+    </div>
+
+    <div class="players-all-img">
+        <?php echo Html::img('@web/themes/one/src/baltika-2016.jpg'); ?>
     </div>
     <!--    --><?php //Pjax::end(); ?>
 

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\Url;
+use common\models\Teams;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\SeasonDetailsSearch */
@@ -15,6 +16,8 @@ $this->title = 'Турнирная таблица';
 $this->params['breadcrumbs'][] = $this->title;
 
 $season = $dataProvider->getModels()[0]->season;
+$homeTeamId = Teams::find()->select('id')->where(['name' => Yii::$app->params['main-team']])->one()->id;
+
 ?>
 <div class="season-details-index">
 
@@ -40,6 +43,13 @@ $season = $dataProvider->getModels()[0]->season;
                     'responsive'=>false,
                     'hover'=>true,
                     'summary' => false,
+                    'rowOptions'=>function ($model, $key, $index, $grid) use ($homeTeamId) {
+                        if ($model->team_id == $homeTeamId) {
+                            return [
+                                'class' => 'main-team'
+                            ];
+                        }
+                    },
                     'tableOptions' => [
                         'style' => 'margin-bottom:0'
                     ],

@@ -31,14 +31,14 @@ if (!empty($data['allPlayers'])) {
 ////                    'height' => $sizes['height']
 //                ]);
             }
-            $playersBD .= Html::tag('div',
+            $playersBD .= Html::a(Html::tag('div',
                     Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
                     Html::tag('div',
                         Html::tag('div', $item->name) .
                         Html::tag('div', Html::tag('b', $item->surname)) .
                         Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
                         ['class' => 'col-xs-8']),
-                    ['class' => 'row']) . Html::tag('hr');
+                    ['class' => 'row']) . Html::tag('hr'), ['/players/view', 'id' => $item->id]);
         }
     }
 //    var_dump($data['allPlayers']);

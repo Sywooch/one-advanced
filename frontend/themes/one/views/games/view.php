@@ -23,6 +23,7 @@ $contentActive = 'active';
 $galleryActive = '';
 $videoActive = '';
 $prizesActive = '';
+$behavior_rulesActive = '';
 if ((!empty($gameData['home']) && !empty($gameData['guest'])) || ($model->recaps != '')) {
     $compositionsStep = true;
 }
@@ -32,6 +33,8 @@ if (!is_null($model->gallery)) {
         $contentActive = '';
         $galleryActive = 'active';
         $videoActive = '';
+        $prizesActive = '';
+        $behavior_rulesActive = '';
     }
 }
 if ($model->translation != '') {
@@ -43,10 +46,19 @@ if ($model->video_id != '') {
         $contentActive = '';
         $galleryActive = '';
         $videoActive = 'active';
+        $prizesActive = '';
+        $behavior_rulesActive = '';
     }
 }
 if ($model->behavior_rules != '' && $model->date > strtotime('-3 hour')) {
     $behavior_rulesStep = true;
+if (isset($_GET['tab']) && $_GET['tab'] == 'rules') {
+    $contentActive = '';
+    $galleryActive = '';
+    $videoActive = '';
+    $prizesActive = '';
+    $behavior_rulesActive = 'active';
+        }
 }
 if ($model->prizes != '') {
     $prizesStep = true;
@@ -55,6 +67,17 @@ if ($model->prizes != '') {
         $galleryActive = '';
         $videoActive = '';
         $prizesActive = 'active';
+        $behavior_rulesActive = '';
+    }
+}
+if ($model->behavior_rules != '') {
+    $rulesStep = true;
+    if (isset($_GET['tab']) && $_GET['tab'] == 'prizes') {
+        $contentActive = '';
+        $galleryActive = '';
+        $videoActive = '';
+        $prizesActive = '';
+        $behavior_rulesActive = 'active';
     }
 }
 ?>
@@ -169,7 +192,7 @@ if ($model->prizes != '') {
                     <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Видео</a></li>
                 <?php endif; ?>
                 <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
-                    <li role="presentation"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Правила поведения на матче</a></li>
+                    <li role="presentation" class="<?php echo $behavior_rulesActive ?>"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Правила поведения на матче</a></li>
                 <?php endif; ?>
                 <?php if ($prizesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
                     <li role="presentation" class="<?php echo $prizesActive ?>"><a href="#prizes" aria-controls="prizes" role="tab" data-toggle="tab"><i class="fa fa-gift" aria-hidden="true"></i> Призы</a></li>
@@ -285,7 +308,7 @@ if ($model->prizes != '') {
                                     }
                                     echo Html::tag('div',
                                         Html::a(
-                                            Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => 'thumbnail']),
+                                            Html::img($img->getUrl('160x130'),['alt' => $model->gallery->name, 'class' => '']),
                                             $img->getUrl(),$options
                                         ),
                                         ['class' => 'gallery-view-box']
@@ -306,7 +329,7 @@ if ($model->prizes != '') {
                     </div>
                 <?php endif; ?>
                 <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
-                    <div role="tabpanel" class="tab-pane" id="behavior_rules"><?php echo $model->behavior_rules ?></div>
+                    <div role="tabpanel" class="tab-pane <?php echo $behavior_rulesActive ?>" id="behavior_rules"><?php echo $model->behavior_rules ?></div>
                 <?php endif; ?>
                 <?php if ($prizesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
                     <div role="tabpanel" class="tab-pane <?php echo $prizesActive ?>" id="prizes"><?php echo $model->prizes ?></div>

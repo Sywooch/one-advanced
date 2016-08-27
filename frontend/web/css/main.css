@@ -2203,3 +2203,41 @@ a.news-category {
 .coaching-staff-index .item {
     margin-bottom: 30px;
 }
+
+.season-details-index tr.main-team {
+    font-weight: bold;
+}
+
+.carousel-home .carousel-caption a {
+    text-decoration: underline;
+}
+
+.carousel-home .carousel-caption a:hover {
+    text-decoration: none;
+}
+
+.banners-index h4,
+.players-bd h4 {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #809dbf;
+    margin-bottom: 15px;
+}
+
+.promo-photo-video-ticket.text-center a:hover {
+    color: #909090;
+}
+
+.players-all-img {
+    margin-top: 25px;
+}
+
+.players-all-img img {
+    max-width: 100%;
+}
+
+.news-date-category span.news-view,
+.date-category.news-index-date span.news-view {
+    font-size: 10px;
+    line-height: 14px;
+    color: #9D9D9D;
+}

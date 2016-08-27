@@ -400,23 +400,48 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                             if ($item->ticket_id != '' ) {
                                                                 echo Html::a(Icon::show('ticket'), 'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id, [
                                                                     'onclick' => 'kassirWidget.summon({width:940, url:\'https://kgd.kassir.ru/kassirwidget/event/' . $item->ticket_id . '\'}); return false;',
-                                                                    'target' => '_blank'
+                                                                    'target' => '_blank',
+                                                                    'data-toggle' => 'tooltip',
+                                                                    'data-placement' => 'top',
+                                                                    'data-html' => 'bottom',
+                                                                    'data-original-title' => 'Купить билет',
                                                                 ]);
                                                             }
                                                         }
                                                     }
 //                                                    var_dump($item->behavior_rules);
                                                     if ($item->behavior_rules != '' && $item->date > strtotime('-3 hour')) {
-                                                        echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules']);
+//                                                        <span title="Игры" data-toggle="tooltip" data-placement="bottom" data-html="true" data-original-title="">И</span>
+                                                        echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules'], [
+                                                            'data-toggle' => 'tooltip',
+                                                            'data-placement' => 'top',
+                                                            'data-html' => 'bottom',
+                                                            'data-original-title' => 'Правила поведения',
+                                                        ]);
                                                     }
                                                     if (!is_null($item->gallery)) {
-                                                        echo Html::a(Icon::show('camera'), ['/games/view', 'id' => $item->id, 'tab' => 'gallery']);
+                                                        echo Html::a(Icon::show('camera'), ['/games/view', 'id' => $item->id, 'tab' => 'gallery'], [
+                                                            'data-toggle' => 'tooltip',
+                                                            'data-placement' => 'top',
+                                                            'data-html' => 'bottom',
+                                                            'data-original-title' => 'Фоторепортаж',
+                                                        ]);
                                                     }
                                                     if ($item->video_id != '') {
-                                                        echo Html::a(Icon::show('video-camera'), ['/games/view', 'id' => $item->id, 'tab' => 'video']);
+                                                        echo Html::a(Icon::show('video-camera'), ['/games/view', 'id' => $item->id, 'tab' => 'video'], [
+                                                            'data-toggle' => 'tooltip',
+                                                            'data-placement' => 'top',
+                                                            'data-html' => 'bottom',
+                                                            'data-original-title' => 'Видео матча',
+                                                        ]);
                                                     }
                                                     if ($item->prizes != '') {
-                                                        echo Html::a(Icon::show('gift'), ['/games/view', 'id' => $item->id, 'tab' => 'prizes']);
+                                                        echo Html::a(Icon::show('gift'), ['/games/view', 'id' => $item->id, 'tab' => 'prizes'], [
+                                                            'data-toggle' => 'tooltip',
+                                                            'data-placement' => 'top',
+                                                            'data-html' => 'bottom',
+                                                            'data-original-title' => 'Призы',
+                                                        ]);
                                                     }
                                                     ?>
                                                 </div>
@@ -454,11 +479,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
                         <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
                     </a>
-                    <div class="text-center" style="margin-top: 15px;">
-                        <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor']) ?>
-                    </div>
-                    <div class="text-center" style="margin-top: 15px;">
+                    <a href="/page/dussh" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
                         <?php echo Html::img('@web/themes/one/src/banner-det.jpg', ['alt' => 'sponsor']) ?>
+                    </a>
+                    <div class="text-center" style="margin-top: 15px;">
+                        <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor', 'style' => 'width: 232px;']) ?>
                     </div>
                 </div>
             </div>

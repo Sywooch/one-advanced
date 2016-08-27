@@ -26,8 +26,10 @@ $this->params['headerName'] = $this->title;
 
         //        'options' => ['tag' => 'div','class' => 'news-list','id' => 'news-list',],
         //        'layout' => "{pager}\n{summary}\n{items}\n{pager}",
-                'layout' => "{summary}\n{items}\n<div class=\"text-center\">{pager}</div>",
-                'summary' => '<div class="summary">Показаны записи <b>{begin}-{end}</b> из <b>{totalCount}</b>.</div>',
+                'layout' => "{items}\n<div class=\"text-center\">{pager}</div>",
+//                'layout' => "{summary}\n{items}\n<div class=\"text-center\">{pager}</div>",
+//                'summary' => '<div class="summary">Показаны записи <b>{begin}-{end}</b> из <b>{totalCount}</b>.</div>',
+                'summary' => false,
         //        'summaryOptions' => ['tag' => 'div','class' => 'my-summary summary'],
                 'itemOptions' => ['tag' => 'div','class' => 'news-item'],
 
