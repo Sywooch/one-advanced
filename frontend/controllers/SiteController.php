@@ -134,7 +134,7 @@ class SiteController extends Controller
 
 
         $dataProvider['news'] = new ActiveDataProvider([
-            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC, date DESC')->limit(10),
+            'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC, id DESC')->limit(10),
             'pagination' => [
                 'pageSize' => 10,
             ],
