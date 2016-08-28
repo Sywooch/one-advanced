@@ -20,6 +20,7 @@ return [
             'datetimeFormat' => 'php:d.m.Y H:i',
             'timeFormat' => 'php:H:i',
 //            'defaultTimeZone' => 'Europe/Moscow',
+            'defaultTimeZone' => 'Europe/Kaliningrad',
             'locale' => 'ru-RU'
         ],
     ],
