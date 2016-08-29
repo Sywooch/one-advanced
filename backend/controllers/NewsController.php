@@ -9,9 +9,11 @@ use common\models\News;
 use common\models\NewsSearch;
 use common\models\Category;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -95,14 +97,14 @@ class NewsController extends Controller
 
 //            $model->date_create = date(time());
             $model->save();
-            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
-                $model->attachImage($_FILES['UploadForm']['tmp_name']['file'],false);
-                if($model->errors) {
-                    var_dump($model->errors);
-                    die;
-                }
-            }
-            return $this->redirect(['view', 'id' => $model->id]);
+//            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+//                $model->attachImage($_FILES['UploadForm']['tmp_name']['file'],false);
+//                if($model->errors) {
+//                    var_dump($model->errors);
+//                    die;
+//                }
+//            }
+            return $this->redirect(['update', 'id' => $model->id]);
         } else {
 //            $model-> category = Category::find()->all();
 //            var_dump($model);die;
@@ -131,14 +133,16 @@ class NewsController extends Controller
             }
             $model->date_create = Yii::$app->formatter->asTimestamp($model->date_create. ' 12:00');
             $model->save();
-
-            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
-                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
-                if($model->errors) {
-                    var_dump($model->errors);
-                    die;
-                }
-            }
+//            $file = UploadedFile::getInstance($model, 'file');
+//            var_dump($file);
+//            var_dump($_FILES);die;
+//            if(!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+//                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
+//                if($model->errors) {
+//                    var_dump($model->errors);
+//                    die;
+//                }
+//            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
 
@@ -149,6 +153,47 @@ class NewsController extends Controller
         }
     }
 
+    public function actionUploadFiles($id)
+    {
+//        var_dump($_FILES);
+////        var_dump($_POST);
+//        var_dump($_GET);
+//        return Json::encode(true);
+
+        $model = $this->findModel($id);
+        if (!empty($_FILES['UploadForm']['tmp_name']['file'])) {
+            if ($_FILES['UploadForm']['type']['file'] == 'image/jpeg' || $_FILES['UploadForm']['type']['file'] == 'image/png') {
+                $model->attachImage($_FILES['UploadForm']['tmp_name']['file']);
+                if($model->errors) {
+                    var_dump($model->errors);
+                }
+                return Json::encode(true);
+            } else {
+                return Json::encode(true);
+
+//                $fileName = 'gallery';
+//                $uploadPath = '../../frontend/web/images/store/Galleries/Gallery'.$id;
+//                $file = UploadedFile::getInstanceByName($fileName);
+//                var_dump($file);
+//                if (file_exists($uploadPath)) {
+//                    $newfilename = $model->name . '_' . substr(md5(time().$id), 24, 32).$file->name;
+//
+//                }
+
+//                $filename = \Yii::$app->request->get('filename', '');
+//                $filename = trim($filename, '/');
+//                $objId = \Yii::$app->request->get('objId', '');
+//                $objModelId = \Yii::$app->request->get('objModelId', '');
+//                if (empty($filename) === false) {
+//                    $image = new Image;
+//                    $image->loadDefaultValues();
+//                    $image->setAttributes(['filename' => $filename, 'object_id' => $objId, 'object_model_id' => $objModelId]);
+//                    $image->save();
+//                }
+            }
+
+        }
+    }
 
 
     /**

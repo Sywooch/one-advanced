@@ -8,6 +8,8 @@ use yii\helpers\ArrayHelper;
 use kartik\builder\Form;
 use kartik\form\ActiveForm;
 use kartik\widgets\FileInput;
+use yii\helpers\Url;
+use yiister\gentelella\widgets\Panel;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -22,7 +24,13 @@ $model->date_create = Yii::$app->formatter->asDatetime(($model->isNewRecord ? ti
 <div class="news-form">
 
     <?php
-
+    Panel::begin(
+        [
+            'header' => 'Новость',
+            'icon' => 'list',
+            'collapsable' => true,
+        ]
+    );
     $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
     echo Form::widget([
         'model' => $model,
@@ -43,18 +51,6 @@ $model->date_create = Yii::$app->formatter->asDatetime(($model->isNewRecord ? ti
         'attributes'=>[
             'snippet' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите короткое описание...']],
             'content'=>['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите контент...']],
-        ]
-    ]);
-    $image=new UploadForm();
-    echo FileInput::widget([
-        'model' => $image,
-        'attribute' => 'file',
-        'options' => ['multiple' => false],
-        'pluginOptions' => [
-            'showPreview' => false,
-            'showCaption' => true,
-            'showRemove' => true,
-            'showUpload' => false
         ]
     ]);
 //    echo Form::widget([
@@ -110,6 +106,50 @@ $model->date_create = Yii::$app->formatter->asDatetime(($model->isNewRecord ? ti
         ]
     ]);
     ActiveForm::end();
+    Panel::end();
+
+    if (!$model->isNewRecord) {
+        Panel::begin(
+            [
+                'header' => 'Изображения',
+                'icon' => 'photo',
+                'collapsable' => true,
+            ]
+        );
+        $image=new UploadForm();
+        echo FileInput::widget([
+            'model' => $image,
+            'attribute' => 'file',
+            'options' => ['multiple' => true],
+            'pluginOptions' => [
+                'showPreview' => true,
+                'showCaption' => true,
+                'showRemove' => true,
+                'showUpload' => true,
+//                'maxFileCount' => 100,
+//                'overwriteInitial'=>false,
+                'uploadUrl' => Url::to(['/news/upload-files', 'id' => $model->id]),
+
+            ],
+        ]);
+        $images = $model->getImages();
+        if($images[0]['urlAlias']!='placeHolder') {
+            echo Html::beginTag('div',['class' => 'images-news']);
+            foreach($images as $img){
+                echo Html::beginTag('div',['class' => 'images-news-block']);
+                echo Html::a(Html::img($img->getUrl('180x180'),['alt' => $model->title]),$img->getUrl(),['class' => 'lightbox']);
+                echo Html::beginTag('div',['class' => 'images-news-box']);
+                if(!$img->isMain) {
+                    echo Html::a('Сделать основной', ['set-main', 'id'=> $model->id,'id_img'=>$img->id], ['class' => 'images-news-act']);
+                }
+                echo Html::a('Удалить', ['remove-image', 'id'=> $img->id], ['class' => 'images-news-act']);
+                echo Html::endTag('div');
+                echo Html::endTag('div');
+            }
+            echo Html::endTag('div');
+        }
+        Panel::end();
+    }
     ?>
 </div>
 <?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
