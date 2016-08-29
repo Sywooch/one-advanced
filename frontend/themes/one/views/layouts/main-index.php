@@ -518,7 +518,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a href="<?php echo Url::toRoute(['/players/view', 'id' => $playersGoals['id']]) ?>">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший бомбардир</span>
-                                    <span class="best-players-goals"><?php echo $playersGoals->goals ?> Гол</span>
+                                    <span class="best-players-goals"><?php echo Yii::t(
+                                            'app',
+                                            '{n, plural, =0{# Голов} =1{# Гол} one{# Гол} few{# Гола} many{# Голов} other{# Голов}}',
+                                            ['n' => $playersGoals->goals]
+                                        ); ?> </span>
                                 </div>
                                 <div class="best-players-image">
                                     <?php
@@ -544,7 +548,13 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a href="<?php echo Url::toRoute(['/players/view', 'id' => $playersTransfers['id']]) ?>">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший ассистент</span>
-                                    <span class="best-players-goals"><?php echo $playersTransfers->transfers ?> передача</span>
+                                    <span class="best-players-goals"><?php
+                                        echo Yii::t(
+                                            'app',
+                                            '{n, plural, =0{# Передач} =1{# Передача} one{# Передача} few{# Передачи} many{# Передач} other{# Передач}}',
+                                            ['n' => $playersTransfers->transfers ]
+                                        );
+                                        ?> </span>
                                 </div>
                                 <div class="best-players-image">
                                     <?php
