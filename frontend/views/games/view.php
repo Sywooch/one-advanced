@@ -19,10 +19,16 @@ $translationStep = false;
 $videoStep = false;
 $behavior_rulesStep = false;
 $prizesStep = false;
+$previewStep = false;
+$statisticsStep = false;
+$pressConferenceStep = false;
 $contentActive = 'active';
 $galleryActive = '';
 $videoActive = '';
 $prizesActive = '';
+if ($model->preview_content != '') {
+    $previewStep = true;
+}
 if ((!empty($gameData['home']) && !empty($gameData['guest'])) || ($model->recaps != '')) {
     $compositionsStep = true;
 }
@@ -36,6 +42,12 @@ if (!is_null($model->gallery)) {
 }
 if ($model->translation != '') {
     $translationStep = true;
+}
+if ($model->statistics != '') {
+    $statisticsStep = true;
+}
+if ($model->press_conference != '') {
+    $pressConferenceStep = true;
 }
 if ($model->video_id != '') {
     $videoStep = true;
@@ -147,7 +159,13 @@ if ($model->prizes != '') {
     <!-- Nav tabs -->
     <?php if ($model->content != '') : ?>
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
+        <?php if ($previewStep && $model->date > time()) : ?>
+            <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Превью</a></li>
+        <?php else : ?>
+            <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
+
+        <?php endif; ?>
+<!--        <li role="presentation" class="--><?php //echo $contentActive ?><!--"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>-->
 <!--        //        $galleryStep = false;-->
         <?php if ($compositionsStep) : ?>
             <li role="presentation"><a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab">Составы</a></li>
@@ -158,8 +176,14 @@ if ($model->prizes != '') {
         <?php if ($translationStep) : ?>
             <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab">Трансляция</a></li>
         <?php endif; ?>
+        <?php if ($statisticsStep) : ?>
+            <li role="presentation" class="<?php echo $videoActive ?>"><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab">Статистика</a></li>
+        <?php endif; ?>
         <?php if ($videoStep) : ?>
             <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Видео</a></li>
+        <?php endif; ?>
+        <?php if ($pressConferenceStep) : ?>
+            <li role="presentation" class="<?php echo $videoActive ?>"><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab">Пресс конференция</a></li>
         <?php endif; ?>
         <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
             <li role="presentation"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab">Правила поведения на матче</a></li>
@@ -175,7 +199,9 @@ if ($model->prizes != '') {
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <?php if ($model->content != '') : ?>
+        <?php if ($previewStep && $model->date < time()) : ?>
+            <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->preview_content ?></div>
+        <?php else : ?>
             <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->content ?></div>
         <?php endif; ?>
         <?php if ($compositionsStep) : ?>
@@ -293,10 +319,18 @@ if ($model->prizes != '') {
         <?php if ($translationStep) : ?>
             <div role="tabpanel" class="tab-pane" id="translation"><?php echo $model->translation ?></div>
         <?php endif; ?>
-        <?php if ($videoStep) : ?>
-            <div role="tabpanel" class="tab-pane <?php echo $videoActive ?>" id="video">
-<!--                width="560" height="315"-->
-                <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->video_id ?>" frameborder="0" allowfullscreen></iframe>
+        <?php if ($statisticsStep) : ?>
+            <div role="tabpanel" class="tab-pane" id="statistics"><?php echo $model->statistics ?></div>
+        <?php endif; ?>
+            <?php if ($videoStep) : ?>
+                <div role="tabpanel" class="tab-pane <?php echo $videoActive ?>" id="video">
+                    <!--                width="560" height="315"-->
+                    <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->video_id ?>" frameborder="0" allowfullscreen></iframe>
+                </div>
+            <?php endif; ?>
+        <?php if ($pressConferenceStep) : ?>
+            <div role="tabpanel" class="tab-pane" id="pressConference">
+                <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference ?>" frameborder="0" allowfullscreen></iframe>
             </div>
         <?php endif; ?>
         <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>

@@ -118,3 +118,7 @@ body,
     overflow: hidden;
     margin-right: -15px;
 }
+
+.form-group .btn-group {
+    overflow: hidden;
+}

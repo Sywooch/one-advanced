@@ -135,6 +135,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                 //
                 'attributes' => [
                     'content' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Введите Контент...']],
+                    'career' => ['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Карьера...']],
                 ]
             ]);
             ?>
@@ -149,6 +150,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
 <?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/full/ckeditor.js'); ?>
 <?php $this->registerJs('
 CKEDITOR.replace("players-content");
+CKEDITOR.replace("players-career");
  CKEDITOR.filter.allowedContentRules = true;
  CKEDITOR.config.allowedContent=true;
 '); ?>
