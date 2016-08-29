@@ -89,3 +89,7 @@ body,
 .coaching-staff-index .item {
     margin-bottom: 25px;
 }
+
+.top_nav .nav > li > a:focus, .top_nav .nav > li > a:hover {
+    background: #062E5D;
+}

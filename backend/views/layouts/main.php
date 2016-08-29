@@ -43,7 +43,7 @@ AppAsset::register($this);
 
                 <div class="navbar nav_title" style="border: 0;">
 <!--                    <a href="/" class="site_title"><i class="fa fa-futbol-o" style="border: none;"></i> <span>ФК Балтика!</span></a>-->
-                    <a href="/" class="site_title">
+                    <a href="/admin" class="site_title">
                         <?php echo Html::img('@web/images/logo.svg'); ?>
                         <span>ФК Балтика</span>
                     </a>
@@ -141,9 +141,9 @@ AppAsset::register($this);
                                 <i class="fa fa-sign-out"></i> <span>Выход</span>
                             </a>
                         </li>
-<!--                        <li class="">-->
-<!--                            <a href="--><?php //echo Yii::$app->urlManager->hostInfo ?><!--" title="На сайт"><span class="fa fa-share" aria-hidden="true"></span><span class="hidden-sm"> На сайт</span></a>-->
-<!--                        </li>-->
+                        <li class="">
+                            <a href="<?php echo Yii::$app->urlManager->hostInfo ?>" title="На сайт"><span class="fa fa-share" aria-hidden="true"></span><span class="hidden-sm"> На сайт</span></a>
+                        </li>
                         <li class="">
                             <div><span>Добро пожаловать, </span><b><?php echo Yii::$app->user->identity->username; ?></b></div>
                         </li>
