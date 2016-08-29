@@ -2241,3 +2241,9 @@ a.news-category {
     line-height: 14px;
     color: #9D9D9D;
 }
+
+.news-images-block {
+    border-top: 1px solid #EEEEEE;
+    margin-top: 50px;
+    padding-top: 35px;
+}
