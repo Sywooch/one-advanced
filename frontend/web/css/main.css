@@ -2098,7 +2098,8 @@ a.news-category {
 .season-details-index table tbody tr:nth-last-child(1),
 .season-details-index table tbody tr:nth-last-child(2),
 .season-details-index table tbody tr:nth-last-child(3),
-.season-details-index table tbody tr:nth-last-child(4) {
+.season-details-index table tbody tr:nth-last-child(4),
+.season-details-index table tbody tr:nth-last-child(5) {
     background: rgba(255, 0, 0, 0.1);
 }
 
@@ -2113,7 +2114,7 @@ a.news-category {
 .season-details-index table tbody tr:nth-child(5) td {
     border-width: 2px;
 }
-.season-details-index table tbody tr:nth-last-child(4) td {
+.season-details-index table tbody tr:nth-last-child(5) td {
     border-width: 2px;
 }
 
