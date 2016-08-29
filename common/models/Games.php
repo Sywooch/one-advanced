@@ -31,6 +31,9 @@ use yii\db\ActiveRecord;
  * @property string $ticket_id
  * @property string $prizes
  * @property string $recaps
+ * @property string $preview_content
+ * @property string $statistics
+ * @property string $press_conference
  *
  * @property Gallery $gallery
  * @property CategoryGames $category
@@ -82,7 +85,7 @@ class Games extends \yii\db\ActiveRecord
             [['category_id', 'home_id', 'guest_id', 'score', 'season_id', 'category_id', 'status'], 'required'],
 //            [['home_id', 'guest_id', 'season_id', 'tour', 'score', 'city', 'stadium', 'referee', 'referee2', 'referee3', 'content', 'status'], 'required'],
             [['home_id', 'guest_id', 'season_id', 'tour', 'gallery_id', 'category_id'], 'integer'],
-            [['content', 'status', 'translation', 'behavior_rules', 'prizes', 'recaps'], 'string'],
+            [['content', 'status', 'translation', 'behavior_rules', 'prizes', 'recaps', 'preview_content', 'statistics', 'press_conference'], 'string'],
             [['score'], 'string', 'max' => 50],
             [['date'], 'safe'],
             [['city', 'stadium', 'referee', 'referee2', 'referee3', 'video_id', 'ticket_id'], 'string', 'max' => 255],
@@ -122,6 +125,9 @@ class Games extends \yii\db\ActiveRecord
             'ticket_id' => 'ID Kassir',
             'prizes' => 'Призы',
             'recaps' => 'Составы',
+            'preview_content' => 'Превью',
+            'statistics' => 'Статистика',
+            'press_conference' => 'Пресс Конференция',
         ];
     }
 
