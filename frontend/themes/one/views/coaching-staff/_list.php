@@ -20,7 +20,7 @@ $categories = [
             <?php
             $images = $model->getImage();
             if($images['urlAlias']!='placeHolder') {
-                echo Html::img($images->getUrl('x100'), ['alt' => $model->name, 'class' => '']);//thumbnail img-responsive
+                echo Html::img($images->getUrl('x120'), ['alt' => $model->name, 'class' => '']);//thumbnail img-responsive
             }
             ?>
         </div>
