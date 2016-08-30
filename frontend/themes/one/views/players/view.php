@@ -94,4 +94,14 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
             </div>
         </div>
     <?php endif; ?>
+    <?php if($model->career || $model->career != '') : ?>
+        <div class="player-content-block">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Карьера</h2>
+                    <?php echo $model->career; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>

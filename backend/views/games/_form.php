@@ -186,6 +186,12 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
                 'recaps' => [
                     'type'=>Form::INPUT_TEXTAREA,
                 ],
+                'preview_content' => [
+                    'type'=>Form::INPUT_TEXTAREA,
+                ],
+                'statistics' => [
+                    'type'=>Form::INPUT_TEXTAREA,
+                ],
             ]
         ]);
 //        var_dump($model->home->name);
@@ -209,9 +215,10 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
         echo Form::widget([
             'model' => $model,
             'form' => $form,
-            'columns' => 2,
+            'columns' => 3,
             'attributes' => [
                 'video_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
+                'press_conference' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
                 'ticket_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
 
             ]
@@ -282,6 +289,8 @@ CKEDITOR.replace("games-content");
 CKEDITOR.replace("games-recaps");
 CKEDITOR.replace("games-behavior_rules");
 CKEDITOR.replace("games-prizes");
+CKEDITOR.replace("games-preview_content");
+CKEDITOR.replace("games-statistics");
  CKEDITOR.filter.allowedContentRules = true;
  CKEDITOR.config.allowedContent=true;
 JS

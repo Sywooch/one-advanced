@@ -35,5 +35,18 @@ $this->params['headerName'] = $this->title;
         echo Html::tag('div', $model->snippet, ['class' => 'news-snippet']);
         echo Html::tag('div',$model->content,['class'=>'news-view-content']);
         ?>
+        <div class="news-images-block">
+            <?php
+            if($images[0]['urlAlias']!='placeHolder') {
+                foreach($images as $img) {
+                    echo Html::beginTag('div', ['class' => 'news-images-box', 'style' => 'margin-bottom:20px']);
+                    if (!$img->isMain) {
+                        echo Html::a(Html::img($img->getUrl('x500'),['class' => 'center-block img-responsive']), $img->getUrl(''), ['class' => 'lightbox']);
+                    }
+                    echo Html::endTag('div');
+                }
+            }
+            ?>
+        </div>
     </div>
 </div>

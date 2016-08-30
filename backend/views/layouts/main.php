@@ -11,8 +11,10 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yiister\gentelella\widgets\Panel;
 use yii\helpers\Url;
+use limion\bootstraplightbox\BootstrapMediaLightboxAsset;
 
 $bundle = yiister\gentelella\assets\Asset::register($this);
+BootstrapMediaLightboxAsset::register($this);
 
 AppAsset::register($this);
 ?>
