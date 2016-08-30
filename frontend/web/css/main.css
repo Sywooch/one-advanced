@@ -1548,10 +1548,18 @@ a.news-category {
 
 .promo-game-team.text-right {
     padding-right: 15px;
+    /*margin-left: -5px;*/
+    /*margin-right: -5px;*/
+
 }
 
 .promo-game-team.text-left {
     padding-left: 15px;
+    /*margin-right: -5px;*/
+}
+
+.promo-game-row > div {
+    display: table-cell;
 }
 
 .carousel-2d:before {
