@@ -518,11 +518,33 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a href="<?php echo Url::toRoute(['/players/view', 'id' => $playersGoals['id']]) ?>">
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший бомбардир</span>
-                                    <span class="best-players-goals"><?php echo Yii::t(
-                                            'app',
-                                            '{n, plural, =0{# Голов} =1{# Гол} one{# Гол} few{# Гола} many{# Голов} other{# Голов}}',
-                                            ['n' => $playersGoals->goals]
-                                        ); ?> </span>
+                                    <span class="best-players-goals"><?php
+                                        $goals = $playersGoals->goals;
+//                                        $goals = 6;
+                                        $goalsText = '';
+                                        $golov = [
+                                            0,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,35,36,37,38,39,
+                                            40,45,46,47,48,49,50,55,56,57,58,59,60,65,66,67,68,69,70,75,76,77,78,79,80,
+                                            85,86,87,88,89,90,95,96,97,98,99,100
+                                        ];
+                                        $gol = [1,21,31,41,51,61,71,81,91];
+                                        $gola = [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54,62,63,64,72,73,74,82,83,84,92,93,94];
+                                        if (in_array($goals, $golov)) {
+                                            $goalsText = 'Голов';
+                                        } elseif (in_array($goals, $gol)) {
+                                            $goalsText = 'Гол';
+                                        } elseif (in_array($goals, $gola)) {
+                                            $goalsText = 'Гола';
+                                        }
+                                        echo $goals . ' ' . $goalsText;
+
+//                                        echo Yii::t(
+//                                            'app',
+//                                            '{n, plural, =0{# Голов} =1{# Гол} one{# Гол} few{# Гола} many{# Голов} other{# Голов}}',
+//                                            ['n' => 3]
+//                                        );
+                                        $playersGoals->goals
+                                        ?> </span>
                                 </div>
                                 <div class="best-players-image">
                                     <?php
@@ -549,11 +571,28 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <div class="best-players-header">
                                     <span class="best-players-role">Лучший ассистент</span>
                                     <span class="best-players-goals"><?php
-                                        echo Yii::t(
-                                            'app',
-                                            '{n, plural, =0{# Передач} =1{# Передача} one{# Передача} few{# Передачи} many{# Передач} other{# Передач}}',
-                                            ['n' => $playersTransfers->transfers ]
-                                        );
+                                        $transfers = $playersTransfers->transfers;
+                                        $transfersText = '';
+                                        $peredach = [
+                                            0,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,26,27,28,29,30,35,36,37,38,39,
+                                            40,45,46,47,48,49,50,55,56,57,58,59,60,65,66,67,68,69,70,75,76,77,78,79,80,
+                                            85,86,87,88,89,90,95,96,97,98,99,100
+                                        ];
+                                        $peredacha = [1,21,31,41,51,61,71,81,91];
+                                        $peredachi = [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54,62,63,64,72,73,74,82,83,84,92,93,94];
+                                        if (in_array($transfers, $peredach)) {
+                                            $transfersText = 'Передач';
+                                        } elseif (in_array($transfers, $peredacha)) {
+                                            $transfersText = 'Передача';
+                                        } elseif (in_array($transfers, $peredachi)) {
+                                            $transfersText = 'Передачи';
+                                        }
+                                        echo $transfers . ' ' . $transfersText;
+//                                        echo Yii::t(
+//                                            'app',
+//                                            '{n, plural, =0{# Передач} =1{# Передача} one{# Передача} few{# Передачи} many{# Передач} other{# Передач}}',
+//                                            ['n' => $playersTransfers->transfers ]
+//                                        );
                                         ?> </span>
                                 </div>
                                 <div class="best-players-image">
