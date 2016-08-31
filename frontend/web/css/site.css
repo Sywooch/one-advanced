@@ -588,3 +588,26 @@ a:hover, a:focus, a:hover:focus {
     .documents-view .table > tbody > tr > td .glyphicon {
         font-size: 30px;
     }
+
+    .player-info-box-label {
+        position: relative;
+    }
+    .player-info-cards {
+        width: 10px;
+        height: 15px;
+        display: inline-block;
+        position: absolute;
+        left: -16px;
+        top: 0;
+        border: 1px solid;
+    }
+
+    .player-info-cards.yellow {
+        background: #F9C100;
+        border-color: #D6A200;
+    }
+
+    .player-info-cards.red {
+        background: #FC010B;
+        border-color: #CA0005;
+    }

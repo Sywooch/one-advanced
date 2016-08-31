@@ -24,7 +24,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
             <?php
             $images = $model->getImage();
             if($images['urlAlias']!='placeHolder') {
-                echo Html::img($images->getUrl('x350'), ['alt' => $model->name, 'class' => 'thumbnail img-responsive']);
+                echo Html::img($images->getUrl('x450'), ['alt' => $model->name, 'class' => 'thumbnail img-responsive', 'style' => 'height:auto;margin-left: auto;margin-right: auto;']);
             }
             ?>
         </div>
@@ -107,14 +107,23 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                     'nationality' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Гражданство...']],
                     'height' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Рост...']],
                     'weight' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Вес...']],
-                    'goals' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Голов...']],
-                    'transfers' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Передачи...']],
-                    'yellow_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Желтых карточек...']],
-                    'red_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Красных карточек...']],
+//                    'goals' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Голов...']],
+//                    'transfers' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Передачи...']],
+//                    'yellow_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Желтых карточек...']],
+//                    'red_cards' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Красных карточек...']],
                 ]
             ]);
             ?>
-
+            <div class="row">
+                <div class="col-xs-3"><?php echo $form->field($model, 'goals')->input('number', ['step'=>1]); ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'transfers')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'yellow_cards')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'red_cards')->input('number', ['step'=>1]) ?></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3"><?php echo $form->field($model, 'games')->input('number', ['step'=>1]); ?></div>
+                <div class="col-xs-3"><?php echo $form->field($model, 'times')->input('number', ['step'=>1]) ?></div>
+            </div>
 
             <?php // echo $form->field($model, 'goals')->textInput() ?>
 

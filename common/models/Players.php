@@ -25,6 +25,8 @@ use Yii;
  * @property string $patronymic
  * @property string $tag
  * @property string $career
+ * @property integer $games
+ * @property integer $times
  *
  * @property GamesEvents[] $gamesEvents
  * @property GamesEvents[] $gamesEvents0
@@ -57,7 +59,7 @@ class Players extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'surname', 'nationality', 'date', 'teams_id'], 'required'],
-            [['number', 'height', 'weight', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards'], 'integer'],
+            [['number', 'height', 'weight', 'teams_id', 'goals', 'transfers', 'yellow_cards', 'red_cards', 'games', 'times'], 'integer'],
             [['date'], 'safe'],
             [['role', 'content', 'career'], 'string'],
             [['name', 'surname', 'nationality', 'patronymic'], 'string', 'max' => 100],
@@ -90,6 +92,8 @@ class Players extends \yii\db\ActiveRecord
             'content' => 'Контент',
             'tag' => 'Тег',
             'career' => 'Карьера',
+            'games' => 'Игр',
+            'times' => 'Минут',
         ];
     }
 
