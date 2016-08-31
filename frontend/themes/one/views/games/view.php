@@ -64,13 +64,13 @@ if ($model->video_id != '') {
 }
 if ($model->behavior_rules != '' && $model->date > strtotime('-3 hour')) {
     $behavior_rulesStep = true;
-if (isset($_GET['tab']) && $_GET['tab'] == 'rules') {
-    $contentActive = '';
-    $galleryActive = '';
-    $videoActive = '';
-    $prizesActive = '';
-    $behavior_rulesActive = 'active';
-        }
+    if (isset($_GET['tab']) && $_GET['tab'] == 'rules') {
+        $contentActive = '';
+        $galleryActive = '';
+        $videoActive = '';
+        $prizesActive = '';
+        $behavior_rulesActive = 'active';
+    }
 }
 if ($model->prizes != '') {
     $prizesStep = true;
@@ -84,7 +84,7 @@ if ($model->prizes != '') {
 }
 if ($model->behavior_rules != '') {
     $rulesStep = true;
-    if (isset($_GET['tab']) && $_GET['tab'] == 'prizes') {
+    if (isset($_GET['tab']) && $_GET['tab'] == 'behavior_rules') {
         $contentActive = '';
         $galleryActive = '';
         $videoActive = '';

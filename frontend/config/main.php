@@ -23,6 +23,7 @@ return [
                 'pathMap' => [
                     '@app/views' => '@app/themes/one/views',
                     '@app/widgets' => '@app/themes/one/widgets',
+                    '@app/modules' => '@app/themes/one/modules',
                 ],
 
             ],

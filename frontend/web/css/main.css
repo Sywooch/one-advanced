@@ -2256,3 +2256,15 @@ a.news-category {
     margin-top: 50px;
     padding-top: 35px;
 }
+
+.player-game-info .player-info-box {
+    min-width: 80px;
+}
+
+.player-game-info .player-info-box:last-child {
+    margin-right: 0;
+}
+
+.player-info-cards {
+    top: 3px;
+}

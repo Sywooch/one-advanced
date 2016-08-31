@@ -62,21 +62,33 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
                     </div>
                     <div class="player-game-info">
                         <div class="player-info-box">
+                            Игр
+                            <div><?php echo $model->games ?></div>
+                        </div>
+                        <div class="player-info-box">
                             Голов
                             <div><?php echo $model->goals ?></div>
                         </div>
                         <div class="player-info-box">
-                            Желтых карточек
+                            <span class="player-info-box-label" data-toggle="tooltip" title="Жёлтых Карточек" data-placement="right" style="cursor: pointer">
+                                <span class="player-info-cards yellow"></span><span>ЖК</span>
+                            </span>
                             <div><?php echo $model->yellow_cards ?></div>
                         </div>
                     </div>
                     <div class="player-game-info">
                         <div class="player-info-box">
+                            Минут
+                            <div><?php echo $model->times ?></div>
+                        </div>
+                        <div class="player-info-box">
                             Передач
                             <div><?php echo $model->transfers ?></div>
                         </div>
                         <div class="player-info-box">
-                            Красных карточек
+                            <span class="player-info-box-label" data-toggle="tooltip" title="Красных Карточек" data-placement="right" style="cursor: pointer">
+                                <span class="player-info-cards red"></span><span>КК</span>
+                            </span>
                             <div><?php echo $model->red_cards ?></div>
                         </div>
                     </div>
