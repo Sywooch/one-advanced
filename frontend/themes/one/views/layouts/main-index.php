@@ -44,7 +44,34 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 </head>
 <body>
 <?php $this->beginBody() ?>
+<!— Yandex.Metrika counter —>
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter39359185 = new Ya.Metrika({
+                    id:39359185,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
 
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/39359185" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!— /Yandex.Metrika counter —>
 <div class="wrap wrap-index">
     <?php
     NavBar::begin([
@@ -996,18 +1023,24 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                             ?>
                             <div class="copyright">Разработка и поддержка - <a href="http://pixlet.ru/">Pixlet</a></div>
                         </div>
-                        <div class="pull-right">
-                            <!--LiveInternet counter--><script type="text/javascript"><!—
-                                document.write("<a href='//www.liveinternet.ru/click' "+
-                                    "target=_blank><img src='//counter.yadro.ru/hit?t17.1;r"+
+                        <div class="pull-right" style="margin-top: 7px;margin-right: 15px;">
+                            <!--LiveInternet counter--><script type="text/javascript"><!--
+                                new Image().src = "//counter.yadro.ru/hit?r"+
                                     escape(document.referrer)+((typeof(screen)=="undefined")?"":
                                     ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
                                         screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-                                    ";"+Math.random()+
-                                    "' alt='' title='LiveInternet: показано число просмотров за 24"+
-                                    " часа, посетителей за 24 часа и за сегодня' "+
-                                    "border='0' width='88' height='31'><\/a>")
-                                //--></script><!--/LiveInternet-->
+                                    ";"+Math.random();//--></script><!--/LiveInternet-->
+                            <!--LiveInternet logo--><a href="//www.liveinternet.ru/click"
+                                                       target="_blank"><img src="//counter.yadro.ru/logo?17.1"
+                                                                            title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня"
+                                                                            alt="" border="0" width="88" height="31"/></a><!--/LiveInternet-->
+                        </div>
+                        <div class="pull-right" style="margin-top: 7px;margin-right: 15px;">
+                            <!— Yandex.Metrika informer —>
+                            <a href="https://metrika.yandex.ru/stat/?id=39359185&amp;f.."
+                               target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/39359185/3_0_FFFF.."
+                                                                   style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
+                            <!— /Yandex.Metrika informer —>
                         </div>
                     </div>
                     <!--            </div>-->
