@@ -19,7 +19,7 @@ use yii\helpers\Html;
             <div class="image-descr">
                 <div class="image-descr-block">
                     <div class="one">:-(</div>
-                    <div class="two">Сайт временно не доступен</div>
+                    <div class="two">Сайт временно недоступен</div>
                     <div class="three">Ведутся технические работы по обновлению ресурса</div>
                 </div>
             </div>
