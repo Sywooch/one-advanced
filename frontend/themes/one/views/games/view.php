@@ -96,7 +96,7 @@ $images = $model->getImage();
 //var_dump($images);
 
 if($images['urlAlias']!='placeHolder') {
-    $imgUrl = 'background-image: url(' . $images->getUrl() . '); background-color: #0C3D7F';
+    $imgUrl = 'background-image: url(' . $images->getUrl() . ');';
 } else {
     $imgUrl = '';
 }
@@ -146,6 +146,10 @@ if($images['urlAlias']!='placeHolder') {
                 <div class="game-view-category">
                     <?php
                     if ($model->category->name == 'Первенство') {
+                        $img = $model->season->getImage();
+                        if ($img['urlAlias']!='placeHolder') {
+                            echo Html::tag('div', Html::img($img->getUrl('50x'), ['style' => 'margin-right:0px;']), ['class' => 'games-img']);
+                        }
                         echo $model->season->full_name;
                     } else {
                         echo $model->category->name;
@@ -164,7 +168,7 @@ if($images['urlAlias']!='placeHolder') {
                     <span class="game-view-devider"><?php echo ':' ?></span>
                     <span class="game-view-score"><?php echo $score[1] ?></span>
                 </div>
-                <div class="day-month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:d.m H:i') ?></div>
+                <div class="day-month"><?php echo Yii::$app->formatter->asDate($model -> date,'php:d.m H:i') ?> (<?php echo Yii::$app->formatter->asDate($model -> date + 3600,'php:H:i') ?> Мск)</div>
                 <div class="game-view-city-stadion"><?php echo $model->city ?>, Стадион <?php echo $model->stadium?></div>
 
             </div>

@@ -1405,7 +1405,7 @@ a.news-category {
 .games-view-score {
     /*background: #000 url("../i/bg-match.jpg") no-repeat 50% 0;*/
     /*background: url(../themes/one/src/layout/games_bg.jpg) no-repeat 100% 100% #011936;*/
-    background: url(../themes/one/src/layout/games_bg.jpg) no-repeat #213315;
+    background: url(../themes/one/src/layout/unknown-stadium.png) no-repeat #0C3D7F;
 
     color: #fff;
     /* text-transform: uppercase; */
@@ -1414,7 +1414,7 @@ a.news-category {
     margin-bottom: 15px;
     /*padding: 30px 15px;*/
     background-size: 100% 100%;
-    padding: 50px 15px 70px;
+    padding: 50px 15px;
 }
 
 .prev-next-games a span {
@@ -1424,12 +1424,13 @@ a.news-category {
 .prev-next-games a {
     /*opacity: 0.8;*/
     min-height: 34px;
+    opacity: 0.8;
 }
 
 
 .prev-next-games a:hover {
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .prev-next-games {
@@ -1996,7 +1997,7 @@ a.news-category {
     width: 225px;
 }
 
-.promo-game-date > div.timer > div {
+.carousel-promo div.timer > div {
     display: inline-block !important;
 }
 
@@ -2267,4 +2268,30 @@ a.news-category {
 
 .player-info-cards {
     top: 3px;
+}
+
+.game-view-category {
+    position: relative;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.game-view-category .games-img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -55px;
+}
+
+.games-view-score-teams {
+    margin-top: 65px;
+}
+
+.day-month {
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+.game-view-city-stadion {
+    font-size: 18px;
 }
