@@ -321,8 +321,8 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         </div>
                         <div class="pull-right" style="margin-top: 7px;margin-right: 15px;">
                             <!— Yandex.Metrika informer —>
-                            <a href="https://metrika.yandex.ru/stat/?id=39359185&amp;f.."
-                               target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/39359185/3_0_FFFF.."
+                            <a href="https://vk.com/away.php?utf=1&to=https%3A%2F%2Fmetrika.yandex.ru%2Fstat%2F%3Fid%3D39359185%26amp%3Bfrom%3Dinformer"
+                               target="_blank" rel="nofollow"><img src="https://vk.com/away.php?utf=1&to=https%3A%2F%2Finformer.yandex.ru%2Finformer%2F39359185%2F3_0_FFFFFFFF_FFFFFFFF_0_visits"
                                                                    style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
                             <!— /Yandex.Metrika informer —>
                         </div>
