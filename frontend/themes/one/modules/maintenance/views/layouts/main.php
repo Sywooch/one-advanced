@@ -73,6 +73,7 @@
     .image-descr .one {
         text-align: center;
         font-size: 50px;
+        padding-right: 100px;
     }
 
     .image-descr .two {
