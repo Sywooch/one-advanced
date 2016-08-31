@@ -19,8 +19,8 @@ use yii\helpers\Html;
             <div class="image-descr">
                 <div class="image-descr-block">
                     <div class="one">:-(</div>
-                    <div>Сайт временно не работает</div>
-                    <div>Ведутся технические работы по обновлению ресурса</div>
+                    <div class="two">Сайт временно не работает</div>
+                    <div class="three">Ведутся технические работы по обновлению ресурса</div>
                 </div>
             </div>
         </div>

@@ -92,12 +92,20 @@ if ($model->behavior_rules != '') {
         $behavior_rulesActive = 'active';
     }
 }
+$images = $model->getImage();
+//var_dump($images);
+
+if($images['urlAlias']!='placeHolder') {
+    $imgUrl = 'background-image: url(' . $images->getUrl() . '); background-color: #0C3D7F';
+} else {
+    $imgUrl = '';
+}
 ?>
 <div class="games-view">
 
 <!--    <h1>--><?php //echo Html::encode($this->title) ?><!--</h1>-->
 
-    <div class="games-view-score">
+    <div class="games-view-score" style="<?php echo $imgUrl ?>">
         <div class="row text-center prev-next-games">
             <div class="col-xs-4">
                 <?php if (!is_null($gameData['prevGame'])) : ?>

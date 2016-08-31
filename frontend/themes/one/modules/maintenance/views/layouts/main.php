@@ -49,8 +49,9 @@
         text-align: left;
         color: #004597;
         font-weight: bold;
-        font-size: 50px;
+        font-size: 40px;
         padding-left: 50px;
+        margin-top: 20px;
     }
 
     .image-block {
@@ -60,16 +61,22 @@
 
     .image-descr {
         position: absolute;
-        right: 100px;
+        right: 150px;
         top: 100px;
-        bottom: 0;
-        width: 500px;
+        /*bottom: 0;*/
+        width: 310px;
         text-align: left;
         color: #ffffff;
         font-weight: bold;
+        font-size: 18px;
     }
     .image-descr .one {
         text-align: center;
+        font-size: 50px;
+    }
+
+    .image-descr .two {
+        margin: 30px 0;
     }
 
 
