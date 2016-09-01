@@ -93,8 +93,34 @@ $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable
 //    ['class' => 'standings']);
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
+    $i = 0;
     foreach ($data['allPlayers'] as $item) {
-        if (date('m', $item->date) == date('m')) {
+        $i++;
+//        $newdate = strtotime ( '+1 month' , strtotime ( date('m') ) ) ;
+//        var_dump(date('m', strtotime('+1 month')));
+
+//        var_dump(date('d.m', $item->date) >= date('d.m'));
+//28.01.1992
+//04.02.1982
+//11.02.1986
+//        $true = false;
+//        if (date('m', $item->date) == date('m')) {
+//            $true = true;
+//            $i++;
+//        }
+
+//        if (!$true && $i < 5) {
+//            if (date('m', $item->date) == date('m', strtotime('+1 month'))) {
+//                $true = true;
+//                $i++;
+//            }
+//        }
+//var_dump($i);
+//        if (!$true) {
+//            break;
+//        }
+//        if ($true) {
+//            var_dump($item);
             $image = $item->getImage();
             $img = '';
             if($image['urlAlias']!='placeHolder') {
@@ -114,7 +140,7 @@ if (!empty($data['allPlayers'])) {
                     Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
                     ['class' => 'col-xs-8']),
                 ['class' => 'row']).Html::tag('hr');
-        }
+//        }
     }
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['players-bd']);
