@@ -46,6 +46,12 @@ $this->registerJs(
 
         <!--    --><?php //echo $form->field($model, 'date')->textInput() ?>
         </div>
+        <div class="col-xs-12">
+            <?php echo $form->field($model, 'reCaptcha')->widget(
+                \himiklab\yii2\recaptcha\ReCaptcha::className(),
+                ['siteKey' => '6LedACkTAAAAAIOcJlOY_f3Nwa5Bl-l9-iRwe7WU']
+            )->label(false) ?>
+        </div>
     </div>
     <div class="form-group text-right">
         <?php echo Html::submitButton($model->isNewRecord ? 'Опубликовать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
