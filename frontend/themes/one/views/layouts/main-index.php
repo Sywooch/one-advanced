@@ -987,7 +987,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                             <div class="col-xs-2">
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/games?output=all'])?>">Сезон</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
-                                <a class="footer-info-link-small" href="">Бомбардиры</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/bombardiry'])?>">Бомбардиры</a>
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/tickets'])?>">Билеты</a>
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/atributika'])?>">Атрибутика</a>
                             </div>
