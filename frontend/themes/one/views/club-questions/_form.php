@@ -74,7 +74,7 @@ $this->registerJs(
             )->label(false) ?>
         </div>
     </div>
-    <div class="form-group text-right">
+    <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? 'Опубликовать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
