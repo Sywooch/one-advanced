@@ -177,7 +177,10 @@ class SiteController extends Controller
         foreach($allCoaches as $item) {
             $data['allPlayers'][0] = $item;
         }
-//        var_dump(ksort($data['allPlayers']));
+        ksort($data['allPlayers']);
+//        $data['allPlayers'] = ksort($data['allPlayers']);
+//        var_dump($data['allPlayers']);
+//        var_dump(krsort($data['allPlayers']));
 
 //        $data['allPlayers'][0] = $allPlayers[2];
 //        var_dump($allPlayers);
