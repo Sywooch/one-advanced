@@ -20,6 +20,9 @@ use Yii;
  */
 class ClubQuestions extends \yii\db\ActiveRecord
 {
+
+    public $reCaptcha;
+
     /**
      * @inheritdoc
      */
@@ -40,6 +43,7 @@ class ClubQuestions extends \yii\db\ActiveRecord
             [['name', 'addressee'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 255],
             [['ip'], 'string', 'max' => 50],
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LedACkTAAAAAABRB94hv1GBWA3ZreeDbexv0aSY']
         ];
     }
 

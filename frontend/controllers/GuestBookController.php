@@ -96,13 +96,13 @@ class GuestBookController extends Controller
                 }
 
                 if ($model->save()) {
-                    $model = new GuestBook();
-//                    echo Alert::widget([
-//                        'options' => [
-//                            'class' => 'alert-success'
-//                        ],
-//                        'body' => '<b>Успешно!</b> Ваша запись опубликованна.'
-//                    ]);
+//                    $model = new GuestBook();
+                    return Alert::widget([
+                        'options' => [
+                            'class' => 'alert-success'
+                        ],
+                        'body' => '<b>Успешно!</b> Ваша запись опубликованна.'
+                    ]);
                 } else {
                     var_dump($model->errors);
                     exit();

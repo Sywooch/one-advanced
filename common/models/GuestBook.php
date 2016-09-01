@@ -20,6 +20,9 @@ use Yii;
  */
 class GuestBook extends \yii\db\ActiveRecord
 {
+
+    public $reCaptcha;
+
     /**
      * @inheritdoc
      */
@@ -41,6 +44,7 @@ class GuestBook extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 255],
             ['email', 'email'],
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LedACkTAAAAAABRB94hv1GBWA3ZreeDbexv0aSY']
         ];
     }
 
@@ -58,6 +62,7 @@ class GuestBook extends \yii\db\ActiveRecord
             'ip' => 'Ip',
             'status' => 'Статус',
             'date' => 'Дата',
+//            'reCaptcha' => '',
         ];
     }
 
