@@ -16,7 +16,7 @@ $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
     foreach ($data['allPlayers'] as $item) {
-        if (date('m', $item->date) == date('m')) {
+//        if (date('m', $item->date) == date('m')) {
             $image = $item->getImage();
             $img = '';
             if ($image['urlAlias'] != 'placeHolder') {
@@ -39,7 +39,7 @@ if (!empty($data['allPlayers'])) {
                         Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
                         ['class' => 'col-xs-8']),
                     ['class' => 'row']) . Html::tag('hr'), ['/players/view', 'id' => $item->id]);
-        }
+//        }
     }
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);

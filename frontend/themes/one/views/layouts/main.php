@@ -229,7 +229,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                             <div class="col-xs-4">
                                 <a class="footer-info-link">Контакты</a>
                                 <div class="row">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-5">
                                         <div class="footer-info-text">
                                             <h6>Приемная</h6>
                                             <a href="tel:84012216501">8(4012)21-65-01</a>
@@ -243,7 +243,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                             <a href="mailto:press@fc-baltika.ru" style="text-transform: lowercase">press@fc-baltika.ru</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-7">
                                         <div class="footer-info-text">
                                             <div>236000, г.Калининград</div>
                                             <div>ул. Дмитрия Донского, д.2.</div>

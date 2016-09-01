@@ -2295,3 +2295,11 @@ a.news-category {
 .game-view-city-stadion {
     font-size: 18px;
 }
+
+.game-statistics {
+    padding-top: 15px;
+}
+
+.gallery-home .btn-dark {
+    margin-top: 0;
+}
