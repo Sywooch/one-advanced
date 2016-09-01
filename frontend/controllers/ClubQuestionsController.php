@@ -71,13 +71,13 @@ class ClubQuestionsController extends Controller
                 }
 
                 if ($model->save()) {
-                    $model = new ClubQuestions();
-//                    echo Alert::widget([
-//                        'options' => [
-//                            'class' => 'alert-success'
-//                        ],
-//                        'body' => '<b>Успешно!</b> Ваша запись опубликованна.'
-//                    ]);
+//                    $model = new ClubQuestions();
+                    return Alert::widget([
+                        'options' => [
+                            'class' => 'alert-success'
+                        ],
+                        'body' => '<b>Успешно!</b> Ваша запись опубликованна.'
+                    ]);
                 } else {
                     var_dump($model->errors);
                     exit();
