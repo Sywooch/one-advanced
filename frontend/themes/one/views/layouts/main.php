@@ -264,15 +264,15 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/person/administrations'])?>">Руководство</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/person/coaches'])?>">Тренерский Штаб</a>
                                 <!--                                <a class="footer-info-link-small" href="#!">Персонал</a>-->
-                                <a class="footer-info-link-small" href="#!">Стадион</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/stadium'])?>">Стадион</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/history-club'])?>">История</a>
-                                <a class="footer-info-link-small" href="#!">Контакты</a>
+                                <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/page/contacts'])?>">Контакты</a>
                             </div>
                             <div class="col-xs-2">
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/games?output=all'])?>">Сезон</a>
                                 <a class="footer-info-link-small" href="<?php echo Url::toRoute(['/season/tournament'])?>">Турнирная Таблица</a>
-                                <a class="footer-info-link-small" href="#">Бомбардиры</a>
-                                <a class="footer-info-link" href="https://kgd.kassir.ru/kassirwidget/event/1482">Билеты</a>
+                                <a class="footer-info-link-small" href="">Бомбардиры</a>
+                                <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/tickets'])?>">Билеты</a>
                                 <a class="footer-info-link" href="<?php echo Url::toRoute(['/page/atributika'])?>">Атрибутика</a>
                             </div>
                             <div class="col-xs-2">
