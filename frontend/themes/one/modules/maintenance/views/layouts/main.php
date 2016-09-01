@@ -1,7 +1,7 @@
 <?php
 
 /* @var $content string */
-
+use yii\helpers\Html;
 ?>
 <head>
 <!--    <meta name="viewport" content="width=1200">-->
@@ -35,6 +35,9 @@
     .logo-text {
         overflow: hidden;
         margin: 50px 0;
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .logo {
@@ -80,6 +83,34 @@
         margin: 30px 0;
     }
 
+    .social {
+        margin-top: 50px;
+        padding-top: 50px;
+        border-top: 1px solid #eeeeee;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 50px;
+    }
+
+    .social-img {
+        height: 24px;
+        width: 35px;
+        background-position: center center;
+        display: inline-block;
+        background-repeat: no-repeat;
+    }
+    
+    .social-img.vk { background-image: url("/themes/one/src/icons-bal/vk.png"); }
+    .social-img.vk:hover { background-image: url("/themes/one/src/icons-bal/vk-hov.png"); }
+    .social-img.facebook { background-image: url("/themes/one/src/icons-bal/face.png"); }
+    .social-img.facebook:hover { background-image: url("/themes/one/src/icons-bal/face-hov.png"); }
+    .social-img.twitter { background-image: url("/themes/one/src/icons-bal/tw.png"); }
+    .social-img.twitter:hover { background-image: url("/themes/one/src/icons-bal/tw-hov.png"); }
+    .social-img.youtube { background-image: url("/themes/one/src/icons-bal/you.png"); }
+    .social-img.youtube:hover { background-image: url("/themes/one/src/icons-bal/you-hov.png"); }
+    .social-img.instagramm { background-image: url("/themes/one/src/icons-bal/inst.png"); }
+    .social-img.instagramm:hover { background-image: url("/themes/one/src/icons-bal/inst-hov.png"); }
 
 </style>
 

@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use kartik\icons\Icon;
 
 /* @var $message string */
 
@@ -24,6 +25,13 @@ use yii\helpers\Html;
                 </div>
             </div>
         </div>
+    </div>
+    <div class="social">
+        <a href="https://vk.com/fcbaltika" target="_blank"><span class="social-img vk"></span></a>
+        <a href="https://www.facebook.com/fcbaltika" target="_blank"><span class="social-img facebook"></span></a>
+        <a href="https://twitter.com/fcbaltika" target="_blank"><span class="social-img twitter"></span></a>
+        <a href="http://www.youtube.com/user/fcbaltika" target="_blank"><span class="social-img youtube"></span></a>
+        <a href="https://www.instagram.com/fcbaltika/" target="_blank"><span class="social-img instagramm"></span></a>
     </div>
 <!--    Извините, в настоящее время на сайте производятся профилактические работы!-->
 </div>
