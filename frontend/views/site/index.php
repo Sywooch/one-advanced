@@ -91,9 +91,33 @@ $this->params['widget_bar'] = StandingsWidget::widget(['template' => 'smallTable
 //        ],
 //    ]),
 //    ['class' => 'standings']);
+//$data['allCoaches']
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
     $i = 0;
+    if (!empty($data['allCoaches'])) {
+        foreach ($data['allCoaches'] as $item) {
+            $image = $item->getImage();
+            $img = '';
+            if($image['urlAlias']!='placeHolder') {
+                $sizes = $image->getSizesWhen('x60');
+                $img = Html::img($image->getUrl('x60'),[
+                    'alt'=> $item->surname . ' ' .$item->name,
+                    'class' => '',
+                    'width'=>$sizes['width'],
+                    'height'=>$sizes['height']
+                ]);
+            }
+            $playersBD .= Html::tag('div',
+                    Html::tag('div', $img, ['class' => 'col-xs-4 text-center']).
+                    Html::tag('div',
+                        Html::tag('div', $item->name).
+                        Html::tag('div', Html::tag('b', $item->surname)).
+                        Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
+                        ['class' => 'col-xs-8']),
+                    ['class' => 'row']).Html::tag('hr');
+        }
+    }
     foreach ($data['allPlayers'] as $item) {
         $i++;
 //        $newdate = strtotime ( '+1 month' , strtotime ( date('m') ) ) ;
