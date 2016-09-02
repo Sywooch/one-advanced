@@ -115,7 +115,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
     ]);
         echo Html::beginTag('div',['class'=>'row']);
             echo Html::beginTag('div',['class'=>'col-xs-9 pull-right name-menu']);//col-xs-offset-1
-                echo Html::img('@web/themes/one/src/layout/GK_sodruzestvo_white_2.png', ['class' => 'sponsor-header']);
+                echo Html::a(false, 'http://www.sodrugestvo.ru/', ['class' => 'sponsor-header', 'target' => '_blank']);
                 echo Html::tag('h3','Официальный сайт футбольного клуба');
                 echo Html::tag('h2','"Балтика" Калининград');
                 echo MenuWidget::widget(['position' => 'headerBottom']);

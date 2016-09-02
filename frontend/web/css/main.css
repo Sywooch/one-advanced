@@ -1123,12 +1123,21 @@ a.btn-dark {
     /*height: 350px;*/
 }
 
-.name-menu img.sponsor-header {
+.name-menu .sponsor-header {
     position: absolute;
     right: 15px;
     top: 20px;
-    height: 60px;
+    height: 50px;
+    width: 274px;
+    background-image: url(../themes/one/src/layout/sodr-1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: all 0.2s ease;
 }
+
+/*.name-menu .sponsor-header:hover {*/
+    /*background-image: url(../themes/one/src/layout/sodr.png);*/
+/*}*/
 
 .news-list-block {
     display: block;
@@ -2302,4 +2311,9 @@ a.news-category {
 
 .gallery-home .btn-dark {
     margin-top: 0;
+}
+
+.select2-container--krajee .select2-selection__clear,
+button.close {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
