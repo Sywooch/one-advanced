@@ -82,16 +82,16 @@ if ($model->prizes != '') {
         $behavior_rulesActive = '';
     }
 }
-if ($model->behavior_rules != '') {
-    $rulesStep = true;
-    if (isset($_GET['tab']) && $_GET['tab'] == 'behavior_rules') {
-        $contentActive = '';
-        $galleryActive = '';
-        $videoActive = '';
-        $prizesActive = '';
-        $behavior_rulesActive = 'active';
-    }
-}
+//if ($model->behavior_rules != '') {
+//    $rulesStep = true;
+//    if (isset($_GET['tab']) && $_GET['tab'] == 'behavior_rules') {
+//        $contentActive = '';
+//        $galleryActive = '';
+//        $videoActive = '';
+//        $prizesActive = '';
+//        $behavior_rulesActive = 'active';
+//    }
+//}
 $images = $model->getImage();
 //var_dump($images);
 
@@ -221,7 +221,7 @@ if($images['urlAlias']!='placeHolder') {
                     <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Видео</a></li>
                 <?php endif; ?>
                 <?php if ($pressConferenceStep) : ?>
-                    <li role="presentation" class="<?php echo $videoActive ?>"><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Пресс конференция</a></li>
+                    <li role="presentation" class=""><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Пресс конференция</a></li>
                 <?php endif; ?>
                 <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
                     <li role="presentation" class="<?php echo $behavior_rulesActive ?>"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Правила поведения на матче</a></li>

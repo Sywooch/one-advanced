@@ -35,7 +35,7 @@ $this->params['headerName'] = $this->title;
         echo Html::tag('div', $model->snippet, ['class' => 'news-snippet']);
         echo Html::tag('div',$model->content,['class'=>'news-view-content']);
 
-        if($images[0]['urlAlias']!='placeHolder') {
+        if($images[0]['urlAlias']!='placeHolder' && isset($images[1])) {
             ?>
             <div class="news-images-block">
                 <?php
