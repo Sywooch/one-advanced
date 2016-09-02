@@ -135,7 +135,7 @@ class SiteController extends Controller
         $dataProvider['news'] = new ActiveDataProvider([
             'query' => News::find()->where(['status_id'=>'on'])->orderBy('date_create DESC, id DESC')->limit(10),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 11,
             ],
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
