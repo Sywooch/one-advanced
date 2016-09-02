@@ -215,7 +215,7 @@ if($images['urlAlias']!='placeHolder') {
                     <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab"><i class="fa fa-television" aria-hidden="true"></i> Трансляция</a></li>
                 <?php endif; ?>
                 <?php if ($statisticsStep) : ?>
-                    <li role="presentation" class="<?php echo $videoActive ?>"><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Статистика</a></li>
+                    <li role="presentation" class=""><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Статистика</a></li>
                 <?php endif; ?>
                 <?php if ($videoStep) : ?>
                     <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Видео</a></li>
@@ -232,7 +232,9 @@ if($images['urlAlias']!='placeHolder') {
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <?php if ($model->content != '') : ?>
+                <?php if ($previewStep && $model->date > time()) : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->preview_content ?></div>
+                <?php else : ?>
                     <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->content ?></div>
                 <?php endif; ?>
                 <?php if ($compositionsStep) : ?>
