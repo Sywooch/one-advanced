@@ -175,9 +175,10 @@ class SiteController extends Controller
             }
         }
         foreach($allCoaches as $item) {
-            $data['allPlayers'][0] = $item;
+            $data['allCoaches'][0] = $item;
         }
         ksort($data['allPlayers']);
+//        ksort($data['allCoaches']);
 //        $data['allPlayers'] = ksort($data['allPlayers']);
 //        var_dump($data['allPlayers']);
 //        var_dump(krsort($data['allPlayers']));
