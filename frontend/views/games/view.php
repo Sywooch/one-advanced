@@ -163,7 +163,6 @@ if ($model->prizes != '') {
             <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Превью</a></li>
         <?php else : ?>
             <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>
-
         <?php endif; ?>
 <!--        <li role="presentation" class="--><?php //echo $contentActive ?><!--"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Обзор</a></li>-->
 <!--        //        $galleryStep = false;-->
@@ -177,13 +176,13 @@ if ($model->prizes != '') {
             <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab">Трансляция</a></li>
         <?php endif; ?>
         <?php if ($statisticsStep) : ?>
-            <li role="presentation" class="<?php echo $videoActive ?>"><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab">Статистика</a></li>
+            <li role="presentation" class=""><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab">Статистика</a></li>
         <?php endif; ?>
         <?php if ($videoStep) : ?>
             <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Видео</a></li>
         <?php endif; ?>
         <?php if ($pressConferenceStep) : ?>
-            <li role="presentation" class="<?php echo $videoActive ?>"><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab">Пресс конференция</a></li>
+            <li role="presentation" class=""><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab">Пресс конференция</a></li>
         <?php endif; ?>
         <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
             <li role="presentation"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab">Правила поведения на матче</a></li>
@@ -199,7 +198,7 @@ if ($model->prizes != '') {
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <?php if ($previewStep && $model->date < time()) : ?>
+        <?php if ($previewStep && $model->date > time()) : ?>
             <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->preview_content ?></div>
         <?php else : ?>
             <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->content ?></div>

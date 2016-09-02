@@ -138,7 +138,9 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
         'form'=>$form,
         'columns'=>1,
         'attributes'=>[
-            'content'=>['type'=>Form::INPUT_TEXTAREA, 'options'=>['placeholder'=>'Enter notes...']],
+            'preview_content' => [
+                'type'=>Form::INPUT_TEXTAREA,
+            ],
         ]
     ]);
 
@@ -180,13 +182,13 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
             'form' => $form,
             'columns' => 1,
             'attributes' => [
+                'content'=>[
+                    'type'=>Form::INPUT_TEXTAREA
+                ],
                 'translation' => [
                     'type'=>Form::INPUT_TEXTAREA,
                 ],
                 'recaps' => [
-                    'type'=>Form::INPUT_TEXTAREA,
-                ],
-                'preview_content' => [
                     'type'=>Form::INPUT_TEXTAREA,
                 ],
                 'statistics' => [
@@ -284,12 +286,12 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 <?php $this->registerJsFile('//cdn.ckeditor.com/4.5.7/standard/ckeditor.js'); ?>
 <?php $this->registerJs(
     <<<JS
+CKEDITOR.replace("games-preview_content");
 CKEDITOR.replace("games-content");
 //CKEDITOR.replace("games-translation");
 CKEDITOR.replace("games-recaps");
 CKEDITOR.replace("games-behavior_rules");
 CKEDITOR.replace("games-prizes");
-CKEDITOR.replace("games-preview_content");
 CKEDITOR.replace("games-statistics");
  CKEDITOR.filter.allowedContentRules = true;
  CKEDITOR.config.allowedContent=true;
