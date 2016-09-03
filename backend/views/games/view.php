@@ -14,7 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="games-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <?php
+    $image = $model->getImage();
+    if($image['urlAlias']!='placeHolder') {
+        echo Html::img($image->getUrl(''),['alt' => $model->stadium, 'class' => 'img-responsive', 'style' => 'margin-bottom: 20px']);
+    }
+    ?>
     <p>
         <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
@@ -50,9 +55,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     'referee',
                     'referee2',
                     'referee3',
-                    'content:html',
+                    [
+                        'attribute' => 'category.name',
+                        'label' => 'Категория Матча',
+                    ],
+                    [
+                        'attribute' => 'gallery.name',
+                        'label' => 'Имя Галереи Матча',
+                    ],
+                    'translation',
+                    'video_id',
+
+                    'ticket_id',
+                    'prizes',
+                    'recaps',
+                    'statistics',
+                    'press_conference',
+                    'press_conference2',
                     'date:datetime',
                     'status',
+                    'preview_content:html',
+                    'content:html',
+                    'behavior_rules:html',
                 ],
             ]);
             ?>

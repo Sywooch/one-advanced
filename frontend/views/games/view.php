@@ -46,7 +46,7 @@ if ($model->translation != '') {
 if ($model->statistics != '') {
     $statisticsStep = true;
 }
-if ($model->press_conference != '') {
+if ($model->press_conference != '' || $model->press_conference2 != '') {
     $pressConferenceStep = true;
 }
 if ($model->video_id != '') {
@@ -329,7 +329,17 @@ if ($model->prizes != '') {
             <?php endif; ?>
         <?php if ($pressConferenceStep) : ?>
             <div role="tabpanel" class="tab-pane" id="pressConference">
+                <?php if ($model->press_conference != '') : ?>
                 <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference ?>" frameborder="0" allowfullscreen></iframe>
+                <?php endif; ?>
+                <?php
+                if ($model->press_conference != '' && $model->press_conference2 != '') {
+                    echo Html::tag('p', false, ['style' => 'margin-bottom: 20px']);
+                }
+                ?>
+                <?php if ($model->press_conference2 != '') : ?>
+                <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference2 ?>" frameborder="0" allowfullscreen></iframe>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
         <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>

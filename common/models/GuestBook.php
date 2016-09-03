@@ -37,7 +37,7 @@ class GuestBook extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['body'], 'required'],
+            [['body', 'name', 'email'], 'required'],
             [['body', 'status'], 'string'],
             [['user_id', 'date'], 'integer'],
             [['ip'], 'string', 'max' => 50],

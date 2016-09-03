@@ -41,7 +41,7 @@ class ClubQuestionsSearch extends ClubQuestions
      */
     public function search($params)
     {
-        $query = ClubQuestions::find();
+        $query = ClubQuestions::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 

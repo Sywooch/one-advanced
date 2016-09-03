@@ -221,7 +221,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
             'attributes' => [
                 'video_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
                 'press_conference' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
-                'ticket_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
+                'press_conference2' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
 
             ]
         ]);
@@ -229,7 +229,7 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
 
     ?>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-6">
             <?php
             echo '<label>Превью</label>';
             echo FileInput::widget([
@@ -245,40 +245,51 @@ $model->date = Yii::$app->formatter->asDatetime(($model->isNewRecord ? time() : 
             ]);
             ?>
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-6">
             <?php
 
-                echo Form::widget([       // 1 column layout
-                    'model'=>$model,
-                    'form'=>$form,
-                    'columns'=>2,
-                    'attributes'=>[
-                        'status'=>[
-                            'label'=>'Статус',
-                            'items'=>[
-                                'будет' => 'будет',
-                                'был' => 'был',
-                                'отменён' => 'отменён',
-                                'перенесён' => 'перенесён',
-                            ],
-                            'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
-                            'options'=>[
-                                'class'=>'show'
-                            ]
-                        ],
-                        'actions'=>[
-                            'type'=>Form::INPUT_RAW,
-                            'value'=>'<div style="margin-top: 25px">' .
-                                Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
-                                Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
-                                '</div>'
-                        ],
-                    ]
-                ]);
+            echo Form::widget([
+                'model' => $model,
+                'form' => $form,
+                'columns' => 1,
+                'attributes' => [
+                    'ticket_id' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите ID...']],
+                ]
+            ]);
 
             ?>
         </div>
     </div>
+
+    <?php
+    echo Form::widget([       // 1 column layout
+        'model'=>$model,
+        'form'=>$form,
+        'columns'=>2,
+        'attributes'=>[
+            'status'=>[
+                'label'=>'Статус',
+                'items'=>[
+                    'будет' => 'будет',
+                    'был' => 'был',
+                    'отменён' => 'отменён',
+                    'перенесён' => 'перенесён',
+                ],
+                'type'=>Form::INPUT_RADIO_BUTTON_GROUP,
+                'options'=>[
+                    'class'=>'show'
+                ]
+            ],
+            'actions'=>[
+                'type'=>Form::INPUT_RAW,
+                'value'=>'<div style="margin-top: 25px">' .
+                    Html::resetButton('Сбросить', ['class'=>'btn btn-default']) . ' ' .
+                    Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) .
+                    '</div>'
+            ],
+        ]
+    ]);
+    ?>
 
     <?php ActiveForm::end(); ?>
 
