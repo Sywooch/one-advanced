@@ -389,7 +389,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                         </div>
                                                         <div class="col-xs-2 text-center promo-game-score vcenter">
                                                             <div><?php
-                                                                if ($item->score == '0:0' && $item->date > time()) {
+                                                                if ($item->score == '0:0' && $item->date > time()-3600) {
                                                                     echo '<div>-:-</div>';
                                                                 } else {
                                                                     echo $item->score;
@@ -904,8 +904,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         <div class="footer-promotions-top">
                             <div class="row text-center">
                                 <?php
-                                echo Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']);
-
+                                echo Html::a(
+                                    Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']),
+                                        'http://www.sodrugestvo.ru/',
+                                        ['target' => '_blank']
+                                    );
                                 //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
                                 ?>
                             </div>
@@ -913,11 +916,41 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         <div class="footer-promotions-middle">
                             <div class="row">
                                 <?php
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),['class'=>'']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),['class'=>'']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),['class'=>'']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),
+                                        'http://www.novatek.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                    Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),
+                                        'http://www.tele-sport.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),
+                                        'http://www.jako-russia.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),
+                                        'http://news.sportbox.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),
+                                        'http://matchtv.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
                                 ?>
                             </div>
                             <?php
@@ -931,10 +964,34 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         <div class="footer-promotions-bottom">
                             <div class="row">
                                 <?php
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),['class'=>'col-xs-2 col-xs-offset-2']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                                echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/RFS.png', ['class' => 'img-responsive']),
+                                        'http://www.rfs.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'col-xs-2 col-xs-offset-2']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/KO.png', ['class' => 'img-responsive']),
+                                        'http://www.gov39.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'col-xs-2']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/KGD.png', ['class' => 'img-responsive']),
+                                        'http://www.klgd.ru/',
+                                        ['target' => '_blank']
+                                ),
+                                ['class'=>'col-xs-2']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/FNL.png', ['class' => 'img-responsive']),
+                                        'http://1fnl.ru/',
+                                        ['target' => '_blank']
+                                ),
+                                ['class'=>'col-xs-2']);
                                 //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/FNL_fonbet.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
                                 ?>
                             </div>

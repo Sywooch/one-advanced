@@ -235,14 +235,14 @@ class SiteController extends Controller
         $data['gamesLast'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
-            ->andWhere(['<', 'date', time()])
+            ->andWhere(['<', 'date', time()-3600])
             ->orderBy('date DESC')
             ->limit(3)
             ->all();
         $data['gamesFirst'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
-            ->andWhere(['>', 'date', time()])
+            ->andWhere(['>', 'date', time()-3600])
             ->orderBy('date')
             ->limit(3)
             ->all();

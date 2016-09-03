@@ -13,6 +13,7 @@ $this->title = $model->home->name.' : '.$model->guest->name;
 $this->params['breadcrumbs'][] = ['label' => 'Матчи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['image_page'] = '';
+$contentStep = false;
 $compositionsStep = false;
 $galleryStep = false;
 $translationStep = false;
@@ -27,7 +28,10 @@ $galleryActive = '';
 $videoActive = '';
 $prizesActive = '';
 $behavior_rulesActive = '';
-if ($model->preview_content != '') {
+if ($model->content != '') {
+    $contentStep = true;
+}
+if ($model->preview_content != '' || $model->press_conference2 != '') {
     $previewStep = true;
 }
 if ((!empty($gameData['home']) && !empty($gameData['guest'])) || ($model->recaps != '')) {
@@ -157,7 +161,7 @@ if($images['urlAlias']!='placeHolder') {
                     ?>
                 </div>
                 <?php
-                    if ($model->score == '0:0' && $model->date > time()) {
+                    if ($model->score == '0:0' && $model->date > time()-3600) {
                         $model->score = '-:-';
                     }
                     $score = explode(':', $model->score);
@@ -193,35 +197,45 @@ if($images['urlAlias']!='placeHolder') {
         </div>
     </div>
     <div class="game-view-block">
-        <?php if ($model->content != '') : ?>
+<!--        --><?php //if ($model->content != '') : ?>
         <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <?php if ($previewStep && $model->date > time()) : ?>
-                    <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Превью</a></li>
-                <?php else : ?>
-                    <li role="presentation" class="<?php echo $contentActive ?>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Отчёт</a></li>
+<!--                --><?php //if ($previewStep && $model->date > time()) : ?>
+<!--                    <li role="presentation" class="--><?php //echo $contentActive ?><!--"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Превью</a></li>-->
+<!--                --><?php //else : ?>
+<!--                    <li role="presentation" class="--><?php //echo $contentActive ?><!--"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Отчёт</a></li>-->
+<!--                --><?php //endif; ?>
+                <?php if ($previewStep) : ?>
+                    <li role="presentation" class="<?php echo $contentActive ?>" >
+                        <a href="#preview" aria-controls="preview" role="tab" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i> Превью</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($contentStep) : ?>
+                    <li role="presentation">
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-file-o" aria-hidden="true"></i> Отчёт</a>
+                    </li>
                 <?php endif; ?>
                 <?php if ($compositionsStep) : ?>
                     <li role="presentation">
-                        <a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Составы</a>
+                        <a href="#compositions" aria-controls="compositions" role="tab" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i> Составы</a>
                     </li>
+                <?php endif; ?>
+                <?php if ($statisticsStep) : ?>
+                    <li role="presentation" class=""><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Статистика</a></li>
+                <?php endif; ?>
+                <?php if ($pressConferenceStep) : ?>
+                    <li role="presentation" class=""><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Пресс-конференция</a></li>
                 <?php endif; ?>
                 <?php if ($galleryStep) : ?>
                     <li role="presentation" class="<?php echo $galleryActive ?>">
                         <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab"><i class="fa fa-camera" aria-hidden="true"></i> Фото</a>
                     </li>
                 <?php endif; ?>
-                <?php if ($translationStep) : ?>
-                    <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab"><i class="fa fa-television" aria-hidden="true"></i> Трансляция</a></li>
-                <?php endif; ?>
-                <?php if ($statisticsStep) : ?>
-                    <li role="presentation" class=""><a href="#statistics" aria-controls="statistics" role="tab" data-toggle="tab"><i class="fa fa-align-justify" aria-hidden="true"></i> Статистика</a></li>
-                <?php endif; ?>
                 <?php if ($videoStep) : ?>
                     <li role="presentation" class="<?php echo $videoActive ?>"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Видео</a></li>
                 <?php endif; ?>
-                <?php if ($pressConferenceStep) : ?>
-                    <li role="presentation" class=""><a href="#pressConference" aria-controls="pressConference" role="tab" data-toggle="tab"><i class="fa fa-video-camera" aria-hidden="true"></i> Пресс конференция</a></li>
+                <?php if ($translationStep) : ?>
+                    <li role="presentation"><a href="#translation" aria-controls="translation" role="tab" data-toggle="tab"><i class="fa fa-television" aria-hidden="true"></i> Трансляция</a></li>
                 <?php endif; ?>
                 <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
                     <li role="presentation" class="<?php echo $behavior_rulesActive ?>"><a href="#behavior_rules" aria-controls="behavior_rules" role="tab" data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Правила поведения на матче</a></li>
@@ -232,10 +246,16 @@ if($images['urlAlias']!='placeHolder') {
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <?php if ($previewStep && $model->date > time()) : ?>
-                    <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->preview_content ?></div>
-                <?php else : ?>
-                    <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="home"><?php echo $model->content ?></div>
+<!--                --><?php //if ($previewStep && $model->date > time()) : ?>
+<!--                    <div role="tabpanel" class="tab-pane --><?php //echo $contentActive ?><!--" id="home">--><?php //echo $model->preview_content ?><!--</div>-->
+<!--                --><?php //else : ?>
+<!--                    <div role="tabpanel" class="tab-pane --><?php //echo $contentActive ?><!--" id="home">--><?php //echo $model->content ?><!--</div>-->
+<!--                --><?php //endif; ?>
+                <?php if ($previewStep) : ?>
+                    <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="preview"><?php echo $model->preview_content ?></div>
+                <?php endif; ?>
+                <?php if ($contentStep) : ?>
+                    <div role="tabpanel" class="tab-pane " id="home"><?php echo $model->content ?></div>
                 <?php endif; ?>
                 <?php if ($compositionsStep) : ?>
                     <div role="tabpanel" class="tab-pane" id="compositions">
@@ -368,7 +388,17 @@ if($images['urlAlias']!='placeHolder') {
                 <?php endif; ?>
                 <?php if ($pressConferenceStep) : ?>
                     <div role="tabpanel" class="tab-pane" id="pressConference">
-                        <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference ?>" frameborder="0" allowfullscreen></iframe>
+                        <?php if ($model->press_conference != '') : ?>
+                            <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference ?>" frameborder="0" allowfullscreen></iframe>
+                        <?php endif; ?>
+                        <?php
+                        if ($model->press_conference != '' && $model->press_conference2 != '') {
+                            echo Html::tag('p', false, ['style' => 'margin-bottom: 20px']);
+                        }
+                        ?>
+                        <?php if ($model->press_conference2 != '') : ?>
+                            <iframe style="width: 100%; height: 620px;" src="https://www.youtube.com/embed/<?php echo $model->press_conference2 ?>" frameborder="0" allowfullscreen></iframe>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <?php if ($behavior_rulesStep && $model->home->name == Yii::$app->params['main-team']) : ?>
@@ -378,7 +408,7 @@ if($images['urlAlias']!='placeHolder') {
                     <div role="tabpanel" class="tab-pane <?php echo $prizesActive ?>" id="prizes"><?php echo $model->prizes ?></div>
                 <?php endif; ?>
             </div>
-        <?php endif; ?>
+<!--        --><?php //endif; ?>
     </div>
 <!--    <div class="row">-->
 <!--        <div class="col-xs-4">-->
