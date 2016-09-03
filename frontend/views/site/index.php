@@ -390,6 +390,15 @@ if (!empty($data['allPlayers'])) {
                                         if ($item->prizes != '') {
                                             echo Html::a(Icon::show('gift'), ['/games/view', 'id' => $item->id, 'tab' => 'prizes']);
                                         }
+                                        if ($item->press_conference != '' || $item->press_conference2 != '') {
+                                            echo Html::a(Icon::show('microphone'), ['/games/view', 'id' => $item->id, 'tab' => 'press_conference']);
+                                        }
+                                        if ($item->behavior_rules) {
+                                            echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules']);
+                                        }
+                                        if ($item->translation) {
+                                            echo Html::a(Icon::show('exclamation-triangle'), ['/games/view', 'id' => $item->id, 'tab' => 'rules']);
+                                        }
                                         ?>
                                     </div>
                                 </div>

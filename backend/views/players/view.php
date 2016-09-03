@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Players */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Players', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Игроки', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="players-view well">
@@ -16,31 +16,30 @@ $this->params['breadcrumbs'][] = $this->title;
     $images = $model->getImages();
     //var_dump($images->isMain);die;
     if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
-        echo Html::beginTag('div',['class'=>'']);
+        echo Html::beginTag('div',['class'=>'pull-left']);
             $image = $model->getImage();
-            $sizes = $image->getSizesWhen('x150');
-            echo Html::tag(
-                'p',
-                Html::img($image->getUrl('x150'),['class' => 'img-responsive thumbnail','width'=>$sizes['width'], 'height'=>$sizes['height']]),
-                ['class'=>'']
-            );
+//            echo Html::tag(
+//                'p',
+                echo Html::img($image->getUrl('x400'),['class' => 'img-responsive',]);
+//                ['class'=>'']
+//            );
         echo Html::endTag('div');
 
     }
     ?>
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+    <p class="pull-right">
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
+
+<!--    <h1>--><?php //echo Html::encode($this->title) ?><!--</h1>-->
+    <div class="clearfix"></div>
 
     <?= DetailView::widget([
         'model' => $model,
