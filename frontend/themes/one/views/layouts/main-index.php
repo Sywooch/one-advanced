@@ -748,13 +748,20 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 <!--        </div>-->
         <div class="row">
             <div class="col-xs-12">
+
+                <div class="promo-banners promo-banners-top" style="padding-bottom: 0">
+                    <div class="row">
+                        <div class="col-xs-6 text-right"><a href="<?php echo Url::toRoute(['/page/atributika'])?>"><?php echo Html::img('@web/themes/one/src/needless/attributika.png'); ?></a></div>
+                        <div class="col-xs-6"><a href="<?php echo Url::toRoute(['/page/tickets']); ?>"><?php echo Html::img('@web/themes/one/src/needless/tickets.jpg'); ?></a></div>
+                    </div>
+                </div>
                 <div class="promo-banners">
                     <div class="row">
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
-                        <div class="col-xs-6 text-right"><a href="<?php echo Url::toRoute(['/page/atributika'])?>"><?php echo Html::img('@web/themes/one/src/needless/attributika.png'); ?></a></div>
+                        <div class="col-xs-6 text-right"><a href="<?php echo Url::toRoute(['/page/rules'])?>"><?php echo Html::img('@web/themes/one/src/needless/rules.jpg'); ?></a></div>
                         <div class="col-xs-6"><a href="<?php echo Url::toRoute(['/club-questions']); ?>"><?php echo Html::img('@web/themes/one/src/needless/vopros.jpg'); ?></a></div>
                     </div>
                 </div>
