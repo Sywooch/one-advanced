@@ -31,7 +31,10 @@ use yii\widgets\ActiveForm;
 <!--    --><?php //echo $form->field($model, 'ip')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'status')->dropDownList([ 'on' => 'On', 'off' => 'Off', ]) ?>
-
+    <?php echo $form->field($model, 'reCaptcha')->widget(
+        \himiklab\yii2\recaptcha\ReCaptcha::className(),
+        ['siteKey' => '6LedACkTAAAAAIOcJlOY_f3Nwa5Bl-l9-iRwe7WU']
+    )->label(false) ?>
     <?php
     if ($model->isNewRecord) {
         echo $form->field($model, 'date')->hiddenInput()->label(false);

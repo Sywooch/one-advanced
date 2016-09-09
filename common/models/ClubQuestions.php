@@ -37,7 +37,7 @@ class ClubQuestions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question', 'addressee'], 'required'],
+            [['question', 'addressee', 'name', 'email'], 'required'],
             [['question', 'answer', 'status'], 'string'],
             [['user_id', 'date'], 'integer'],
             [['name', 'addressee'], 'string', 'max' => 100],

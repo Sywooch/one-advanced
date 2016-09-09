@@ -17,14 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
 
-    $images = $model->getImages();
+    $image = $model->getImage();
 //var_dump($images->isMain);die;
-    if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
+    if($image['urlAlias']!='placeHolder') {
         $image = $model->getImage();
-        $sizes = $image->getSizesWhen('x300');
         echo Html::tag(
             'p',
-            Html::img($image->getUrl('x300'),['class' => 'img-responsive  thumbnail','width'=>$sizes['width'], 'height'=>$sizes['height']]),
+            Html::img($image->getUrl(''),['class' => 'img-responsive']),
             ['class'=>'']
         );
 

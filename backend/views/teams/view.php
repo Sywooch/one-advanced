@@ -18,10 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //var_dump($images->isMain);die;
             if($images[0]['urlAlias']!='placeHolder' && $images[0]->isMain) {
                 $image = $model->getImage();
-                $sizes = $image->getSizesWhen('x100');
                 echo Html::tag(
                     'p',
-                    Html::img($image->getUrl('x100'),['class' => 'img-responsive thumbnail','width'=>$sizes['width'], 'height'=>$sizes['height']]),
+                    Html::img($image->getUrl(''),['class' => 'img-responsive',]),
                     ['class'=>'']
                 );
 
