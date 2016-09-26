@@ -21,8 +21,8 @@ use yii\widgets\ActiveForm;
                 <div class="col-xs-3"><?php echo $form->field($model, 'lesions')->input('number', ['step'=>1]) ?></div>
             </div>
             <div class="row">
-                <div class="col-xs-4"><?php echo $form->field($model, 'goals_against')->input('number', ['step'=>1]) ?></div>
                 <div class="col-xs-4"><?php echo $form->field($model, 'goals_scored')->input('number', ['step'=>1]) ?></div>
+                <div class="col-xs-4"><?php echo $form->field($model, 'goals_against')->input('number', ['step'=>1]) ?></div>
                 <div class="col-xs-4"><?php echo $form->field($model, 'spectacles')->input('number', ['step'=>1]) ?></div>
             </div>
 
