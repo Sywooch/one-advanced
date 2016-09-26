@@ -45,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'draws',
             'lesions',
             'spectacles',
-            'goals_against',
             'goals_scored',
+            'goals_against',
         ],
     ]) ?>
 
