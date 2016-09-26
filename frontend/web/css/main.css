@@ -557,6 +557,14 @@ a {
     /*margin-top: 20px;*/
 }
 
+.news-first-blocks.news-block h4 {
+    height: 40px;
+}
+
+.news-first-blocks .news-home-text {
+    height: 70px;
+}
+
 .news-index a:hover h4 {
     color:#01316d;
 }
