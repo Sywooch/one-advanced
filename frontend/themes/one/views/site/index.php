@@ -21,35 +21,6 @@ $categories = [
 
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
-if (!empty($data['allCoaches'])) {
-
-    foreach ($data['allCoaches'] as $item) {
-//        if (date('m', $item->date) == date('m')) {
-        $image = $item->getImage();
-        $img = '';
-        if ($image['urlAlias'] != 'placeHolder') {
-//                $sizes = $image->getSizesWhen('60x60');
-            $img = Html::tag('div', false, [
-                'style' => 'background-image:url(\''. $image->getUrl('60x') .'\');height:60px;width:60px;background-repeat: no-repeat;background-size: 100%;'
-            ]);
-//                $img = Html::img($image->getUrl('x60'), [
-//                    'alt' => $item->surname . ' ' . $item->name,
-//                    'class' => '',
-////                    'width' => $sizes['width'],
-////                    'height' => $sizes['height']
-//                ]);
-        }
-        $playersBD .= Html::a(Html::tag('div',
-                Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
-                Html::tag('div',
-                    Html::tag('div', $item->name) .
-                    Html::tag('div', Html::tag('b', $item->surname)) .
-                    Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
-                    ['class' => 'col-xs-8']),
-                ['class' => 'row']) . Html::tag('hr'), ['/coaching-staff/view', 'id' => $item->id, 'category' => $categories[$item->category]]);
-//        }
-    }
-}
     foreach ($data['allPlayers'] as $item) {
 //        if (date('m', $item->date) == date('m')) {
             $image = $item->getImage();
@@ -75,6 +46,35 @@ if (!empty($data['allCoaches'])) {
                         ['class' => 'col-xs-8']),
                     ['class' => 'row']) . Html::tag('hr'), ['/players/view', 'id' => $item->id]);
 //        }
+    }
+    if (!empty($data['allCoaches'])) {
+
+        foreach ($data['allCoaches'] as $item) {
+            //        if (date('m', $item->date) == date('m')) {
+            $image = $item->getImage();
+            $img = '';
+            if ($image['urlAlias'] != 'placeHolder') {
+                //                $sizes = $image->getSizesWhen('60x60');
+                $img = Html::tag('div', false, [
+                    'style' => 'background-image:url(\''. $image->getUrl('60x') .'\');height:60px;width:60px;background-repeat: no-repeat;background-size: 100%;'
+                ]);
+                //                $img = Html::img($image->getUrl('x60'), [
+                //                    'alt' => $item->surname . ' ' . $item->name,
+                //                    'class' => '',
+                ////                    'width' => $sizes['width'],
+                ////                    'height' => $sizes['height']
+                //                ]);
+            }
+            $playersBD .= Html::a(Html::tag('div',
+                    Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
+                    Html::tag('div',
+                        Html::tag('div', $item->name) .
+                        Html::tag('div', Html::tag('b', $item->surname)) .
+                        Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
+                        ['class' => 'col-xs-8']),
+                    ['class' => 'row']) . Html::tag('hr'), ['/coaching-staff/view', 'id' => $item->id, 'category' => $categories[$item->category]]);
+            //        }
+        }
     }
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);
