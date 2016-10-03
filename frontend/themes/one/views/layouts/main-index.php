@@ -160,14 +160,16 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 //            echo Html::endTag('div');
         $oneNews = $this->params['data']['news'][0];
         $oneNewsImg = $oneNews->getImage();
-        $oneNewsImgUrl = $oneNewsImg->getUrl('1170x405');
+        $oneNewsImgUrl = $oneNewsImg->getUrl('');//1170x405
 //        }
         ?>
         <div class="one-news-block">
             <div class="one-news-img" style="background-image: url(<?php echo $oneNewsImgUrl ?>)"></div>
             <div class="one-news-text">
-                <h2><?php echo $oneNews['title'];?></h2>
-                <p><?php echo $oneNews['snippet'];?></p>
+                <a href="<?php echo Url::toRoute(['/news/view', 'slug' => $oneNews->alias]) ?>">
+                    <h2><?php echo $oneNews['title'];?></h2>
+                    <p><?php echo $oneNews['snippet'];?></p>
+                </a>
             </div>
         </div>
         <?php if (!is_null($this->params['gamesPreview'])) { ?>
