@@ -128,106 +128,48 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 
     <div class="container">
         <?php
-//        $controller_action = Yii::$app->controller->id.'/'.Yii::$app->controller->action->id;
-//        if ($controller_action == 'site/index') {
-            $carousel_items = [
-                [
-                    'content' => Html::img('@web/themes/one/src/slider/new-slide.png'),
-                    'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ БОЛЕЛЬЩИКИ!</h2>
-                              <hr style="border-color: #011f5f; border-width: 2px; margin: 20px 0;">
-                              <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
-                              <p>В настоящий момент некоторые разделы находятся на этапе создания/редактирования/наполнения.</p>
-                              <p>
-                              Приносим свои извинения за доставленные неудобства.
-                              Все пожелания и предложения по нашему новому сайту вы можете оставить в разделе
-                              <a href="'.Url::toRoute(['/guest-book']).'" style="color: #07366F;"><b>гостевая</b></a>.
-                              </p>
-                              <p>Искренне надеемся, что наш новый сайт вам понравится!</p>',
-                ],
+//            $carousel_items = [
 //                [
-//                    'content' => Html::img('@web/themes/one/src/slider/slide.png'),
-//                    'caption' => '<h2 style="margin-top: 0">ЕСТЬ<br> ПЕРВАЯ<br> ПОБЕДА!</h2>
-//                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
-//                              <p><div style="font-size: 16px"><b>БАЛТИКА - САХАЛИН 1:0</b></div><div style="font-size: 12px"><i>28.06.2015 г.Минск</i></div></p>
-//                              <p style="">На учебно-тренировочном сборе в Минске, «Балтика» провела одну из двух запланированных встреч с «Сахалином». На эту игру тренерский штаб калининградской команды выпустил... </p>',
+//                    'content' => Html::img('@web/themes/one/src/slider/new-slide.png'),
+//                    'caption' => '<h2 style="margin-top: 0">УВАЖАЕМЫЕ БОЛЕЛЬЩИКИ!</h2>
+//                              <hr style="border-color: #011f5f; border-width: 2px; margin: 20px 0;">
+//                              <p style="">Мы рады приветствовать вас на обновленном сайте футбольного клуба “Балтика”.</p>
+//                              <p>В настоящий момент некоторые разделы находятся на этапе создания/редактирования/наполнения.</p>
+//                              <p>
+//                              Приносим свои извинения за доставленные неудобства.
+//                              Все пожелания и предложения по нашему новому сайту вы можете оставить в разделе
+//                              <a href="'.Url::toRoute(['/guest-book']).'" style="color: #07366F;"><b>гостевая</b></a>.
+//                              </p>
+//                              <p>Искренне надеемся, что наш новый сайт вам понравится!</p>',
 //                ],
-//                [
-//                    'content' => Html::img('@web/themes/one/src/slider/slide-2.jpg'),
-//                    'caption' => '<h2 style="margin-top: 0">ПЕРВАЯ<br> ИГРА<br> ГОДА!</h2>
-//                              <hr style="border-color: #011f5f; border-width: 2px; margin: 10px 0;">
-//                              <p><div style="font-size: 16px"><b>БАЛТИКА - СОКОЛ 0:0</b></div><div style="font-size: 12px"><i>13.03.2016 г.Калининград</i></div></p>',
-//                ],
-                //Html::img('@web/themes/one/src/logo.png', ['alt'=>Yii::$app->name])
-            ];
-            echo Html::beginTag('div',['class'=>'carousel-home']);
-                echo Carousel::widget([
-                    'items' => $carousel_items,
-                    'controls' => [
-                        '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
-                        '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
-                    ],
-                    'options' => [
-                        'class' => 'carousel'
-                    ],
-                    'clientOptions' => [
-                        'interval' => '10000',
-                    ],
-        //        'cl'
-                ]);
-//                echo Html::beginTag('div',['class'=>'carousel-promo']);
-//                    echo Html::beginTag('div',['class'=>'row']);
-//                        echo Html::beginTag('div',['class'=>'col-xs-6']);
-//                            echo Html::beginTag('div',['class'=>'promo-game-block']);
-//                                echo Html::beginTag('div',['class'=>'promo-game-header']);
-//                                    echo Html::tag('div',
-//                                        Html::tag('div','21.05.2016, Фонбет-первенство россии по футболу',['class'=>'promo-game-date col-xs-12 vtop'])/*.
-//                                        Html::a('Отчет видео - фото','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
-//                                        ['class'=>'row']
-//                                    );
-//                                echo Html::endTag('div');
-//                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
-//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-//                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
-//                                    echo Html::endTag('div');
-//                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
-//                                        echo Html::tag('div','0:3');
-//                                    echo Html::endTag('div');
-//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-//                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png', ['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
-//                                    echo Html::endTag('div');
-//                                echo Html::endTag('div');
-//                            echo Html::endTag('div');
-//                        echo Html::endTag('div');
-//                        echo Html::beginTag('div',['class'=>'col-xs-6']);
-//                            echo Html::beginTag('div',['class'=>'promo-game-block']);
-//                                echo Html::beginTag('div',['class'=>'promo-game-header']);
-//                                    echo Html::tag('div',
-//                                    Html::tag('div', '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>', ['class' => 'pull-right']).
-////                                    Html::tag('div', '<script src="http://megatimer.ru/s/e4d7007cd2e033e4d7e30b251ec7b569.js"></script>', ['class' => 'pull-right']).
-//                                        Html::tag('div','11.07.2016, Фонбет-первенство россии',['class'=>'promo-game-date col-xs-8 vtop'])/*.
-//                                        Html::a('Превью трансляции','#',['class'=>'promo-game-link col-xs-4 text-right vtop'])*/,
-//                                        ['class'=>'row']
-//                                    );
-////                                echo '<script src="http://megatimer.ru/s/b5d4829fb96d5e489b75b5746ac698e7.js"></script>';
-//                                echo Html::endTag('div');
-//                                echo Html::beginTag('div',['class'=>'row promo-game-row']);
-//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-left promo-game-team vcenter']);
-//                                        echo Html::img('@web/themes/one/src/logo.png', ['class' => 'hidden-sm']).Html::tag('span',Html::tag('b','Балтика'));
-//                                    echo Html::endTag('div');
-//                                    echo Html::beginTag('div',['class'=>'col-xs-2 text-center promo-game-score vcenter']);
-//                                        echo Html::tag('div','-:-');
-//                                    echo Html::endTag('div');
-//                                    echo Html::beginTag('div',['class'=>'col-xs-5 text-right promo-game-team vcenter']);
-//                                        echo Html::tag('span','Шинник').Html::img('@web/themes/one/src/teams/shinnik_yaroslavl.png',['style'=>'height: 42px;width: auto;', 'class' => 'hidden-sm']);
-//                                    echo Html::endTag('div');
-//                                echo Html::endTag('div');
-//                            echo Html::endTag('div');
-//                        echo Html::endTag('div');
-//                    echo Html::endTag('div');
-//                echo Html::endTag('div');
-            echo Html::endTag('div');
+//            ];
+//            echo Html::beginTag('div',['class'=>'carousel-home']);
+//                echo Carousel::widget([
+//                    'items' => $carousel_items,
+//                    'controls' => [
+//                        '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+//                        '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+//                    ],
+//                    'options' => [
+//                        'class' => 'carousel'
+//                    ],
+//                    'clientOptions' => [
+//                        'interval' => '10000',
+//                    ],
+//                ]);
+//            echo Html::endTag('div');
+        $oneNews = $this->params['data']['news'][0];
+        $oneNewsImg = $oneNews->getImage();
+        $oneNewsImgUrl = $oneNewsImg->getUrl('1170x405');
 //        }
         ?>
+        <div class="one-news-block">
+            <div class="one-news-img" style="background-image: url(<?php echo $oneNewsImgUrl ?>)"></div>
+            <div class="one-news-text">
+                <h2><?php echo $oneNews['title'];?></h2>
+                <p><?php echo $oneNews['snippet'];?></p>
+            </div>
+        </div>
         <?php if (!is_null($this->params['gamesPreview'])) { ?>
             <?php if(Yii::$app->params['gamesPreview3d']) { ?>
                 <div class="carousel-promo-games">

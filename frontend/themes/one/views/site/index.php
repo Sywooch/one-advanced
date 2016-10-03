@@ -79,6 +79,7 @@ if (!empty($data['allPlayers'])) {
 //    var_dump($data['allPlayers']);
     $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);
 }
+$data['news'] = $dataProvider['news']->getModels();
 $this->params['data'] = $data;
 $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
 if (!is_null($data['questions'])) {
@@ -126,7 +127,9 @@ if (!is_null($data['questions'])) {
                     'dataProvider' => $dataProvider['news'],
 //                    'itemView' => '_list',
                     'itemView' => function ($model, $key, $index, $widget) {
-                        return $this->render('_list',['model' => $model, 'index' => $index]);
+                        if($index != 0) {
+                            return $this->render('_list', ['model' => $model, 'index' => $index]);
+                        }
                     },
                     'layout' => "{items}",
                     'itemOptions' => [
