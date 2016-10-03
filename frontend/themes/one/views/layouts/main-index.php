@@ -160,7 +160,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 //            echo Html::endTag('div');
         $oneNews = $this->params['data']['news'][0];
         $oneNewsImg = $oneNews->getImage();
-        $oneNewsImgUrl = $oneNewsImg->getUrl('');//1170x405
+        $oneNewsImgUrl = $oneNewsImg->getUrl('1170x500');
 //        }
         ?>
         <div class="one-news-block">
