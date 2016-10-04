@@ -2342,12 +2342,12 @@ button.close {
 
 .one-news-text {
     position: absolute;
-    top: 25px;
-    /*bottom: 25px;*/
+    /*top: 25px;*/
+    bottom: 25px;
     right: 10px;
     left: auto;
     width: 40%;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.9);
     color: #011f5f;
     text-shadow: none;
     text-align: left;
@@ -2362,7 +2362,7 @@ button.close {
     height: 100%;
 }
 .one-news-text:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .one-news-text h2 {
