@@ -75,9 +75,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-//        'assetManager' => [
-//            'appendTimestamp' => true,
-////        ],
+        'assetManager' => [
+            'appendTimestamp' => true,
+//            'linkAssets' => true,
+        ],
 //        'assetManager' => [
 //            'bundles' => [
 //                'edgardmessias\assets\nprogress\NProgressAsset' => [
