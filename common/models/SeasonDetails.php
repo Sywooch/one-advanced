@@ -84,7 +84,7 @@ class SeasonDetails extends \yii\db\ActiveRecord
     {
         $model = Teams::find()->where(['name' => Yii::$app->params['main-team']])->with('seasonDetails')->one();
         $season_id = $model->seasonDetails;
-        var_dump($season_id);die;
+//        var_dump($season_id);die;
         return ArrayHelper::map(
             Seasons::find()->select(['id','full_name'])->where(['status'=>'on', 'id' => $season_id])->asArray()->all(),
             'id',

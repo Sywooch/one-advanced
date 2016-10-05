@@ -99,6 +99,7 @@ AppAsset::register($this);
                                     ['label' => 'Команды', 'url' => ['/teams']],
                                     ['label' => 'Игроки', 'url' => ['/players']],
                                     ['label' => 'Тренерский штаб', 'url' => ['/coaching-staff']],
+                                    ['label' => 'Подразделы штаба', 'url' => ['/category-caches']],
                                     ['label' => 'Категории игр', 'url' => ['/category-games']],
                                 ],
                             ],
