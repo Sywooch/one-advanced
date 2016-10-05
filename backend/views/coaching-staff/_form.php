@@ -14,7 +14,6 @@ if($model->errors) {
     var_dump($model->errors);
 }
 $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $model->date),'php:d.m.Y');
-
 ?>
 
 <div class="players-form">
@@ -74,6 +73,19 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             ],
                         ],
                     ],
+                    'category_caches'=>[
+                        'type'=>Form::INPUT_WIDGET,
+                        'widgetClass'=>'\kartik\widgets\Select2',
+                        'options'=>[
+                            'data'=>ArrayHelper::map($model->allCategoryCaches, 'id', 'name'),
+                            'options'=>[
+                                'placeholder'=>'Выберите Подраздел',
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ],
+                    ],
                     'date'=>[
                         'type'=>Form::INPUT_WIDGET,
                         'widgetClass'=>'\kartik\widgets\DatePicker',
@@ -85,6 +97,7 @@ $model->date = Yii::$app->formatter->asDate(($model->isNewRecord ? time() : $mod
                             ]
                         ]
                     ],
+                    'sort' => ['type'=>Form::INPUT_TEXT, 'options'=>['placeholder'=>'Введите sort...']],
                 ]
             ]);
 
