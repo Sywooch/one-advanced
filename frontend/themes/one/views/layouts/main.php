@@ -200,35 +200,42 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                 <?php
                                 echo Html::tag('div',
                                     Html::a(
-                                        Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),
+                                        Html::img('@web/themes/one/src/promotions/original/novatek-white.png', ['class' => 'img-responsive']),
                                         'http://www.novatek.ru/',
                                         ['target' => '_blank']
                                     ),
                                     ['class'=>'']);
                                 echo Html::tag('div',
                                     Html::a(
-                                        Html::img('@web/themes/one/src/promotions/telesport.png', ['class' => 'img-responsive']),
+                                        Html::img('@web/themes/one/src/promotions/original/fav-white.png', ['class' => 'img-responsive']),
+                                        'http://www.china-faw.ru/',
+                                        ['target' => '_blank']
+                                    ),
+                                    ['class'=>'']);
+                                echo Html::tag('div',
+                                    Html::a(
+                                        Html::img('@web/themes/one/src/promotions/original/telesport-white.png', ['class' => 'img-responsive']),
                                         'http://www.tele-sport.ru/',
                                         ['target' => '_blank']
                                     ),
                                     ['class'=>'']);
                                 echo Html::tag('div',
                                     Html::a(
-                                        Html::img('@web/themes/one/src/promotions/jako.png', ['class' => 'img-responsive']),
+                                        Html::img('@web/themes/one/src/promotions/original/jako.png', ['class' => 'img-responsive']),
                                         'http://www.jako-russia.ru/',
                                         ['target' => '_blank']
                                     ),
                                     ['class'=>'']);
                                 echo Html::tag('div',
                                     Html::a(
-                                        Html::img('@web/themes/one/src/promotions/sportbox.png', ['class' => 'img-responsive']),
+                                        Html::img('@web/themes/one/src/promotions/original/sportbox.png', ['class' => 'img-responsive']),
                                         'http://news.sportbox.ru/',
                                         ['target' => '_blank']
                                     ),
                                     ['class'=>'']);
                                 echo Html::tag('div',
                                     Html::a(
-                                        Html::img('@web/themes/one/src/promotions/match.png', ['class' => 'img-responsive']),
+                                        Html::img('@web/themes/one/src/promotions/original/match-nash.png', ['class' => 'img-responsive']),
                                         'http://matchtv.ru/',
                                         ['target' => '_blank']
                                     ),
