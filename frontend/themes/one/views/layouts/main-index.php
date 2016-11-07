@@ -300,7 +300,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                                 ?>
                                                             </div>
                                                             <div class="promo-game-date col-xs-6 vcenter" <?php echo $i==2 & $j==2 ? 'style="width: auto;"' : '' ?>>
-                                                                <?php echo Yii::$app->formatter->asDateTime($item->date, 'php:d.m.Y H:s') ?>
+                                                                <?php echo Yii::$app->formatter->asDateTime($item->date) ?>
 
                                                                 <?php if($i==2 & $j==2) {
                                                                     echo Html::tag('div', '(' . '<script src="http://megatimer.ru/s/8ebdba3b7888be972454b34d81447b03.js"></script>' . ')', ['class' => 'timer']);
