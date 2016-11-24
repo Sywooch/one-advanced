@@ -16,18 +16,37 @@ $this->title = $title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <?php Pjax::begin(); ?>
-    <?php echo ListView::widget([
-        'dataProvider' => $dataProvider,
-        'options' => [
-            'class' => 'row',
-        ],
-        'itemOptions' => ['class' => 'item col-xs-4'],
-        'itemView' => '_list',
-        'summary' => false,
-        //
-        //        'itemView' => function ($model, $key, $index, $widget) {
-        //            return Html::a(Html::encode($model->name), ['view', 'id' => $model->id]);
-        //        },
-    ]);
+    <?php
+    foreach($dataProvider as $key => $item) {
+        if($key != null) {
+            echo Html::tag('h3', $data['allCategory'][$key]);
+            echo ListView::widget([
+                'dataProvider' => $item,
+                'options' => [
+                    'class' => 'row',
+                ],
+                'itemOptions' => ['class' => 'item col-xs-4'],
+                'itemView' => '_list',
+                'summary' => false,
+            ]);
+            echo Html::tag('hr');
+        }
+    }
+    if (isset($dataProvider[null])) {
+        echo ListView::widget([
+            'dataProvider' => $dataProvider[null],
+            'options' => [
+                'class' => 'row',
+            ],
+            'itemOptions' => ['class' => 'item col-xs-4'],
+            'itemView' => '_list',
+            'summary' => false,
+            //
+            //        'itemView' => function ($model, $key, $index, $widget) {
+            //            return Html::a(Html::encode($model->name), ['view', 'id' => $model->id]);
+            //        },
+        ]);
+    }
+
     ?>
 <?php Pjax::end(); ?></div>

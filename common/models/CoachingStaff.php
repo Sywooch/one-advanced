@@ -17,6 +17,8 @@ use Yii;
  * @property string $status
  * @property string $content
  * @property string $category
+ * @property integer $sort
+ * @property integer $category_caches
  *
  * @property Teams $teams
  */
@@ -45,10 +47,11 @@ class CoachingStaff extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'surname', 'date', 'role', 'teams_id', 'status', 'category'], 'required'],
-            [['teams_id'], 'integer'],
+            [['teams_id', 'sort', 'category_caches'], 'integer'],
             [['date'], 'safe'],
             [['status', 'content', 'category'], 'string'],
             [['name', 'surname', 'patronymic', 'role'], 'string', 'max' => 100],
+            [['category_caches'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryCaches::className(), 'targetAttribute' => ['category_caches' => 'id']],
             [['teams_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['teams_id' => 'id']],
         ];
     }
@@ -69,6 +72,8 @@ class CoachingStaff extends \yii\db\ActiveRecord
             'status' => 'Статус',
             'content' => 'Контент',
             'category' => 'Категория',
+            'sort' => 'Сортировка',
+            'category_caches' => 'Подраздел',
         ];
     }
 
@@ -83,7 +88,14 @@ class CoachingStaff extends \yii\db\ActiveRecord
     {
         return Teams::find()->all();
     }
-
+    public function getCategoryCaches()
+    {
+        return $this->hasOne(CategoryCaches::className(), ['id' => 'category_caches']);
+    }
+    public function getAllCategoryCaches()
+    {
+        return CategoryCaches::find()->where(['status' => 'on'])->all();
+    }
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
