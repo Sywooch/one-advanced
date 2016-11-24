@@ -142,7 +142,7 @@ class SiteController extends Controller
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        $CId = [2];
-        $CId = [3];
+        $CId = [3,2,7];
         $allCoaches = CoachingStaff::find()
             ->where(['teams_id' => $data['mainTeam']->id])
             ->andWhere(['in', 'id' , $CId])
@@ -177,9 +177,19 @@ class SiteController extends Controller
             }
         }
         foreach($allCoaches as $item) {
-            $data['allCoaches'][0] = $item;
+//            $data['allCoaches'][0] = $item;
+            if ($item->id == 3) {
+                $data['allCoaches'][0] = $item;
+            }
+            if ($item->id == 2) {
+                $data['allCoaches'][1] = $item;
+            }
+            if ($item->id == 7) {
+                $data['allCoaches'][2] = $item;
+            }
         }
         ksort($data['allPlayers']);
+        ksort($data['allCoaches']);
 //        ksort($data['allCoaches']);
 //        $data['allPlayers'] = ksort($data['allPlayers']);
 //        var_dump($data['allPlayers']);
