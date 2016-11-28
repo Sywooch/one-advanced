@@ -142,12 +142,12 @@ class SiteController extends Controller
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        $CId = [2];
-        $CId = [10];
+        $CId = [3,2,7];
         $allCoaches = CoachingStaff::find()
             ->where(['teams_id' => $data['mainTeam']->id])
             ->andWhere(['in', 'id' , $CId])
             ->all();
-        $PlId = [2];
+        $PlId = [28,4,20,17];
         $allPlayers = Players::find()
 //            ->select("*, DATE_FORMAT(FROM_UNIXTIME(`date`), '%d') as `date_day`,DATE_FORMAT(FROM_UNIXTIME(`date`), '%m') as `date_month`")
             ->where(['teams_id' => $data['mainTeam']->id])
@@ -163,39 +163,33 @@ class SiteController extends Controller
         $data['allPlayers'] = [];
         foreach($allPlayers as $item) {
 //            $allPlayers[$item->id] = $item;
-//            if ($item->id == 2) {
+            if ($item->id == 28) {
                 $data['allPlayers'][1] = $item;
-//            }
-//            if ($item->id == 28) {
-//                $data['allPlayers'][1] = $item;
-//            }
-//            if ($item->id == 4) {
-//                $data['allPlayers'][2] = $item;
-//            }
-//            if ($item->id == 20) {
-//                $data['allPlayers'][3] = $item;
-//            }
-//            if ($item->id == 17) {
-//                $data['allPlayers'][4] = $item;
-//            }
+            }
+            if ($item->id == 4) {
+                $data['allPlayers'][2] = $item;
+            }
+            if ($item->id == 20) {
+                $data['allPlayers'][3] = $item;
+            }
+            if ($item->id == 17) {
+                $data['allPlayers'][4] = $item;
+            }
         }
         foreach($allCoaches as $item) {
 //            $data['allCoaches'][0] = $item;
-//            if ($item->id == 10) {
+            if ($item->id == 3) {
                 $data['allCoaches'][0] = $item;
-//            }
-//            if ($item->id == 3) {
-//                $data['allCoaches'][0] = $item;
-//            }
-//            if ($item->id == 2) {
-//                $data['allCoaches'][1] = $item;
-//            }
-//            if ($item->id == 7) {
-//                $data['allCoaches'][2] = $item;
-//            }
+            }
+            if ($item->id == 2) {
+                $data['allCoaches'][1] = $item;
+            }
+            if ($item->id == 7) {
+                $data['allCoaches'][2] = $item;
+            }
         }
-//        ksort($data['allPlayers']);
-//        ksort($data['allCoaches']);
+        ksort($data['allPlayers']);
+        ksort($data['allCoaches']);
 //        ksort($data['allCoaches']);
 //        $data['allPlayers'] = ksort($data['allPlayers']);
 //        var_dump($data['allPlayers']);
