@@ -456,10 +456,10 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div class="text-center" style="margin-top: 15px;">
                         <?php echo Html::img('@web/themes/one/src/banner_2.jpg', ['alt' => 'sponsor', 'style' => 'width: 232px;']) ?>
                     </div>
-                    <object type="application/x-shockwave-flash" data="/themes/one/src/245-490.swf" width="232" height="467" style="margin-top: 15px;">
+                    <!--<object type="application/x-shockwave-flash" data="/themes/one/src/245-490.swf" width="232" height="467" style="margin-top: 15px;">
                         <param name="movie" value="/files/banner.swf">
                         <param name="quality" value="high">
-                    </object>
+                    </object>-->
                 </div>
             </div>
             <div class="col-xs-9 main-block">
