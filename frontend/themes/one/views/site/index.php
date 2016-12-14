@@ -21,6 +21,7 @@ $categories = [
 
 if (!empty($data['allPlayers'])) {
     $playersBD = '';
+    $playersBDCoach = '';
     if (!empty($data['allCoaches'])) {
 
         foreach ($data['allCoaches'] as $item) {
@@ -39,7 +40,8 @@ if (!empty($data['allPlayers'])) {
                 ////                    'height' => $sizes['height']
                 //                ]);
             }
-            $playersBD .= Html::a(Html::tag('div',
+            //$playersBD
+            $playersBDCoach = Html::a(Html::tag('div',
                     Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
                     Html::tag('div',
                         Html::tag('div', $item->name) .
@@ -50,7 +52,11 @@ if (!empty($data['allPlayers'])) {
             //        }
         }
     }
-    foreach ($data['allPlayers'] as $item) {
+    foreach ($data['allPlayers'] as $key => $item) {
+        if($key == 1) {
+            $playersBD .= $playersBDCoach;
+//            var_dump($key);
+        }
 //        if (date('m', $item->date) == date('m')) {
             $image = $item->getImage();
             $img = '';
