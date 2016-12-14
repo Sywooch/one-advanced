@@ -148,6 +148,7 @@ class SiteController extends Controller
             ->where(['teams_id' => $data['mainTeam']->id])
             ->andWhere(['in', 'id' , $CId])
             ->all();
+//        var_dump($allCoaches);
 //        $PlId = [28,4,20,17];
         $PlId = [3,5,9];
         $allPlayers = Players::find()
@@ -165,15 +166,15 @@ class SiteController extends Controller
         $data['allPlayers'] = [];
         foreach($allPlayers as $item) {
 //            $allPlayers[$item->id] = $item;
-            if ($item->id == 2) {
+            if ($item->id == 3) {
+                $data['allPlayers'][0] = $item;
+            }
+            if ($item->id == 5) {
                 $data['allPlayers'][1] = $item;
             }
-//            if ($item->id == 28) {
-//                $data['allPlayers'][1] = $item;
-//            }
-//            if ($item->id == 4) {
-//                $data['allPlayers'][2] = $item;
-//            }
+            if ($item->id == 9) {
+                $data['allPlayers'][2] = $item;
+            }
 //            if ($item->id == 20) {
 //                $data['allPlayers'][3] = $item;
 //            }
@@ -183,7 +184,7 @@ class SiteController extends Controller
         }
         foreach($allCoaches as $item) {
 //            $data['allCoaches'][0] = $item;
-            if ($item->id == 10) {
+            if ($item->id == 19) {
                 $data['allCoaches'][0] = $item;
             }
 //            if ($item->id == 3) {
@@ -196,7 +197,7 @@ class SiteController extends Controller
 //                $data['allCoaches'][2] = $item;
 //            }
         }
-//        ksort($data['allPlayers']);
+        ksort($data['allPlayers']);
 //        ksort($data['allCoaches']);
 //        ksort($data['allCoaches']);
 //        $data['allPlayers'] = ksort($data['allPlayers']);
