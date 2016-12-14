@@ -143,13 +143,13 @@ class SiteController extends Controller
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        $CId = [2];
 //        $CId = [3,2,7];
-        $CId = [10];
+        $CId = [19];
         $allCoaches = CoachingStaff::find()
             ->where(['teams_id' => $data['mainTeam']->id])
             ->andWhere(['in', 'id' , $CId])
             ->all();
 //        $PlId = [28,4,20,17];
-        $PlId = [2];
+        $PlId = [3,5,9];
         $allPlayers = Players::find()
 //            ->select("*, DATE_FORMAT(FROM_UNIXTIME(`date`), '%d') as `date_day`,DATE_FORMAT(FROM_UNIXTIME(`date`), '%m') as `date_month`")
             ->where(['teams_id' => $data['mainTeam']->id])
