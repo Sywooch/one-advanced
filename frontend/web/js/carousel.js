@@ -3,10 +3,10 @@
     $(document).ready(function() {
 
         var options = {
-            ovalWidth: 300,
+            ovalWidth: 400,
             ovalHeight: 0,
             offsetX: 0,
-            offsetY: 160,
+            offsetY: 230,
             angle: 0,
             activeItem: 3,
             duration: 350,

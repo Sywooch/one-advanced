@@ -19,11 +19,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-//        'css/main.css',
+        'css/main.css',
+        '//fonts.googleapis.com/css?family=Exo+2:400,700,400italic'
+//        <link href='https://fonts.googleapis.com/css?family=Exo:400,700,400italic' rel='stylesheet' type='text/css'>
     ];
     public $js = [
-        'https://kgd.kassir.ru/start.js?ver=1.0',
         'js/main.js',
+        'https://kgd.kassir.ru/start.js?ver=1.0',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -37,7 +37,8 @@ class GalleryController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Gallery::find()
-            ->where(['status' => 'on']),
+            ->where(['status' => 'on'])
+            ->orderBy('id DESC'),
         ]);
 
         return $this->render('index', [

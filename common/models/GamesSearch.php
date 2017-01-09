@@ -83,7 +83,7 @@ class GamesSearch extends Games
     public function searchFrontend($params)
     {
 //        strstr($params['sort'], '-') != false ? 'DESC' : ''
-        $queryParams = 'date DESC';
+        $queryParams = 'date ASC';
         if (isset($params['sort'])) {
             $queryParams = 'tour ';
             if (strstr($params['sort'], '-') != false) {
@@ -102,7 +102,8 @@ class GamesSearch extends Games
                 'pageSize'  => $params['output']
             ];
         }
-        $query = Games::find()->orderBy($queryParams);
+        $homeTeamId = Teams::find()->select('id')->where(['name' => Yii::$app->params['main-team']])->one()->id;
+        $query = Games::find()->where(['home_id' => $homeTeamId])->orWhere(['guest_id' => $homeTeamId])->orderBy($queryParams);
 
         // add conditions that should always apply here
 

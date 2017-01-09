@@ -44,7 +44,7 @@ class GamesController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'main-full';
+//        $this->layout = 'main-full';
         $searchModel = new GamesSearch();
         $dataProvider = $searchModel->searchFrontend(Yii::$app->request->queryParams);
 
@@ -61,7 +61,7 @@ class GamesController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'main-full';
+//        $this->layout = 'main-full';
 
         $model = $this->findModel($id);
         $gameData['home'] = GamesPlayers::find()

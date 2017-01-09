@@ -84,6 +84,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'main-index';
+
         $data['questions'] = Questions::find()->where(['status' => 'on'])->orderBy('id DESC')->one();
         $data['answerPoll'] = AnswersPoll::find()->where([
             'quest_id' => $data['questions']->id,
@@ -140,12 +142,15 @@ class SiteController extends Controller
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
 //        $CId = [2];
-        $CId = [3];
+//        $CId = [3,2,7];
+        $CId = [19];
         $allCoaches = CoachingStaff::find()
             ->where(['teams_id' => $data['mainTeam']->id])
             ->andWhere(['in', 'id' , $CId])
             ->all();
-        $PlId = [28,4,20,17];
+//        var_dump($allCoaches);
+//        $PlId = [28,4,20,17];
+        $PlId = [3,5,9];
         $allPlayers = Players::find()
 //            ->select("*, DATE_FORMAT(FROM_UNIXTIME(`date`), '%d') as `date_day`,DATE_FORMAT(FROM_UNIXTIME(`date`), '%m') as `date_month`")
             ->where(['teams_id' => $data['mainTeam']->id])
@@ -161,23 +166,39 @@ class SiteController extends Controller
         $data['allPlayers'] = [];
         foreach($allPlayers as $item) {
 //            $allPlayers[$item->id] = $item;
-            if ($item->id == 28) {
+            if ($item->id == 3) {
+                $data['allPlayers'][0] = $item;
+            }
+            if ($item->id == 5) {
                 $data['allPlayers'][1] = $item;
             }
-            if ($item->id == 4) {
+            if ($item->id == 9) {
                 $data['allPlayers'][2] = $item;
             }
-            if ($item->id == 20) {
-                $data['allPlayers'][3] = $item;
-            }
-            if ($item->id == 17) {
-                $data['allPlayers'][4] = $item;
-            }
+//            if ($item->id == 20) {
+//                $data['allPlayers'][3] = $item;
+//            }
+//            if ($item->id == 17) {
+//                $data['allPlayers'][4] = $item;
+//            }
         }
         foreach($allCoaches as $item) {
-            $data['allCoaches'][0] = $item;
+//            $data['allCoaches'][0] = $item;
+            if ($item->id == 19) {
+                $data['allCoaches'][0] = $item;
+            }
+//            if ($item->id == 3) {
+//                $data['allCoaches'][0] = $item;
+//            }
+//            if ($item->id == 2) {
+//                $data['allCoaches'][1] = $item;
+//            }
+//            if ($item->id == 7) {
+//                $data['allCoaches'][2] = $item;
+//            }
         }
         ksort($data['allPlayers']);
+//        ksort($data['allCoaches']);
 //        ksort($data['allCoaches']);
 //        $data['allPlayers'] = ksort($data['allPlayers']);
 //        var_dump($data['allPlayers']);
@@ -217,6 +238,7 @@ class SiteController extends Controller
                 ->orderBy('spectacles DESC')
                 ->limit(20),
             'pagination' => false,
+            'sort' =>false
         ]);
 
         $data['gameLast'] = Games::find()
@@ -232,14 +254,14 @@ class SiteController extends Controller
         $data['gamesLast'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
-            ->andWhere(['<', 'date', time()])
+            ->andWhere(['<', 'date', time()-3600])
             ->orderBy('date DESC')
             ->limit(3)
             ->all();
         $data['gamesFirst'] = Games::find()
             ->where(['home_id' => $data['mainTeam']->id])
             ->orWhere(['guest_id' => $data['mainTeam']->id])
-            ->andWhere(['>', 'date', time()])
+            ->andWhere(['>', 'date', time()-3600])
             ->orderBy('date')
             ->limit(3)
             ->all();
@@ -411,6 +433,7 @@ class SiteController extends Controller
 //                $modelAnswer->save();
 //            }
 //        }
+//        if (!empty($_POST)) {
 
 //        return Alert::widget();
 
