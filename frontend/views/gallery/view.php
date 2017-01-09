@@ -15,6 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="gallery-view-block">
+        <?php if ($model->source != '') : ?>
+            <div class="gallery-source">Источник: <?php echo $model->source; ?></div>
+        <?php endif; ?>
         <?php
         $images = $model->getImages();
         $allImg = [];

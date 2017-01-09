@@ -11,6 +11,7 @@ use Yii;
  * @property string $name
  * @property string $description
  * @property string $status
+ * @property string $source
  *
  * @property Games[] $games
  * @property News[] $news
@@ -41,7 +42,7 @@ class Gallery extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['status'], 'string'],
+            [['status', 'source'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 5000],
         ];
@@ -56,7 +57,8 @@ class Gallery extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Имя',
             'description' => 'Описание',
-            'status' => 'Status',
+            'status' => 'Статус',
+            'source' => 'Источник',
         ];
     }
 

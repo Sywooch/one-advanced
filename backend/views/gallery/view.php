@@ -17,18 +17,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="gallery-view">
 
     <h1>Папка: <?php echo Html::encode($this->title) ?></h1>
-
+    <p>
+        <?php echo $model->description; ?>
+    </p>
     <p>
         <?php
-        echo $model->description;
-//        echo Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
-//        echo Html::a('Delete', ['delete', 'id' => $model->id], [
-//            'class' => 'btn btn-danger',
-//            'data' => [
-//                'confirm' => 'Are you sure you want to delete this item?',
-//                'method' => 'post',
-//            ],
-//        ]);
+        echo Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+        echo Html::a('Удалить', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Вы действительно хотите удалить запись?',
+                'method' => 'post',
+            ],
+        ]);
         ?>
     </p>
     <?php

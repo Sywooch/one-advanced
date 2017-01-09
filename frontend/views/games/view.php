@@ -295,8 +295,10 @@ if ($model->prizes != '') {
         <?php if ($galleryStep) : ?>
             <div role="tabpanel" class="tab-pane <?php echo $galleryActive ?>" id="gallery">
                 <div class="row" style="margin: 0">
+                    <?php if ($model->gallery->source != '') : ?>
+                        <div class="gallery-source">Источник: <?php echo $model->gallery->source; ?></div>
+                    <?php endif; ?>
                     <?php
-    //                var_dump($model->gallery);
     //                var_dump($model->gallery->getImages());
                     $images = $model->gallery->getImages();
                     if($images[0]['urlAlias']!='placeHolder') {
