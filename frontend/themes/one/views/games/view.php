@@ -104,6 +104,8 @@ if($images['urlAlias']!='placeHolder') {
 } else {
     $imgUrl = '';
 }
+//var_dump($previewStep);
+
 ?>
 <div class="games-view">
 
@@ -211,7 +213,7 @@ if($images['urlAlias']!='placeHolder') {
                     </li>
                 <?php endif; ?>
                 <?php if ($contentStep) : ?>
-                    <li role="presentation">
+                    <li role="presentation" <?php echo !$previewStep ? 'class="' . $contentActive . '"' : ''; ?>>
                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-file-o" aria-hidden="true"></i> Отчёт</a>
                     </li>
                 <?php endif; ?>
@@ -255,7 +257,7 @@ if($images['urlAlias']!='placeHolder') {
                     <div role="tabpanel" class="tab-pane <?php echo $contentActive ?>" id="preview"><?php echo $model->preview_content ?></div>
                 <?php endif; ?>
                 <?php if ($contentStep) : ?>
-                    <div role="tabpanel" class="tab-pane " id="home"><?php echo $model->content ?></div>
+                    <div role="tabpanel" class="tab-pane <?php echo !$previewStep ? $contentActive : ''; ?>" id="home"><?php echo $model->content ?></div>
                 <?php endif; ?>
                 <?php if ($compositionsStep) : ?>
                     <div role="tabpanel" class="tab-pane" id="compositions">
@@ -348,6 +350,9 @@ if($images['urlAlias']!='placeHolder') {
                 <?php endif; ?>
                 <?php if ($galleryStep) : ?>
                     <div role="tabpanel" class="tab-pane <?php echo $galleryActive ?>" id="gallery">
+                        <?php if ($model->gallery->source != '') : ?>
+                            <div class="gallery-source" style="margin-left: 10px;margin-right: 10px;">Источник: <?php echo $model->gallery->source; ?></div>
+                        <?php endif; ?>
                         <div class="row" style="margin: 0">
                             <?php
                             //                var_dump($model->gallery);

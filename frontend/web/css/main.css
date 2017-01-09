@@ -2407,3 +2407,8 @@ button.close {
     /*padding-left: 20px;*/
     /*padding-right: 20px;*/
 }
+
+.gallery-source {
+    margin-bottom: 10px;
+    color: #8f8f8f;
+}

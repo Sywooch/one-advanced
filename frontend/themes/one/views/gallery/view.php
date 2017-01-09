@@ -17,6 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="gallery-view-desc">
         <?php echo $model->description ?>
     </div>
+    <?php if ($model->source != '') : ?>
+        <div class="gallery-view-source">
+            <div class="gallery-source">Источник: <?php echo $model->source; ?></div>
+        </div>
+    <?php endif; ?>
     <div class="gallery-view-block">
         <?php
         $images = $model->getImages();
