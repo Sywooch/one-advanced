@@ -139,76 +139,34 @@ class SiteController extends Controller
             ],
         ]);
         $data['mainTeam'] = Teams::find()->where(['name' => Yii::$app->params['main-team']])->one();
-//        $CId = [2];
-        $CId = [3];
+
         $allCoaches = CoachingStaff::find()
             ->where(['teams_id' => $data['mainTeam']->id])
-            ->andWhere(['in', 'id' , $CId])
             ->all();
-        $PlId = [28,4,20,17];
         $allPlayers = Players::find()
-//            ->select("*, DATE_FORMAT(FROM_UNIXTIME(`date`), '%d') as `date_day`,DATE_FORMAT(FROM_UNIXTIME(`date`), '%m') as `date_month`")
             ->where(['teams_id' => $data['mainTeam']->id])
-            ->andWhere(['in', 'id' , $PlId])
-//            ->andFilterWhere(['>=', "(date_format( FROM_UNIXTIME(`date` ), '%d-%m' ))", date('d.m')])
-//            ->andWhere(['>', 'date', strtotime(date("01.m.Y 00:00:00"))])
-//            ->andWhere(['<', 'date', strtotime(date("t.m.Y 23:59:59"))])
-//            ->orderBy('date')
-//            ->orderBy('date_month ASC, date_day ASC')
-//            ->asArray()
-//                ->limit(10)
             ->all();
-        $data['allPlayers'] = [];
-        foreach($allPlayers as $item) {
-//            $allPlayers[$item->id] = $item;
-            if ($item->id == 28) {
-                $data['allPlayers'][1] = $item;
-            }
-            if ($item->id == 4) {
-                $data['allPlayers'][2] = $item;
-            }
-            if ($item->id == 20) {
-                $data['allPlayers'][3] = $item;
-            }
-            if ($item->id == 17) {
-                $data['allPlayers'][4] = $item;
-            }
-        }
+
+        $birthDay = [];
         foreach($allCoaches as $item) {
-            $data['allCoaches'][0] = $item;
+            $date = date('d.m.Y',$item->date);
+            $dateArr = explode('.', $date);
+            $item['type'] = 'coach';
+            $birthDay[(int)$dateArr[1]][(int)$dateArr[0]][] = $item;
         }
-        ksort($data['allPlayers']);
-//        ksort($data['allCoaches']);
-//        $data['allPlayers'] = ksort($data['allPlayers']);
-//        var_dump($data['allPlayers']);
-//        var_dump(krsort($data['allPlayers']));
 
-//        $data['allPlayers'][0] = $allPlayers[2];
-//        var_dump($allPlayers);
-//        die;
-//        $data['allPlayers'][1] = $allPlayers[28];
-//        $data['allPlayers'][2] = $allPlayers[4];
-//        $data['allPlayers'][3] = $allPlayers[20];
-//        $data['allPlayers'][4] = $allPlayers[17];
+        foreach($allPlayers as $item) {
+            $date = date('d.m.Y',$item->date);
+            $dateArr = explode('.', $date);
+            $item['type'] = 'player';
+            $birthDay[(int)$dateArr[1]][(int)$dateArr[0]][] = $item;
+        }
 
+        if (!empty($birthDay)) {
+            $data['birthDay'] = $birthDay[(int)date('m')];
+            ksort($data['birthDay']);
+        }
 
-//        CaseMaster::find()->where(["DATE_FORMAT( FROM_UNIXTIME( i_date ),'%d-%m-%Y' )"=>date('d-m-Y')])->all();
-//        DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-//        $sorted_articles=[];
-//        foreach($articles as $article){
-//            $dt=date('d.m.Y',$article->sort_date);
-//            $sorted_articles[$dt][]=$article;
-//        }
-//        $data['allPlayers'] = [];
-//        foreach($data['allPlayers'] as $item) {
-//            var_dump(date('d.m.Y', $item->date));
-////            var_dump($item['date_new']);
-////            $item['new_date'] = $item->date;
-////            $item->date = date('d.m', $item->date);
-////            $dt = date('d.m', $item->date);
-//            $data['allPlayers'][] = $item;
-//        }
-//        var_dump($data['allPlayers']);
         $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
         $data['season'] = $data['seasonDetails']->season;
         $dataProvider['standings'] = new ActiveDataProvider([

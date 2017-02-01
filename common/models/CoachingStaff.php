@@ -24,6 +24,8 @@ use Yii;
  */
 class CoachingStaff extends \yii\db\ActiveRecord
 {
+    public $type;
+
     public function behaviors()
     {
         return [
