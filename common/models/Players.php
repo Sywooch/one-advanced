@@ -35,6 +35,8 @@ use Yii;
  */
 class Players extends \yii\db\ActiveRecord
 {
+    public $type;
+
     public function behaviors()
     {
         return [

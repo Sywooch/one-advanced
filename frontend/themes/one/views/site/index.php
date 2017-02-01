@@ -19,58 +19,16 @@ $categories = [
     'trainer' => 'coaches',
 ];
 
-if (!empty($data['allPlayers'])) {
+if (isset($data['birthDay'])) {
     $playersBD = '';
-    $playersBDCoach = '';
-    if (!empty($data['allCoaches'])) {
-
-        foreach ($data['allCoaches'] as $item) {
-            //        if (date('m', $item->date) == date('m')) {
+    foreach($data['birthDay'] as $day) {
+        foreach($day as $item) {
             $image = $item->getImage();
             $img = '';
             if ($image['urlAlias'] != 'placeHolder') {
-                //                $sizes = $image->getSizesWhen('60x60');
                 $img = Html::tag('div', false, [
                     'style' => 'background-image:url(\''. $image->getUrl('60x') .'\');height:60px;width:60px;background-repeat: no-repeat;background-size: 100%;'
                 ]);
-                //                $img = Html::img($image->getUrl('x60'), [
-                //                    'alt' => $item->surname . ' ' . $item->name,
-                //                    'class' => '',
-                ////                    'width' => $sizes['width'],
-                ////                    'height' => $sizes['height']
-                //                ]);
-            }
-            //$playersBD
-            $playersBDCoach = Html::a(Html::tag('div',
-                    Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
-                    Html::tag('div',
-                        Html::tag('div', $item->name) .
-                        Html::tag('div', Html::tag('b', $item->surname)) .
-                        Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
-                        ['class' => 'col-xs-8']),
-                    ['class' => 'row']) . Html::tag('hr'), ['/coaching-staff/view', 'id' => $item->id, 'category' => $categories[$item->category]]);
-            //        }
-        }
-    }
-    foreach ($data['allPlayers'] as $key => $item) {
-        if($key == 1) {
-            $playersBD .= $playersBDCoach;
-//            var_dump($key);
-        }
-//        if (date('m', $item->date) == date('m')) {
-            $image = $item->getImage();
-            $img = '';
-            if ($image['urlAlias'] != 'placeHolder') {
-//                $sizes = $image->getSizesWhen('60x60');
-                $img = Html::tag('div', false, [
-                    'style' => 'background-image:url(\''. $image->getUrl('60x') .'\');height:60px;width:60px;background-repeat: no-repeat;background-size: 100%;'
-                ]);
-//                $img = Html::img($image->getUrl('x60'), [
-//                    'alt' => $item->surname . ' ' . $item->name,
-//                    'class' => '',
-////                    'width' => $sizes['width'],
-////                    'height' => $sizes['height']
-//                ]);
             }
             $playersBD .= Html::a(Html::tag('div',
                     Html::tag('div', $img, ['class' => 'col-xs-4 text-center']) .
@@ -79,12 +37,12 @@ if (!empty($data['allPlayers'])) {
                         Html::tag('div', Html::tag('b', $item->surname)) .
                         Html::tag('div', Yii::$app->formatter->asDatetime($item->date, 'php:d.m.Y'), ['class' => 'players-bd-date']),
                         ['class' => 'col-xs-8']),
-                    ['class' => 'row']) . Html::tag('hr'), ['/players/view', 'id' => $item->id]);
-//        }
+                    ['class' => 'row']) . Html::tag('hr'), ($item->type == 'coach' ? ['/coaching-staff/view', 'id' => $item->id, 'category' => $categories[$item->category]] : ['/players/view', 'id' => $item->id]));
+        }
     }
-//    var_dump($data['allPlayers']);
-    $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['class' => 'players-bd']);
+    $this->params['widget_bar'] .= Html::tag('div', Html::tag('h4', 'Именинники') . $playersBD, ['players-bd']);
 }
+
 $data['news'] = $dataProvider['news']->getModels();
 $this->params['data'] = $data;
 $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
