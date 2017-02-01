@@ -165,7 +165,6 @@ class SiteController extends Controller
 
         if (!empty($birthDay)) {
             $data['birthDay'] = $birthDay[(int)date('m')];
-            $data['birthDay'] = $birthDay[4];
             ksort($data['birthDay']);
         }
 
