@@ -149,23 +149,47 @@ class SiteController extends Controller
             ->all();
 
         $birthDay = [];
+        $nowDateArr = explode('.', date('d.m'));
+        $nowDate = (int)$nowDateArr[1] * 100 + (int)$nowDateArr[0];
+        $nowDate = 303;
+        $limitBD = 5;
+        $data['birthDay'] = [];
+
         foreach($allCoaches as $item) {
-            $date = date('d.m.Y',$item->date);
+            $date = date('d.m',$item->date);
             $dateArr = explode('.', $date);
             $item['type'] = 'coach';
-            $birthDay[(int)$dateArr[1]][(int)$dateArr[0]][] = $item;
+            $name = (int)$dateArr[1] * 100 + (int)$dateArr[0];
+            $birthDay[$name][] = $item;
         }
 
         foreach($allPlayers as $item) {
-            $date = date('d.m.Y',$item->date);
+            $date = date('d.m',$item->date);
             $dateArr = explode('.', $date);
             $item['type'] = 'player';
-            $birthDay[(int)$dateArr[1]][(int)$dateArr[0]][] = $item;
+            $name = (int)$dateArr[1] * 100 + (int)$dateArr[0];
+            $birthDay[$name][] = $item;
+        }
+        if (!empty($birthDay)) {
+            ksort($birthDay);
+            $i = 1;
+            foreach ($birthDay as $key => $item) {
+                if($i <= $limitBD) {
+                    if ($key >= $nowDate) {
+                        $data['birthDay'][] = $item;
+                        $i++;
+                    }
+                } else {
+                    break;
+                }
+            }
         }
 
-        if (!empty($birthDay)) {
-            $data['birthDay'] = $birthDay[(int)date('m')];
-            ksort($data['birthDay']);
+        $countBD = count($data['birthDay']);
+        if ($countBD < $limitBD) {
+            $newCount = $limitBD - $countBD;
+            $data['birthDay'] = array_merge($data['birthDay'], array_slice($birthDay,0,$newCount));
+
         }
 
         $data['seasonDetails'] = $data['mainTeam']->lastSeasonDetails;
