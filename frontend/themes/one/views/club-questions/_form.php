@@ -38,26 +38,29 @@ $this->registerJs(
                 </div>
             </div>
         <?php endif; ?>
-        <div class="col-xs-8">
+<!--        <div class="col-xs-8">-->
             <?php
             $addressee = [];
             $addressee['all'] = 'Всем';
-            $playersRole = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий'];
-            foreach($data['mainTeam']->players as $item) {
-                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' ('.$playersRole[$item['role']].')';
-            }
-            foreach($data['mainTeam']->coachingStaff as $item) {
-                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' (' . $item['role'] . ')';
-            }
+//            $playersRole = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' => 'Полузащитник', 'нп' => 'Нападающий'];
+//            foreach($data['mainTeam']->players as $item) {
+//                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' ('.$playersRole[$item['role']].')';
+//            }
+//            foreach($data['mainTeam']->coachingStaff as $item) {
+//                $addressee[$item['surname'] . ' ' . $item['name']] = $item['surname'] . ' ' . $item['name'] . ' (' . $item['role'] . ')';
+//            }
+
+            echo $form->field($model, 'addressee')->hiddenInput(['value'=> $addressee['all']])->label(false);
+
             //            echo $form->field($model, 'addressee')->dropDownList($addressee);
-            echo $form->field($model, 'addressee')->widget(Select2::classname(), [
-                'data' => $addressee,
-                'options' => ['placeholder' => 'Выбрать адресата ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); ?>
-        </div>
+//            echo $form->field($model, 'addressee')->widget(Select2::classname(), [
+//                'data' => $addressee,
+//                'options' => ['placeholder' => 'Выбрать адресата ...'],
+//                'pluginOptions' => [
+//                    'allowClear' => true
+//                ],
+//            ]); ?>
+<!--        </div>-->
         <div class="col-xs-12">
             <?php echo $form->field($model, 'question')->label('Сообщение')->textarea(['rows' => 6]) ?>
 
