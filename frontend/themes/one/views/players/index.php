@@ -78,9 +78,9 @@ $this->params['headerName'] = $this->title;
         ?>
     </div>
 
-    <div class="players-all-img">
-        <?php echo Html::img('@web/themes/one/src/baltika-2016.jpg'); ?>
-    </div>
+<!--    <div class="players-all-img">-->
+<!--        --><?php //echo Html::img('@web/themes/one/src/baltika-2016.jpg'); ?>
+<!--    </div>-->
     <!--    --><?php //Pjax::end(); ?>
 
 </div>
