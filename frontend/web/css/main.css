@@ -1709,7 +1709,11 @@ a.news-category {
 }
 
 .players-index .players-img-box {
-    background: linear-gradient(#EDEDED 10%, #F0ECEB 50%,#D9D7D8);
+    /*background: linear-gradient(#EDEDED 10%, #F0ECEB 50%,#D9D7D8);*/
+}
+
+.player-img-box img {
+    max-width: 100%;
 }
 
 .players-index .players-number {
