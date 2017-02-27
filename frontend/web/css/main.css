@@ -2416,3 +2416,7 @@ button.close {
     margin-bottom: 10px;
     color: #8f8f8f;
 }
+
+.player-role-nat {
+    white-space: nowrap;
+}
