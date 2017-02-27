@@ -6,7 +6,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Вопросы клубу';
+$this->title = 'Вопросы Пресс-атташе';
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['headerName'] = $this->title;

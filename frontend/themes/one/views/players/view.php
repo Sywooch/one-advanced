@@ -39,8 +39,14 @@ $roleInfo = ['вр' => 'Вратарь', 'зщ' => 'Защитник', 'пз' =>
                                 <?php echo $roleInfo[$model->role]; ?>
                             </span>
                             <?php
-                            if ($model->nationality == 'РФ' || $model->nationality == 'Россия') {
-                                echo Icon::show('ru', [], Icon::FI);
+                            $flags = [
+                                'РФ' => 'ru',
+                                'Россия' => 'ru',
+                                'БФ' => 'bf',
+                                'Буркина Фасо' => 'bf',
+                            ];
+                            if(isset($flags[$model->nationality])) {
+                                echo Icon::show($flags[$model->nationality], [], Icon::FI);
                             }
                             echo $model->nationality;
                             ?>
