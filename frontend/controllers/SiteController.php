@@ -150,7 +150,7 @@ class SiteController extends Controller
         $birthDay = [];
         $nowDateArr = explode('.', date('d.m'));
         $nowDate = (int)$nowDateArr[1] * 100 + (int)$nowDateArr[0];
-        $nowDate = 303;
+//        $nowDate = 303;
         $limitBD = 5;
         $data['birthDay'] = [];
 
