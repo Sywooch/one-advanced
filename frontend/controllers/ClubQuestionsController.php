@@ -14,6 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ClubQuestionsSearchController implements the CRUD actions for ClubQuestionsSearch model.
@@ -33,6 +34,11 @@ class ClubQuestionsController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        throw new \yii\web\NotFoundHttpException('Страница не найдена.');
     }
 
     /**
