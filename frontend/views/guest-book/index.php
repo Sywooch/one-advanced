@@ -11,10 +11,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guest-book-index">
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form',[
-        'model' => $model,
-    ]) ?>
+    <?php
+    if(!Yii::$app->user->isGuest) {
+        echo $this->render('_form',[
+            'model' => $model,
+        ]);
+    }
+    ?>
 <?php Pjax::begin(['id' => 'guest_records']); ?>
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
