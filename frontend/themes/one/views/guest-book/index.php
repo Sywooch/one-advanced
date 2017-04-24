@@ -23,7 +23,7 @@ $this->params['image_page'] = '/themes/one/src/layout/guest.png';
         ]);
     } else {
         ?>
-        <p>Для общения на гостевой Вы должны быть зарегистрирвоаны на нашем сайте!</p>
+        <p>Для общения на гостевой Вы должны быть зарегистрированы на нашем сайте!</p>
         <p>
             <a href="/site/login" class="btn btn-primary">Вход</a>
             <a href="/site/signup" class="btn btn-primary">Регистрация</a>
