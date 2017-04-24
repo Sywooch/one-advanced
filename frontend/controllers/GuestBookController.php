@@ -40,7 +40,7 @@ class GuestBookController extends Controller
     public function actionIndex()
     {
         $model = new GuestBook();
-        if ($model->load(Yii::$app->request->post()))
+        if ($model->load(Yii::$app->request->post()) && !Yii::$app->user->isGuest)
         {
 //            $url ='http://freegeoip.net/json/';
 //            $ch = curl_init();
