@@ -44,7 +44,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 </head>
 <body>
 <?php $this->beginBody() ?>
-<!— Yandex.Metrika counter —>
+<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
@@ -71,7 +71,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
     })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/39359185" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!— /Yandex.Metrika counter —>
+<!-- /Yandex.Metrika counter -->
 <div class="wrap wrap-index">
     <?php
     NavBar::begin([
@@ -1055,11 +1055,11 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                                                                             alt="" border="0" width="88" height="31"/></a><!--/LiveInternet-->
                         </div>
                         <div class="pull-right" style="margin-top: 7px;margin-right: 15px;">
-                            <!— Yandex.Metrika informer —>
-                            <a href="https://vk.com/away.php?utf=1&to=https%3A%2F%2Fmetrika.yandex.ru%2Fstat%2F%3Fid%3D39359185%26amp%3Bfrom%3Dinformer"
-                               target="_blank" rel="nofollow"><img src="https://vk.com/away.php?utf=1&to=https%3A%2F%2Finformer.yandex.ru%2Finformer%2F39359185%2F3_0_FFFFFFFF_FFFFFFFF_0_visits"
+                            <!-- Yandex.Metrika informer -->
+                            <a href="https://metrika.yandex.ru/stat/?id=39359185&amp;from=informer"
+                               target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/39359185/3_0_FFFFFFFF_FFFFFFFF_0_visits"
                                                                    style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
-                            <!— /Yandex.Metrika informer —>
+                            <!-- /Yandex.Metrika informer -->
                         </div>
                     </div>
                     <!--            </div>-->
