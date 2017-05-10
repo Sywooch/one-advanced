@@ -270,22 +270,41 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
             <?php } else { ?>
                 <div class="carousel-promo carousel-promo-2d">
                     <?php
-                    var_dump(isset($this->params['gamesPreview'][5]));
-                    die;
-                    $carIt = [
-                        [
-                            isset($this->params['gamesPreview'][0]) ? $this->params['gamesPreview'][0] : [],
-                            isset($this->params['gamesPreview'][1]) ? $this->params['gamesPreview'][1] : [],
-                        ],
-                        [
-                            isset($this->params['gamesPreview'][2]) ? $this->params['gamesPreview'][2] : [],
-                            isset($this->params['gamesPreview'][3]) ? $this->params['gamesPreview'][3] : [],
-                        ],
-                        [
-                            isset($this->params['gamesPreview'][4]) ? $this->params['gamesPreview'][4] : [],
-//                            isset($this->params['gamesPreview'][5]) ? $this->params['gamesPreview'][5] : [],
-                        ],
-                    ];
+//                    var_dump(isset($this->params['gamesPreview'][5]));
+//                    die;
+                    $carIt = [];
+                    if (isset($this->params['gamesPreview'][0])) {
+                        $carIt[0][0] = $this->params['gamesPreview'][0];
+                    }
+                    if (isset($this->params['gamesPreview'][1])) {
+                        $carIt[0][1] = $this->params['gamesPreview'][1];
+                    }
+                    if (isset($this->params['gamesPreview'][2])) {
+                        $carIt[1][0] = $this->params['gamesPreview'][2];
+                    }
+                    if (isset($this->params['gamesPreview'][3])) {
+                        $carIt[1][1] = $this->params['gamesPreview'][3];
+                    }
+                    if (isset($this->params['gamesPreview'][4])) {
+                        $carIt[2][0] = $this->params['gamesPreview'][4];
+                    }
+                    if (isset($this->params['gamesPreview'][5])) {
+                        $carIt[2][1] = $this->params['gamesPreview'][5];
+                    }
+//                    $carIt = [
+//                        [
+//                            isset($this->params['gamesPreview'][0]) ? $this->params['gamesPreview'][0] : [],
+//                            isset($this->params['gamesPreview'][1]) ? $this->params['gamesPreview'][1] : [],
+//                        ],
+//                        [
+//                            isset($this->params['gamesPreview'][2]) ? $this->params['gamesPreview'][2] : [],
+//                            isset($this->params['gamesPreview'][3]) ? $this->params['gamesPreview'][3] : [],
+//                        ],
+//                        [
+//                            isset($this->params['gamesPreview'][4]) ? $this->params['gamesPreview'][4] : [],
+////                            isset($this->params['gamesPreview'][5]) ? $this->params['gamesPreview'][5] : [],
+//                        ],
+//                    ];
                     $i=0;
                     ?>
                     <div id="w5" class="carousel carousel-2d">
