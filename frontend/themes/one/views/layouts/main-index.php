@@ -281,7 +281,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                         ],
                         [
                             isset($this->params['gamesPreview'][4]) ? $this->params['gamesPreview'][4] : [],
-                            isset($this->params['gamesPreview'][5]) ? $this->params['gamesPreview'][5] : [],
+//                            isset($this->params['gamesPreview'][5]) ? $this->params['gamesPreview'][5] : [],
                         ],
                     ];
                     $i=0;
