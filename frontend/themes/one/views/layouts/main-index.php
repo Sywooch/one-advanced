@@ -270,6 +270,8 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
             <?php } else { ?>
                 <div class="carousel-promo carousel-promo-2d">
                     <?php
+                    var_dump($this->params['gamesPreview']);
+                    die;
                     $carIt = [
                         [$this->params['gamesPreview'][0], $this->params['gamesPreview'][1]],
                         [$this->params['gamesPreview'][2], $this->params['gamesPreview'][3]],
