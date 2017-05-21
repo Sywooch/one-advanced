@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'teams.name',
                 'label' => 'Команда',
             ],
+            'sort',
              'status',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -249,17 +249,47 @@ if (isset($data['birthDay'])) {
         <?php } else { ?>
             <div class="carousel-promo well">
                 <?php
-                $carIt = [
-                    [$data['gamesLast'][2], $data['gamesLast'][1]],
-                    [$data['gamesLast'][0], $data['gamesFirst'][0]],
-                    [$data['gamesFirst'][1], $data['gamesFirst'][2]],
-                ];
+//                $carIt = [
+//                    [$data['gamesLast'][2], $data['gamesLast'][1]],
+//                    [$data['gamesLast'][0], $data['gamesFirst'][0]],
+//                    [$data['gamesFirst'][1], $data['gamesFirst'][2]],
+//                ];
+
+                if(empty($data['gamesFirst'])) {
+                    unset($data['gamesLast'][2]);
+                }
+                $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
+                $carIt = [];
+//                for ($i = 0; $i <= 5; $i++) {
+//                    if (isset($this->params['gamesPreview'][$i])) {
+//                        $carIt[0][0] = $this->params['gamesPreview'][$i];
+//                    }
+//                }
+                if (isset($this->params['gamesPreview'][0])) {
+                    $carIt[0][0] = $this->params['gamesPreview'][0];
+                }
+                if (isset($this->params['gamesPreview'][1])) {
+                    $carIt[0][1] = $this->params['gamesPreview'][1];
+                }
+                if (isset($this->params['gamesPreview'][2])) {
+                    $carIt[1][0] = $this->params['gamesPreview'][2];
+                }
+                if (isset($this->params['gamesPreview'][3])) {
+                    $carIt[1][1] = $this->params['gamesPreview'][3];
+                }
+                if (isset($this->params['gamesPreview'][4])) {
+                    $carIt[2][0] = $this->params['gamesPreview'][4];
+                }
+                if (isset($this->params['gamesPreview'][5])) {
+                    $carIt[2][1] = $this->params['gamesPreview'][5];
+                }
                 $i=0;
+                $countCartIt = count($carIt);
                 ?>
                 <div id="w5" class="carousel carousel-2d">
                     <div class="carousel-inner">
                         <?php foreach($carIt as $items) { $i++?>
-                        <div class="item <?php echo $i==2 ? 'active' : ''?>">
+                        <div class="item <?php echo ($i==2 || ($countCartIt < 2 && $i == 1)) ? 'active' : ''?>">
                             <div class="row">
                             <?php foreach($items as $item) { ?>
                                 <div class="col-xs-6">

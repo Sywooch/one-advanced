@@ -79,7 +79,7 @@ class SeasonDetailsSearch extends SeasonDetails
         $query = SeasonDetails::find()
             ->select('*, `goals_scored`-`goals_against` as `rm`')
             ->where(['season_id' => $season_id])
-            ->orderBy('spectacles DESC, wins DESC, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against');
+            ->orderBy('spectacles DESC, wins DESC, sort, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against');
 
         // add conditions that should always apply here
 
