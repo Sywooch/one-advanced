@@ -291,6 +291,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     if (isset($this->params['gamesPreview'][5])) {
                         $carIt[2][1] = $this->params['gamesPreview'][5];
                     }
+                    $countCartIt = count($carIt);
 //                    $carIt = [
 //                        [
 //                            isset($this->params['gamesPreview'][0]) ? $this->params['gamesPreview'][0] : [],
@@ -310,7 +311,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                     <div id="w5" class="carousel carousel-2d">
                         <div class="carousel-inner">
                             <?php foreach($carIt as $items) { $i++;$j=0;?>
-                                <div class="item <?php echo $i==2 ? 'active' : ''?>">
+                                <div class="item <?php echo ($i==2 || ($countCartIt < 2 && $i == 1)) ? 'active' : ''?>">
                                     <div class="row">
                                         <?php foreach($items as $item) {$j++ ?>
 <!--                                            --><?php //var_dump($item->season->full_name); ?>

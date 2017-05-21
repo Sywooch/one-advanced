@@ -45,6 +45,9 @@ if (isset($data['birthDay'])) {
 
 $data['news'] = $dataProvider['news']->getModels();
 $this->params['data'] = $data;
+if(empty($data['gamesFirst'])) {
+    unset($data['gamesLast'][2]);
+}
 $this->params['gamesPreview'] = array_merge(array_reverse($data['gamesLast']), $data['gamesFirst']);
 if (!is_null($data['questions'])) {
     $answersData = $data['questions']->answers;
