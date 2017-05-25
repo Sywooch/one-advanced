@@ -740,8 +740,8 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/miss_baltica.png',['class'=>'pull-right']); ?><!--</div>-->
 <!--                        <div class="col-xs-6">--><?php //echo Html::img('@web/themes/one/src/needless/atrib.jpg'); ?><!--</div>-->
-                        <div class="col-xs-6 text-right"><a href="<?php echo Url::toRoute(['/page/rules'])?>"><?php echo Html::img('@web/themes/one/src/needless/rules.jpg'); ?></a></div>
-                        <div class="col-xs-6"><a href="<?php echo Url::toRoute(['/club-questions']); ?>"><?php echo Html::img('@web/themes/one/src/needless/vopros.jpg'); ?></a></div>
+                        <div class="col-xs-6 col-xs-offset-3 text-right"><a href="<?php echo Url::toRoute(['/page/rules'])?>"><?php echo Html::img('@web/themes/one/src/needless/rules.jpg'); ?></a></div>
+<!--                        <div class="col-xs-6"><a href="--><?php //echo Url::toRoute(['/club-questions']); ?><!--">--><?php //echo Html::img('@web/themes/one/src/needless/vopros.jpg'); ?><!--</a></div>-->
                     </div>
                 </div>
                 <div class="video-tv">
