@@ -26,8 +26,8 @@ class StandingsWidget extends \yii\bootstrap\Widget
             'query' => SeasonDetails::find()
                 ->select('*, `goals_scored`-`goals_against` as `rm`')
                 ->where(['season_id' => $data['season']->id])
-                ->orderBy('spectacles DESC')
-                ->orderBy('spectacles DESC, wins DESC, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against')
+//                ->orderBy('spectacles DESC')
+                ->orderBy('spectacles DESC, wins DESC, sort, draws DESC, lesions, rm DESC, goals_scored DESC, goals_against')
                 ->limit(20),
             'pagination' => false,
             'sort' => false,
