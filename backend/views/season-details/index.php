@@ -55,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'spectacles',
             'goals_scored',
             'goals_against',
+            'sort',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

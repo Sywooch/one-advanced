@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $spectacles
  * @property integer $goals_against
  * @property integer $goals_scored
+ * @property integer $sort
  *
  * @property Seasons $season
  * @property Teams $team
@@ -38,7 +39,7 @@ class SeasonDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['season_id', 'team_id','season_id', 'games','wins', 'draws','lesions', 'spectacles', 'goals_against', 'goals_scored'], 'integer'],
+            [['season_id', 'team_id','season_id', 'games','wins', 'draws','lesions', 'spectacles', 'goals_against', 'goals_scored', 'sort'], 'integer'],
             [['season_id'], 'exist', 'skipOnError' => true, 'targetClass' => Seasons::className(), 'targetAttribute' => ['season_id' => 'id']],
             [['team_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teams::className(), 'targetAttribute' => ['team_id' => 'id']],
         ];
@@ -60,6 +61,7 @@ class SeasonDetails extends \yii\db\ActiveRecord
             'spectacles' => 'Очки',
             'goals_against' => 'Голы Пропущеные',
             'goals_scored' => 'Голы Забитые',
+            'sort' => 'Сорт.',
         ];
     }
 
