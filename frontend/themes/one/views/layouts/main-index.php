@@ -115,7 +115,7 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
     ]);
         echo Html::beginTag('div',['class'=>'row']);
             echo Html::beginTag('div',['class'=>'col-xs-9 pull-right name-menu']);//col-xs-offset-1
-                echo Html::a(false, 'http://www.sodrugestvo.ru/', ['class' => 'sponsor-header', 'target' => '_blank']);
+//                echo Html::a(false, 'http://www.sodrugestvo.ru/', ['class' => 'sponsor-header', 'target' => '_blank']);
                 echo Html::tag('h3','Официальный сайт футбольного клуба');
                 echo Html::tag('h2','"Балтика" Калининград');
                 echo MenuWidget::widget(['position' => 'headerBottom']);
@@ -478,9 +478,9 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
                 ?>
                 <div class="banners-index">
                     <h4>Баннеры</h4>
-                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
-                        <?php echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
-                    </a>
+<!--                    <a href="http://www.sodrugestvo.ru/" target="_blank" class="text-center" style="margin-top: 15px; display: block;">-->
+<!--                        --><?php //echo Html::img('@web/themes/one/src/banner_1.gif', ['alt' => 'sponsor']) ?>
+<!--                    </a>-->
                     <a href="/page/dussh" target="_blank" class="text-center" style="margin-top: 15px; display: block;">
                         <?php echo Html::img('@web/themes/one/src/banner-det.jpg', ['alt' => 'sponsor']) ?>
                     </a>
@@ -887,18 +887,18 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 <!--            <div class="container">-->
                 <div class="footer-top">
                     <div class="footer-promotions">
-                        <div class="footer-promotions-top">
-                            <div class="row text-center">
-                                <?php
-                                echo Html::a(
-                                    Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']),
-                                        'http://www.sodrugestvo.ru/',
-                                        ['target' => '_blank']
-                                    );
-                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-                                ?>
-                            </div>
-                        </div>
+<!--                        <div class="footer-promotions-top">-->
+<!--                            <div class="row text-center">-->
+<!--                                --><?php
+//                                echo Html::a(
+//                                    Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']),
+//                                        'http://www.sodrugestvo.ru/',
+//                                        ['target' => '_blank']
+//                                    );
+//                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+//                                ?>
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="footer-promotions-middle">
                             <div class="row">
                                 <?php
