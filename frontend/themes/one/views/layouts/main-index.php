@@ -887,18 +887,21 @@ $this->title = $this->title . ' | ФК ' . Yii::$app->params['main-team'];
 <!--            <div class="container">-->
                 <div class="footer-top">
                     <div class="footer-promotions">
-<!--                        <div class="footer-promotions-top">-->
-<!--                            <div class="row text-center">-->
-<!--                                --><?php
-//                                echo Html::a(
-//                                    Html::img('@web/themes/one/src/promotions/sodrughestvo.gif', ['class' => '']),
-//                                        'http://www.sodrugestvo.ru/',
-//                                        ['target' => '_blank']
-//                                    );
-//                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
-//                                ?>
-<!--                            </div>-->
-<!--                        </div>-->
+                        <div class="footer-promotions-top">
+                            <div style="text-align: center;padding-bottom: 20px">
+                                <span style="color: #0c3d7f;font-weight: bold;font-size: 20px;">ПАРТНЕРЫ ФУТБОЛЬНОГО КЛУБА "БАЛТИКА":</span>
+                            </div>
+                            <div class="row text-center">
+                                <?php
+                                echo Html::a(
+                                    Html::img('@web/themes/one/src/promotions/original/jako.png', ['class' => '','style'=>'width:20%']),
+                                        'http://www.jako-russia.ru/',
+                                        ['target' => '_blank']
+                                    );
+                                //                        echo Html::tag('div',Html::img('@web/themes/one/src/promotions/novatek.png', ['class' => 'img-responsive']),['class'=>'col-xs-2']);
+                                ?>
+                            </div>
+                        </div>
                         <div class="footer-promotions-middle">
                             <div class="row">
                                 <?php
